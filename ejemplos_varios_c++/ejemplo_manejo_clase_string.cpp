@@ -11,5 +11,6 @@ s2 = "Today"; // Assigning to a string (asignacion a un string)
 s1 = s3 + " " + s4; // Combining strings (combinación de string)
 s1 += " 8 "; // Appending to a string (adjuntar a un string)
 cout << s1 + s2 + "!" << endl;
+cout << s3 + s4 +": " << 27 <<endl; //Prueba Charlie
 } ///:~
 
