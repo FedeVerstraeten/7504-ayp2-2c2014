@@ -39,9 +39,11 @@ int main(void)
     if (in.bad())
         perror("error while reading file");
 
-    cout<<"total de: "<<n<<"lineas."<<endl;
+    cout<<endl<<"total de: "<<n<<"lineas."<<endl<<endl;
     for(i=1;i<n;i++)    parse_line((*lines_array[i]));
     print_elements(Number_of_Elements);
+
+
     return 0;
 }
 
@@ -57,7 +59,7 @@ void process_line(string line, string** lines_array){
 void parse_line(string text_line)
 {
     istringstream iss(text_line);
-    string word[10];
+    string word[3];
     iss >> word[0];
     if(word[0]==NetworkStructure[1]){
         iss >> word[1];
@@ -66,17 +68,21 @@ void parse_line(string text_line)
         for(i=0;i<4;i++){
          if(word[2]==NetworkElementType[i]) Number_of_Elements[i]++;
         }
-        cout<< word[2]<<endl;
     }
+    if(word[0]==NetworkStructure[2]){
+         Number_of_Elements[4]++;
+     }
 
 }
 
 void print_line(string line){
     cout << line << "\n";
 }
+
 void print_elements(int Number_of_Elements[]){
     cout << Number_of_Elements[0] << " Hubs"<<"\n";
-    cout << Number_of_Elements[1] << " Node"<<"\n";
-    cout << Number_of_Elements[2] << " Amp"<<"\n";
-    cout << Number_of_Elements[3] << " CM"<<"\n";
+    cout << Number_of_Elements[1] << " Nodes"<<"\n";
+    cout << Number_of_Elements[2] << " Amps"<<"\n";
+    cout << Number_of_Elements[3] << " CMs"<<"\n";
+    cout << Number_of_Elements[4] << " Connections"<<"\n";
 }
