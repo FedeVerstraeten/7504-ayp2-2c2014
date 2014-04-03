@@ -13,26 +13,34 @@
 #include<iostream>
 #include<fstream>
 #include<string>
+#define CHOP_SIZE 2
 using namespace std; 
 
-
+size_t cantidad_lineas=2;
 int main(void){
+
 
 size_t i;
 ifstream in("Scopy.txt");
-string *prueba[100];	//Cristian: se declara un arreglo de punteros a objetos string de 100
+string *prueba[100],aux;	//Cristian: se declara un arreglo de punteros a objetos string de 100
 			// unidades, la unica forma de perdir memoria en punteros
 			// a objetos es con el operador new.
 			
+//analizar bien esta variable global para poder reallocar memoria de manera efectiva
 
-	for(i=0;i<1;i++){
+
+	for(i=0;i<100 || getline(in,aux)!=0;i++){
 		//tendria qe buscar una condicion de corte alternatica por si se acaba el archivo (eof) y que no llegue hasta 100
-		
-		prueba[i]=new string;
-		getline(in,*(prueba[i]));//esta funcion recibe el archivo y el string donde guardar!!! 
+	//	getline(in,aux);//esta funcion recibe el archivo y el string donde guardar!!!
+	/*	if(cantidad_lineas==i){
+			
+			cantidad_lineas+=CHOP_SIZE;
+			
+		} */
+		prueba[i]=new string(aux);
+	//	getline(in,aux);//esta funcion recibe el archivo y el string donde guardar!!! 
 	}
-
-	cout << (*prueba[0]) << "\n"; 
+	cout << *prueba[0] << "\n"; 
 
 
 	//prueba[0]=new string("hola");// Cristian: Se puede usar el operador new para pedir memoria en el heap y además hacer la asignación

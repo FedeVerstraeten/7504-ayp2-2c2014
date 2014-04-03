@@ -1,0 +1,34 @@
+iglas de Hybrid Fiber Coaxial (Fibra híbrida coaxial). En Telecomunicaciones, es un término que define una red que incorpora tanto fibra óptica como cable coaxial para crear una red de banda ancha.
+Esta tecnología permite el acceso a internet de banda ancha utilizando las redes CATV existentes. Se puede dividir la topología en dos partes. La primera consiste en conectar al abonado por medio de cable coaxial a un nodo zonal y posteriormente interconectar los nodos zonales con fibra óptica.
+Esta tecnología comienza a implementarse a través de operadores de CATV, que además de brindar el servicio de televisión por cable anexaron transportar por el mismo medio la señal de internet de banda ancha.
+A través del uso de cada una de estas tecnologías, la red es capaz de aprovecharse de los beneficios y minimizar el impacto de las limitaciones inherentes a cada una.
+La fibra óptica proporciona la ventaja de cubrir distancias razonablemente largas con un mínimo de amplificación y regeneración de la señal. Sin embargo, debido a la naturaleza de esta tecnología, el coste y tamaño de los multiplexores/demultiplexores ópticos, rara vez se utiliza para conectar los nodos directamente a los clientes.
+En lugar de eso, la fibra óptica termina en un elemento de la red llamado "puerta de enlace" (o gateway), el cual contiene, al menos, un transformador óptico (normalmente, dos) que permite la transición de la señal a la red de cable coaxial.
+El cable coaxial proporciona una capacidad de ancho de banda considerable, mientras que también permite que la señal se extraiga y se inserte con una mínima interferencia a cualquier cliente o equipo. Las limitaciones de este sistema son que a veces la señal necesita ser amplificada y además es susceptible a interferencias externas.
+Empresas Importantes[editar]
+
+A diferencia de las redes CATV en donde la transmisión es unidireccional (desde la central hacia el abonado), en HFC la transmisión es bidireccional.
+El nombre de HFC se origina de la abreviación del concepto inventado en EE.UU. de la unión entre redes de fibra y coaxial, las cuales abrieron el mercado y la modernización a las redes actuales llamadas "Hybrid Fiber Coax Networks / Redes Fibra Híbrida Coaxial".
+Estas redes de acceso pueden utilizarse actualmente para transmitir no solo televisión por cable (video), si no también datos (Internet), telefonía (Voz), entre otros servicios corporativos.
+Suele ser usual que a la vez que se instala el coaxial en paralelo, se instale un par de cobre, para que permita tratar el sistema de telefonía por separado y así abaratar costes en su tratamiento. Lo más común, sin embargo, es el uso de cable coaxial para la conexión con el usuario final y el uso de conexiones de fibra dentro de la nube de interconexión.
+Servicios Soportados[editar]
+
+Distribución analógica de TV terrenal y de satélite analógica y digital
+Distribución de canales de radio FM
+Telefonía integrada
+Servicios de pago por visión (PPV) y Vídeo Bajo Demanda (VoD)
+Acceso a Internet
+Servicios y videojuegos interactivos
+Acceso a bases de datos
+Videotelefonía
+Comercio electrónico, teleadministración, telemedicina, ...
+Acceso a Internet a través del TV, portales TV, anuncios interactivos, ...
+Distribucion de canales de Video y audio Kbps
+Arquitectura y elementos de la red HFC[editar]
+
+Los principales elementos y partes de una red de acceso HFC son:
+Cabecera
+Red troncal (óptica)
+Red de distribución (coaxial)
+Red de acometida
+Equipos de abonado
