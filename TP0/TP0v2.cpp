@@ -17,6 +17,7 @@ void printLine(string);
 void processLine(string);
 void printElements(int *);
 void printNetworkName(string);
+int  searchNetworkName(string**);
 
 //Diccionarios: HAY QUE ACORDAR UNA NOMNECLATURA PARA STRINGS , VARIABLES y ARREGLOS.
 string network_struct[]   = {"NetworkName","NetworkElement","Connection"};
@@ -30,7 +31,7 @@ int main(void)
 {
     string *lines_array[MAX_LINES_DEFAULT], line;
 
-    ifstream in("Networking.txt"); //NOTA: funciona como ruta relativa
+    ifstream in("Networking02.txt"); //NOTA: funciona como ruta relativa
     if (!in.is_open())
     {
             perror("error while opening file");
@@ -42,7 +43,12 @@ int main(void)
     cout<<endl<<"total de: "<<n<<"lineas."<<endl<<endl; // esta línea es un flag para ver si n se computó bien.
 
     if (in.bad()) perror("error while reading file");
+    int founded=0;
 
+    for(i=1;i<n;i++)
+    {
+            founded=searchNetworkName(lines_array);
+    }
     printNetworkName((*lines_array[0])); // esta tiene el contenido del nombre de la red
     for(i=1;i<n;i++)    processLine((*lines_array[i]));
     printElements(number_of_elements);     //esta funcion printElements() es la que se encarga de la salida por pantalla.
@@ -85,7 +91,15 @@ void printLine(string line)
     cout << line << "\n";
 }
 
+int  searchNetworkName(string* lines_array)
+{
+
+}
+
 void printNetworkName(string name_line)
+//esta funcion asume que se le pasa un string
+//que contiene "NetworkName <nombre>",
+//donde nombre es el nombre a imprimir
 {
     string aux, network_name;
     istringstream iss(name_line);
