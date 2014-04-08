@@ -1,8 +1,9 @@
-//HECHO: Si la cantidad de lineas es mayor a MAX_LINES_DEFAULT, entonces hay que hacer incremento de tamaño
-//con alguna estrategia de crecimiento de memoria.---> ESTO LO RESLOVIÓ CRISTIAN: folder: Carga_de_archivos_en_memoria-->file_load.cpp, file_load.hpp.
-//HECHO: Validar la primer línea con el nombre de la red.---> EStO LO RESOLVIÓ CHARLIE. Commit dae8280. Es la version inicial.
+//Charlie:
 //PENDIENTE: Probar distintos archivos de texto para tener un mínimo de robusticidad.
 //PENDIENTE: La funcion impresión printElements() debe imprimir por flujo de salida en vez de por pantalla-
+//Cristian:
+//PENDIENTE: Validar la cantidad de conexiones respecto de la cantidad de NetworkElementes.
+//Pensar una lógica de árbol para validar cantidad de conexiones.
 
 #include<iostream>
 #include<fstream>
@@ -17,7 +18,7 @@ void printLine(string);
 void processLine(string);
 void printElements(int *);
 void printNetworkName(string);
-int  searchNetworkName(string**);
+//int  searchNetworkName(string**);
 
 //Diccionarios: HAY QUE ACORDAR UNA NOMNECLATURA PARA STRINGS , VARIABLES y ARREGLOS.
 string network_struct[]   = {"NetworkName","NetworkElement","Connection"};
@@ -47,7 +48,7 @@ int main(void)
 
     for(i=1;i<n;i++)
     {
-            founded=searchNetworkName(lines_array);
+          //  founded=searchNetworkName(lines_array);
     }
     printNetworkName((*lines_array[0])); // esta tiene el contenido del nombre de la red
     for(i=1;i<n;i++)    processLine((*lines_array[i]));
@@ -90,11 +91,11 @@ void printLine(string line)
 {
     cout << line << "\n";
 }
-
+/*
 int  searchNetworkName(string* lines_array)
 {
 
-}
+}*/
 
 void printNetworkName(string name_line)
 //esta funcion asume que se le pasa un string
