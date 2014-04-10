@@ -1,0 +1,49 @@
+\documentclass[10pt,a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{makeidx}
+\usepackage{graphicx}
+\author{ Carlos Germán Carreño Romano 90392\\
+ Cristian Aranda Zózimo Cordero 93631,\\
+  Federico Verstraeten 92892}
+
+\title{Trabajo Práctico 0:\\
+Programación C++\\
+75.04 - Algoritmos y Programación II\\
+Universidad de Buenos Aires\\
+Facultad de Ingenieria\\
+1er Cuatrimestre 2014\\ 
+}
+\begin{document}
+\maketitle
+\tableofcontents
+\section{Introducción}
+El desarrollo de este trabajo práctico tiene como objetivo ejercitar conceptos básicos de programación en C++. Para el mismo, la temática propuesta propone estructuras de datos basadas en modelos de redes HFC. 
+
+\section{Programa}
+El programa consiste básicamente en estructurar datos, aprender el manejo de flujos(stremas) en C++, el uso de consola o línea de comandos, 
+El formato determinado para los archivos de entrada describe una red HFC a partir de un nombre (nomenclado como \textit{NetworkName}), y los elementos de red y conexiones(nomenclados como \textit{NetworkElement} y \textit{Connection} respectivamente), bajo la estructura de un esquema de árbol donde la jerarquía de elementos se describe en el enunciado. A partir del archivo recibido, que hace la descripción mencionada en formato de texto, se debe generar un archivo de salida computando la información existente, respecto al nombre de red y  la cantidad de elementos y conexiones.
+
+Para el desarrollo del programa, se optó por trabajar en módulos de software que puedan interactuar entre sí, con una previa discusión de las condiciones de borde que debería cumplir cada módulo. El esquema de desarrollo se centró entonces en 3 líneas; por un lado la ejecución y validación de los argumentos de entrada mediante línea de comandos, por otro la apertura del archivo de entrada y construcción de un arreglo de punteros a strings para cargar en memoria el contenido del archivo\footnote{se optó esta estrategia a partir de consideraciones de velocidad, uso de memoria y del archivo de entrada} y por último, el proceso de cómputo de la información recibida.
+
+\subsection{Entrada}
+
+\subsection{Proceso}
+\subsubsection{Carga en memoria}
+Se optó por cargar en memoria dinámica el texto completo. El procedimiento fue cargar los archivos en un arreglo de punteros a string dinámico, un string por línea de texto, con una estrategia de crecimiento geométrico. Esto último hace referencia a un modelo de incremento de memoria dinámica que permite incrementar la memoria para los strings en tiempo de ejecución. La hipótesis que fundamenta esta decisión es que a priori, el archivo de entrada puede contener 3(o menos) ó 300(o más) líneas de información, y que el procesamiento que debe ser línea a línea puede tener un costo elevado en tiempo de ejecución si el archivo es grande. Además, estableciendo un tamaño de asignación inicial (INIT\_ CHOP) se puede tener noción de la cantidad de memoria inicial que se deberá requerir para trabajar con un archivo promedio.
+Estas suposiciones se reflejan en dos funciones con los siguientes prototipos:\\
+
+\textbf{\"status_t load_file_memory(ifstream &file,string ***lines,size_t &size)\"}\\
+\textbf{status_t erase_file_memory(string ***lines,size_t &size)}\\
+
+La función \textit{load_file_memory()} recibe como primer argumento una referencia a un archivo previamente abierto por el flujo if stream; como segundo argumento la dirección de memoria de un arreglo de strings, que se decidió para devolver por referencia la variable que contiene el arreglo dinámico de strings (\textit{lines}); y como tercer argumento, devuelve por referencia el tamaño del arreglo (size) que indica el número de líneas que contiene el texto.
+
+\subsection{Salida}
+\section{Ejecuciones del programa y resultados}
+\section{Código fuente}
+\section{Conclusiones}
+
+
+\end{document}
