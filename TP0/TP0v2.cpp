@@ -16,14 +16,14 @@ using namespace std;
 void uploadLine(string, string **);
 void printLine(string);
 void processLine(string);
-void printElements(int *);
-void printNetworkName(string);
+void printElements(int *, ostream&);
+void printNetworkName(string, ostream&);
 //int  searchNetworkName(string**);
 
 //Diccionarios: HAY QUE ACORDAR UNA NOMNECLATURA PARA STRINGS , VARIABLES y ARREGLOS.
 string network_struct[]   = {"NetworkName","NetworkElement","Connection"};
 string network_element_type[] = {"Hub","Node","Amp","CM"};
-string network_element_nam[MAX_LINES_DEFAULT];
+string network_element_name[MAX_LINES_DEFAULT];
 
 int number_of_elements[5];// = {"Number_of_Hubs","Number_of_Nodes", "Number_of_Amps","Number_of_CM", "Number_of_Connections"};
 static size_t   n=0, i=0;
@@ -32,7 +32,9 @@ int main(void)
 {
     string *lines_array[MAX_LINES_DEFAULT], line;
 
-    ifstream in("Networking02.txt"); //NOTA: funciona como ruta relativa
+    ifstream in("Networking00.txt"); //NOTA: funciona como ruta relativa
+    ofstream file_out ("SALIDA.txt", ios_base::out);
+
     if (!in.is_open())
     {
             perror("error while opening file");
@@ -50,9 +52,9 @@ int main(void)
     {
           //  founded=searchNetworkName(lines_array);
     }
-    printNetworkName((*lines_array[0])); // esta tiene el contenido del nombre de la red
+    printNetworkName((*lines_array[0]),file_out); // esta tiene el contenido del nombre de la red
     for(i=1;i<n;i++)    processLine((*lines_array[i]));
-    printElements(number_of_elements);     //esta funcion printElements() es la que se encarga de la salida por pantalla.
+    printElements(number_of_elements, file_out);     //esta funcion printElements() es la que se encarga de la salida por pantalla.
 
 
     return 0;
@@ -97,7 +99,7 @@ int  searchNetworkName(string* lines_array)
 
 }*/
 
-void printNetworkName(string name_line)
+void printNetworkName(string name_line, ostream& os)
 //esta funcion asume que se le pasa un string
 //que contiene "NetworkName <nombre>",
 //donde nombre es el nombre a imprimir
@@ -108,16 +110,16 @@ void printNetworkName(string name_line)
     if(aux == network_struct[0])
     {
         iss >> network_name;
-        cout << network_name << "\n";
+        os << network_name << "\n";
     }
-    else     cout << "no hay nombre de red" << "\n";
+    else     os << "no hay nombre de red" << "\n";
 }
 
-void printElements(int number_of_elements[])
+void printElements(int number_of_elements[], ostream& os)
 {
-    cout << number_of_elements[0] << " Hubs"<<"\n";
-    cout << number_of_elements[1] << " Nodes"<<"\n";
-    cout << number_of_elements[2] << " Amps"<<"\n";
-    cout << number_of_elements[3] << " CMs"<<"\n";
-    cout << number_of_elements[4] << " Connections"<<"\n";
+    os << number_of_elements[0] << " Hubs"<<"\n";
+    os << number_of_elements[1] << " Nodes"<<"\n";
+    os << number_of_elements[2] << " Amps"<<"\n";
+    os << number_of_elements[3] << " CMs"<<"\n";
+    os << number_of_elements[4] << " Connections"<<"\n";
 }
