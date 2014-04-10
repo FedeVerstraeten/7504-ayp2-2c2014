@@ -50,7 +50,7 @@ void close_all_stream_file(ifstream& ,ofstream& );
 int main(int argc,char *argv[])
 {
     char *route_in=NULL, *route_out=NULL;
-    //string palabra;
+    string palabra;
 
     if(argc==1) cout<<"Error: no hay argumentos"<<endl;
 
@@ -64,7 +64,7 @@ int main(int argc,char *argv[])
             }
             else
             {
-                cerr << "Ruta entrada inválida: "
+                cout << "Ruta entrada inválida: "
                     << argv[i+1]
                     << endl;
                 break;
@@ -80,7 +80,7 @@ int main(int argc,char *argv[])
             }
             else
             {
-                cerr << "Ruta salida inválida: "
+                cout << "Ruta salida inválida: "
                  << argv[i+1]
                  << endl;
                 break;
@@ -90,7 +90,7 @@ int main(int argc,char *argv[])
 
         else //if (read_argument(argv[i])==ARG_ERR)
         {
-            cerr << "Argumento inválido: "
+            cout << "Argumento inválido: "
 			     << argv[i]
 			     << endl;
             break;
@@ -103,6 +103,11 @@ int main(int argc,char *argv[])
         ifstream file_in (route_in); //Flujo archivo file_in, abierto
 
         ofstream file_out (route_out,ios_base::out);//Flujo archivo file_out, abierto
+
+        cout<<"se abrio piola wachin"<<endl;
+
+        file_in>>palabra;
+        file_out<<palabra;
 
         close_all_stream_file(file_in,file_out);
 

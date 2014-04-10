@@ -8,7 +8,7 @@ using namespace std;
 //devuelve por interfaz un arreglo de punteros a objeto string cargados con el archivo file(una linea por string).
 //devuelve la cantindad de lineas leidas.
 
-status_t load_file_memory(ifstream &file,string ***lines,size_t &size){
+status_t loadFileMemory(ifstream &file,string ***lines,size_t &size){
 
         size_t alloc_size,i;
         string **aux,str;
@@ -48,7 +48,7 @@ status_t load_file_memory(ifstream &file,string ***lines,size_t &size){
 
 //Especificaciones de funcion.
 //Borra los string y luego el arreglo de punteros  a string.
-status_t erase_file_memory(string ***lines,size_t &size){
+status_t eraseFileMemory(string ***lines,size_t &size){
 
         size_t i;
 
@@ -60,7 +60,7 @@ status_t erase_file_memory(string ***lines,size_t &size){
         *lines=NULL;
 return OK;
 }
-   
+
 
 
 
