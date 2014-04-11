@@ -1,0 +1,6 @@
+MyNetwork
+1 Hubs
+2 Nodes
+1 Amps
+4 CMs
+7 Connections
