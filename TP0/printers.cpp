@@ -1,7 +1,10 @@
-void printNetworkName(string name_line, ostream& os)
+#include"printers.hpp"
+extern string network_struct[];
 //esta funcion asume que se le pasa un string
 //que contiene "NetworkName <nombre>",
 //donde nombre es el nombre a imprimir
+
+void printNetworkName(string name_line, ostream& os)
 {
     string aux, network_name;
     istringstream iss(name_line);
@@ -24,4 +27,3 @@ void printElements(int number_of_elements[], ostream& os)
     os << number_of_elements[3] << " CMs"<<"\n";
     os << number_of_elements[4] << " Connections"<<"\n";
 }
-

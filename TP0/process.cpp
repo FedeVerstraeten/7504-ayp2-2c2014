@@ -1,3 +1,10 @@
+#include"process.hpp"
+//Diccionarios: HAY QUE ACORDAR UNA NOMNECLATURA PARA STRINGS , VARIABLES y ARREGLOS.
+extern string network_struct[];
+extern string network_element_type[];
+extern string network_element_name[];
+extern int number_of_elements[];// = {"Number_of_Hubs","Number_of_Nodes", "Number_of_Amps","Number_of_CM", "Number_of_Connections"};
+
 //Esta funcion recibe una linea del texto
 //Networking asumiendo que viene 'bien escrita',
 //esto es, que siempre que viene Networking
@@ -23,3 +30,4 @@ void processLine(string text_line)
     if(word[0]==network_struct[2])   number_of_elements[4]++;
 
 }
+
