@@ -73,7 +73,7 @@ string network_element_nam[MAX_LINES_DEFAULT];
 
 int number_of_elements[5];// = {"Number_of_Hubs","Number_of_Nodes", "Number_of_Amps","Number_of_CM", "Number_of_Connections"};
 
-static size_t   n=0;// i=0;
+static size_t   n=0, i=0;
 
 
 /**** PROTOTIPOS ****/
@@ -102,7 +102,7 @@ int main(int argc,char *argv[])
         ofstream file_out (route_out,ios_base::out);//Flujo archivo file_out, abierto
 
        loadFileMemory(file_in,&lines,number_lines);     
-	
+	cout<< "Funciono el hibrido wachin jaja alto programa loro ahh y tenes " <<number_lines <<endl;
        /* for(i=0;i<number_lines;i++){ 
                 file_out<<*lines[i]<<endl;
         }
