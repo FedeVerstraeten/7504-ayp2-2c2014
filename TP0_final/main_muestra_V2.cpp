@@ -6,8 +6,8 @@ Docentes: Lucio Santi, Leandro Santi
 
 Federico Verstraeten <federico.verstraeten@gmail.com>
 Cristian Zozimo Aranda Cordero <cristian.pinky@gmail.com>
-Carlos Carreño Romano <-------------------------dsdsds-d-s-d-s-ds->
-Título: NOMBRE DEL  TP
+Carlos Carreño Romano <charlieromano@gmail.com>
+Título: Trabajo Práctico 0
 
 NOTA:
 
