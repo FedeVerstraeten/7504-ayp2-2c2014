@@ -5,9 +5,81 @@
 \usepackage{amssymb}
 \usepackage{makeidx}
 \usepackage{graphicx}
+%\usepackage{mathrsfs,amsmath}
+\usepackage{caption}
+\usepackage{subcaption}
+
 \author{ Carlos Germán Carreño Romano 90392\\
  Cristian Aranda Zózimo Cordero 93631,\\
   Federico Verstraeten 92892}
+
+\usepackage{listings}
+\usepackage{graphics}
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+
+\lstset{language=C++,%
+    %basicstyle=\color{red},
+    breaklines=true,%
+    morekeywords={matlab2tikz},
+    keywordstyle=\color{blue},%
+    morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+    identifierstyle=\color{black},%
+    stringstyle=\color{mylilas},
+    commentstyle=\color{mygray},%
+    showstringspaces=false,%without this there will be a symbol in the places where there is a space
+    numbers=left,%
+    numberstyle={\tiny \color{black}},% size of the numbers
+    numbersep=9pt, % this defines how far the numbers are from the text
+    emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
+    %emph=[2]{word1,word2}, emphstyle=[2]{style},    
+}
+%
+%%\lstset{ %
+%  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+%  basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+%  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+%  breaklines=true,                 % sets automatic line breaking
+%  captionpos=b,                    % sets the caption-position to bottom
+%  commentstyle=\color{mygreen},    % comment style
+%  deletekeywords={...},            % if you want to delete keywords from the given language
+%  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+%  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+%  frame=single,                    % adds a frame around the code
+%  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+%  keywordstyle=\color{blue},       % keyword style
+%  language=Octave,                 % the language of the code
+%  morekeywords={*,...},            % if you want to add more keywords to the set
+%  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+%  numbersep=5pt,                   % how far the line-numbers are from the code
+%  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+%  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+%  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+%  showstringspaces=false,          % underline spaces within strings only
+%  showtabs=false,                  % show tabs within strings adding particular underscores
+%  stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
+%  stringstyle=\color{mymauve},     % string literal style
+%  tabsize=2,                       % sets default tabsize to 2 spaces
+%  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+%}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \title{Trabajo Práctico 0:\\
 Programación C++\\
@@ -20,29 +92,122 @@ Facultad de Ingenieria\\
 \maketitle
 \tableofcontents
 \section{Introducción}
-El desarrollo de este trabajo práctico tiene como objetivo ejercitar conceptos básicos de programación en C++. Para el mismo, la temática propuesta propone estructuras de datos basadas en modelos de redes HFC. 
+El desarrollo de este trabajo práctico tiene como objetivo ejercitar conceptos básicos de programación en C++. Para el mismo, la temática propuesta propone estructuras de datos basadas en modelos de redes HFC, que son ampliamente utilizadas en sistemas de telecomunicaciones, teniendo por tanto implicancia directa en el consumo masivo. En particular, las redes HFC son estándar en la transmisión de CATV e Internet.
 
 \section{Programa}
-El programa consiste básicamente en estructurar datos, aprender el manejo de flujos(stremas) en C++, el uso de consola o línea de comandos, 
-El formato determinado para los archivos de entrada describe una red HFC a partir de un nombre (nomenclado como \textit{NetworkName}), y los elementos de red y conexiones(nomenclados como \textit{NetworkElement} y \textit{Connection} respectivamente), bajo la estructura de un esquema de árbol donde la jerarquía de elementos se describe en el enunciado. A partir del archivo recibido, que hace la descripción mencionada en formato de texto, se debe generar un archivo de salida computando la información existente, respecto al nombre de red y  la cantidad de elementos y conexiones.
 
-Para el desarrollo del programa, se optó por trabajar en módulos de software que puedan interactuar entre sí, con una previa discusión de las condiciones de borde que debería cumplir cada módulo. El esquema de desarrollo se centró entonces en 3 líneas; por un lado la ejecución y validación de los argumentos de entrada mediante línea de comandos, por otro la apertura del archivo de entrada y construcción de un arreglo de punteros a strings para cargar en memoria el contenido del archivo\footnote{se optó esta estrategia a partir de consideraciones de velocidad, uso de memoria y del archivo de entrada} y por último, el proceso de cómputo de la información recibida.
+El programa propuesto consiste básicamente en estructurar datos, aprender el manejo de flujos(stremas) en C++, el uso de consola o línea de comandos. El formato determinado para los archivos de entrada describe una red HFC a partir de un nombre (nomenclado como \textit{NetworkName}), y los elementos de red y conexiones(nomenclados como \textit{NetworkElement} y \textit{Connection} respectivamente), bajo la estructura de un esquema de árbol donde la jerarquía de elementos se describe en el enunciado. A partir del archivo recibido, que hace la descripción mencionada en formato de texto, se debe generar un archivo de salida computando la información existente, respecto al nombre de red y  la cantidad de elementos y conexiones.
+
+Para el desarrollo del programa, se optó por trabajar en módulos de software que puedan interactuar entre sí, con una previa discusión de las condiciones de borde que debería cumplir cada módulo. El esquema de desarrollo se centró entonces en 3 líneas; por un lado la ejecución y validación de los argumentos de entrada mediante línea de comandos, por otro la apertura del archivo de entrada y construcción de un arreglo de punteros a strings para cargar en memoria el contenido del archivo\footnote{la elección de esta estrategia se explica más adelante}, y por último, el procesamiento de los datos de entrada para imprimirlos en un flujo de salida.
 
 \subsection{Entrada}
 
-\subsection{Proceso}
-\subsubsection{Carga en memoria}
-Se optó por cargar en memoria dinámica el texto completo. El procedimiento fue cargar los archivos en un arreglo de punteros a string dinámico, un string por línea de texto, con una estrategia de crecimiento geométrico. Esto último hace referencia a un modelo de incremento de memoria dinámica que permite incrementar la memoria para los strings en tiempo de ejecución. La hipótesis que fundamenta esta decisión es que a priori, el archivo de entrada puede contener 3(o menos) ó 300(o más) líneas de información, y que el procesamiento que debe ser línea a línea puede tener un costo elevado en tiempo de ejecución si el archivo es grande. Además, estableciendo un tamaño de asignación inicial (INIT\_ CHOP) se puede tener noción de la cantidad de memoria inicial que se deberá requerir para trabajar con un archivo promedio.
+En esta sección se explica la primer parte del programa. La entrada es en principio un archivo de texto que contiene información de red.
+El archivo de texto de entrada utilizado como ejemplo base es el siguiente:\\
+
+\subsubsection*{Code}
+\lstinputlisting{Networking.txt}
+
+Este primer ejemplo contiene la información correcta que se debe recibir. 
+
+El objetivo de la primera sección es realizar la lectura de la línea de comandos, procesarla, validarla, y realizar la apertura de flujos de entrada y salida si corresponde.
+La función que se desarrolló en este punto es la siguiente:
+
+donde los argumentos de entrada son:
+
+y la salida es:
+
+que funciona como....
+
+
+Las opciones de validación consideradas son...
+-
+-
+-
+Se optó por esta validación asumiendo que....
+
+Las opciones en caso de que no se ingrese correctamente un archivo de entrada, esto es, ....
+muestran los siguientes mensajes de error, que se imprimen por el flujo....
+
+
+En esta etapa del trabajo, esta sección se encuentra en una versión funcional. Se propone mejorar el funcionamiento en etapas posteriores considerando más opciones, y una modularización en base a clases.....
+
+Una vez validados los flujos de entrada y salida, referenciados como file in y file out respectivamente, se  carga en memoria la información del archivo abierto (file in) y se deja abierto el flujo de salida para el procesado de la información. Esto se corresponde con las secciones de Carga en Memoria y de Procesado de la Información que se detallan a continuación.
+
+
+\subsection{Carga en Memoria}
+Se optó por cargar en memoria dinámica el texto completo recibido. El procedimiento fue cargar los archivos en un arreglo de punteros a string dinámico, nomenclado como \textit{lines}, un string por línea de texto, con una estrategia de crecimiento geométrico. Esto último hace referencia a un modelo de incremento de memoria dinámica que permite incrementar la memoria para los strings en tiempo de ejecución. La hipótesis que fundamenta esta decisión es que a priori, el archivo de entrada puede contener 3(o menos) ó 300(o más) líneas de información, y que el procesamiento que debe ser línea a línea, si se realiza sobre el flujo de entrada, puede tener un costo elevado en tiempo de ejecución si el archivo es grande. Además, estableciendo un tamaño de asignación inicial (INIT\_ CHOP) se puede tener noción de la cantidad de memoria inicial que se deberá requerir para trabajar con un archivo promedio.
 Estas suposiciones se reflejan en dos funciones con los siguientes prototipos:\\
 
-\textbf{\"status_t load_file_memory(ifstream &file,string ***lines,size_t &size)\"}\\
-\textbf{status_t erase_file_memory(string ***lines,size_t &size)}\\
+%\textbf{\"status_t load_file_memory(ifstream &file,string ***lines,size_t &size)\"}\\
+%\textbf{status_t erase_file_memory(string ***lines,size_t &size)}\\
 
-La función \textit{load_file_memory()} recibe como primer argumento una referencia a un archivo previamente abierto por el flujo if stream; como segundo argumento la dirección de memoria de un arreglo de strings, que se decidió para devolver por referencia la variable que contiene el arreglo dinámico de strings (\textit{lines}); y como tercer argumento, devuelve por referencia el tamaño del arreglo (size) que indica el número de líneas que contiene el texto.
+La función \textit{load file memory()} recibe como primer argumento una referencia a un archivo previamente abierto por el flujo if stream; como segundo argumento la dirección de memoria de un arreglo de strings, que se decidió para devolver por referencia la variable que contiene el arreglo dinámico de strings (\textit{lines}); y como tercer argumento, devuelve por referencia el tamaño del arreglo (size) que indica el número de líneas que contiene el texto.
+
+\subsection{Proceso}
+
+El formato del archivo de texto indicado en la sección Entrada, contiene en la primer línea el nombre de la red, y a partir de la segunda línea hasta el final, contiene la información de los elementos de red (NetworkElement) y de las conexiones entre ellos (Connections). Este es el tipo de formato esperado como flujo de entrada, y en base a éste se pensó y codificó una primer versión que asume que el texto está bien redactado, es decir, empieza con la palabra NetworkName y sigue con las líneas que comienzan con las palabras NetworkElement o Connection. En el caso de NetworkElement, también se asumió que la linea está bien redactada y se leen 3 palabras, siendo la última el tipo de elemento de red a contabilizar. Una línea 'bien redactada' consta de 3 palabras y tiene la siguiente forma:\\
+
+\texttt{NetworkElement <name> <NetworkElementType>}\\
+
+donde la segunda palabra es el nombre del elemento de red, y la tercer palabra es el tipo de elemento de red. Ésta última es la que se requiere para computar la cantidad de elementos distintos que forman la red. Para el caso que se lea Connection, la línea bien redactada tiene la forma:\\
+
+\texttt{Connection	<name1>	<name2>}\\
+
+y en este caso sólo se computa que hay una conexión. Las función que se codificó para esta sección es la siguiente:\\
+
+\texttt{\textbf{void processLine(string textline);}}\\
+
+que recibe como argumento de entrada el string que corresponde a cada línea de texto del flujo file in. Esta función, convierte el string en un stream y utiliza el operador $>>$ sobrecargado, por medio de la biblioteca $<sstream>$, para compararlo contra dos diccionarios que contienen las palabras claves que se requieren identificar. Estos diccionarios se detallan a continuación:\\
+
+\texttt{
+string network$\_$struct[]   = {"NetworkName","NetworkElement","Connection"};\\
+string network$\_$element$\_$type[] = {"Hub","Node","Amp","CM"};\\
+int number$\_$of$\_$elements[5];\\
+// = {"Number$\_$of$\_$Hubs","Number$\_$of$\_$Nodes", "Number$\_$of$\_$Amps","Number$\_$of$\_$CM", "Number$\_$of$\_$Connections"};
+}\\
+
+La última declaración corresponde a un arreglo de variables int que guardan las cantidades de elementos de red, como indica el comentario. Con este arreglo actualizado al procesar las líneas de texto con la función processLine() sólo resta imprimir por flujo de salida los datos. Este trabajo se explica en la sección de Salida.\\
+
+\subsubsection{Mejoras}
+
+Adicionalmente al cómputo de elementos de red y de conexiones, se validó la cantidad de líneas que tiene el archivo al cargarlo en memoria en un arreglo de strings. Con este dato se pretende en una segunda versión, hacer un recorrido de líneas y elaborar un algoritmo de recorrido del arreglo de strings para tener mayor control de información. Además, se pretende vincular los nombres y la cantidad de elementos distintos con una lógica que permita asociar la jerarquía de elementos de red para validar que no haya por ejemplo, un número distinto de las conexiones posibles entre elementos.\\
+Un punto clave a mejorar en esta sección se corresponde también con independizar la función de los diccionarios globales y de la variable global Number of elements, que no fueron utilizados como argumentos.
 
 \subsection{Salida}
+En esta sección se dispone de: el flujo de entrada cargado en memoria dinámica; el procesado de la información listo; y el flujo de salida abierto. Por lo que resta es imprimir la información guardada del proceso en el flujo de salida. Para realizar esto se codificaron dos funciones de impresión, de las cuales se detallan los prototipos a continuación:\\
+
+\texttt{void printNetworkName(string name$\_$line, ostream\& os);\\
+void printElements(int number$\_$of$\_$elements[], ostream\& os);}
+
+La primera imprime el nombre de la red y la segunda las líneas que contienen la información requerida en el enunciado a través del flujo de salida os. Un ejemplo de impresión de estas funciones que se corresponde con la información del archivo Networking.txt detallado en la sección Entrada, se muestra a continuación:
+
+\subsubsection*{Code}
+\lstinputlisting{SALIDA.txt}
+
+Este es el formato de salida esperado. \\
+En la sección que continúa se muestran resultados de ejecución para distintas entradas.
+
 \section{Ejecuciones del programa y resultados}
 \section{Código fuente}
+Se detalla a continuación el esquema de codificación, presentando primero el Makefile utilizado y luego cada archivo componente del programa principal.
+
+\subsection*{Makefile}
+\lstinputlisting{makefile}
+\subsection*{main}
+\lstinputlisting{main.cpp}
+\subsection*{headers}
+\lstinputlisting{common.hpp}
+\lstinputlisting{dictionary.hpp}
+\lstinputlisting{file_load.hpp}
+\lstinputlisting{printers.hpp}
+\lstinputlisting{process.hpp}
+
+\subsection*{codes}
+\lstinputlisting{file_load.cpp}
+\lstinputlisting{printers.cpp}
+\lstinputlisting{process.cpp}
+
 \section{Conclusiones}
 
 

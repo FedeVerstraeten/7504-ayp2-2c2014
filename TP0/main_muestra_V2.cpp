@@ -1,36 +1,3 @@
-//Cristian
-//Esta es un main para ver como se invocan a las funciones load_file_memory() y erase_file_memory()
-//a su ves ña misma puede ser invocada dependiendo de si la linea de comando de ordenes lo solicita
-//y se puede acceder a cada linea desde lines[i]
-//CUALQUIER DUDA O CAMBIO CONSULTE..!!!
-
-/**************************************************************************************************
-Domingo 06 de Marzo de 2014.
-TP0 - Algoritmos II - Cátedra Calvo
-
-Docentes: Lucio Santi, Leandro Santi
-
-Federico Verstraeten <federico.verstraeten@gmail.com>
-
-Título: Lectura mediante línea de comandos para apertura de archivos - utilización de argc y argv
-
-NOTA:
-El código siguiente a sido implementado de tipo monolítico, su objetivo es ralizar la lectura de la
-línea de comandos de ordenes, y luego de su procesamiento y validación realizar la apertura de los
-flujos de entrada y salida de archivos (stream), para que a posteriori sea procesado por los algorit-
-mos de pasaje a memoria realizador por el Sr. Crisitan Aranda Cordero.
-El código está funcional, es su primera versión probada. Se debe realizarle pruebas, ordenarlo y de-
-purar errores que se puedan encontrar.
-La sitaxis e implementación no se ha relizado siguiento los lineamientos del lenguaje C++ y está más
-adaptado a cuestiones de C.
-
-No dude en revisar y marcar los errores o mejores que considere.
-
-Un cordial saludo.
-
-***************************************************************************************************/
-
-
 /**** BIBLIOTECAS ****/
 #include <iostream>
 #include <fstream>
@@ -92,7 +59,7 @@ int main(int argc,char *argv[])
     size_t number_lines;
     size_t i;
     int f_;
-    
+
     f_=validateArgument(argc,argv,route_in,route_out);
 
     if(f_==1)//route_in!=NULL && route_out!=NULL
@@ -101,9 +68,9 @@ int main(int argc,char *argv[])
 
         ofstream file_out (route_out,ios_base::out);//Flujo archivo file_out, abierto
 
-       load_file_memory(file_in,&lines,number_lines);     
+       load_file_memory(file_in,&lines,number_lines);
 	cout<< "Funciono el hibrido wachin jaja alto programa loro ahh y tenes " <<number_lines <<endl;
-       /* for(i=0;i<number_lines;i++){ 
+       /* for(i=0;i<number_lines;i++){
                 file_out<<*lines[i]<<endl;
         }
 	*/
@@ -260,7 +227,7 @@ void printElements(int number_of_elements[], ostream& os)
 
 int validateArgument(int argc,char *argv[],char* &route_in,char* &route_out)
 {
-	if(argc==1) 
+	if(argc==1)
 	{
 		cout<<"Error: no hay argumentos"<<endl;
 		return 0;
@@ -269,10 +236,10 @@ int validateArgument(int argc,char *argv[],char* &route_in,char* &route_out)
 	{
 		if(read_argument(argv[i])==OK_INPUT && (i+1)!=argc)
         	{
-        
+
 		if(route_verification(argv[i+1],&route_in)!=ARG_ERR) i = i + SIG_ARG_POS;
 		//El argumento siguiente debe contener la ruta del archivo, lo valido y lo apunto con la varuiable route
-        
+
 		else
 		{
 		    cerr << "Ruta entrada inválida: "
@@ -309,8 +276,8 @@ int validateArgument(int argc,char *argv[],char* &route_in,char* &route_out)
         }
 
     }
-    
-    return 1;	
+
+    return 1;
 }
 
 

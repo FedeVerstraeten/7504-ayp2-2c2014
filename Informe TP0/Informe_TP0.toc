@@ -1,8 +1,10 @@
 \contentsline {section}{\numberline {0.1}Introducci\IeC {\'o}n}{1}
 \contentsline {section}{\numberline {0.2}Programa}{1}
 \contentsline {subsection}{\numberline {0.2.1}Entrada}{2}
-\contentsline {subsection}{\numberline {0.2.2}Proceso}{2}
-\contentsline {subsubsection}{Carga en memoria}{2}
-\contentsline {section}{\numberline {0.3}Ejecuciones del programa y resultados}{2}
-\contentsline {section}{\numberline {0.4}C\IeC {\'o}digo fuente}{2}
-\contentsline {section}{\numberline {0.5}Conclusiones}{2}
+\contentsline {subsection}{\numberline {0.2.2}Carga en Memoria}{3}
+\contentsline {subsection}{\numberline {0.2.3}Proceso}{3}
+\contentsline {subsubsection}{Mejoras}{4}
+\contentsline {subsection}{\numberline {0.2.4}Salida}{4}
+\contentsline {section}{\numberline {0.3}Ejecuciones del programa y resultados}{5}
+\contentsline {section}{\numberline {0.4}C\IeC {\'o}digo fuente}{5}
+\contentsline {section}{\numberline {0.5}Conclusiones}{15}
