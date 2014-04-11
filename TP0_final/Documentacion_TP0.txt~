@@ -1,0 +1,14 @@
+DOCUMENTACION TP0.
+
+Primer versión.
+-Se tomó el archivo de texto que figura en el TP tal cual está.
+-Se codificó una versión inicial que asume que el texto está bien redactado, es decir, empieza con el network name y sigue con las lineas que comienzan con la palabra NetworkElement o Connection. En el caso de NetworkElement, también se asumión que viene bien redactada la linea y se leen 3 palabras, siendo la última el tipo de elemento de red a contabilizar. 
+-Para Connection en principio, no se utilizó otra lectura. Si se lee Connection, entonces se contabiliza una conexión más.
+-Se validó la cantidad de líneas que tiene el archivo al cargarlo en memoria en un arreglo de strings.
+-La primer versión responde correctamente al archivo de 16 lineas nomenclado como Networking_00.txt y Networking_01.txt
+-Networking_01.txt es un archivo que solo contiene el nombre de red.
+
+
+
+
+
