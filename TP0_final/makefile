@@ -16,7 +16,7 @@ file_load.o:file_load.cpp file_load.hpp common.hpp
 printers.o:printers.cpp printers.hpp common.hpp
 	$(CC) printers.cpp -c -o printers.o $(CFLAGS)
 
-process.o:process.cpp process.hpp common.hpp
+process.o:process.cpp process.hpp common.hpp printers.hpp
 	$(CC) process.cpp -c -o process.o $(CFLAGS)
 
 arguments.o:arguments.cpp arguments.hpp common.hpp

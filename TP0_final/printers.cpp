@@ -27,3 +27,27 @@ void printElements(int number_of_elements[], ostream& os)
     os << number_of_elements[3] << " CMs"<<"\n";
     os << number_of_elements[4] << " Connections"<<"\n";
 }
+
+void printErrorMessage(status_t error_type, ostream& os)
+{
+    switch(error_type){
+        case OK:
+            break;
+        case ERROR_NULL_POINTER:
+            { os << "error " << error_type << ":ERROR_NULL_POINTER"<< "\n"; break; }
+        case ERROR_MEMORY_NO_AVAILABLE:
+            { os << "error " << error_type << ":ERROR_MEMORY_NO_AVAILABLE"<< "\n"; break; }
+        case OK_INPUT:
+            break;
+        case OK_OUTPUT:
+            break;
+        case ERROR_TEXT_LINE_INVALID:
+            { os << "error " << error_type << ":ERROR_TEXT_LINE_INVALID"<< "\n"; break; }
+        case ARG_ERR:
+            { os << "error " << error_type << ":ARG_ERR"<< "\n"; break; }
+        case ARG_OK:
+            break;
+        default:break;
+    }
+}
+void printString(string s, ostream& os){    os << s << "\n"; }

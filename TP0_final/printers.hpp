@@ -9,5 +9,7 @@
 
 void printElements(int *, ostream&);
 void printNetworkName(string, ostream&);
+void printErrorMessage(status_t, ostream&);
+void printString(string, ostream&);
 
 #endif // PRINTERS_HPP_INCLUDED

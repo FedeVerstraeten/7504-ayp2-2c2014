@@ -1,4 +1,5 @@
 #include"process.hpp"
+#include "printers.hpp"
 //Diccionarios: HAY QUE ACORDAR UNA NOMNECLATURA PARA STRINGS , VARIABLES y ARREGLOS.
 extern string network_struct[];
 extern string network_element_type[];
@@ -28,6 +29,11 @@ void processLine(string text_line)
         }//number_of_elements[] es un array global que guarda las cantidades
     }
     if(word[0]==network_struct[2])   number_of_elements[4]++;
-
+    else if( (word[0]!=network_struct[1]) && (word[0]!=network_struct[2]) )
+    {
+        status_t error_process=ERROR_TEXT_LINE_INVALID;
+        printErrorMessage(error_process, cout);
+        printString(word[0], cout);
+    }
 }
 
