@@ -27,6 +27,50 @@ NOTA:
 #include"arguments.hpp"
 
 int number_of_elements[5];
+/**** DEFINICIONES ****/
+#define SIG_ARG_POS 1
+#define CHAR_VOID 0
+
+using namespace std;
+#include <sstream>
+
+
+
+#define MAX_LINES_DEFAULT 100
+
+
+
+//Prototipos
+
+void uploadLine(string, string **);
+
+void printLine(string);
+
+void processLine(string);
+
+void printElements(int *, ostream&);
+void printNetworkName(string, ostream&);
+//int  searchNetworkName(string**);
+
+
+//Diccionarios: HAY QUE ACORDAR UNA NOMNECLATURA PARA STRINGS , VARIABLES y ARREGLOS.
+string network_struct[]   = {"NetworkName","NetworkElement","Connection"};
+
+string network_element_type[] = {"Hub","Node","Amp","CM"};
+string network_element_nam[MAX_LINES_DEFAULT];
+
+
+int number_of_elements[5];// = {"Number_of_Hubs","Number_of_Nodes", "Number_of_Amps","Number_of_CM", "Number_of_Connections"};
+
+static size_t   n=0, i=0;
+
+
+/**** PROTOTIPOS ****/
+
+status_t read_argument(const char  arg[]);
+status_t route_verification(char arg[],char** route);
+void close_all_stream_file(ifstream& ,ofstream& );
+int validateArgument(int argc,char *argv[],char* &route_in,char* &route_out);
 
 /**** MAIN ****/
 
@@ -37,7 +81,7 @@ int main(int argc,char *argv[])
 	size_t number_lines;
 	size_t i;
 	int f_;
-    
+
 	f_=validateArgument(argc,argv,route_in,route_out);
 
 	if(f_==1)

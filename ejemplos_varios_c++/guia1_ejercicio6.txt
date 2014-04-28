@@ -1,0 +1,15 @@
+• const tipo &r
+	referencia a un tipo de dato constante
+• tipo const &r
+	tipo de dato con referencia constante
+• tipo& const r
+	tipo de dato a una direccion de una constante r ???
+• const tipo *p
+	Puntero a un tipo de dato constante, ejemplo const char* cadena="hola", cadena siempre valdrá "hola"
+• tipo const *p
+	puntero constante a tipo de dato, ejemplo int const *p, el puntero siempre apuntara a un tipo int ????
+• tipo* const p 
+	p es un nombre constante a un puntero tipo??? ejemplo int* const p, esto es, p es un puntero constante  a tipo int ???
+• const tipo* const p
+
+
