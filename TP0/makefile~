@@ -1,0 +1,17 @@
+#compilacion y ejecucion de los archivos
+CC       =  g++
+CFLAGS   =  -Wall  -pedantic 
+OBJS=main_muestra_V2.o file_load.o
+
+
+muestras.exe:$(OBJS)
+	$(CC)  $(OBJS) -o main_muestra_V2.exe 
+
+main_muestra.o:main_muestra_V2.cpp file_load.hpp common.hpp 
+	$(CC) main_muestra_V2.cpp -c -o main_muestra_V2.o $(CFLAGS)
+  
+file_load.o:file_load.cpp file_load.hpp common.hpp 
+	$(CC) file_load.cpp -c -o file_load.o $(CFLAGS)
+
+clean:
+	rm *.o	

@@ -62,7 +62,7 @@ string network_element_nam[MAX_LINES_DEFAULT];
 
 int number_of_elements[5];// = {"Number_of_Hubs","Number_of_Nodes", "Number_of_Amps","Number_of_CM", "Number_of_Connections"};
 
-static size_t   n=0, i=0;
+static size_t   n=0;// i=0;
 
 
 /**** PROTOTIPOS ****/
