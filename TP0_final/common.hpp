@@ -8,7 +8,12 @@ typedef enum{
                 OK_INPUT,OK_OUTPUT,
                 ERROR_TEXT_LINE_INVALID,
                 ARG_ERR,
-                ARG_OK
+                ARG_OK,
+                ERROR_NO_ARGS,
+                ERROR_INVALID_INPUT_ROUTE,
+                ERROR_INVALID_OUTPUT_ROUTE,
+                ERROR_INVALID_ARG,
+                ERROR_STREAM_OUT
                 }status_t;
 
 

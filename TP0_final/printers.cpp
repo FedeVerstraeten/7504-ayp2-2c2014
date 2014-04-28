@@ -47,6 +47,17 @@ void printErrorMessage(status_t error_type, ostream& os)
             { os << "error " << error_type << ":ARG_ERR"<< "\n"; break; }
         case ARG_OK:
             break;
+        case ERROR_NO_ARGS:
+            { os << "error " << error_type << ":ERROR_NO_ARGS"<< "\n"; break; }
+        case ERROR_INVALID_INPUT_ROUTE:
+            { os << "error " << error_type << ":ERROR_INVALID_INPUT_ROUTE"<< "\n"; break; }
+        case ERROR_INVALID_OUTPUT_ROUTE:
+            { os << "error " << error_type << ":ERROR_INVALID_OUTPUT_ROUTE"<< "\n"; break; }
+        case ERROR_INVALID_ARG:
+            { os << "error " << error_type << ":ERROR_INVALID_ARG"<< "\n"; break; }
+        case ERROR_STREAM_OUT:
+            { os << "error " << error_type << ":ERROR_STREAM_OUT"<< "\n"; break; }
+
         default:break;
     }
 }

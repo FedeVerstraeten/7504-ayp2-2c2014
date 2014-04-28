@@ -12,7 +12,7 @@
 status_t read_argument(const char  arg[]);
 status_t route_verification(char arg[],char** route);
 void close_all_stream_file(ifstream& ,ofstream& );
-int validateArgument(int argc,char *argv[],char* &route_in,char* &route_out);
+status_t validateArgument(int argc,char *argv[],char* &route_in,char* &route_out);
 
 
 
