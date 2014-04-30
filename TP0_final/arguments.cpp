@@ -6,10 +6,12 @@
 status_t read_argument(char const arg[])
 {
 
-		// Todos los parámetros de este programa deben
-		// pasarse en forma de opciones. Encontrar un
-		// parámetro no-opción es un error.
-		//
+		/*  Todos los parámetros de este programa deben
+            pasarse en forma de opciones, con el prefijo '-'.
+            Encontrar un
+            parámetro no-opción es un error.
+		*/
+
 		if (arg[0]== '-')
 		{
             if(arg[1]=='i' && arg[2]==CHAR_VOID) //Con CHAR_VOID verifico que no se ingresen cosas como "-increible" y lo
@@ -25,16 +27,16 @@ status_t read_argument(char const arg[])
     return ARG_ERR;
 }
 
-status_t route_verification(char arg[],char** route)
+status_t route_verification(char arg[],char* &route)
 {
-    if (arg[0]!= '-')
+    if (arg[0]!= '-') //Valida que el nombre de la ruta no comience con el guión, utilizado para las opciones
     {
-        (*route)=arg; //Dejo apuntando route al string que posee el nombre de la ruta
+        route=arg; //A route le asigno el string que posee el nombre de la ruta (entrada o salida)
         //ESTO ESTA MEDIO RARO. CUAL SERIA EL EJEMPLO DE USO?
-        return ARG_OK;
+        return ROUTE_NAME_OK;
     }
 
-    return ARG_ERR;
+    return ERROR_ROUTE_NAME_INVALID;
     //ACA DETALLAR QUE TIPO DE ERROR ES, AGREGARLO A COMMON.HPP Y AGREGAR
     //EL CASE ARG_ERR EN printErrorMessage() en PRINTERS.CPP/HPP
 }
@@ -54,7 +56,7 @@ status_t validateArgument(int argc,char *argv[],char* &route_in,char* &route_out
 	{
 		if(read_argument(argv[i])==OK_INPUT && (i+1)!=argc)
         {
-            if(route_verification(argv[i+1],&route_in)!=ARG_ERR)
+            if(route_verification(argv[i+1],&route_in)==ROUTE_NAME_OK)
                 i+= SIG_ARG_POS;
             //El argumento siguiente debe contener la ruta del archivo, lo valido y lo apunto con la varuiable route
             else    return ERROR_INVALID_INPUT_ROUTE;
@@ -62,13 +64,13 @@ status_t validateArgument(int argc,char *argv[],char* &route_in,char* &route_out
 
         else if(read_argument(argv[i])==OK_OUTPUT && (i+1)!=argc)
         {
-            if(route_verification(argv[i+1],&route_out)!=ARG_ERR)
+            if(route_verification(argv[i+1],&route_out)==ROUTE_NAME_OK)
                 i+= SIG_ARG_POS;
             else    return ERROR_INVALID_OUTPUT_ROUTE;
         }
 
         else //if (read_argument(argv[i])==ARG_ERR)
-            return ERROR_INVALID_ARG;
+            return ERROR_INVALID_ARGUMENT;
     }
 
     return OK;
