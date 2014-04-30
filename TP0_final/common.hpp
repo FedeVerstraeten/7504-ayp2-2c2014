@@ -3,11 +3,13 @@
 using namespace std;
 typedef enum{
                 OK,
+                OK_INPUT,
+                OK_OUTPUT,
+                OK_ROUTE_NAME,
                 ERROR_NULL_POINTER,
                 ERROR_MEMORY_NO_AVAILABLE,
-                OK_INPUT,OK_OUTPUT,
                 ERROR_TEXT_LINE_INVALID,
-                ROUTE_NAME_OK,
+                ERROR_ARG,
                 ERROR_ROUTE_NAME_INVALID,
                 ERROR_NO_ARGS,
                 ERROR_INVALID_INPUT_ROUTE,

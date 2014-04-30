@@ -24,7 +24,7 @@ status_t read_argument(char const arg[])
 		}
 
 
-    return ARG_ERR;
+    return ERROR_ARG;
 }
 
 status_t route_verification(char arg[],char* &route)
@@ -33,7 +33,7 @@ status_t route_verification(char arg[],char* &route)
     {
         route=arg; //A route le asigno el string que posee el nombre de la ruta (entrada o salida)
         //ESTO ESTA MEDIO RARO. CUAL SERIA EL EJEMPLO DE USO?
-        return ROUTE_NAME_OK;
+        return OK_ROUTE_NAME;
     }
 
     return ERROR_ROUTE_NAME_INVALID;

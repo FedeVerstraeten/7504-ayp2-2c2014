@@ -43,9 +43,11 @@ void printErrorMessage(status_t error_type, ostream& os)
             break;
         case ERROR_TEXT_LINE_INVALID:
             { os << "error " << error_type << ":ERROR_TEXT_LINE_INVALID"<< "\n"; break; }
-        case ARG_ERR:
-            { os << "error " << error_type << ":ARG_ERR"<< "\n"; break; }
-        case ARG_OK:
+        case ERROR_ROUTE_NAME_INVALID:
+            { os << "error " << error_type << ":ERROR_ROUTE_NAME_INVALID"<< "\n"; break; }
+        case ERROR_ARG:
+            { os << "error " << error_type << ":ERROR_ARG"<< "\n"; break; }
+        case OK_ROUTE_NAME:
             break;
         case ERROR_NO_ARGS:
             { os << "error " << error_type << ":ERROR_NO_ARGS"<< "\n"; break; }
