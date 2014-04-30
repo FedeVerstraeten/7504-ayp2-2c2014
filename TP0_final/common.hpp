@@ -7,12 +7,12 @@ typedef enum{
                 ERROR_MEMORY_NO_AVAILABLE,
                 OK_INPUT,OK_OUTPUT,
                 ERROR_TEXT_LINE_INVALID,
-                ARG_ERR,
-                ARG_OK,
+                ROUTE_NAME_OK,
+                ERROR_ROUTE_NAME_INVALID,
                 ERROR_NO_ARGS,
                 ERROR_INVALID_INPUT_ROUTE,
                 ERROR_INVALID_OUTPUT_ROUTE,
-                ERROR_INVALID_ARG,
+                ERROR_INVALID_ARGUMENT,
                 ERROR_STREAM_OUT
                 }status_t;
 
