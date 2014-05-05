@@ -1,11 +1,11 @@
 #compilacion y ejecucion de los archivos
 CC       =  g++
-CFLAGS   = -g -Wall  -pedantic 
+CFLAGS   =  -Wall  -pedantic 
 OBJS=main_muestra_V2.o file_load.o printers.o process.o dictionary.o arguments.o 
 
 
 
-muestras.exe:$(OBJS)
+main_muestra_V2.exe:$(OBJS)
 	$(CC)  $(OBJS) -o main_muestra_V2.exe 
 
 main_muestra_V2.o:main_muestra_V2.cpp dictionary.hpp printers.hpp process.hpp file_load.hpp common.hpp 

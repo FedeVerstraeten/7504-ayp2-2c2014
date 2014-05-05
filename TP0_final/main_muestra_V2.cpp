@@ -38,13 +38,13 @@ int main(int argc,char *argv[])
 	string **lines;
 	size_t number_lines;
 	size_t i;
-	status_t f_;
+	int f_;
 
 	f_=validateArgument(argc,argv,route_in,route_out);
 
 	if(f_==OK)
 	{
-		ifstream file_in ( route_in ); //Flujo archivo file_in, abierto. Para esta función se debe pasar un puntero al string como argumento.
+		ifstream file_in ( route_in ); //Flujo archivo file_in, abierto
 		ofstream file_out ( route_out , ios_base::out );//Flujo archivo file_out, abierto
 		loadFileMemory( file_in , &lines , number_lines );
 
@@ -58,14 +58,12 @@ int main(int argc,char *argv[])
 	}
 	else
 	{
-	/*	 
-	   status_t status;
+	    status_t status;
 		cout<<"Error: no se pudieron abrir los stream correctamente"<<endl;
 		if(route_in==NULL)
 			cout<<"Error: stream entrada falso"<<endl; //QUE ES FALSO?
 		if(route_out==NULL)
-    */       
-		printErrorMessage(f_,cout);
+           printErrorMessage(status=ERROR_STREAM_OUT,cout);
            //aca no tiene que terminar el programa?
 	}
 

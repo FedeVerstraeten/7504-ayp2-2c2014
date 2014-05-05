@@ -1,5 +1,5 @@
 #include"arguments.hpp"
-
+#include"common.hpp"
 
 /**** FUNCIONES ****/
 
@@ -26,7 +26,7 @@ status_t read_argument(char const arg[])
 
     return ERROR_ARG;
 }
-/*
+
 status_t route_verification(char arg[],char* &route)
 {
     if (arg[0]!= '-') //Valida que el nombre de la ruta no comience con el guión, utilizado para las opciones
@@ -40,7 +40,7 @@ status_t route_verification(char arg[],char* &route)
     //ACA DETALLAR QUE TIPO DE ERROR ES, AGREGARLO A COMMON.HPP Y AGREGAR
     //EL CASE ARG_ERR EN printErrorMessage() en PRINTERS.CPP/HPP
 }
-*/
+
 void close_all_stream_file(ifstream &file_in, ofstream &file_out)
 {
     file_in.close();
@@ -56,19 +56,17 @@ status_t validateArgument(int argc,char *argv[],char* &route_in,char* &route_out
 	{
 		if(read_argument(argv[i])==OK_INPUT && (i+1)!=argc)
         {
-           // if(route_verification(argv[i+1],&route_in)==ROUTE_NAME_OK)
-			route_in = argv[i+1];        	     
-			i+= SIG_ARG_POS;
+            if(route_verification(argv[i+1],route_in)==OK_ROUTE_NAME)
+                i+= SIG_ARG_POS;
             //El argumento siguiente debe contener la ruta del archivo, lo valido y lo apunto con la varuiable route
-            //else    return ERROR_INVALID_INPUT_ROUTE;
+            else    return ERROR_INVALID_INPUT_ROUTE;
         }
 
         else if(read_argument(argv[i])==OK_OUTPUT && (i+1)!=argc)
         {
-            //if(route_verification(argv[i+1],&route_out)==ROUTE_NAME_OK)
- 			route_out = argv[i+1];        	                  
-			i+= SIG_ARG_POS;
-           // else    return ERROR_INVALID_OUTPUT_ROUTE;
+            if(route_verification(argv[i+1],route_out)==OK_ROUTE_NAME)
+                i+= SIG_ARG_POS;
+            else    return ERROR_INVALID_OUTPUT_ROUTE;
         }
 
         else //if (read_argument(argv[i])==ARG_ERR)
@@ -77,6 +75,5 @@ status_t validateArgument(int argc,char *argv[],char* &route_in,char* &route_out
 
     return OK;
 }
-
 
 
