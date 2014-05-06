@@ -15,7 +15,8 @@ typedef enum{
                 ERROR_INVALID_INPUT_ROUTE,
                 ERROR_INVALID_OUTPUT_ROUTE,
                 ERROR_INVALID_ARGUMENT,
-                ERROR_STREAM_OUT
+                ERROR_STREAM_OUT,
+                ERROR_NULL_FILE
                 }status_t;
 
 

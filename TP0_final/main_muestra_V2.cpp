@@ -38,7 +38,13 @@ int main(int argc,char *argv[])
 	string **lines;
 	size_t number_lines;
 	size_t i;
-	int f_;
+	status_t f_;
+
+/*
+    if(string(argv[2])=="/dev/null"){
+    cout<<"End Of File\n";
+    return 1;
+    }*/
 
 	f_=validateArgument(argc,argv,route_in,route_out);
 
@@ -56,15 +62,19 @@ int main(int argc,char *argv[])
 		close_all_stream_file( file_in , file_out );
 		eraseFileMemory( &lines , number_lines );
 	}
+
 	else
 	{
+        printErrorMessage(f_,cout);
+        return ERROR_ARG;
+        /*
 	    status_t status;
 		cout<<"Error: no se pudieron abrir los stream correctamente"<<endl;
 		if(route_in==NULL)
 			cout<<"Error: stream entrada falso"<<endl; //QUE ES FALSO?
 		if(route_out==NULL)
            printErrorMessage(status=ERROR_STREAM_OUT,cout);
-           //aca no tiene que terminar el programa?
+           //aca no tiene que terminar el programa?*/
 	}
 
 	return 0;

@@ -59,6 +59,9 @@ void printErrorMessage(status_t error_type, ostream& os)
             { os << "error " << error_type << ":ERROR_INVALID_ARG"<< "\n"; break; }
         case ERROR_STREAM_OUT:
             { os << "error " << error_type << ":ERROR_STREAM_OUT"<< "\n"; break; }
+        case ERROR_NULL_FILE:
+            { os << "error " << error_type << ":ERROR_NULL_FILE"<< "\n"; break; }
+
 
         default:break;
     }

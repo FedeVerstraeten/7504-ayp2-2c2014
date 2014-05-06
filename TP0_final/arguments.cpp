@@ -22,21 +22,24 @@ status_t read_argument(char const arg[])
                 //cout<<"salida\n";
 
 		}
+		else if(string(arg)=="/dev/null")
+		{
+            cout<<"End Of File\n";
+            return ERROR_NULL_FILE;
+		}
 
-
-    return ERROR_ARG;
+    return ERROR_INVALID_ARGUMENT;
 }
 
 status_t route_verification(char arg[],char* &route)
 {
-    if (arg[0]!= '-') //Valida que el nombre de la ruta no comience con el guión, utilizado para las opciones
+    if (arg == NULL) //Valida que el nombre de la ruta no comience con el guión, utilizado para las opciones
     {
-        route=arg; //A route le asigno el string que posee el nombre de la ruta (entrada o salida)
-        //ESTO ESTA MEDIO RARO. CUAL SERIA EL EJEMPLO DE USO?
-        return OK_ROUTE_NAME;
+        return ERROR_NULL_POINTER;
     }
 
-    return ERROR_ROUTE_NAME_INVALID;
+
+    return OK_ROUTE_NAME;
     //ACA DETALLAR QUE TIPO DE ERROR ES, AGREGARLO A COMMON.HPP Y AGREGAR
     //EL CASE ARG_ERR EN printErrorMessage() en PRINTERS.CPP/HPP
 }
@@ -52,9 +55,15 @@ status_t validateArgument(int argc,char *argv[],char* &route_in,char* &route_out
 {
 	if(argc==1) return ERROR_NO_ARGS;
 
+    status_t status;
+
+
    	for (int i = 1; i < argc; ++i)
 	{
-		if(read_argument(argv[i])==OK_INPUT && (i+1)!=argc)
+	    status=read_argument(argv[i]);
+	    if((status!=OK_INPUT) && (status!=OK_OUTPUT)) return status;//validacion contra '-i' y '-o', salva por ejemplo '-increible'
+
+		if(status==OK_INPUT && (i+1)!=argc)
         {
             if(route_verification(argv[i+1],route_in)==OK_ROUTE_NAME)
                 i+= SIG_ARG_POS;
@@ -62,7 +71,7 @@ status_t validateArgument(int argc,char *argv[],char* &route_in,char* &route_out
             else    return ERROR_INVALID_INPUT_ROUTE;
         }
 
-        else if(read_argument(argv[i])==OK_OUTPUT && (i+1)!=argc)
+        else if(status==OK_OUTPUT && (i+1)!=argc)
         {
             if(route_verification(argv[i+1],route_out)==OK_ROUTE_NAME)
                 i+= SIG_ARG_POS;
@@ -70,7 +79,7 @@ status_t validateArgument(int argc,char *argv[],char* &route_in,char* &route_out
         }
 
         else //if (read_argument(argv[i])==ARG_ERR)
-            return ERROR_INVALID_ARGUMENT;
+        return ERROR_ARG;
     }
 
     return OK;
