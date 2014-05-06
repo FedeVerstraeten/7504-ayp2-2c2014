@@ -40,11 +40,6 @@ int main(int argc,char *argv[])
 	size_t i;
 	status_t f_;
 
-/*
-    if(string(argv[2])=="/dev/null"){
-    cout<<"End Of File\n";
-    return 1;
-    }*/
 
 	f_=validateArgument(argc,argv,route_in,route_out);
 
