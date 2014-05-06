@@ -57,20 +57,25 @@ int main(int argc,char *argv[])
 		close_all_stream_file( file_in , file_out );
 		eraseFileMemory( &lines , number_lines );
 	}
+	if(f_==OK_INPUT_CIN)
+	{
+	    string NetName, name;
+        cout<<"Ingrese el nombre de la Red"<<endl;
+        cin>>NetName;
+        cout<<"Ingrese los elementos de Red en el siguiente formato:"<<endl;
+        cout<<"   NetworkElement NAME <type>:"<<endl;
+        cout<<"   NAME = Nombre del elemento"<<endl;
+        cout<<"   <type> = CM, Hub, Amp, Node, Headend"<<endl;
+        cout<<"Al finalizar, ingrese las conexiones en el siguiente formato"<<endl;
+        cout<<"   Connection NAME1 NAME2"<<endl;
+        cin>>name;
+
+	}
 
 	else
 	{
         printErrorMessage(f_,cout);
         return ERROR_ARG;
-        /*
-	    status_t status;
-		cout<<"Error: no se pudieron abrir los stream correctamente"<<endl;
-		if(route_in==NULL)
-			cout<<"Error: stream entrada falso"<<endl; //QUE ES FALSO?
-		if(route_out==NULL)
-           printErrorMessage(status=ERROR_STREAM_OUT,cout);
-           //aca no tiene que terminar el programa?*/
 	}
 
-	return 0;
 }
