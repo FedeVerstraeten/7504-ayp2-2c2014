@@ -4,7 +4,9 @@ using namespace std;
 typedef enum{
                 OK,
                 OK_INPUT,
+                OK_INPUT_CIN,
                 OK_OUTPUT,
+                OK_OUTPUT_COUT,
                 OK_ROUTE_NAME,
                 ERROR_NULL_POINTER,
                 ERROR_MEMORY_NO_AVAILABLE,

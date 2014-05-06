@@ -1,0 +1,42 @@
+.../TP0_final# ./main_muestra_V2.exe 
+error 9:ERROR_NO_ARGS
+Esta está OK
+
+.../TP0_final# ./main_muestra_V2.exe -i
+error 8:ERROR_ROUTE_NAME_INVALID
+Esta está casi OK, tendría que decir ERROR_NO_INPUT_ROUTE
+
+.../TP0_final# ./main_muestra_V2.exe -o
+error 8:ERROR_ROUTE_NAME_INVALID
+Esta está casi OK, tendría que decir ERROR_NO_OUTPUT_ROUTE
+
+.../TP0_final# ./main_muestra_V2.exe -increible
+error 12:ERROR_INVALID_ARG
+Esta está OK
+
+.../TP0_final# ./main_muestra_V2.exe -ocho
+error 12:ERROR_INVALID_ARG
+Esta está OK
+
+.../TP0_final# ./main_muestra_V2.exe -i i
+error 8:ERROR_ROUTE_NAME_INVALID
+Esta está OK
+
+.../TP0_final# ./main_muestra_V2.exe -i Networking.txt 
+error 8:ERROR_ROUTE_NAME_INVALID
+Esta tendría que decir ERROR_NO_OUTPUT_FILE, o bien expulsar el resultado de la ejecución por pantalla(esto parece más razonable).
+
+.../TP0_final# ./main_muestra_V2.exe -i Networking.txt -o O1.txt
+Esto funciona OK.
+
+/TP0_final# ./main_muestra_V2.exe -i /dev/null
+error 14:ERROR_NULL_FILE
+Esto funciona OK. FELICITACIONES.
+
+
+
+
+
+
+
+
