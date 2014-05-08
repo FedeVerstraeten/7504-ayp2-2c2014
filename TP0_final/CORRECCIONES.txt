@@ -29,9 +29,26 @@ Esta tendría que decir ERROR_NO_OUTPUT_FILE, o bien expulsar el resultado de la
 .../TP0_final# ./main_muestra_V2.exe -i Networking.txt -o O1.txt
 Esto funciona OK.
 
-/TP0_final# ./main_muestra_V2.exe -i /dev/null
+.../TP0_final# ./main_muestra_V2.exe -i /dev/null
 error 14:ERROR_NULL_FILE
 Esto funciona OK. FELICITACIONES.
+
+
+.../TP0_final# ./main_muestra_V2.exe -i -
+Ingrese el nombre de la Red
+keves
+Ingrese los elementos de Red en el siguiente formato:
+   NetworkElement NAME <type>:
+   NAME = Nombre del elemento
+   <type> = CM, Hub, Amp, Node, Headend
+Al finalizar, ingrese las conexiones en el siguiente formato
+   Connection NAME1 NAME2
+NetworkElement amp1 Amp
+NetworkElement0 Hubs
+0 Nodes
+0 Amps
+0 CMs
+0 Connections
 
 
 

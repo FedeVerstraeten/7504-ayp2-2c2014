@@ -5,6 +5,7 @@ typedef enum{
                 OK,
                 OK_INPUT,
                 OK_INPUT_CIN,
+                OK_INPUT_CIN_PROCESSING,
                 OK_OUTPUT,
                 OK_OUTPUT_COUT,
                 OK_ROUTE_NAME,
