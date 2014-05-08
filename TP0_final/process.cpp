@@ -37,3 +37,19 @@ void processLine(string text_line)
     }
 }
 
+void inputFromConsole(void)
+{
+        string line, NetName;
+
+        getline(cin,NetName);
+        printNetworkName(NetName,cout);
+        cout<<"Ingrese elementos de red y conexiones. Luego termine con NetEND"<<endl;
+        while(getline(cin, line))
+        {
+            if(line=="NetEND") break;
+            processLine(line);
+
+        }
+
+}
+

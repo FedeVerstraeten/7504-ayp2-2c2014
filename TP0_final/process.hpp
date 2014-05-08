@@ -5,5 +5,6 @@
 #include <sstream>
 #include"common.hpp"
 void processLine(string);
+void inputFromConsole(void);
 
 #endif // PROCESS_HPP_INCLUDED

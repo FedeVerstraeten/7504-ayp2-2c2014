@@ -41,7 +41,7 @@ void printErrorMessage(status_t error_type, ostream& os)
             break;
         case OK_OUTPUT:
             break;
-            case OK_INPUT_CIN:
+        case OK_INPUT_CIN:
             break;
         case OK_OUTPUT_COUT:
             break;
@@ -65,6 +65,8 @@ void printErrorMessage(status_t error_type, ostream& os)
             { os << "error " << error_type << ":ERROR_STREAM_OUT"<< "\n"; break; }
         case ERROR_NULL_FILE:
             { os << "error " << error_type << ":ERROR_NULL_FILE"<< "\n"; break; }
+        case OK_INPUT_CIN_PROCESSING:
+            break;
 
 
         default:break;
