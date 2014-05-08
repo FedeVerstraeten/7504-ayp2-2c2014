@@ -24,7 +24,8 @@ arguments.o:arguments.cpp arguments.hpp common.hpp
 	$(CC) arguments.cpp -c -o arguments.o $(CFLAGS)
 
 	
-dictionary.o:dictionary.cpp dictionary.hpp common.hpp
+dictionary.o:dictionary.cpp dictionary.hpp 
+	$(CC) dictionary.cpp -c -o dictionary.o $(CFLAGS)
 
 
 clean:

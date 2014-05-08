@@ -44,6 +44,13 @@ int main(int argc,char *argv[])
 	if(f_==OK)
 	{
 		file_in.open( route_in ); //Flujo archivo file_in, abierto
+		if (!file_in.is_open())
+                {
+			printErrorMessage(ERROR_INVALID_INPUT_ROUTE,cout);
+			return 1;
+                }
+
+
 		ofstream file_out ( route_out , ios_base::out );//Flujo archivo file_out, abierto
 		loadFileMemory( file_in , &lines , number_lines );
 
