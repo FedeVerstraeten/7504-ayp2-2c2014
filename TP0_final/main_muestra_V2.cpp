@@ -1,11 +1,11 @@
 /**************************************************************************************************
-TP - Algoritmos II - Cátedra Calvo
+TP - Algoritmos II - Lic. Calvo
 Jueves 8 de Mayo 2014
 
 Docentes:
     Lucio Santi, Leandro Santi
 Alumnos:
-    Carlos Carreño Romano <charlieromano@gmail.com>
+    Carlos Carreno Romano <charlieromano@gmail.com>
     Federico Verstraeten <federico.verstraeten@gmail.com>
     Cristian Zozimo Aranda Cordero <cristian.pinky@gmail.com>
 

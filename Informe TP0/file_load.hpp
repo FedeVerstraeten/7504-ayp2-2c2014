@@ -1,6 +1,5 @@
 #ifndef FILE_LOAD_HPP
 #define FILE_LOAD_HPP
-
 #include<iostream>
 #include<fstream>
 #include<string>

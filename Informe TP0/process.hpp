@@ -1,10 +1,10 @@
 #ifndef PROCESS_HPP_INCLUDED
 #define PROCESS_HPP_INCLUDED
 
-#include"common.hpp"
+#include <string>
 #include <sstream>
-#define MAX_LINES_DEFAULT 100
-
+#include"common.hpp"
 void processLine(string);
+void inputFromConsole(void);
 
 #endif // PROCESS_HPP_INCLUDED

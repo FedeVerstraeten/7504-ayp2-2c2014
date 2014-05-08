@@ -21,23 +21,30 @@
 \definecolor{mygray}{rgb}{0.5,0.5,0.5}
 \definecolor{mymauve}{rgb}{0.58,0,0.82}
 
-
-\lstset{language=C++,%
-    %basicstyle=\color{red},
-    breaklines=true,%
-    morekeywords={matlab2tikz},
-    keywordstyle=\color{blue},%
-    morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
-    identifierstyle=\color{black},%
-    stringstyle=\color{mylilas},
-    commentstyle=\color{mygray},%
-    showstringspaces=false,%without this there will be a symbol in the places where there is a space
-    numbers=left,%
-    numberstyle={\tiny \color{black}},% size of the numbers
-    numbersep=9pt, % this defines how far the numbers are from the text
-    emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
-    %emph=[2]{word1,word2}, emphstyle=[2]{style},    
+\lstset{language=C++,
+                basicstyle=\ttfamily,
+                keywordstyle=\color{blue}\ttfamily,
+                stringstyle=\color{red}\ttfamily,
+                commentstyle=\color{green}\ttfamily,
+                morecomment=[l][\color{magenta}]{\#}
 }
+
+%\lstset{language=C++,%
+%    %basicstyle=\color{red},
+%    breaklines=true,%
+%    morekeywords={matlab2tikz},
+%    keywordstyle=\color{blue},%
+%    morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+%    identifierstyle=\color{black},%
+%    stringstyle=\color{mylilas},
+%    commentstyle=\color{mygray},%
+%    showstringspaces=false,%without this there will be a symbol in the places where there is a space
+%    numbers=left,%
+%    numberstyle={\tiny \color{black}},% size of the numbers
+%    numbersep=9pt, % this defines how far the numbers are from the text
+%    emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
+%    %emph=[2]{word1,word2}, emphstyle=[2]{style},    
+%}
 %
 %%\lstset{ %
 %  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
@@ -188,27 +195,107 @@ La primera imprime el nombre de la red y la segunda las líneas que contienen la
 Este es el formato de salida esperado. \\
 En la sección que continúa se muestran resultados de ejecución para distintas entradas.
 
-\section{Ejecuciones del programa y resultados}
+\section{Testing}
+El resultado del testing realizado es el siguiente:\\
+
+Ejecución del programa sin argumentos:
+\begin{verbatim}
+.../TP0_final# ./main_muestra_V2.exe 
+error 9:ERROR_NO_ARGS
+\end{verbatim}
+
+Ejecución con argumento '-i' seguido de nada:
+\begin{verbatim}
+.../TP0_final# ./main_muestra_V2.exe -i
+error 8:ERROR_ROUTE_NAME_INVALID
+\end{verbatim}
+
+Ejecución con argumento '-o' seguido de nada:
+\begin{verbatim}
+.../TP0_final# ./main_muestra_V2.exe -o
+error 8:ERROR_ROUTE_NAME_INVALID
+\end{verbatim}
+
+Ejecución con argumento falso o inválido:
+\begin{verbatim}
+.../TP0_final# ./main_muestra_V2.exe -increible
+error 12:ERROR_INVALID_ARG
+\end{verbatim}
+
+Ejecución con argumento '-i' seguido de una ruta falsa:
+\begin{verbatim}
+.../TP0_final# ./main_muestra_V2.exe -i i
+error 8:ERROR_ROUTE_NAME_INVALID
+\end{verbatim}
+
+Ejecución con argumento '-i' con archivo de entrada y sin argumento de salida:
+\begin{verbatim}
+.../TP0_final# ./main_muestra_V2.exe -i Networking.txt 
+error 8:ERROR_ROUTE_NAME_INVALID
+\end{verbatim}
+
+% Como mejora, este tendría que decir ERROR_NO_OUTPUT_FILE, o bien expulsar el resultado de la ejecución por pantalla(esto parece más razonable).
+Ejecución con argumentos de entrada y salida correctos:
+\begin{verbatim}
+.../TP0_final# ./main_muestra_V2.exe -i Networking.txt -o O1.txt
+\end{verbatim}
+
+Ejecución con entrada '/dev/null':
+\begin{verbatim}
+.../TP0_final# ./main_muestra_V2.exe -i /dev/null
+error 14:ERROR_NULL_FILE
+\end{verbatim}
+
+Ejecución de ejemplo con entrada '-i -' para ejecutar desde consola:
+\begin{verbatim}
+.../TP0_final# ./main_muestra_V2.exe -i -
+I: NetworkName Red_cin
+O: Red_cin
+Ingrese elementos de red y conexiones. Luego termine con NetEND
+I: NetworkElement CM1 CM
+I: NetworkElement CM2 CM
+I: NetworkElement Amp1 Amp
+I: Connection CM1 Amp1
+I: Connection CM2 Amp1
+I: NetEND
+O: 0 Hubs
+O: 0 Nodes
+O: 1 Amps
+O: 2 CMs
+O: 2 Connections
+\end{verbatim}
+
+Para el archivo generado por el script de Python randnet.py, el resultado de la ejecución del programa se generó correctamente:
+\begin{verbatim}
+.../TP0_final# ./main_muestra_V2.exe -i randnet -o Out_randnet.txt
+.../TP0_final# cat Out_randnet.txt 
+network_bkOHYTqJnqCKYbFIeVahnoAQQNbBdWfZaQuQounvQZecDfdkOKGPGJeTCTrFBMbbEuhQjXADFwRMljiJMpfskhxdPsFfRmbvkJivgacdfmRqoFGEdGzVfaNpzamQlRDKLeOZmFzkubILAPheJatHyEEnpGygEyHDMafACYMyedyYEQcthuloVrrBqLFNOIQweqlgQzkqzhAmPypzEaxaQuKPuTtWTGCXzRMeVpoquidKKjiIUPMvcfGLSxgeyodSePCkzscwQpiNzLPtpftZLrlJHQGmctDUczuVnRopafWMLROHmyrcUiUFUFYtYuSSqqYDMsCFTZcnXcJoGjwUlGgmDqiUgKNDUSqTNaWmWWJfudlELBuovyrCqYBSibybmOckPezSJqzjZzTRSKejdDwHvayNFPOgzjHdnQNjbFmVRgMPvSEKhiJYUBGcQGGMzSPpkrQymXNAVKEMlBwwqlUWWEeefPrTalsOPacKqpfgAhYAaDtIsZMszJgocpLtBkaSKccnduGcrUoNctKwNNrNvThKTEMcBwciwlatgnNPZVEAJslcwjPYtARGelcCvpwvKrjjSFaSDEBqVqNyUyGetbUzsQfiGjBDbuJltBqYuEkFPULEYOaVocndKSRBvRZHcwmWhPaqLcvIvnEUZNSbnrvkEATVnzSoZRbJSYVlsxQxNwHRiYZxcclbcKMkukiNTsWeFOllVnvleXZYhjwkBItQnrEqxvQwTxGxAlfoZkXJnWCJUOmqGvkBdwbKanFazqAlIVTZTcCSMTOJWXfJZtGwXRAKBKSUuOdEDaKkTpeeoYvyyOGmjLQrtijsivtVIURLunFtosctvjOLCFELeBfuoqmtJYZGrQQhGVyjrxJoUGnaFPVubmzjMwxroDexlxOcIKHQkOmWZCHiDSEcSxoEfxKJNOYaCboMzBDYPPzNgGDBcANHWIXENRUCVUQANmQaaxjyIFPyjYXUXcNvIknFKfZrWSSXfouEvtjJtZcWeiXWyrYqVHmQLRNqgJRWdOHTghqVdYtckzzdQAISsRfTEZocFxklRylsOyOMEpPZIQpOWyfqMqWemtLGkgjOvdYsqnTWpHpZUfMcTuWVDwRzduNPIUFbBtJeciKImjEnuhahMESsjuNwFRXZkoyegllLRMqxkFUogpSwUrhwhtONeRorWdXHMrQzjsGHbPNpIIBfGNZKZwZssvKGOlAaVArrKRVZbgRcHKrRWhwHXHDRIaesrScUDtGZhBQrGMZAAGQPtZbSfDqhsKfjTkjaSZcUmlDGYXktlUYIUtVQnCVDwfynRWOeBZHnTCmRRRoGCvSsojpHiLmdKQFCehhClwDUwgzaSCGAEsXPxVSFZpxMLRisnhoZVvYzsGYlDizDuKptFYlfgWHKGmQLGjqczZMxwNcBMygaPnEONsqfgYRHMJmkdFmCzxJlZVHPFnZZycMQltiNobJiqurCUAhtdQmiInMnFnQFoWyVVMQfTHbjTtyCPgoXAScrfTxBjPuJwqmsWqoUOAWZdYmfaqzNEMsWfylxTVYWGAIXxrucgEFPZOYidncEicqVIGKhyozfgaDYtZdebUBwibgwGxpuuCSYJBhkasMHHOMuceqhFXwqXhYbUkaMWviHPIaCrVtKboZQGypurdTFxLxMYTkKgfxNOZxzujXhKiNEVzaoPtnNUoFfArNfOstpzZiefsTJqoCbMaXTBUzrUOBHGYENbjwyPaLqakZcfhKSTbcnnnFThZYFdhDQHBaalWLTuMuQVcavBkdZMYpMQeaJpryOAqkOnKXrygJMbDYFtMmlxwbxkrsjNXToXxnoZAEbBSnxlvpmLtTnhYwyCSSVDVyQEFLdgAURMWIiAcMznlpcBeFeldFflOiaSQjsBQNaxqQLZTzHYFRhnKmCVMeksznQtAgWhEFIpFwHfxKlJXlZeClwgeqWY
+13647 Hubs
+13805 Nodes
+13752 Amps
+13756 CMs
+11785 Connections
+\end{verbatim}
+Se puede observar que el nombre de red en la primer línea es una cadena de caracteres aleatorios.\\
+
 \section{Código fuente}
 Se detalla a continuación el esquema de codificación, presentando primero el Makefile utilizado y luego cada archivo componente del programa principal.
 
 \subsection*{Makefile}
 \lstinputlisting{makefile}
 \subsection*{main}
-\lstinputlisting{main.cpp}
+\lstinputlisting{main_muestra_V2.cpp}
 \subsection*{headers}
 \lstinputlisting{common.hpp}
 \lstinputlisting{dictionary.hpp}
 \lstinputlisting{file_load.hpp}
 \lstinputlisting{printers.hpp}
 \lstinputlisting{process.hpp}
-
-\subsection*{codes}
+\lstinputlisting{arguments.hpp}
+\subsection*{includes}
 \lstinputlisting{file_load.cpp}
 \lstinputlisting{printers.cpp}
 \lstinputlisting{process.cpp}
-
-\section{Conclusiones}
-
+\lstinputlisting{arguments.cpp}
 
 \end{document}
