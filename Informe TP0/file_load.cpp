@@ -1,7 +1,5 @@
 #include"file_load.hpp"
-#include"common.hpp"
 
-using namespace std;
 
 //Especificaciones de la funcion:
 //le pasan una referencia al archivo ya abierto previamente.
