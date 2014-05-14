@@ -4,20 +4,25 @@ extern string network_struct[];
 //que contiene "NetworkName <nombre>",
 //donde nombre es el nombre a imprimir
 
-void printNetworkName(string name_line, ostream& os)
+void printNetworkName(status_t status, string name_line, ostream& os)
 {
     string aux, network_name;
+
     istringstream iss(name_line);
     iss >> aux;
+
     if(aux == network_struct[0])
     {
+        status = OK_NETNAME;
         iss >> network_name;
         os << network_name << "\n";
     }
-    else     os << "no hay nombre de red" << "\n";
+    else
+    {
+        os << "error: missing NetworkName" << "\n";
+        status=ERROR_NETNAME;
+    }
 }
-
-
 
 void printElements(int number_of_elements[], ostream& os)
 {
@@ -43,6 +48,10 @@ void printErrorMessage(status_t error_type, ostream& os)
             break;
         case OK_INPUT_CIN:
             break;
+        case OK_NETNAME:
+            break;
+        case ERROR_NETNAME:
+            { os << "error " << error_type << ""<< " missing NetworkName\n"; break; }
         case OK_OUTPUT_COUT:
             break;
         case ERROR_TEXT_LINE_INVALID:
