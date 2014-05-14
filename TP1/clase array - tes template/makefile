@@ -1,0 +1,15 @@
+#compilacion y ejecucion de los archivos
+CC       =  g++
+CFLAGS   = -g -Wall  -pedantic 
+OBJS=main.o
+
+
+
+main.exe:$(OBJS)
+	$(CC)  $(OBJS) -o main.exe 
+
+main.o:main.cpp template.hpp
+	$(CC) main.cpp -c -o main.o $(CFLAGS)
+
+clean:
+	rm *.o	
