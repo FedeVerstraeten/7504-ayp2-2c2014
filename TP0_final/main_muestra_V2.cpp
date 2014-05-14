@@ -54,7 +54,7 @@ int main(int argc,char *argv[])
 		ofstream file_out ( route_out , ios_base::out );//Flujo archivo file_out, abierto
 		loadFileMemory( file_in , &lines , number_lines );
 
-		printNetworkName( (*lines[0]) , file_out) ; // esta tiene el contenido del nombre de la red
+		printNetworkName( status, (*lines[0]) , file_out) ; // esta tiene el contenido del nombre de la red
 		for( i=1 ; i<number_lines ; i++ )
 			processLine( (*lines[i]) );
 
@@ -65,7 +65,27 @@ int main(int argc,char *argv[])
 
 	if(f_==OK_INPUT_CIN)
 	{
+	    string aux, line;
+	    string net_name;
+	    getline(cin, line);
+        istringstream iss(line);
+        iss >> aux;
+
+            if(aux == "NetworkName")
+            {
+                status = OK_NETNAME;
+                iss >> aux;
+                net_name=aux;
+            }
+            else
+            {
+                cout << "error: missing NetworkName" << "\n";
+                return ERROR_NETNAME;
+            }
+
+
         inputFromConsole();
+        cout << net_name << endl;
         printElements( number_of_elements , cout );
 	}
 
