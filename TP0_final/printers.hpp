@@ -11,6 +11,6 @@ void printElements(int *, ostream&);
 void printNetworkName(status_t, string, ostream&);
 void printErrorMessage(status_t, ostream&);
 void printString(string, ostream&);
-string saveNetworkName(string );
+
 
 #endif // PRINTERS_HPP_INCLUDED
