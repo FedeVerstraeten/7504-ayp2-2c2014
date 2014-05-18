@@ -2,6 +2,7 @@
 #define NETWORK_ELEMENT_CLASS_HPP
 
 #include<iostream>
+#include "common.hpp"
 
 class errorsubindice
 {
@@ -20,14 +21,14 @@ class NetworkElement
 		string name;
 		string type;
 		NetworkElement *father_;
-		NetworkElement *sons[];
+		NetworkElement **sons; // Será un punetro a un arreglo dinamico de punteros, lo declaro así ya que genera error declarar *sons[]
 		size_t numberSons;
 
 	public:
 
         /*********************** CONSTRUCTORES *********************************/
 		NetworkElement();
-		NetworkElement(const string,const string);
+		NetworkElement(const string,const string); // (NOMBRE, TIPO)
 
 		// ¿Debería poder copiarse los nodos?
 		// Constructor por copia:
@@ -41,14 +42,14 @@ class NetworkElement
 
 		const string getName()const {return name;}
 		const string getType()const {return type;}
-		const NetworkElement* getFather()const {return father;}
+		const NetworkElement* getFather()const {return father_;}
 		const size_t getNumberSons() const {return numberSons;}		
-		const NetworkElement* getSons()const {return sons;}
+		NetworkElement** getSons() const {return sons;} // Revisar no me deja el compilador retornar 'const NetworkElement**'
 		const NetworkElement* getSons(const int)const;
 		
 
 		// getSons(): Sin argumentos, retorna el puntero al arreglo de punteros a NetworkElement hijos
-		// getSons(int): Con arguments, retorna el puntero de determinado hijo
+		// getSons(int): Con argumentos, retorna el puntero de determinado hijo
 
 		/************************** OPERADORES *********************************/
 
@@ -60,6 +61,7 @@ class NetworkElement
 
 		// Se asume que se conecta al ingresar: hijo --> padre
         NetworkElement& connectToElement(NetworkElement&);
+		void showContent();
 		
 };
  #endif
