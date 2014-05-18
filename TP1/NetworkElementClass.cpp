@@ -11,20 +11,20 @@ NetworkElement :: NetworkElement()
 	father_=NULL;
 	sons=NULL;
 	numberSons=0;
-
+	cout<<"Constructor sin argumentos"<<endl;
 }
 
 NetworkElement :: NetworkElement(const string n,const string t)
 {
 	name=n;
-	type=t; // Por defecto dejo Cable Modem, luego se cambiará
+	type=t;
 	father_=NULL;
 	sons=NULL;
 	numberSons=0;
-
+	cout<<"Constructor con argumentos"<<endl;
 }
 
-NetworkElement :: NetworkElement(const NetworkElement& element);
+NetworkElement :: NetworkElement(const NetworkElement &element)
 {
 	name=element.name;
 	type=element.type; // Por defecto dejo Cable Modem, luego se cambiará
@@ -38,19 +38,20 @@ NetworkElement :: NetworkElement(const NetworkElement& element);
 		// el largo indicado por element.numberSons
 		sons=new NetworkElement* [element.numberSons];
 
-		for(int i=0 ; i<numberSons ; i++)	
+		for(unsigned int i=0 ; i<numberSons ; i++)	
 		{
-			sons[i]=element.numberSons[i]; 
-			// verificar si esta es la notación correcta o sons[i]=element[i].numberSons;
+			sons[i]=element.sons[i]; 
+			// verificar si esta es la notación correcta o sons[i]=element[i].sons;
 		}
 	}
+	cout<<"Constructor por copia"<<endl;
 }
 
 /*************************************** SET & GET ********************************************/
 
-const NetworkElement* getSons(const int subscript)const
+const NetworkElement* NetworkElement :: getSons(const int subscript)const
 {
-	if( (subscript < 0) || (subscript > numberSons) ) throw errorsubindice(); 
+	if( (subscript < 0) || (subscript > (int) numberSons) ) throw errorsubindice(); 
 	// Esto no me convence, se los dejo para que busquen una idea mejor.
 	// Lo saqué de un ejemplo que hizo la profesora. Arroja una excepción a la clase errorsubindice,
 	// que está en NetworkElementClass.hpp
@@ -96,14 +97,14 @@ NetworkElement& NetworkElement :: operator = (const NetworkElement &Relement)
 		
 		if ( numberSons != Relement.numberSons )
 		{
-			NetworkElement *auxSons[]; 	
+			NetworkElement **auxSons; 	// Utilizo un elemento auxiliar para los punteros a los hijos. Será un arreglo dinámico de punteros
 			
 			auxSons = new NetworkElement* [Relement.numberSons]; //se pide espacio; si no se obtiene new lanza bad_alloc
 			delete [] sons; 				 // Si llegó acá es que obtuvo el espacio; libera el anterior espacio
 			numberSons = Relement.numberSons;
 			sons = auxSons; 							// Apunta a la nueva zona
 			
-			for ( int i = 0 ; i < numberSons ; i++ )
+			for (unsigned int i = 0 ; i < numberSons ; i++ )
 				sons[i] = Relement.sons[i]; 			// Copia el array en el nuevo objeto
 		
 			return *this; 						// Al retornar una referencia permite x = y = z;
@@ -113,7 +114,7 @@ NetworkElement& NetworkElement :: operator = (const NetworkElement &Relement)
 		
 		else 
 		{
-			for ( int i = 0 ; i < numberSons ; i++ )
+			for (unsigned int i = 0 ; i < numberSons ; i++ )
 				sons[i] = Relement.sons[i]; 	
 			return *this; 						
 		}
@@ -124,7 +125,7 @@ NetworkElement& NetworkElement :: operator = (const NetworkElement &Relement)
 
 }
 
-bool NetworkElement :: operator == (const NetworkElement& element)
+bool NetworkElement :: operator == (const NetworkElement &element) const
 {
 	// Solo estoy considerando la igualdad si los campos de nombre
 	// y tipo son los mismos. Se considera que nunca debería haber
@@ -133,25 +134,29 @@ bool NetworkElement :: operator == (const NetworkElement& element)
 
 	if (name == element.name && type == element.type) return true;
 
-	else false;
+	else return false;
 }
 
-bool NetworkElement :: operator != (const NetworkElement&)
+bool NetworkElement :: operator != (const NetworkElement& element) const
 {
 	// Idem que el caso del operador '==' pero comparando la desigualdad
 	
 	if (name != element.name && type != element.type) return true;
 
-	else false;
+	else return false;
 }
 
 /************************************** MÉTODOS ********************************************/
 
 // El método connectToElement lo supongo su funcionamiento como que previo a elanzar padres
-// e hijos respectivamente se encuentran validadas los casos de jerrarquía donde determinados
+// e hijos respectivamente se encuentran validadas los casos de jerarquía donde determinados
 // elementos no se puede unir, como un "nodo óptico(node)" con un "cable modem (cm)"
+//
+// IMPORTANTE: Se supone que la conección correcta se realizará de la siguiente manera al
+// invocar el método.
+// 						padre.connectToElement ( hijo )
 
-NetworkElement& NetworkElement :: connectToElement (NetworkElement& element)
+NetworkElement& NetworkElement :: connectToElement (NetworkElement &element)
 {
 	if(this != &element)
 	{
@@ -161,26 +166,28 @@ NetworkElement& NetworkElement :: connectToElement (NetworkElement& element)
 		
 		if(element.father_ ==NULL) // Valido que el nuevo elemento no tenga padre ya
 		{	
-			// Enlace: padre --> hijo
+			// Enlace: padre <-- hijo
 
 			element.father_ = this; // Asigno la dirección del objeto sobre el que trabajo, al campo padre del nuevo elemento (hijo)  
 
 			// Enlace: hijo --> padre
 
-			NetworkElement *auxSons[]; 	// Utilizo un elemento auxiliar para los punteros a los hijos
+			NetworkElement **auxSons; 	// Utilizo un elemento auxiliar para los punteros a los hijos. Será un arreglo dinámico de punteros
 
 			auxSons = new NetworkElement* [numberSons+1]; // Se pide espacio; si no se obtiene new lanza bad_alloc
-
-			for(int i=0 ; i<numberSons ; i++)	
+			
+			if(sons!=NULL)
 			{
-				auxSons[i] = sons[i]; 
+				for(unsigned int i=0 ; i<numberSons ; i++)	
+				{
+					auxSons[i] = sons[i]; 
+				}
 			}
-
-			auxSons[numberSons+1] = &element; // Guardo la dirección de memoria del que será el nuevo hijo
+			auxSons[numberSons] = &element; // Guardo la dirección de memoria del que será el nuevo hijo
 
 			delete [] sons; 	// Si llegó acá es que obtuvo el espacio; libera el anterior espacio para sons
 			sons = auxSons;		// Asigno a sons el puntero que apunta al nuevo array de hijos
-			delete [] auxSons;	// Libero la memoria auxiliar
+			//delete [] auxSons;	// Libero la memoria auxiliar
 
 			numberSons++;
 		}
@@ -192,4 +199,22 @@ NetworkElement& NetworkElement :: connectToElement (NetworkElement& element)
 		}
 	}		
 }
+
+void NetworkElement :: showContent()
+{
+	cout<<"***** Elemento de red *****"<<endl
+		<<"Nombre: "<<name<<endl
+		<<"Tipo: "<<type<<endl
+		<<"Cantidad de hijos: "<<numberSons<<endl;
+
+	if(numberSons!=0)	
+	{
+		for(unsigned int i=0 ; i < numberSons; i++)
+		cout<<"Hijo Nº" << i+1 << ": " << sons[i]->name << endl;
+	}
+	
+}
+
+
+
 
