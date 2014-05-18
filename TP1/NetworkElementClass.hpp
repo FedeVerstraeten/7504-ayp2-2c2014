@@ -3,6 +3,16 @@
 
 #include<iostream>
 
+class errorsubindice
+{
+	public:
+		errorsubindice()
+		{
+			cout<<"Mensaje emitido al crearse el objeto para la excepción \n Error de subíndice"<<endl;
+		}
+};
+
+
 class NetworkElement
 {
 	private:
@@ -26,29 +36,30 @@ class NetworkElement
 
         /*************************** SET & GET *********************************/
 
-		void setName(string n) {name=n;}
+		void setName (string n) {name=n;}
+		void setType (string t) {type=t;}
 
 		const string getName()const {return name;}
 		const string getType()const {return type;}
-		const NetworkElement *getFather()const {return father;}
-		const NetworkElement *getSons()const {return sons;}
-		const size_t getNumberSons() const {return numberSons;}
-		// getSons: (?) Retorna el puntero al arreglo de punteros a NetworkElement hijos
+		const NetworkElement* getFather()const {return father;}
+		const size_t getNumberSons() const {return numberSons;}		
+		const NetworkElement* getSons()const {return sons;}
+		const NetworkElement* getSons(const int)const;
+		
+
+		// getSons(): Sin argumentos, retorna el puntero al arreglo de punteros a NetworkElement hijos
+		// getSons(int): Con arguments, retorna el puntero de determinado hijo
 
 		/************************** OPERADORES *********************************/
 
         NetworkElement& operator = (const NetworkElement &); // operador asignacion
-        bool operator ==(const NetworkElement&) const; // operador comparacion
+        bool operator == (const NetworkElement&) const; // operador comparacion igualdad
+		bool operator != (const NetworkElement&) const; // operador comparacion desigualdad
 
         /************************** MÉTODOS ************************************/
 
+		// Se asume que se conecta al ingresar: hijo --> padre
         NetworkElement& connectToElement(NetworkElement&);
-
-
-/*
-
-		void SetIzq( Nodoarbol *i){izq=i;}
-		void SetDer( Nodoarbol *d){der=d;}
-	*/
+		
 };
  #endif
