@@ -1,7 +1,5 @@
 #ifndef COMMON_HPP
 #define COMMON_HPP
-
-
 using namespace std;
 typedef enum{
                 OK,
@@ -12,6 +10,14 @@ typedef enum{
                 OK_OUTPUT,
                 OK_OUTPUT_COUT,
                 OK_ROUTE_NAME,
+                OK_NETWORK_NAME,
+                OK_NETWORK_ELEMENT,
+                OK_NETWORK_TYPE,
+                OK_CONNECTION,
+                OK_NETWORK_NAMES,
+                ERROR_NETWORK_TYPE_UNKNOWN,
+                ERROR_CONNECTION,
+                ERROR_PROCESS_LINE,
                 ERROR_NULL_POINTER,
                 ERROR_MEMORY_NO_AVAILABLE,
                 ERROR_TEXT_LINE_INVALID,
@@ -25,6 +31,5 @@ typedef enum{
                 ERROR_STREAM_OUT,
                 ERROR_NULL_FILE
                 }status_t;
-
 
 #endif
