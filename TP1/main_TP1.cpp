@@ -4,47 +4,43 @@
 #include <sstream>
 #include"file_load.hpp"
 #include"common.hpp"
-#include"printers.hpp"
-#include"dictionary.hpp"
-#include"process.hpp"
-#include"arguments.hpp"
-#include"NetworkElementClass.hpp"
+#include "printers.hpp"
+#include "dictionary.hpp"
+#include "process.hpp"
+#include "arguments.hpp"
+#include "NetworkElementClass.hpp"
+#include "cmdline.h"
+#include "options.hpp"
 
+istream *iss = 0;
+ostream *oss = 0;
+fstream ifs;
+fstream ofs;
+
+extern option_t options[];
 
 /**** MAIN ****/
-
 
 int main(int argc,char *argv[])
 {
 
-    char *route_in=NULL, *route_out=NULL;
-	string **lines;
-	size_t number_lines;
-	size_t i;
-	status_t f_, status;
-	ifstream file_in;
+	cmdline cmdl(options);
+	cmdl.parse(argc, argv);
+
+    string **lines; //este lo usa loadFileMemory()
+	size_t number_lines; //este lo usa loadFileMemory()
+	status_t f_, status; //estos se usan
 	string st1, st2;
 
-    f_=validateArgument(argc,argv,route_in,route_out);
+	loadFileMemory( ifs , &lines , number_lines );
 
-	if(f_==OK)
-	{
-		file_in.open( route_in ); //Flujo archivo file_in, abierto
-		if (!file_in.is_open())
-        {
-			printErrorMessage(ERROR_INVALID_INPUT_ROUTE,cout);
-			return 1;
-        }
-
-		ofstream file_out ( route_out , ios_base::out );//Flujo archivo file_out, abierto
-		loadFileMemory( file_in , &lines , number_lines );
-
-		for( i=1 ; i<number_lines ; i++ )
+		for( size_t i=1 ; i<number_lines ; i++ )
 		{
             status = processLine( (*lines[i]), st1, st2);
             if(status==OK_NETWORK_TYPE)
             {
-                NetworkElement Net0(st1,st2);
+                cout << st1 << st2 << endl;
+                NetworkElement Net0[i](st1,st2);
                 Net0.showContent();
                 cout<<"FLAG"<<endl;
                 //Crear objeto (aux[0]=name, aux[1]=type);
