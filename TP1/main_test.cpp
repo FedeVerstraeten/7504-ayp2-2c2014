@@ -4,8 +4,8 @@
 #include"NetworkElementClass.hpp"
 #include"common.hpp"
 
-using namespace std;
 
+using namespace std;
 
 
 
@@ -30,7 +30,7 @@ int main()
 	//NetworkElement cm1;
 	NetworkElement hub1("HUB1","HUB"),node1("NODE1","NODE"),node2("NODE2","NODE");
 	NetworkElement cm1("CM1","CM"), amp1("AMP1","AMP");
-	NetworkElement cm2("CM2","CM"), amp2("AMP2","AMP");
+	NetworkElement cm2("CM2","CM"), amp2("AMP2","AMP"), amp3("AMP3","AMP");
 	NetworkElement cm3("CM3","CM");
 	NetworkElement cm4("CM4","CM");
 	NetworkElement cm5("CM5","CM"); 
@@ -43,7 +43,7 @@ int main()
 
 //	cm2.showContent();
 //	amp1.showContent();
-
+/*
 	hub1.connectToElement(node1);
 	hub1.connectToElement(node2);
 	node1.connectToElement(cm1);
@@ -53,7 +53,11 @@ int main()
 	amp1.connectToElement(amp2);
 	amp1.connectToElement(cm4);
 	amp2.connectToElement(cm5);
-	
+	cm1.connectToElement(cm2);
+*/
+
+
+			
 	
 
 //	cm2.showContent();
@@ -86,11 +90,27 @@ int main()
 	cm4.showContent();
 	cm5.showContent();*/
 
+
+	amp1.connectToElement(amp2);
+	amp2.connectToElement(amp3);
+	amp3.connectToElement(amp1);
+
+
+
+
 	int vertice=0;
-
-	recorrido(&hub1,vertice);
+	NetworkElement *temp[10];//llega la cantidad de nodos totales
+	recorrido(&amp1,vertice,temp);//asignarle elemento desde donde quieres recorrer
+					//vertice contiene la cantidad de nodos que
+					//que pudieron ser recorridos.
 	cout<<vertice<<endl;
+	for(int i=0;i<vertice;i++){
 
+	cout<<(*(temp[i])).getName()<<endl;
+
+
+
+	}
 
 
 
