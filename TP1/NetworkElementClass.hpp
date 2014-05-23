@@ -62,6 +62,15 @@ class NetworkElement
 		// Se asume que se conecta al ingresar: hijo --> padre
         NetworkElement& connectToElement(NetworkElement&);
 		void showContent();
-		
+			
+        /************************** MÉTODOS FRIEND************************************/
+
+
+	friend int recorrido(NetworkElement*,int &);
+
+
 };
+
+
+
  #endif

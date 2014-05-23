@@ -1,0 +1,18 @@
+complacion y ejecucion de los archivos
+CC       =  g++
+CFLAGS   = -g -Wall  -pedantic
+OBJS     = main_test.o NetworkClass.o 
+
+
+
+main_test.exe:$(OBJS)
+        $(CC)  $(OBJS) -o main_TP1.exe 
+
+main_test.o:main_test.cpp main_test.hpp NetworkElementClass.hpp 
+        $(CC) main_test.cpp -c -o main_test.o $(CFLAGS)
+
+NetworkElementClass.o:NetworkElementClass.cpp NetworkElementClass.hpp 
+        $(CC) NetworkClass.cpp -c -o NetworkClass.o $(CFLAGS)
+
+clean:
+        rm *.o

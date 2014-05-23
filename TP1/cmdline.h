@@ -14,7 +14,7 @@ struct option_t {
 	const char *long_name;
 	const char *def_value;
 	void (*parse)(std::string const &);
-	int flags;//numero de argumetos
+	int flags;
 };
 
 class cmdline {

@@ -34,9 +34,6 @@ using namespace std; //lo necesitamos para la clase exception
 	int size; // size del array
 	T *ptr; // puntero al primer elemento del array
 	};
-
-
-
 	// Constructor por defecto sin argumentos
 	template <class T>
 	Array<T>::Array()
@@ -108,13 +105,4 @@ using namespace std; //lo necesitamos para la clase exception
 	return true; // los arrays son iguales
 	}
 	
-	// Sobrecarga del operador indexacion; la referencia retornada es un lvalue
-	template <class T>
-	T & Array<T>::operator [ ]( int subscript )
-	{
-	//si el subíndice no es válido, se arroja una excepción
-	if( (0 > subscript)|| (subscript > size) ) throw errorsubindice();
-	else
-	{
-	return ptr[ subscript ]; // retorna referencia
-	}}
+
