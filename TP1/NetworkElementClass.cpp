@@ -198,7 +198,9 @@ NetworkElement& NetworkElement :: connectToElement (NetworkElement &element)
 			// Buscar que devolver en caso de que no se pueda unir, todavía no se me ocurrió
 			cout<<"Imposible el elemento que se desea conectar ya tiene padre"<<endl;
 		}
-	}		
+	}
+
+	return *this;		
 }
 
 void NetworkElement :: showContent()
@@ -213,26 +215,45 @@ void NetworkElement :: showContent()
 		for(unsigned int i=0 ; i < numberSons; i++)
 		cout<<"Hijo Nº" << i+1 << ": " << sons[i]->name << endl;
 	}
-	
+			
 }
 
 
- int recorrido(NetworkElement *v,int &vertice){
+ int recorrido(NetworkElement *v,int &vertice,NetworkElement **temp){
 
+	if(comparator(v,vertice,temp)==EXIST){return DETECT_CICLE;}
+	temp[vertice]=v;
 
         if(v->numberSons==0)
-                return 0;
+                return BACK_TREE;
 
         for(size_t i=0;i<v->numberSons;i++){
 
-
-                vertice++;
-                recorrido((*v).sons[i],vertice);
+		vertice++;
+		if((recorrido((*v).sons[i],vertice,temp))==DETECT_CICLE){return BACK_TREE;}
         }
 
-        return 0;
+        return BACK_TREE;
 
 
 }
 
+/*Esta función verifica si el elemeto esta repetido entonce se deriva en un ciclo*/
+
+
+int comparator(NetworkElement *v,int &vertice,NetworkElement **temp){
+
+
+	for(int i=0;i<vertice;i++){
+
+		if(v->name==temp[i]->name){
+
+			temp[vertice]=v;
+			return EXIST;
+		}
+		
+	}
+
+	return NOT_EXIST;
+}
 

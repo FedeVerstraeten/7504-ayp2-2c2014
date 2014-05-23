@@ -3,6 +3,13 @@
 
 #include<iostream>
 #include "common.hpp"
+#define EXIST 0
+#define NOT_EXIST 1
+#define BACK_TREE 0;
+#define DETECT_CICLE 1
+
+
+
 
 class errorsubindice
 {
@@ -66,8 +73,8 @@ class NetworkElement
         /************************** MÉTODOS FRIEND************************************/
 
 
-	friend int recorrido(NetworkElement*,int &);
-
+	friend int recorrido(NetworkElement*,int&,NetworkElement**);
+	friend int comparator(NetworkElement*,int&,NetworkElement**);
 
 };
 
