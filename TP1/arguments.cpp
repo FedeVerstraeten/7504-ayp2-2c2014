@@ -44,7 +44,7 @@ status_t route_verification(char arg[],char* &route)
     //EL CASE ARG_ERR EN printErrorMessage() en PRINTERS.CPP/HPP
 }
 
-void close_all_stream_file(ifstream &file_in, ofstream &file_out)
+void close_all_stream_file(fstream &file_in, fstream &file_out)
 {
     file_in.close();
     file_out.close();

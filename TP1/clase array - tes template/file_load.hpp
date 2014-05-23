@@ -7,6 +7,6 @@
 #define INIT_CHOP 30
 #define CHOP_SIZE 20
 //Prototipos
-status_t loadFileMemory(fstream &file,string ***lines,size_t &size);
+status_t loadFileMemory(ifstream &file,string ***lines,size_t &size);
 status_t eraseFileMemory(string ***lines,size_t &size);
 #endif

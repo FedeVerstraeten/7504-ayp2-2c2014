@@ -12,11 +12,13 @@
 #include "cmdline.h"
 #include "options.hpp"
 
+
+using namespace std;
+
 istream *iss = 0;
 ostream *oss = 0;
 fstream ifs;
 fstream ofs;
-
 extern option_t options[];
 
 /**** MAIN ****/
@@ -27,14 +29,35 @@ int main(int argc,char *argv[])
 	cmdline cmdl(options);
 	cmdl.parse(argc, argv);
 
-    string **lines; //este lo usa loadFileMemory()
+  string **lines; //este lo usa loadFileMemory()
 	size_t number_lines; //este lo usa loadFileMemory()
 	status_t f_, status; //estos se usan
 	string st1, st2;
 
-	loadFileMemory( ifs , &lines , number_lines );
+	if(*iss==ifs){
+	f_=loadFileMemory( ifs , &lines , number_lines );
+	if(f_==OK)
+	{
+		cout<<"piola"<<endl;
 
-		for( size_t i=1 ; i<number_lines ; i++ )
+	}
+	close_all_stream_file( ifs , ofs );
+		eraseFileMemory( &lines , number_lines );
+	}
+	else if(*iss==cin){
+
+	inputFromConsole();
+//	cout << net_name << endl;
+	//printElements( *number_lines , cout );
+
+	}
+
+
+
+
+
+
+/*		for( size_t i=1 ; i<number_lines ; i++ )
 		{
             status = processLine( (*lines[i]), st1, st2);
             if(status==OK_NETWORK_TYPE)
@@ -99,7 +122,7 @@ int main(int argc,char *argv[])
 	{
         printErrorMessage(f_,cout);
         return ERROR_ARG;
-	}
+	}*/
 
-
+return 0;
 }

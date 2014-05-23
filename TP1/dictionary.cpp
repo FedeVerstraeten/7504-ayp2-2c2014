@@ -1,4 +1,7 @@
 #include"dictionary.hpp"
+#include"cmdline.h"
+#include"options.hpp"
+
 //Diccionarios: HAY QUE ACORDAR UNA NOMNECLATURA PARA STRINGS , VARIABLES y ARREGLOS.
 //Diccionarios: HAY QUE ACORDAR UNA NOMNECLATURA PARA STRINGS , VARIABLES y ARREGLOS.
 

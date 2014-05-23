@@ -1,13 +1,15 @@
 
 #include "options.hpp"
+using namespace std;
 //HOLA
-extern istream *iss = 0;
-extern ostream *oss = 0;
+extern istream *iss;
+extern ostream *oss;
 extern fstream ifs;
 extern fstream ofs;
-extern option_t options[];
+//extern option_t options[];
 
-static void
+
+void
 opt_input(string const &arg)
 {
 	// Si el nombre del archivos es "-", usaremos la entrada
@@ -16,6 +18,13 @@ opt_input(string const &arg)
 	//
 	if (arg == "-") {
 		iss = &cin;
+
+//-----meter las funciones de charle para entrada standar
+
+
+
+
+
 	} else {
 		ifs.open(arg.c_str(), ios::in);
 		iss = &ifs;
@@ -31,8 +40,7 @@ opt_input(string const &arg)
 		exit(1);
 	}
 }
-
-static void
+void
 opt_output(string const &arg)
 {
 	// Si el nombre del archivos es "-", usaremos la salida
@@ -41,6 +49,15 @@ opt_output(string const &arg)
 	//
 	if (arg == "-") {
 		oss = &cout;
+
+
+
+//-----meter las funciones de charle para salida standar
+
+
+
+
+
 	} else {
 		ofs.open(arg.c_str(), ios::out);
 		oss = &ofs;
@@ -57,8 +74,7 @@ opt_output(string const &arg)
 	}
 }
 
-static void
-opt_help(string const &arg)
+void opt_help(string const &arg)
 {
 	cout << "cmdline -f factor [-i file] [-o file]"
 	     << endl;

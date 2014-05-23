@@ -2,6 +2,7 @@
 #include "NetworkElementClass.hpp"
 
 
+
 /********************************** CONSTRUCTORES ***************************************/
 
 NetworkElement :: NetworkElement()
@@ -216,5 +217,22 @@ void NetworkElement :: showContent()
 }
 
 
+ int recorrido(NetworkElement *v,int &vertice){
+
+
+        if(v->numberSons==0)
+                return 0;
+
+        for(size_t i=0;i<v->numberSons;i++){
+
+
+                vertice++;
+                recorrido((*v).sons[i],vertice);
+        }
+
+        return 0;
+
+
+}
 
 

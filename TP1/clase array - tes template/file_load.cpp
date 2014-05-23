@@ -6,7 +6,7 @@
 //devuelve por interfaz un arreglo de punteros a objeto string cargados con el archivo file(una linea por string).
 //devuelve la cantindad de lineas leidas.
 
-status_t loadFileMemory(fstream &file,string ***lines,size_t &size){
+status_t loadFileMemory(ifstream &file,string ***lines,size_t &size){
 
         size_t alloc_size,i;
         string **aux,str;
