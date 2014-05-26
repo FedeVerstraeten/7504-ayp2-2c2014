@@ -95,22 +95,42 @@ int main()
 	amp2.connectToElement(amp3);
 	amp3.connectToElement(amp1);
 
+//este es un boceto de está parte del código:
+//una vez que se haya armando y conectado el árbol se procede hacer las validaciones correpondientes para que validan ciclos e inconexiones
+//
+/*
+
+	hub.validarCiclos();//solo 
+	hub.validarIconexiones();
+	hub.validarElemtosrepetidos();
+	hub.validarSegmentosInconexos();
+	//se pueden agregar mas
+
+//todo esta bien hasta aca
+	hub.impresionArbol();
+*/
 
 
+
+//mi idea seria meter todo esto adentro de una funcion que haga todas las validaciones y en caso de error que salga del programa con exit 
 
 	int vertice=0;
 	NetworkElement *temp[10];//llega la cantidad de nodos totales
-	recorrido(&amp1,vertice,temp);//asignarle elemento desde donde quieres recorrer
+	if((amp1.recorrido(vertice,temp))!=DETECT_CICLE){//asignarle elemento desde donde quieres recorrer
 					//vertice contiene la cantidad de nodos que
 					//que pudieron ser recorridos.
-	cout<<vertice<<endl;
-	for(int i=0;i<vertice;i++){
 
-	cout<<(*(temp[i])).getName()<<endl;
+	
+		cout<<vertice<<endl;
+		for(int i=0;i<vertice;i++){
 
-
-
+		cout<< (*(temp[i])).getName()<<endl;
+		}
 	}
+	cout<< (*(temp[vertice])).getName()<<endl;
+
+
+	
 
 
 
