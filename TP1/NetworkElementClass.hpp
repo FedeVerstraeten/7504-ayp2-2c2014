@@ -70,11 +70,11 @@ class NetworkElement
         NetworkElement& connectToElement(NetworkElement&);
 		void showContent();
 			
-        /************************** MÉTODOS FRIEND************************************/
+        /************************** MÉTODOS  DE RECORRIDO DE ARBOL************************************/
 
 
-	friend int recorrido(NetworkElement*,int&,NetworkElement**);
-	friend int comparator(NetworkElement*,int&,NetworkElement**);
+	int recorrido(int&,NetworkElement**);
+	int comparator(NetworkElement*,int&,NetworkElement**);
 
 };
 

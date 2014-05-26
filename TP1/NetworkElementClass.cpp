@@ -219,18 +219,29 @@ void NetworkElement :: showContent()
 }
 
 
- int recorrido(NetworkElement *v,int &vertice,NetworkElement **temp){
 
-	if(comparator(v,vertice,temp)==EXIST){return DETECT_CICLE;}
-	temp[vertice]=v;
+//Está función es la que se encarga de recorrer el árbol creado previamente, recorre por profundidad,saliendo de la misma en caso de detectar cliclos 
+//o arboles inconexos.
 
-        if(v->numberSons==0)
+//Recibe un entero  por referencia 'vertice' que guarda el numero de conexiones realizadas, y un arreglo de punteros a NetworkElement temporal, 
+//donde se guardan la direccion de memoria de los objetos recorridos.
+//La función trabaja de manera recursiva e iterativa garanztizando que siempre que el arbol este armado puede vistar a todos los nodos del mismo
+//La función recorre por hijos
+
+
+
+ int NetworkElement::recorrido(int &vertice,NetworkElement **temp){
+
+	if(comparator(this,vertice,temp)==EXIST){return DETECT_CICLE;}
+	temp[vertice]=this;
+
+        if(numberSons==0)
                 return BACK_TREE;
 
-        for(size_t i=0;i<v->numberSons;i++){
+        for(size_t i=0;i<numberSons;i++){
 
 		vertice++;
-		if((recorrido((*v).sons[i],vertice,temp))==DETECT_CICLE){return BACK_TREE;}
+		if((sons[i]->recorrido(vertice,temp))==DETECT_CICLE){return DETECT_CICLE;}
         }
 
         return BACK_TREE;
@@ -238,10 +249,10 @@ void NetworkElement :: showContent()
 
 }
 
-/*Esta función verifica si el elemeto esta repetido entonce se deriva en un ciclo*/
+/*Esta función verifica si el elemeto está repetido, entonces se deriva en un ciclo*/
 
 
-int comparator(NetworkElement *v,int &vertice,NetworkElement **temp){
+ int NetworkElement ::comparator(NetworkElement *v,int &vertice,NetworkElement **temp){
 
 
 	for(int i=0;i<vertice;i++){
