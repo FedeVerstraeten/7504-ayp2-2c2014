@@ -1,7 +1,7 @@
 #include <iostream>
 #include "NetworkElementClass.hpp"
-
-
+#include <cstdlib>
+using namespace std;
 
 /********************************** CONSTRUCTORES ***************************************/
 
@@ -232,7 +232,7 @@ void NetworkElement :: showContent()
 
  int NetworkElement::recorrido(int &vertice,NetworkElement **temp){
 
-	if(comparator(this,vertice,temp)==EXIST){return DETECT_CICLE;}
+	if(comparator(this,vertice,temp)==EXIST){return DETECT_CYCLE;}
 	temp[vertice]=this;
 
         if(numberSons==0)
@@ -241,7 +241,7 @@ void NetworkElement :: showContent()
         for(size_t i=0;i<numberSons;i++){
 
 		vertice++;
-		if((sons[i]->recorrido(vertice,temp))==DETECT_CICLE){return DETECT_CICLE;}
+		if((sons[i]->recorrido(vertice,temp))==DETECT_CYCLE){return DETECT_CYCLE;}
         }
 
         return BACK_TREE;
@@ -267,4 +267,22 @@ void NetworkElement :: showContent()
 
 	return NOT_EXIST;
 }
+//suponemos que la memoria es estatica hasta este punto del código
+void NetworkElement :: validateCycle(size_t numberNodes)
+{
 
+int vertice=0;
+
+	NetworkElement *temp[numberNodes];//llega la cantidad de nodos totales
+	if((this->recorrido(vertice,temp))==DETECT_CYCLE){//asignarle elemento desde donde quieres recorrer
+					//vertice contiene la cantidad de nodos que
+					//que pudieron ser recorridos.
+	
+	cout<<"Se detecto un ciclo en:"<< (*(temp[vertice])).getName()<<endl;
+	
+	//llamo a destructor de los objetos..concectados...respecto de this.
+	exit(1);
+
+}
+
+}		

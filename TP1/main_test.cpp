@@ -10,19 +10,6 @@ using namespace std;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 /************************************* MAIN *******************************************/
 
 int main()
@@ -98,10 +85,11 @@ int main()
 //este es un boceto de está parte del código:
 //una vez que se haya armando y conectado el árbol se procede hacer las validaciones correpondientes para que validan ciclos e inconexiones
 //
-/*
 
-	hub.validarCiclos();//solo 
-	hub.validarIconexiones();
+
+	
+	amp1.validateCycle(2);// le paso el numero de nodos!!!!!
+/*	hub.validarIconexiones();
 	hub.validarElemtosrepetidos();
 	hub.validarSegmentosInconexos();
 	//se pueden agregar mas
@@ -114,9 +102,9 @@ int main()
 
 //mi idea seria meter todo esto adentro de una funcion que haga todas las validaciones y en caso de error que salga del programa con exit 
 
-	int vertice=0;
+	/*int vertice=0;
 	NetworkElement *temp[10];//llega la cantidad de nodos totales
-	if((amp1.recorrido(vertice,temp))!=DETECT_CICLE){//asignarle elemento desde donde quieres recorrer
+	if((amp1.recorrido(vertice,temp))!=DETECT_CYCLE){//asignarle elemento desde donde quieres recorrer
 					//vertice contiene la cantidad de nodos que
 					//que pudieron ser recorridos.
 
@@ -127,7 +115,7 @@ int main()
 		cout<< (*(temp[i])).getName()<<endl;
 		}
 	}
-	cout<< (*(temp[vertice])).getName()<<endl;
+	cout<< (*(temp[vertice])).getName()<<endl;*/
 
 
 	
@@ -139,4 +127,4 @@ int main()
 	return 0;
 }
 
-
+	

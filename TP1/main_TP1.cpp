@@ -42,14 +42,15 @@ int main(int argc,char *argv[])
         f_=loadFileMemory( ifs , &lines , number_lines );
         if(f_==OK)
         {
-            cout<<"piola"<<endl;
+			cout<<"piola"<<endl;
+			eraseFileMemory( &lines , number_lines );
+	
 
         }
         else
         {
                 close_all_stream_file( ifs , ofs );
-                eraseFileMemory( &lines , number_lines );
-                cout << "nopiola"<<endl ;
+                                cout << "nopiola"<<endl ;
         }
     }
 	else if(*iss==cin)
