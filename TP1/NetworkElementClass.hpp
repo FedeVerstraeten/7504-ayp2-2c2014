@@ -6,7 +6,7 @@
 #define EXIST 0
 #define NOT_EXIST 1
 #define BACK_TREE 0;
-#define DETECT_CICLE 1
+#define DETECT_CYCLE 1
 
 
 
@@ -68,14 +68,18 @@ class NetworkElement
 
 		// Se asume que se conecta al ingresar: hijo --> padre
         NetworkElement& connectToElement(NetworkElement&);
+		
 		void showContent();
+		
 			
         /************************** MÉTODOS  DE RECORRIDO DE ARBOL************************************/
 
 
-	int recorrido(int&,NetworkElement**);
-	int comparator(NetworkElement*,int&,NetworkElement**);
-
+		int recorrido(int&,NetworkElement**);
+		int comparator(NetworkElement*,int&,NetworkElement**);
+		void validateCycle(size_t);
+		void validateIconnection();
+		void isRepeaten();
 };
 
 
