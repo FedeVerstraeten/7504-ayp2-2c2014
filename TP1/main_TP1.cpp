@@ -12,6 +12,7 @@
 #include "NetworkElementClass.hpp"
 #include "cmdline.h"
 #include "options.hpp"
+#include <vector>
 
     //void stringMatrix(string *** matrix, size_t rows, size_t columns);
 
@@ -76,6 +77,31 @@ int main(int argc,char *argv[])
 
       }
     }
-   //cout << matrix [0][1] << endl;
+
+
+   cout << matrix [2][1] << endl;
+   cout << matrix [2][2] << endl;
+
+
+ #define NAME 1
+ #define TYPE 2
+
+ //FIRST READING
+     size_t NetEls=0;
+       for(size_t i=0 ; i<number_lines ; i++)
+        if(matrix[i][0] == "NetworkElement")
+            NetEls++;
+
+ //VECTOR OF NETWORKELEMENTS
+    vector <NetworkElement> NetTree(NetEls);
+        for(size_t i=0 ; i<NetEls ; i++)
+        {
+            NetTree[i].setName(matrix[i+1][1]);
+            NetTree[i].setType(matrix[i+1][2]);
+            NetTree[i].showContent();
+        }
+    //CONNECTIONS
+
+
    return 0;
 }
