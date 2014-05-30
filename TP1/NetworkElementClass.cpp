@@ -1,6 +1,8 @@
 #include <iostream>
 #include "NetworkElementClass.hpp"
 #include <cstdlib>
+#include <vector>
+#define ZERO 0
 using namespace std;
 
 /********************************** CONSTRUCTORES ***************************************/
@@ -220,8 +222,43 @@ void NetworkElement :: showContent()
 
 
 
+
+
+/*//suponemos que la memoria es estatica hasta este punto del código
+void NetworkElement :: validateCycle(int numberNodes)
+{
+
+	int vertice=0;	
+	
+
+	vector <NetworkElement*> temp(numberNodes);	
+	//NetworkElement *temp;//llega;//llega la cantidad de nodos totales
+
+	//temp=new NetworkElement [numberNodes]; 
+
+	//cout << temp.size() << '\n';
+
+	if((this->recorrido(vertice,temp.data()))==DETECT_CYCLE)
+	{				//asignarle elemento desde donde quieres recorrer
+					//vertice contiene la cantidad de nodos que
+					//que pudieron ser recorridos.
+	cout<<vertice<<endl;
+	cout<<"Se detecto un ciclo en:"<< (*(temp[vertice])).getName()<<endl;
+
+	
+	//llamo a destructor de los objetos..concectados...respecto de this.
+	exit(1);
+
+	}
+	
+}
+*/
+
 //Está función es la que se encarga de recorrer el árbol creado previamente, recorre por profundidad,saliendo de la misma en caso de detectar cliclos 
 //o arboles inconexos.
+
+
+
 
 //Recibe un entero  por referencia 'vertice' que guarda el numero de conexiones realizadas, y un arreglo de punteros a NetworkElement temporal, 
 //donde se guardan la direccion de memoria de los objetos recorridos.
@@ -230,18 +267,18 @@ void NetworkElement :: showContent()
 
 
 
- int NetworkElement::recorrido(int &vertice,NetworkElement **temp){
+ int recorrido(NetworkElement*v,int &vertice,NetworkElement **temp){
 
-	if(comparator(this,vertice,temp)==EXIST){return DETECT_CYCLE;}
-	temp[vertice]=this;
-
-        if(numberSons==0)
+	if(comparator(v,vertice,temp)==EXIST){cout<<"salgo con EXIST"<<endl; return DETECT_CYCLE;}
+	temp[vertice]=v;
+	cout<<"nombres guardados"<<v->getName()<<endl;
+        if(temp[vertice]->numberSons==0){
                 return BACK_TREE;
-
-        for(size_t i=0;i<numberSons;i++){
+	}else 
+        for(size_t i=0;i<v->numberSons;i++){
 
 		vertice++;
-		if((sons[i]->recorrido(vertice,temp))==DETECT_CYCLE){return DETECT_CYCLE;}
+		if((recorrido(v->sons[i],vertice,temp))==DETECT_CYCLE){return DETECT_CYCLE;}
         }
 
         return BACK_TREE;
@@ -252,37 +289,29 @@ void NetworkElement :: showContent()
 /*Esta función verifica si el elemeto está repetido, entonces se deriva en un ciclo*/
 
 
- int NetworkElement ::comparator(NetworkElement *v,int &vertice,NetworkElement **temp){
+int comparator(NetworkElement *v,int &vertice,NetworkElement **temp){
 
 
 	for(int i=0;i<vertice;i++){
-
+		cout<<"vertice:"<<vertice<<endl;
+	//	cout<<temp[i]->name<<endl;
+	//cout<<"pipo"<<i<<endl;
 		if(v->name==temp[i]->name){
-
-			temp[vertice]=v;
+			cout<<"entro"<<i<<endl;
+			temp[vertice-1]=v;
 			return EXIST;
 		}
-		
+	
 	}
 
 	return NOT_EXIST;
 }
-//suponemos que la memoria es estatica hasta este punto del código
-void NetworkElement :: validateCycle(size_t numberNodes)
+
+NetworkElement& NetworkElement::operator [ ]( int subscript )
 {
-
-int vertice=0;
-
-	NetworkElement *temp[numberNodes];//llega la cantidad de nodos totales
-	if((this->recorrido(vertice,temp))==DETECT_CYCLE){//asignarle elemento desde donde quieres recorrer
-					//vertice contiene la cantidad de nodos que
-					//que pudieron ser recorridos.
-	
-	cout<<"Se detecto un ciclo en:"<< (*(temp[vertice])).getName()<<endl;
-	
-	//llamo a destructor de los objetos..concectados...respecto de this.
-	exit(1);
-
+	if( (0 > subscript) ) exit(1);
+	else
+	{
+		return *(this+subscript); // retorna referencia
+	}
 }
-
-}		

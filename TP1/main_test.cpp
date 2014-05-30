@@ -70,7 +70,7 @@ int main()
 	node1.showContent();
 	node2.showContent();
 	amp1.showContent();
-	amp2.showContent();
+	amp2.showContent()
 	cm1.showContent();
 	cm2.showContent();
 	cm3.showContent();
@@ -88,12 +88,12 @@ int main()
 
 
 	
-	amp1.validateCycle(2);// le paso el numero de nodos!!!!!
+	//amp1.validateCycle(3);// le paso el numero de nodos!!!
 /*	hub.validarIconexiones();
 	hub.validarElemtosrepetidos();
 	hub.validarSegmentosInconexos();
 	//se pueden agregar mas
-
+ 
 //todo esta bien hasta aca
 	hub.impresionArbol();
 */
@@ -102,25 +102,24 @@ int main()
 
 //mi idea seria meter todo esto adentro de una funcion que haga todas las validaciones y en caso de error que salga del programa con exit 
 
-	/*int vertice=0;
-	NetworkElement *temp[10];//llega la cantidad de nodos totales
-	if((amp1.recorrido(vertice,temp))!=DETECT_CYCLE){//asignarle elemento desde donde quieres recorrer
+	int vertice=0;
+	NetworkElement *temp[90];//usar la clase vector y push_back ,arreglo dinamico...
+	if((recorrido(&amp1,vertice,temp))==DETECT_CYCLE){//asignarle elemento desde donde quieres recorrer
 					//vertice contiene la cantidad de nodos que
 					//que pudieron ser recorridos.
-
+//INSTALAR Y PROBAR CON VALGRIND....
 	
 		cout<<vertice<<endl;
 		for(int i=0;i<vertice;i++){
 
 		cout<< (*(temp[i])).getName()<<endl;
+
 		}
-	}
-	cout<< (*(temp[vertice])).getName()<<endl;*/
 
+		cout<< "ESTOY dentro DE DETECT_CYCLE"<<endl;
 
-	
-
-
+	}else
+	cout<< "ESTOY FUERA DE DETECT_CYCLE"<<endl;
 
 
 	

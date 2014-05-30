@@ -63,6 +63,7 @@ class NetworkElement
         NetworkElement& operator = (const NetworkElement &); // operador asignacion
         bool operator == (const NetworkElement&) const; // operador comparacion igualdad
 		bool operator != (const NetworkElement&) const; // operador comparacion desigualdad
+		NetworkElement& operator [ ](int);
 
         /************************** MÉTODOS ************************************/
 
@@ -75,9 +76,9 @@ class NetworkElement
         /************************** MÉTODOS  DE RECORRIDO DE ARBOL************************************/
 
 
-		int recorrido(int&,NetworkElement**);
-		int comparator(NetworkElement*,int&,NetworkElement**);
-		void validateCycle(size_t);
+		friend int recorrido(NetworkElement* ,int&,NetworkElement**);
+		friend int comparator(NetworkElement* ,int&,NetworkElement**);
+		void validateCycle(int);
 		void validateIconnection();
 		void isRepeaten();
 };
