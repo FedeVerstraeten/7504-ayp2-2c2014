@@ -224,35 +224,35 @@ void NetworkElement :: showContent()
 
 
 
-/*//suponemos que la memoria es estatica hasta este punto del código
-void NetworkElement :: validateCycle(int numberNodes)
+//suponemos que la memoria es estatica hasta este punto del código
+void NetworkElement ::validateCycle()
 {
 
-	int vertice=0;	
-	
+	int vertice=0;
+	vector <NetworkElement*> temp;//usar la clase vector y push_back ,arreglo dinamico...
+	if((recorrido(this,vertice,temp))==DETECT_CYCLE){//asignarle elemento desde donde quieres recorrer
+                                        //vertice contiene la cantidad de nodos que
+                                        //que pudieron ser recorridos.
+//INSTALAR Y PROBAR CON VALGRIND....
 
-	vector <NetworkElement*> temp(numberNodes);	
-	//NetworkElement *temp;//llega;//llega la cantidad de nodos totales
+		cout<<vertice<<endl;
+		
 
-	//temp=new NetworkElement [numberNodes]; 
-
-	//cout << temp.size() << '\n';
-
-	if((this->recorrido(vertice,temp.data()))==DETECT_CYCLE)
-	{				//asignarle elemento desde donde quieres recorrer
-					//vertice contiene la cantidad de nodos que
-					//que pudieron ser recorridos.
-	cout<<vertice<<endl;
-	cout<<"Se detecto un ciclo en:"<< (*(temp[vertice])).getName()<<endl;
+		cout<< "Se en encontro un ciclo en:\t "<<temp.data()[vertice]->getName()<<endl;
 
 	
-	//llamo a destructor de los objetos..concectados...respecto de this.
-	exit(1);
 
-	}
+		cout<< "ESTOY dentro DE DETECT_CYCLE"<<endl;
+
+	}else
+	cout<< "ESTOY FUERA DE DETECT_CYCLE"<<endl;
+
+
+
+
 	
 }
-*/
+
 
 //Está función es la que se encarga de recorrer el árbol creado previamente, recorre por profundidad,saliendo de la misma en caso de detectar cliclos 
 //o arboles inconexos.
@@ -267,10 +267,10 @@ void NetworkElement :: validateCycle(int numberNodes)
 
 
 
- int recorrido(NetworkElement*v,int &vertice,NetworkElement **temp){
+ int recorrido(NetworkElement*v,int &vertice,vector <NetworkElement*>&temp){
 
 	if(comparator(v,vertice,temp)==EXIST){cout<<"salgo con EXIST"<<endl; return DETECT_CYCLE;}
-	temp[vertice]=v;
+	temp.push_back(v);
 	cout<<"nombres guardados"<<v->getName()<<endl;
         if(temp[vertice]->numberSons==0){
                 return BACK_TREE;
@@ -289,16 +289,18 @@ void NetworkElement :: validateCycle(int numberNodes)
 /*Esta función verifica si el elemeto está repetido, entonces se deriva en un ciclo*/
 
 
-int comparator(NetworkElement *v,int &vertice,NetworkElement **temp){
+	int comparator(NetworkElement *v,int &vertice,vector<NetworkElement*>&temp){
 
 
 	for(int i=0;i<vertice;i++){
-		cout<<"vertice:"<<vertice<<endl;
-	//	cout<<temp[i]->name<<endl;
-	//cout<<"pipo"<<i<<endl;
-		if(v->name==temp[i]->name){
+//		cout<<"vertice:"<<vertice<<endl;
+
+
+		if(v->name==temp.data()[i]->name){
 			cout<<"entro"<<i<<endl;
-			temp[vertice-1]=v;
+			cout<<vertice<<endl;
+			temp.push_back(v);
+			
 			return EXIST;
 		}
 	

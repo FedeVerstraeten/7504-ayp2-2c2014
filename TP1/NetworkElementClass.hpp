@@ -2,6 +2,7 @@
 #define NETWORK_ELEMENT_CLASS_HPP
 
 #include<iostream>
+#include<vector>
 #include "common.hpp"
 #define EXIST 0
 #define NOT_EXIST 1
@@ -76,9 +77,9 @@ class NetworkElement
         /************************** MÉTODOS  DE RECORRIDO DE ARBOL************************************/
 
 
-		friend int recorrido(NetworkElement* ,int&,NetworkElement**);
-		friend int comparator(NetworkElement* ,int&,NetworkElement**);
-		void validateCycle(int);
+		friend int recorrido(NetworkElement* ,int&,vector <NetworkElement*>&temp);
+		friend int comparator(NetworkElement* ,int&,vector <NetworkElement*>&temp);
+		void validateCycle();
 		void validateIconnection();
 		void isRepeaten();
 };
