@@ -22,9 +22,11 @@ ostream *oss = 0;
 fstream ifs, ofs;
 extern option_t options[];
 extern string network_element_type[];
+bool isName(NetworkElement , string );
 
 string getNetName(string);
 bool NetworkElementType(string);
+int binaryNameSearch(vector <NetworkElement>, int , int , string );
 /**** MAIN ****/
 
 int main(int argc,char *argv[])
@@ -33,13 +35,9 @@ int main(int argc,char *argv[])
 	cmdline cmdl(options);
 	cmdl.parse(argc, argv);
 
-    string **lines; //este lo usa loadFileMemory()
-	size_t number_lines; //este lo usa loadFileMemory()
-	status_t f_; //estos se usan
-	string str, str1, str2, str3;
-	string NetName;
-
 //NetworkName
+	string str;
+	string NetName;
     getline(ifs,str);
     NetName=getNetName(str);
         if(NetName=="error: missing NetworkName"){
@@ -54,8 +52,7 @@ int main(int argc,char *argv[])
 
     while( getline(ifs,str) )
     {
-            cout << "getline("<<i<<") = "<< str << endl;
-            v.push_back(NetworkElement());
+            //  cout << "getline("<<i<<") = "<< str << endl;
     //Setting Up the vector: NetworkElements
             string aux;
             istringstream iss(str);
@@ -71,6 +68,7 @@ int main(int argc,char *argv[])
 
             if(aux=="NetworkElement")
             {
+                v.push_back(NetworkElement());
                 iss >> aux;
                 v[i].setName(aux);
                 iss >> aux;
@@ -87,21 +85,37 @@ int main(int argc,char *argv[])
     //Setting Up the Connections
             if(aux=="Connection") //Connection CM1 Amp1
             {
-                cout << "Acá hay que conectar los elementos" << endl;
-                /*
-                NetworkElement* N1, N2;
-                iss >> aux;
-                N1=v.find(aux);//N1 is the son
-                iss >> aux;
-                N2=v.find(aux);
-                N1.connectToElement(N2);
-                */
+            iss >> aux;
+            int son=binaryNameSearch(v,0,v.size(), aux);
+            cout << aux << " es v["<<son<<"] con ";
+            iss >> aux;
+            int father=binaryNameSearch(v,0,v.size(),aux);
+            cout<< aux<<" padre v["<<father << "]"<<endl;
             }
 
     }
+
             return 1;
 }
 
+bool isName(NetworkElement n, string s)
+{
+    if(n.getName()==s) return true;
+    else return false;
+}
+
+int binaryNameSearch(vector <NetworkElement> v, int min, int max, string Name)
+{
+    if(min>max)return -1;
+    else{
+        int mid = (min+max)/2;
+        if(Name==v[mid].getName())return mid;
+        else{
+            if(Name<v[mid].getName())return binaryNameSearch(v,mid+1, max, Name);
+            else return binaryNameSearch(v,min,mid-1, Name);
+        }
+    }
+}
 
 string getNetName(string str)
 /*getNetName() valida el primer string
