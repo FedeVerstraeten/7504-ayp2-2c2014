@@ -52,9 +52,9 @@ status_t eraseFileMemory(string ***lines,size_t &size){
 
         if(lines==NULL)return ERROR_NULL_POINTER;
         for(i=0;i<size;i++){
-                delete(*lines)[i];
+                delete(*lines)[i];//vuela el puntero iesimo en memoria
         }
-        delete[](*lines);
+        delete[](*lines);//vuela el arreglo
         *lines=NULL;
 return OK;
 }
