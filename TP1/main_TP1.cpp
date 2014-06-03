@@ -13,96 +13,119 @@
 #include "cmdline.h"
 #include "options.hpp"
 #include <vector>
-
-    //void stringMatrix(string *** matrix, size_t rows, size_t columns);
+#include <algorithm>
 
 using namespace std;
 
 istream *iss = 0;
 ostream *oss = 0;
-fstream ifs;
-fstream ofs;
+fstream ifs, ofs;
 extern option_t options[];
+extern string network_element_type[];
 
+string getNetName(string);
+bool NetworkElementType(string);
 /**** MAIN ****/
 
 int main(int argc,char *argv[])
 {
-
+//OPTIONS AND ARGUMENTS VALIDATION
 	cmdline cmdl(options);
 	cmdl.parse(argc, argv);
 
     string **lines; //este lo usa loadFileMemory()
 	size_t number_lines; //este lo usa loadFileMemory()
 	status_t f_; //estos se usan
-	string st1, st2;
+	string str, str1, str2, str3;
+	string NetName;
 
-	if(*iss==ifs)
-	{
-        f_=loadFileMemory( ifs , &lines , number_lines );
-        if(f_==OK)
-        {
-			cout<<"piola"<<endl;
-			eraseFileMemory( &lines , number_lines );
-	
+//NetworkName
+    getline(ifs,str);
+    NetName=getNetName(str);
+        if(NetName=="error: missing NetworkName"){
+                cerr << NetName << endl;
+                cout << NetName << endl;
+                return 0;
+                }
 
-        }
-        else
-        {
-                close_all_stream_file( ifs , ofs );
-                                cout << "nopiola"<<endl ;
-        }
-    }
-	else if(*iss==cin)
-	{
-        inputFromConsole();
-	}
+//Vector of NetworkElements
+    vector <NetworkElement> v;
+    size_t i=0;
 
-    char * cstr[number_lines];
-    for(size_t i=0 ; i<number_lines ; i++)
+    while( getline(ifs,str) )
     {
-        cstr[i] = new char [(*lines[i]).length()+1];
-        strcpy (cstr[i], (*lines[i]).c_str());
+            cout << "getline("<<i<<") = "<< str << endl;
+            v.push_back(NetworkElement());
+    //Setting Up the vector: NetworkElements
+            string aux;
+            istringstream iss(str);
+            iss >> aux;
+
+            //Wrong text
+            if(aux!="NetworkElement" && aux!= "Connection")
+            {
+                cerr << "error: unknown parameter "<< aux << endl;
+                //delete all memory assigned
+                return 0;
+            }
+
+            if(aux=="NetworkElement")
+            {
+                iss >> aux;
+                v[i].setName(aux);
+                iss >> aux;
+                if(!NetworkElementType(aux)){
+                        cerr << "error: unrecognized Networkelement " << aux << endl;
+                        return 0;
+                }
+                v[i].setType(aux);
+                v[i].showContent();
+                i++;
+            }
+
+
+    //Setting Up the Connections
+            if(aux=="Connection") //Connection CM1 Amp1
+            {
+                cout << "Acá hay que conectar los elementos" << endl;
+                /*
+                NetworkElement* N1, N2;
+                iss >> aux;
+                N1=v.find(aux);//N1 is the son
+                iss >> aux;
+                N2=v.find(aux);
+                N1.connectToElement(N2);
+                */
+            }
+
     }
-
-    #define MAX_WORDS_PER_LINE_DEFAULT 3
-    string matrix[number_lines][MAX_WORDS_PER_LINE_DEFAULT];
-    for(size_t i=0 ; i<number_lines ; i++)
-    {
-      char * p = strtok (cstr[i]," ");
-      size_t j=0;
-      while (p!=0)
-      {
-        matrix[i][j++]=string(p);
-        p = strtok(NULL," ");
-
-      }
-    }
+            return 1;
+}
 
 
-   cout << matrix [2][1] << endl;
-   cout << matrix [2][2] << endl;
-
-
- #define NAME 1
- #define TYPE 2
-
- //FIRST READING
-     size_t NetEls=0;
-       for(size_t i=0 ; i<number_lines ; i++)
-        if(matrix[i][0] == "NetworkElement")
-            NetEls++;
-
- //VECTOR OF NETWORKELEMENTS
-    vector <NetworkElement> NetTree(NetEls);
-        for(size_t i=0 ; i<NetEls ; i++)
-        {
-            NetTree[i].setName(matrix[i+1][1]);
-            NetTree[i].setType(matrix[i+1][2]);
-            NetTree[i].showContent();
+string getNetName(string str)
+/*getNetName() valida el primer string
+del archivo de entrada, que ya es asignado
+como string previamente. */
+{
+    string aux;
+    istringstream iss(str);
+    iss >> aux;
+    if(aux=="NetworkName"){
+        iss >> aux;
+        return aux;
         }
-    //CONNECTIONS
+    else
+        return "error: missing NetworkName";
+}
 
 
-   return 0;
+#define NET_TYPES 4
+bool NetworkElementType(string aux)
+{
+    for( size_t i=0;i<NET_TYPES;i++){
+        if(aux==network_element_type[i])
+            return true;
+    }
+    return false;
 }
