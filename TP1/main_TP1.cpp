@@ -22,11 +22,10 @@ ostream *oss = 0;
 fstream ifs, ofs;
 extern option_t options[];
 extern string network_element_type[];
-bool isName(NetworkElement , string );
 
 string getNetName(string);
 bool NetworkElementType(string);
-int binaryNameSearch(vector <NetworkElement>, int , int , string );
+
 /**** MAIN ****/
 
 int main(int argc,char *argv[])
@@ -83,38 +82,28 @@ int main(int argc,char *argv[])
 
 
     //Setting Up the Connections
-            if(aux=="Connection") //Connection CM1 Amp1
+            if(aux=="Connection")
             {
-            iss >> aux;
-            int son=binaryNameSearch(v,0,v.size(), aux);
-            cout << aux << " es v["<<son<<"] con ";
-            iss >> aux;
-            int father=binaryNameSearch(v,0,v.size(),aux);
-            cout<< aux<<" padre v["<<father << "]"<<endl;
+                string aux1, aux2;
+                size_t i1, i2;
+                bool son=false,father=false;
+                iss >> aux1;
+                iss >> aux2;
+                for(size_t i=0; i<v.size();i++){
+                    if(v[i].getName()==aux1){i1=i; son=~son;}
+                    if(v[i].getName()==aux2){i2=i; father=~father;}
+                }
+                if(son!=true) cout << "Son node isn't found or multiple found"<<endl;
+                if(father!=true) cout << "Father node isn't found or multiple found"<<endl;
+                //cout <<"index of son= "<<i1 <<" and index of father= "<<i2 <<endl;
+                if(son==true && father==true)
+                    v[i2].connectToElement(v[i1]);
+
             }
 
     }
 
             return 1;
-}
-
-bool isName(NetworkElement n, string s)
-{
-    if(n.getName()==s) return true;
-    else return false;
-}
-
-int binaryNameSearch(vector <NetworkElement> v, int min, int max, string Name)
-{
-    if(min>max)return -1;
-    else{
-        int mid = (min+max)/2;
-        if(Name==v[mid].getName())return mid;
-        else{
-            if(Name<v[mid].getName())return binaryNameSearch(v,mid+1, max, Name);
-            else return binaryNameSearch(v,min,mid-1, Name);
-        }
-    }
 }
 
 string getNetName(string str)
