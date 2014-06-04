@@ -25,6 +25,7 @@ extern string network_element_type[];
 
 string getNetName(string);
 bool NetworkElementType(string);
+
 /**** MAIN ****/
 
 int main(int argc,char *argv[])
@@ -33,13 +34,9 @@ int main(int argc,char *argv[])
 	cmdline cmdl(options);
 	cmdl.parse(argc, argv);
 
-    string **lines; //este lo usa loadFileMemory()
-	size_t number_lines; //este lo usa loadFileMemory()
-	status_t f_; //estos se usan
-	string str, str1, str2, str3;
-	string NetName;
-
 //NetworkName
+	string str;
+	string NetName;
     getline(ifs,str);
     NetName=getNetName(str);
         if(NetName=="error: missing NetworkName"){
@@ -54,8 +51,7 @@ int main(int argc,char *argv[])
 
     while( getline(ifs,str) )
     {
-            cout << "getline("<<i<<") = "<< str << endl;
-            v.push_back(NetworkElement());
+            //  cout << "getline("<<i<<") = "<< str << endl;
     //Setting Up the vector: NetworkElements
             string aux;
             istringstream iss(str);
@@ -71,6 +67,7 @@ int main(int argc,char *argv[])
 
             if(aux=="NetworkElement")
             {
+                v.push_back(NetworkElement());
                 iss >> aux;
                 v[i].setName(aux);
                 iss >> aux;
@@ -85,23 +82,29 @@ int main(int argc,char *argv[])
 
 
     //Setting Up the Connections
-            if(aux=="Connection") //Connection CM1 Amp1
+            if(aux=="Connection")
             {
-                cout << "Acá hay que conectar los elementos" << endl;
-                /*
-                NetworkElement* N1, N2;
-                iss >> aux;
-                N1=v.find(aux);//N1 is the son
-                iss >> aux;
-                N2=v.find(aux);
-                N1.connectToElement(N2);
-                */
+                string aux1, aux2;
+                size_t i1, i2;
+                bool son=false,father=false;
+                iss >> aux1;
+                iss >> aux2;
+                for(size_t i=0; i<v.size();i++){
+                    if(v[i].getName()==aux1){i1=i; son=~son;}
+                    if(v[i].getName()==aux2){i2=i; father=~father;}
+                }
+                if(son!=true) cout << "Son node isn't found or multiple found"<<endl;
+                if(father!=true) cout << "Father node isn't found or multiple found"<<endl;
+                //cout <<"index of son= "<<i1 <<" and index of father= "<<i2 <<endl;
+                if(son==true && father==true)
+                    v[i2].connectToElement(v[i1]);
+
             }
 
     }
+
             return 1;
 }
-
 
 string getNetName(string str)
 /*getNetName() valida el primer string
