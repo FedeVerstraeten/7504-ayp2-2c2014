@@ -15,10 +15,10 @@
 class errorsubindice
 {
 	public:
-		errorsubindice()
-		{
-			cout<<"Mensaje emitido al crearse el objeto para la excepción \n Error de subíndice"<<endl;
-		}
+	errorsubindice()
+	{
+		cout<<"Mensaje emitido al crearse el objeto para la excepción \n Error de subíndice"<<endl;
+	}
 };
 
 
@@ -80,7 +80,7 @@ class NetworkElement
 		friend int recorrido(NetworkElement* ,int&,vector <NetworkElement*>&temp);
 		friend int comparator(NetworkElement* ,int&,vector <NetworkElement*>&temp);
 		void validateCycle();
-		void validateIconnection();
+		void validateIconnection(int);
 		void isRepeaten();
 };
 
