@@ -51,13 +51,12 @@ int main(int argc,char *argv[])
 
     while( getline(ifs,str) )
     {
-            //  cout << "getline("<<i<<") = "<< str << endl;
-    //Setting Up the vector: NetworkElements
+        //Setting Up the vector: NetworkElements
             string aux;
             istringstream iss(str);
             iss >> aux;
 
-            //Wrong text
+        //Wrong text
             if(aux!="NetworkElement" && aux!= "Connection")
             {
                 cerr << "error: unknown parameter "<< aux << endl;
@@ -76,12 +75,12 @@ int main(int argc,char *argv[])
                         return 0;
                 }
                 v[i].setType(aux);
-                v[i].showContent();
+                //v[i].showContent();
                 i++;
             }
 
 
-    //Setting Up the Connections
+        //Setting Up the Connections
             if(aux=="Connection")
             {
                 string aux1, aux2;
@@ -93,8 +92,8 @@ int main(int argc,char *argv[])
                     if(v[i].getName()==aux1){i1=i; son=~son;}
                     if(v[i].getName()==aux2){i2=i; father=~father;}
                 }
-                if(son!=true) cout << "Son node isn't found or multiple found"<<endl;
-                if(father!=true) cout << "Father node isn't found or multiple found"<<endl;
+                if(son==false) cout << "Son node isn't found or multiple found"<<endl;
+                if(father==false) cout << "Father node isn't found or multiple found"<<endl;
                 //cout <<"index of son= "<<i1 <<" and index of father= "<<i2 <<endl;
                 if(son==true && father==true)
                     v[i2].connectToElement(v[i1]);
@@ -102,6 +101,13 @@ int main(int argc,char *argv[])
             }
 
     }
+            cout << "NetworkName "<<NetName << endl;
+            for(size_t i=0; i< v.size(); i++)
+                v[i].showContent();
+
+
+            cout << "Elemento cero: "<<endl;
+             v[0].showContent();
 
             return 1;
 }
