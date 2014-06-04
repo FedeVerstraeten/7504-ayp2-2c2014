@@ -26,17 +26,19 @@ int main()
 	
 	hub.connectToElement(node1);
         hub.connectToElement(node2);
-        node1.connectToElement(cm1);
+        //node1.connectToElement(cm1);
 	node1.connectToElement(cm2);
         node1.connectToElement(cm3);
         node2.connectToElement(amp1);
 	amp1.connectToElement(amp2);
 	amp2.connectToElement(cm5);
         amp1.connectToElement(cm4);
-        cm3.connectToElement(hub);
+        //cm3.connectToElement(hub);
+
+	int numberNodes=9; // Son 9 y no 10 porque no considero la RAIZ,en este caso HUB
 
 	hub.validateCycle();
-
+	hub.validateIconnection(numberNodes);
 
 
 
@@ -60,7 +62,7 @@ int main()
 	amp3.connectToElement(amp1);
 
 	
-	amp3.validateCycle();
+
 */	
 	return 0;
 }
