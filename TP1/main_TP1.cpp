@@ -37,20 +37,23 @@ int main(int argc,char *argv[])
 //NetworkName
 	string str;
 	string NetName;
-    getline(ifs,str);
+    getline(*iss,str);
+
     NetName=getNetName(str);
         if(NetName=="error: missing NetworkName"){
                 cerr << NetName << endl;
-                cout << NetName << endl;
-                return 0;
+                //cout << NetName << endl;
+                return 1;
                 }
+    size_t line=1;
 
 //Vector of NetworkElements
     vector <NetworkElement> v;
     size_t i=0;
 
-    while( getline(ifs,str) )
+    while( getline(*iss,str) )
     {
+            line++;
         //Setting Up the vector: NetworkElements
             string aux;
             istringstream iss(str);
@@ -59,9 +62,9 @@ int main(int argc,char *argv[])
         //Wrong text
             if(aux!="NetworkElement" && aux!= "Connection")
             {
-                cerr << "error: unknown parameter "<< aux << endl;
+                cerr << "error: unknown parameter "<< aux <<" at line: " << line << endl;
                 //delete all memory assigned
-                return 0;
+                return 1;
             }
 
             if(aux=="NetworkElement")
@@ -72,7 +75,7 @@ int main(int argc,char *argv[])
                 iss >> aux;
                 if(!NetworkElementType(aux)){
                         cerr << "error: unrecognized Networkelement " << aux << endl;
-                        return 0;
+                        return 1;
                 }
                 v[i].setType(aux);
                 //v[i].showContent();
@@ -106,10 +109,7 @@ int main(int argc,char *argv[])
                 v[i].showContent();
 
 
-            cout << "Elemento cero: "<<endl;
-             v[0].showContent();
-
-            return 1;
+            return 0;
 }
 
 string getNetName(string str)
