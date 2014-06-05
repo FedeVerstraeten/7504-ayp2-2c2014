@@ -104,10 +104,10 @@ int main(int argc,char *argv[])
             }
 
     }
-            cout << "NetworkName "<<NetName << endl;
-            for(size_t i=0; i< v.size(); i++)
-                v[i].showContent();
-
+            ofs << "NetworkName "<<NetName << endl;
+            for(size_t i=0; i< v.size(); i++){
+                v[i].showContent(ofs);
+            }
 
             return 0;
 }

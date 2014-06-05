@@ -1,0 +1,2 @@
+NetworkName R1
+NetworkElement Hub1 Hub
