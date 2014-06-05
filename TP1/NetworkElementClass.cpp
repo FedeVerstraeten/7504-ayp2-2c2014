@@ -202,9 +202,9 @@ NetworkElement& NetworkElement :: connectToElement (NetworkElement &element)
 	return *this;
 }
 
-void NetworkElement :: showContent()
+void NetworkElement :: showContent(ostream& os)
 {
-	cout//<<"***** Elemento de red *****"<<endl
+	os//<<"***** Elemento de red *****"<<endl
 		<<"NetworkElement "<<name//<<endl
 		<<" "<<type<<endl;
 		//<<"Cantidad de hijos: "<<numberSons<<endl;
@@ -212,13 +212,13 @@ void NetworkElement :: showContent()
 	if(numberSons!=0)
 	{
 		for(unsigned int i=0 ; i < numberSons; i++)
-		cout<<"Connection " << sons[i]->name <<" "<<  name << endl;
+		os<<"Connection " << sons[i]->name <<" "<<  name << endl;
 	}
 
 }
 
 
- 
+
 //suponemos que la memoria es estatica hasta este punto del código
 void NetworkElement ::validateCycle()
 {
@@ -233,7 +233,7 @@ void NetworkElement ::validateCycle()
 		// INSTALAR Y PROBAR CON VALGRIND....
 
 		cout<<vertice<<endl;
-		
+
 
 		cout<< "Se en encontro un ciclo en:\t "<<temp.data()[vertice]->getName()<<endl;
 
@@ -247,7 +247,7 @@ void NetworkElement ::validateIconnection(int numberNodes)
 	int vertice=0;
 	vector <NetworkElement*> temp;//usar la clase vector y push_back ,arreglo dinamico...
 	if((recorrido(this,vertice,temp))!=DETECT_CYCLE)
-	{	
+	{
 		if(vertice < numberNodes)
 		{
 			cout<< "Arbol inconexo. Inconexion sobre vértice:\t "<<temp.data()[vertice]->getName()<<endl
@@ -265,11 +265,11 @@ void NetworkElement :: isRepeaten()
 
 /************************************** FUNCIONES FRIEND ********************************************/
 
-//Está función es la que se encarga de recorrer el árbol creado previamente, recorre por profundidad,saliendo de la misma en caso de detectar ciclos 
+//Está función es la que se encarga de recorrer el árbol creado previamente, recorre por profundidad,saliendo de la misma en caso de detectar ciclos
 //o arboles inconexos.
 
 
-//Recibe un entero  por referencia 'vertice' que guarda el numero de conexiones realizadas, y un arreglo de punteros a NetworkElement temporal, 
+//Recibe un entero  por referencia 'vertice' que guarda el numero de conexiones realizadas, y un arreglo de punteros a NetworkElement temporal,
 //donde se guardan la direccion de memoria de los objetos recorridos.
 //La función trabaja de manera recursiva e iterativa garanztizando que siempre que el arbol este armado puede vistar a todos los nodos del mismo
 //La función recorre por hijos
@@ -281,7 +281,7 @@ int recorrido(NetworkElement *v,int &vertice,vector <NetworkElement*> &temp){
 	temp.push_back(v);
 	cout<<"Nombres guardados: "<<v->getName()<<endl;
     if(temp[vertice]->numberSons==0){ return BACK_TREE;}
-	else 
+	else
         for(size_t i=0;i<v->numberSons;i++)
 		{
 			vertice++;
@@ -299,10 +299,10 @@ int comparator(NetworkElement *v,int &vertice,vector<NetworkElement*>&temp){
 		if(v->name==temp.data()[i]->name)
 		{
 			temp.push_back(v);
-			
+
 			return EXIST;
 		}
-	
+
 	}
 
 	return NOT_EXIST;

@@ -51,10 +51,10 @@ class NetworkElement
 		const string getName()const {return name;}
 		const string getType()const {return type;}
 		const NetworkElement* getFather()const {return father_;}
-		const size_t getNumberSons() const {return numberSons;}		
+		const size_t getNumberSons() const {return numberSons;}
 		NetworkElement** getSons() const {return sons;} // Revisar no me deja el compilador retornar 'const NetworkElement**'
 		const NetworkElement* getSons(const int)const;
-		
+
 
 		// getSons(): Sin argumentos, retorna el puntero al arreglo de punteros a NetworkElement hijos
 		// getSons(int): Con argumentos, retorna el puntero de determinado hijo
@@ -70,10 +70,10 @@ class NetworkElement
 
 		// Se asume que se conecta al ingresar: hijo --> padre
         NetworkElement& connectToElement(NetworkElement&);
-		
-		void showContent();
-		
-			
+
+		void showContent(ostream&);
+
+
         /************************** MÉTODOS  DE RECORRIDO DE ARBOL************************************/
 
 
