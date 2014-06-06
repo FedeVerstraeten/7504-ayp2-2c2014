@@ -104,6 +104,20 @@ int main(int argc,char *argv[])
             }
 
     }
+	//Encuentro el hub1---- 
+	string hub1("Hub1");
+	for(i=0;v[i].getName()!="Hub1";i++){
+	}
+	
+	cout<<v[i].getName()<<endl;
+	//------------------------------
+
+	//Empieza las validacionesd de ciclos e inconexiones
+	v[i].validateCycle();
+	v[i].validateIconnection(v.size());
+
+
+
             ofs << "NetworkName "<<NetName << endl;
             for(size_t i=0; i< v.size(); i++){
                 v[i].showContent(ofs);
