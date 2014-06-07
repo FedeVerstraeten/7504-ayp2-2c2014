@@ -231,10 +231,7 @@ void NetworkElement ::validateCycle()
 	    // vertice contiene la cantidad de nodos que
     	// que pudieron ser recorridos.
 		// INSTALAR Y PROBAR CON VALGRIND....
-
-		cout<<vertice<<endl;
-
-
+		
 		cout<< "Se en encontro un ciclo en:\t "<<temp.data()[vertice]->getName()<<endl;
 
 	}
@@ -244,23 +241,43 @@ void NetworkElement ::validateCycle()
 
 void NetworkElement ::validateIconnection(int numberNodes)
 {
+
 	int vertice=0;
 	vector <NetworkElement*> temp;//usar la clase vector y push_back ,arreglo dinamico...
 	if((recorrido(this,vertice,temp))!=DETECT_CYCLE)
 	{
-		if(vertice < numberNodes)
+		if(vertice + ROOT < numberNodes)
 		{
-			cout<< "Arbol inconexo. Inconexion sobre vértice:\t "<<temp.data()[vertice]->getName()<<endl
+			cout<< "Arbol inconexo."<<endl
 				<< "Cantidad de vertices registrados:\t"<<vertice<<endl;
 		}
 		else
 			cout<< "Arbol conexo"<<endl;
 	}
 }
-
-void NetworkElement :: isRepeaten()
+// Recorrer vector de elementos y revisar si hay elementos repetidos
+void NetworkElement :: isRepeaten(vector <NetworkElement>& vectorElement)
 {
-	// Recorrer vector de elementos y revisar si hay elementos repetidos
+		
+	int vertice=0,repeat=0;
+	vector <NetworkElement*> temp;//usar la clase vector y push_back ,arreglo dinamico...
+	if((recorrido(this,vertice,temp))!=DETECT_CYCLE)
+	{
+		for(size_t i=0;i<vectorElement.size();i++)
+		{
+			//En la posicion "vertice" del vector "temp" esta el elemento detectado como posible candidato a estar repetido, ya que la funcion "recorrido" lo detecta como un ciclo.
+//			NetworkElement *aux1;
+	//		aux1=temp.data()[vertice];
+		//	aux2=
+			if(*(temp.data()[vertice])==vectorElement.data()[i]) repeat++;
+		}
+		if(repeat>ONE){
+			cout<< "Elemento repetido:\t "<<temp.data()[vertice]->getName()<<endl;
+		}
+		
+	}
+
+
 }
 
 /************************************** FUNCIONES FRIEND ********************************************/
@@ -273,13 +290,14 @@ void NetworkElement :: isRepeaten()
 //donde se guardan la direccion de memoria de los objetos recorridos.
 //La función trabaja de manera recursiva e iterativa garanztizando que siempre que el arbol este armado puede vistar a todos los nodos del mismo
 //La función recorre por hijos
+//El valor final que queda guardado en la variable 'vertice' es la cantidad de nodos del arbol excepto la raiz (ver macro ROOT), luego de realizar la funcion "recorrido()".
 
 
 int recorrido(NetworkElement *v,int &vertice,vector <NetworkElement*> &temp){
 
 	if(comparator(v,vertice,temp)==EXIST){return DETECT_CYCLE;}
 	temp.push_back(v);
-	cout<<"Nombres guardados: "<<v->getName()<<endl;
+	//cout<<"Nombres guardados: "<<v->getName()<<endl;
     if(temp[vertice]->numberSons==0){ return BACK_TREE;}
 	else
         for(size_t i=0;i<v->numberSons;i++)
@@ -307,3 +325,5 @@ int comparator(NetworkElement *v,int &vertice,vector<NetworkElement*>&temp){
 
 	return NOT_EXIST;
 }
+
+

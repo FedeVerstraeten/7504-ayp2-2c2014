@@ -3,17 +3,15 @@
 #include <string>
 #include <sstream>
 #include <cstring>
-#include"file_load.hpp"
 #include"common.hpp"
 #include "printers.hpp"
 #include "dictionary.hpp"
 #include "process.hpp"
-#include "arguments.hpp"
 #include "NetworkElementClass.hpp"
 #include "cmdline.h"
 #include "options.hpp"
 #include <vector>
-#include <algorithm>
+
 
 using namespace std;
 
@@ -71,6 +69,7 @@ int main(int argc,char *argv[])
             {
                 v.push_back(NetworkElement());
                 iss >> aux;
+
                 v[i].setName(aux);
                 iss >> aux;
                 if(!NetworkElementType(aux)){
@@ -78,7 +77,7 @@ int main(int argc,char *argv[])
                         return 1;
                 }
                 v[i].setType(aux);
-                //v[i].showContent();
+                v[i].showContent(ofs);
                 i++;
             }
 
@@ -104,25 +103,22 @@ int main(int argc,char *argv[])
             }
 
     }
+/*	ofs << "NetworkName "<<NetName << endl;
+	for(size_t i=0; i< v.size(); i++){
+	v[i].showContent(ofs);
+            }*/
+
 	//Encuentro el hub1---- 
-	string hub1("Hub1");
-	for(i=0;v[i].getName()!="Hub1";i++){
-	}
-	
-	cout<<v[i].getName()<<endl;
-	//------------------------------
-
 	//Empieza las validacionesd de ciclos e inconexiones
-	v[i].validateCycle();
-	v[i].validateIconnection(v.size());
+	size_t rootPosition=FindRoot(v);
+//	cout<<v.data()[rootPosition].getName()<<endl;		
+	v.data()[rootPosition].validateIconnection(v.size());
+	v.data()[rootPosition].isRepeaten(v);
+	v.data()[rootPosition].validateCycle();
+	
 
 
-
-            ofs << "NetworkName "<<NetName << endl;
-            for(size_t i=0; i< v.size(); i++){
-                v[i].showContent(ofs);
-            }
-
+     
             return 0;
 }
 
