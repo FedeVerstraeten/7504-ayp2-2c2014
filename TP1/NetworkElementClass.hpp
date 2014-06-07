@@ -8,7 +8,8 @@
 #define NOT_EXIST 1
 #define BACK_TREE 0;
 #define DETECT_CYCLE 1
-
+#define ROOT 1
+#define ONE 1//valida que no se repitan mas de un NetworkElement
 
 
 
@@ -81,7 +82,7 @@ class NetworkElement
 		friend int comparator(NetworkElement* ,int&,vector <NetworkElement*>&temp);
 		void validateCycle();
 		void validateIconnection(int);
-		void isRepeaten();
+		void isRepeaten(vector <NetworkElement>&);
 };
 
 

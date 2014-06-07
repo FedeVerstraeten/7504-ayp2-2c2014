@@ -4,10 +4,13 @@
 #include <string>
 #include <sstream>
 #include"common.hpp"
-status_t processLine(string);
-status_t processLine(string line, string name1, string name2);
-void inputFromConsole(void);
-//void tokenLine(string);
-//status_t checkTokens(string &name, string &type)
+#include <vector>
+#include "NetworkElementClass.hpp"
+
+//Esta funcion encuentra el ROOT
+
+int FindRoot(vector <NetworkElement>&);
+
+
 
 #endif // PROCESS_HPP_INCLUDED
