@@ -90,13 +90,32 @@ int main(int argc,char *argv[])
                 bool son=false,father=false;
                 iss >> aux1;
                 iss >> aux2;
-                for(size_t i=0; i<v.size();i++){
-                    if(v[i].getName()==aux1){i1=i; son=~son;}
-                    if(v[i].getName()==aux2){i2=i; father=~father;}
-                }
-                if(son==false) cout << "Son node isn't found or multiple found"<<endl;
-                if(father==false) cout << "Father node isn't found or multiple found"<<endl;
-                //cout <<"index of son= "<<i1 <<" and index of father= "<<i2 <<endl;
+                for(size_t i=0; i<v.size();i++)
+				{
+                    if(v[i].getName()==aux1)
+					{
+						i1=i; 
+						if(son==false){son=true;}
+						else {son=false;}
+					}
+                    if(v[i].getName()==aux2)
+					{
+						i2=i; 	
+						if(father==false){father=true;}
+						else {father=false;}
+                	}
+				}
+                if(son==false) 
+				{
+					cout << "Son node isn't found or multiple found"<<endl
+						 << aux <<" Error at line: " << line << endl;
+				}
+                if(father==false)
+				{
+					cout << "Father node isn't found or multiple found"<<endl
+						 << aux <<" Error at line: " << line << endl;
+				}                
+				//cout <<"index of son= "<<i1 <<" and index of father= "<<i2 <<endl;
                 if(son==true && father==true)
                     v[i2].connectToElement(v[i1]);
 
