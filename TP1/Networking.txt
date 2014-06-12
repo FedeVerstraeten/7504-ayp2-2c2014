@@ -7,6 +7,7 @@ NetworkElement Node1 Node
 NetworkElement CM4 CM
 NetworkElement CM2 CM
 NetworkElement Amp1 Amp
+NetworkElement CM5 CM
 Connection CM4 Amp1
 Connection CM3 Amp1
 Connection Node1 Hub1
@@ -14,3 +15,4 @@ Connection CM2 Node2
 Connection CM1 Node1
 Connection Amp1 Node1
 Connection Node2 Hub1
+Connection Hub1 CM5

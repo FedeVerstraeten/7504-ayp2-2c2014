@@ -18,7 +18,7 @@ class errorsubindice
 	public:
 	errorsubindice()
 	{
-		cout<<"Mensaje emitido al crearse el objeto para la excepción \n Error de subíndice"<<endl;
+		cout<<"Error de subíndice"<<endl;
 	}
 };
 
@@ -42,7 +42,7 @@ class NetworkElement
 		// ¿Debería poder copiarse los nodos?
 		// Constructor por copia:
 		NetworkElement(const NetworkElement&);
-		~NetworkElement() { }
+		~NetworkElement();
 
         /*************************** SET & GET *********************************/
 
@@ -71,7 +71,10 @@ class NetworkElement
 
 		// Se asume que se conecta al ingresar: hijo --> padre
         NetworkElement& connectToElement(NetworkElement&);
-
+		
+		// Funcion validacion de jerarquía de los elementos
+		bool validateHierarchy(NetworkElement&);
+		
 		void showContent(ostream&);
 
 
