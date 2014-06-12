@@ -234,11 +234,11 @@ bool NetworkElement :: validateHierarchy(NetworkElement &element)
 
 void NetworkElement :: showContent(ostream& os)
 {
-	os//<<"***** Elemento de red *****"<<endl
+		os//<<"***** Elemento de red *****"<<endl
 		<<"NetworkElement "<<name//<<endl
 		<<" "<<type<<endl;
 		//<<"Cantidad de hijos: "<<numberSons<<endl;
-
+//	os << "number of sons: " <<numberSons << endl;
 	if(numberSons!=0)
 	{
 		for(unsigned int i=0 ; i < numberSons; i++)
