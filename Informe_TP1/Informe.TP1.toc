@@ -1,0 +1,15 @@
+\select@language {spanish}
+\contentsline {section}{\numberline {1}Introducci\IeC {\'o}n}{3}
+\contentsline {section}{\numberline {2}Dise\IeC {\~n}o e Implementaci\IeC {\'o}n}{3}
+\contentsline {subsection}{\numberline {2.1}NetworkElement Class}{3}
+\contentsline {subsection}{\numberline {2.2}Validaci\IeC {\'o}n de flujos de entrada y salida}{4}
+\contentsline {subsection}{\numberline {2.3}Proceso del archivo de entrada}{4}
+\contentsline {subsubsection}{\numberline {2.3.1}Nombre de Red}{5}
+\contentsline {subsubsection}{\numberline {2.3.2}Vector de Elementos de Red}{5}
+\contentsline {subsubsection}{\numberline {2.3.3}Conexionado}{5}
+\contentsline {subsection}{\numberline {2.4}Detecci\IeC {\'o}n de loops}{6}
+\contentsline {subsection}{\numberline {2.5}Archivo de salida}{6}
+\contentsline {section}{\numberline {3}Ejecuciones}{7}
+\contentsline {subsection}{\numberline {3.1}Compilaci\IeC {\'o}n}{7}
+\contentsline {subsection}{\numberline {3.2}Comprobaci\IeC {\'o}n de uso de memoria con Valgrind}{9}
+\contentsline {section}{\numberline {4}C\IeC {\'o}digos}{10}

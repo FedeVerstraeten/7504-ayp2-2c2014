@@ -1,0 +1,18 @@
+NetworkElement CM1 CM
+number of sons: 0
+NetworkElement CM3 CM
+number of sons: 0
+NetworkElement Hub1 Hub
+number of sons: 0
+NetworkElement Node2 Node
+number of sons: 0
+NetworkElement Node1 Node
+number of sons: 0
+NetworkElement CM4 CM
+number of sons: 0
+NetworkElement CM2 CM
+number of sons: 0
+NetworkElement Amp1 Amp
+number of sons: 0
+NetworkElement CM5 CM
+number of sons: 0
