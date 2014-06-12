@@ -4,14 +4,13 @@
 #include <sstream>
 #include <cstring>
 #include"common.hpp"
-#include "printers.hpp"
 #include "dictionary.hpp"
 #include "process.hpp"
 #include "NetworkElementClass.hpp"
 #include "cmdline.h"
 #include "options.hpp"
 #include <vector>
-
+#include <algorithm>
 
 using namespace std;
 
@@ -24,34 +23,29 @@ extern string network_element_type[];
 string getNetName(string);
 bool NetworkElementType(string);
 
-/************************************************ MAIN **************************************************************/
+/**** MAIN ****/
 
 int main(int argc,char *argv[])
 {
-	//OPTIONS AND ARGUMENTS VALIDATION
-	
+//OPTIONS AND ARGUMENTS VALIDATION
 	cmdline cmdl(options);
 	cmdl.parse(argc, argv);
 
-	//NetworkName
-
+//NetworkName
 	string str;
 	string NetName;
     getline(*iss,str);
 
     NetName=getNetName(str);
-        
-	if(NetName=="error: missing NetworkName")
-	{
+        if(NetName=="error: missing NetworkName"){
                 cerr << NetName << endl;
                 //cout << NetName << endl;
                 return 1;
-    }
+                }
     size_t line=1;
 
-	//Vector of NetworkElements
-    
-	vector <NetworkElement> v;
+//Vector of NetworkElements
+    vector <NetworkElement> v;
     size_t i=0;
 
     while( getline(*iss,str) )
@@ -74,7 +68,6 @@ int main(int argc,char *argv[])
             {
                 v.push_back(NetworkElement());
                 iss >> aux;
-
                 v[i].setName(aux);
                 iss >> aux;
                 if(!NetworkElementType(aux)){
@@ -82,7 +75,7 @@ int main(int argc,char *argv[])
                         return 1;
                 }
                 v[i].setType(aux);
-                v[i].showContent(ofs);
+               // v[i].showContent(ofs);
                 i++;
             }
 
@@ -95,9 +88,10 @@ int main(int argc,char *argv[])
                 bool son=false,father=false;
                 iss >> aux1;
                 iss >> aux2;
-                for(size_t i=0; i<v.size();i++)
-				{
-                    if(v[i].getName()==aux1)
+                for(size_t i=0; i<v.size();i++){
+
+
+					if(v[i].getName()==aux1)
 					{
 						i1=i; 
 						if(son==false){son=true;}
@@ -109,8 +103,10 @@ int main(int argc,char *argv[])
 						if(father==false){father=true;}
 						else {father=false;}
                 	}
-				}
-                if(son==false) 
+                }
+
+
+	            if(son==false) 
 				{
 					cout << "Son node isn't found or multiple found"<<endl
 						 << aux <<" Error at line: " << line << endl;
@@ -120,23 +116,31 @@ int main(int argc,char *argv[])
 					cout << "Father node isn't found or multiple found"<<endl
 						 << aux <<" Error at line: " << line << endl;
 				}                
-				//cout <<"index of son= "<<i1 <<" and index of father= "<<i2 <<endl;
-                if(son==true && father==true)
+
+
+
+                //cout <<"index of son= "<<i1 <<" and index of father= "<<i2 <<endl;
+               // if(son==true && father==true)
+                 //   v[i2].connectToElement(v[i1]);
+				if(son==true && father==true)
 				{
-					if(v[i2].validateHierarchy(v[i1])==true)
+				
+				if(v[i2].validateHierarchy(v[i1])==true)
                     	v[i2].connectToElement(v[i1]);
-					else
-						cout <<"Failure hierarchy. Unable to connect the elements"<<endl
-							 << v[i2].getName() << "(father) with "<< v[i1].getName() << "(son)"<<endl
-							 << aux <<" Error at line: " << line << endl;
+				else
+				cout <<"Failure hierarchy. Unable to connect the elements"<<endl
+				<< v[i2].getName() << "(father) with "<< v[i1].getName() << "(son)"<<endl
+				<< aux <<" Error at line: " << line << endl;
 				}
+
             }
 
     }
-/*	ofs << "NetworkName "<<NetName << endl;
-	for(size_t i=0; i< v.size(); i++){
-	v[i].showContent(ofs);
-            }*/
+//ACA IMPRIME SEGUN EL ORDEN DEL ARREGLO ENTONCES SE DEBERIA IMPRIMIR SEGUN LA JERARQUIA ..!!!111
+            ofs << "NetworkName "<<NetName << endl;
+            for(size_t i=0; i< v.size(); i++){
+                v[i].showContent(ofs);
+            }
 
 	//Encuentro el hub1---- 
 	size_t rootPosition=FindRoot(v);	
@@ -147,15 +151,8 @@ int main(int argc,char *argv[])
 	v.data()[rootPosition].validateIconnection(v.size());
 	v.data()[rootPosition].isRepeaten(v);
 	v.data()[rootPosition].validateCycle();
-	
-
-
-     
             return 0;
 }
-
-
-/******************************************** FUNCIONES EXTRAS **************************************************/
 
 string getNetName(string str)
 /*getNetName() valida el primer string
