@@ -24,29 +24,34 @@ extern string network_element_type[];
 string getNetName(string);
 bool NetworkElementType(string);
 
-/**** MAIN ****/
+/************************************************ MAIN **************************************************************/
 
 int main(int argc,char *argv[])
 {
-//OPTIONS AND ARGUMENTS VALIDATION
+	//OPTIONS AND ARGUMENTS VALIDATION
+	
 	cmdline cmdl(options);
 	cmdl.parse(argc, argv);
 
-//NetworkName
+	//NetworkName
+
 	string str;
 	string NetName;
     getline(*iss,str);
 
     NetName=getNetName(str);
-        if(NetName=="error: missing NetworkName"){
+        
+	if(NetName=="error: missing NetworkName")
+	{
                 cerr << NetName << endl;
                 //cout << NetName << endl;
                 return 1;
-                }
+    }
     size_t line=1;
 
-//Vector of NetworkElements
-    vector <NetworkElement> v;
+	//Vector of NetworkElements
+    
+	vector <NetworkElement> v;
     size_t i=0;
 
     while( getline(*iss,str) )
@@ -117,8 +122,14 @@ int main(int argc,char *argv[])
 				}                
 				//cout <<"index of son= "<<i1 <<" and index of father= "<<i2 <<endl;
                 if(son==true && father==true)
-                    v[i2].connectToElement(v[i1]);
-
+				{
+					if(v[i2].validateHierarchy(v[i1])==true)
+                    	v[i2].connectToElement(v[i1]);
+					else
+						cout <<"Failure hierarchy. Unable to connect the elements"<<endl
+							 << v[i2].getName() << "(father) with "<< v[i1].getName() << "(son)"<<endl
+							 << aux <<" Error at line: " << line << endl;
+				}
             }
 
     }
@@ -128,8 +139,10 @@ int main(int argc,char *argv[])
             }*/
 
 	//Encuentro el hub1---- 
-	//Empieza las validacionesd de ciclos e inconexiones
-	size_t rootPosition=FindRoot(v);
+	size_t rootPosition=FindRoot(v);	
+
+	//Empieza las validaciones de ciclos e inconexiones
+	
 //	cout<<v.data()[rootPosition].getName()<<endl;		
 	v.data()[rootPosition].validateIconnection(v.size());
 	v.data()[rootPosition].isRepeaten(v);
@@ -140,6 +153,9 @@ int main(int argc,char *argv[])
      
             return 0;
 }
+
+
+/******************************************** FUNCIONES EXTRAS **************************************************/
 
 string getNetName(string str)
 /*getNetName() valida el primer string

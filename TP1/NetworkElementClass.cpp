@@ -31,6 +31,7 @@ NetworkElement :: NetworkElement(const NetworkElement &element)
 	type=element.type; // Por defecto dejo Cable Modem, luego se cambiará
 	father_=element.father_;
 	numberSons=0;
+	sons=NULL;
 	if(element.numberSons!=0)
 	{
 		numberSons=element.numberSons;
@@ -46,6 +47,12 @@ NetworkElement :: NetworkElement(const NetworkElement &element)
 		}
 	}
 	//  cout<<"Constructor por copia"<<endl;
+}
+
+NetworkElement :: ~NetworkElement()
+{
+	delete [] sons;
+	//cout<< "Destruyendo elementos"<<endl;
 }
 
 /*************************************** SET & GET ********************************************/
@@ -177,6 +184,7 @@ NetworkElement& NetworkElement :: connectToElement (NetworkElement &element)
 
 			auxSons = new NetworkElement* [numberSons+1]; // Se pide espacio; si no se obtiene new lanza bad_alloc
 
+
 			if(sons!=NULL)
 			{
 				for(unsigned int i=0 ; i<numberSons ; i++)
@@ -188,8 +196,7 @@ NetworkElement& NetworkElement :: connectToElement (NetworkElement &element)
 
 			delete [] sons; 	// Si llegó acá es que obtuvo el espacio; libera el anterior espacio para sons
 			sons = auxSons;		// Asigno a sons el puntero que apunta al nuevo array de hijos
-			//delete [] auxSons;	// Libero la memoria auxiliar
-
+			
 			numberSons++;
 		}
 
@@ -201,6 +208,29 @@ NetworkElement& NetworkElement :: connectToElement (NetworkElement &element)
 	}
 	return *this;
 }
+
+/*	Funcion que valida la jerarquía, evita que se realicen conexiones prohibidas del tipo
+	por ejemplo: CM1 --> CM2 ó HUB1 --> CM2
+	
+	padre.validateHierarchy(hijo)
+
+*/
+bool NetworkElement :: validateHierarchy(NetworkElement &element)
+{
+	
+	if(type=="CM")
+	{	if(element.type=="CM" || element.type=="Amp" || element.type=="Node" || element.type=="Hub" ) return false; }
+
+	else if(type=="Amp" || type=="Node")
+	{	if(element.type=="Hub" || element.type=="Node") return false; }
+
+	else if(type=="Hub")
+	{	if(element.type=="Hub" || element.type=="Amp" || element.type=="CM") return false; }
+	
+	
+	return true;
+}
+
 
 void NetworkElement :: showContent(ostream& os)
 {
@@ -220,6 +250,7 @@ void NetworkElement :: showContent(ostream& os)
 
 
 //suponemos que la memoria es estatica hasta este punto del código
+
 void NetworkElement ::validateCycle()
 {
 
@@ -230,7 +261,6 @@ void NetworkElement ::validateCycle()
 		// asignarle elemento desde donde quieres recorrer
 	    // vertice contiene la cantidad de nodos que
     	// que pudieron ser recorridos.
-		// INSTALAR Y PROBAR CON VALGRIND....
 		
 		cout<< "Se en encontro un ciclo en:\t "<<temp.data()[vertice]->getName()<<endl;
 
@@ -255,6 +285,8 @@ void NetworkElement ::validateIconnection(int numberNodes)
 			cout<< "Arbol conexo"<<endl;
 	}
 }
+
+
 // Recorrer vector de elementos y revisar si hay elementos repetidos
 void NetworkElement :: isRepeaten(vector <NetworkElement>& vectorElement)
 {
@@ -265,9 +297,11 @@ void NetworkElement :: isRepeaten(vector <NetworkElement>& vectorElement)
 	{
 		for(size_t i=0;i<vectorElement.size();i++)
 		{
-			//En la posicion "vertice" del vector "temp" esta el elemento detectado como posible candidato a estar repetido, ya que la funcion "recorrido" lo detecta como un ciclo.
-//			NetworkElement *aux1;
-	//		aux1=temp.data()[vertice];
+			// En la posicion "vertice" del vector "temp" esta el elemento detectado como posible 
+			// candidato a estar repetido, ya que la funcion "recorrido" lo detecta como un ciclo.
+			
+		//	NetworkElement *aux1;
+		//	aux1=temp.data()[vertice];
 		//	aux2=
 			if(*(temp.data()[vertice])==vectorElement.data()[i]) repeat++;
 		}

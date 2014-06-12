@@ -6,3 +6,4 @@ NetworkElement Node1 Node
 NetworkElement CM4 CM
 NetworkElement CM2 CM
 NetworkElement Amp1 Amp
+NetworkElement CM5 CM
