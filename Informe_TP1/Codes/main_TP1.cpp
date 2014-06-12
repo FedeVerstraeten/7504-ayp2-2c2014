@@ -3,12 +3,9 @@
 #include <string>
 #include <sstream>
 #include <cstring>
-#include"file_load.hpp"
 #include"common.hpp"
-#include "printers.hpp"
 #include "dictionary.hpp"
 #include "process.hpp"
-#include "arguments.hpp"
 #include "NetworkElementClass.hpp"
 #include "cmdline.h"
 #include "options.hpp"
@@ -78,7 +75,7 @@ int main(int argc,char *argv[])
                         return 1;
                 }
                 v[i].setType(aux);
-                //v[i].showContent();
+               // v[i].showContent(ofs);
                 i++;
             }
 
@@ -92,16 +89,42 @@ int main(int argc,char *argv[])
                 iss >> aux1;
                 iss >> aux2;
                 for(size_t i=0; i<v.size();i++){
-                    if(v[i].getName()==aux1){i1=i; son=~son;}
-                    if(v[i].getName()==aux2){i2=i; father=~father;}
-                }
-                if(son==false) cout << "Son node isn't found or multiple found"<<endl;
-                if(father==false) cout << "Father node isn't found or multiple found"<<endl;
-                //cout <<"index of son= "<<i1 <<" and index of father= "<<i2 <<endl;
 
+
+					if(v[i].getName()==aux1)
+					{
+						i1=i; 
+						if(son==false){son=true;}
+						else {son=false;}
+					}
+                    if(v[i].getName()==aux2)
+					{
+						i2=i; 	
+						if(father==false){father=true;}
+						else {father=false;}
+                	}
+                }
+
+
+	            if(son==false) 
+				{
+					cout << "Son node isn't found or multiple found"<<endl
+						 << aux <<" Error at line: " << line << endl;
+				}
+                if(father==false)
+				{
+					cout << "Father node isn't found or multiple found"<<endl
+						 << aux <<" Error at line: " << line << endl;
+				}                
+
+
+
+                //cout <<"index of son= "<<i1 <<" and index of father= "<<i2 <<endl;
+               // if(son==true && father==true)
+                 //   v[i2].connectToElement(v[i1]);
 				if(son==true && father==true)
 				{
-
+				
 				if(v[i2].validateHierarchy(v[i1])==true)
                     	v[i2].connectToElement(v[i1]);
 				else
@@ -113,21 +136,23 @@ int main(int argc,char *argv[])
             }
 
     }
+//ACA IMPRIME SEGUN EL ORDEN DEL ARREGLO ENTONCES SE DEBERIA IMPRIMIR SEGUN LA JERARQUIA ..!!!111
             ofs << "NetworkName "<<NetName << endl;
-            for(size_t i=0; i< v.size(); i++){
-                v[i].showContent(ofs);
-            }
+            for(size_t i=0; i< v.size(); i++)
+				v[i].showElements(ofs);
+            for(size_t i=0; i< v.size(); i++)
+				v[i].showConnections(ofs);
+            
 
-            	//Empieza las validaciones de ciclos e inconexiones
-size_t rootPosition=FindRoot(v);
+	//Encuentro el hub1---- 
+	size_t rootPosition=FindRoot(v);	
 
-//	cout<<v.data()[rootPosition].getName()<<endl;
+	//Empieza las validaciones de ciclos e inconexiones
+	
+//	cout<<v.data()[rootPosition].getName()<<endl;		
 	v.data()[rootPosition].validateIconnection(v.size());
 	v.data()[rootPosition].isRepeaten(v);
 	v.data()[rootPosition].validateCycle();
-
-
-
             return 0;
 }
 

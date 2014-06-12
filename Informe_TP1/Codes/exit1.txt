@@ -1,0 +1,9 @@
+NetworkElement CM1 CM
+NetworkElement CM3 CM
+NetworkElement Hub1 Hub
+NetworkElement Node2 Node
+NetworkElement Node1 Node
+NetworkElement CM4 CM
+NetworkElement CM2 CM
+NetworkElement Amp1 Amp
+NetworkElement CM5 CM
