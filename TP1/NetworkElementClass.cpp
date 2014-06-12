@@ -247,7 +247,20 @@ void NetworkElement :: showContent(ostream& os)
 
 }
 
+void NetworkElement :: showElements(ostream& os)
+{
+	os <<"NetworkElement "<<name
+	   <<" "<<type<<endl;
+}
 
+void NetworkElement :: showConnections(ostream& os)
+{
+	if(numberSons!=0)
+	{
+		for(unsigned int i=0 ; i < numberSons; i++)
+		os<<"Connection " << sons[i]->name <<" "<<  name << endl;
+	}
+}
 
 //suponemos que la memoria es estatica hasta este punto del código
 

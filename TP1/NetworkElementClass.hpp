@@ -76,6 +76,8 @@ class NetworkElement
 		bool validateHierarchy(NetworkElement&);
 		
 		void showContent(ostream&);
+		void showElements(ostream&);
+		void showConnections(ostream&);
 
 
         /************************** MÉTODOS  DE RECORRIDO DE ARBOL************************************/
