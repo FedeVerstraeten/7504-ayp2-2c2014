@@ -1,0 +1,6 @@
+\select@language {spanish}
+\contentsline {section}{\numberline {1}Introducci\IeC {\'o}n}{3}
+\contentsline {section}{\numberline {2}Dise\IeC {\~n}o e Implementaci\IeC {\'o}n}{3}
+\contentsline {section}{\numberline {3}Ejecuciones}{3}
+\contentsline {subsection}{\numberline {3.1}Compilaci\IeC {\'o}n}{3}
+\contentsline {section}{\numberline {4}C\IeC {\'o}digos}{3}
