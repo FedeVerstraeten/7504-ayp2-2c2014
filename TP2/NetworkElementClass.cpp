@@ -12,6 +12,7 @@ NetworkElement :: NetworkElement()
 	father_=NULL;
 	sons=NULL;
 	numberSons=0;
+	status=true;
 	//cout<<"Constructor sin argumentos"<<endl;
 }
 
@@ -22,6 +23,7 @@ NetworkElement :: NetworkElement(const string n,const string t)
 	father_=NULL;
 	sons=NULL;
 	numberSons=0;
+	status=true;
 	//cout<<"Constructor con argumentos"<<endl;
 }
 
@@ -32,6 +34,8 @@ NetworkElement :: NetworkElement(const NetworkElement &element)
 	father_=element.father_;
 	numberSons=0;
 	sons=NULL;
+	status=true;
+
 	if(element.numberSons!=0)
 	{
 		numberSons=element.numberSons;
@@ -234,11 +238,16 @@ bool NetworkElement :: validateHierarchy(NetworkElement &element)
 
 void NetworkElement :: showContent(ostream& os)
 {
-		os//<<"***** Elemento de red *****"<<endl
+	os  <<"***** Elemento de red *****"<<endl
 		<<"NetworkElement "<<name//<<endl
-		<<" "<<type<<endl;
-		//<<"Cantidad de hijos: "<<numberSons<<endl;
-//	os << "number of sons: " <<numberSons << endl;
+		<<" "<<type<<endl
+		<<"Cantidad de hijos: "<<numberSons<<endl;
+	
+	if(status) os<<"Estado: OK"<<endl;
+	
+	else os<<"Estado: Fault"<<endl;
+		
+	
 	if(numberSons!=0)
 	{
 		for(unsigned int i=0 ; i < numberSons; i++)
