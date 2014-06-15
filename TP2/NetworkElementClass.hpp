@@ -32,7 +32,7 @@ class NetworkElement
 		NetworkElement *father_;
 		NetworkElement **sons; // Será un punetro a un arreglo dinamico de punteros, lo declaro así ya que genera error declarar *sons[]
 		size_t numberSons;
-		bool status;
+		status_t status;
 
 	public:
 
@@ -49,8 +49,15 @@ class NetworkElement
 
 		void setName (string n) {name=n;}
 		void setType (string t) {type=t;}
-		void setStatusOK() {status=true;}
-		void setStatusFault() {status=false;}
+		void setStatusOK()
+		{
+            if(father_->status!=FAULT_MANUAL || father_->status!=FAULT_INFERENCE_MANUAL)
+                status=OK;
+            else
+                status=FAULT_MANUAL;
+		}
+		void setStatusFault() {status=FAULT_POLLING;}
+		void setInferenceFault() {status=FAULT_INFERENCE;}
 
 		const string getName()const {return name;}
 		const string getType()const {return type;}
@@ -58,7 +65,7 @@ class NetworkElement
 		const size_t getNumberSons() const {return numberSons;}
 		NetworkElement** getSons() const {return sons;} // Revisar no me deja el compilador retornar 'const NetworkElement**'
 		const NetworkElement* getSons(const int)const;
-		const bool getStatus() const {return status;} // Retorna OK (true) o Fault (false). Otra implementacion seria con un enumerativo
+		const status_t getStatus() const {return status;} // Retorna OK o algun tipo de falla
 
 
 		// getSons(): Sin argumentos, retorna el puntero al arreglo de punteros a NetworkElement hijos
@@ -75,14 +82,19 @@ class NetworkElement
 
 		// Se asume que se conecta al ingresar: hijo --> padre
         NetworkElement& connectToElement(NetworkElement&);
-		
+
 		// Funcion validacion de jerarquía de los elementos
 		bool validateHierarchy(NetworkElement&);
-		
+
+		// Funciones de impresion
 		void showContent(ostream&);
 		void showElements(ostream&);
 		void showConnections(ostream&);
 
+		// Funciones gestor de fallas
+
+		void propagateFault(); //Propaga fallas manuales en profundidad del arbol
+		void clearFault(); // Elimina las fallas manuales progadas
 
         /************************** MÉTODOS  DE RECORRIDO DE ARBOL************************************/
 

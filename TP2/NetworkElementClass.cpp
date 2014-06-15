@@ -1,5 +1,6 @@
 #include <iostream>
 #include "NetworkElementClass.hpp"
+#include "common.hpp"
 
 
 
@@ -12,7 +13,7 @@ NetworkElement :: NetworkElement()
 	father_=NULL;
 	sons=NULL;
 	numberSons=0;
-	status=true;
+	status=OK;
 	//cout<<"Constructor sin argumentos"<<endl;
 }
 
@@ -23,7 +24,7 @@ NetworkElement :: NetworkElement(const string n,const string t)
 	father_=NULL;
 	sons=NULL;
 	numberSons=0;
-	status=true;
+	status=OK;
 	//cout<<"Constructor con argumentos"<<endl;
 }
 
@@ -34,7 +35,7 @@ NetworkElement :: NetworkElement(const NetworkElement &element)
 	father_=element.father_;
 	numberSons=0;
 	sons=NULL;
-	status=true;
+	status=OK;
 
 	if(element.numberSons!=0)
 	{
@@ -200,7 +201,7 @@ NetworkElement& NetworkElement :: connectToElement (NetworkElement &element)
 
 			delete [] sons; 	// Si llegó acá es que obtuvo el espacio; libera el anterior espacio para sons
 			sons = auxSons;		// Asigno a sons el puntero que apunta al nuevo array de hijos
-			
+
 			numberSons++;
 		}
 
@@ -213,47 +214,59 @@ NetworkElement& NetworkElement :: connectToElement (NetworkElement &element)
 	return *this;
 }
 
-/*	Funcion que valida la jerarquía, evita que se realicen conexiones prohibidas del tipo
-	por ejemplo: CM1 --> CM2 ó HUB1 --> CM2
-	
-	padre.validateHierarchy(hijo)
+//
+//	Funcion que valida la jerarquía, evita que se realicen conexiones prohibidas del tipo
+//	por ejemplo: CM1 --> CM2 o HUB1 --> CM2
+//
+//	padre.validateHierarchy(hijo)
 
-*/
-bool NetworkElement :: validateHierarchy(NetworkElement &element)
+void NetworkElement :: propagateFault()
 {
-	
-	if(type=="CM")
-	{	if(element.type=="CM" || element.type=="Amp" || element.type=="Node" || element.type=="Hub" ) return false; }
+    if(status==OK)
+        status=FAULT_MANUAL;
 
-	else if(type=="Amp" || type=="Node")
-	{	if(element.type=="Hub" || element.type=="Node") return false; }
+    else if(status==FAULT_INFERENCE)
+        status=FAULT_INFERENCE_MANUAL;
 
-	else if(type=="Hub")
-	{	if(element.type=="Hub" || element.type=="Amp" || element.type=="CM") return false; }
-	
-	
-	return true;
+    for(size_t i=0;i<numberSons;i++)
+        sons[i]->propagateFault();
+
 }
 
+void NetworkElement :: clearFault()
+{
+    if(status==FAULT_MANUAL)
+        status=OK;
+
+    else if(status==FAULT_INFERENCE_MANUAL)
+        status=FAULT_INFERENCE;
+
+    for(size_t i=0;i<numberSons;i++)
+        sons[i]->clearFault();
+
+}
 
 void NetworkElement :: showContent(ostream& os)
 {
-	os  <<"***** Elemento de red *****"<<endl
-		<<"NetworkElement "<<name//<<endl
-		<<" "<<type<<endl
-		<<"Cantidad de hijos: "<<numberSons<<endl;
-	
-	if(status) os<<"Estado: OK"<<endl;
-	
-	else os<<"Estado: Fault"<<endl;
-		
-	
+	os  //<<"***** Elemento de red *****"<<endl
+		<<"NetworkElement "<<name
+		<<" "<<type<<endl;
+		//<<"Cantidad de hijos: "<<numberSons<<endl;
+
+	if(status==OK) os<<"Estado: OK"<<endl;
+
+	else if(status==FAULT_POLLING) os<<"Estado: Fault"<<endl;
+
+    else if(status==FAULT_MANUAL || status==FAULT_INFERENCE_MANUAL) os<<"Estado: Fault Manual"<<endl;
+
+    else if(status==FAULT_INFERENCE)  os<<"Estado: Fault Inferred"<<endl;
+/*
 	if(numberSons!=0)
 	{
 		for(unsigned int i=0 ; i < numberSons; i++)
 		os<<"Connection " << sons[i]->name <<" "<<  name << endl;
 	}
-
+*/
 }
 
 void NetworkElement :: showElements(ostream& os)
@@ -283,7 +296,7 @@ void NetworkElement ::validateCycle()
 		// asignarle elemento desde donde quieres recorrer
 	    // vertice contiene la cantidad de nodos que
     	// que pudieron ser recorridos.
-		
+
 		cout<< "Se en encontro un ciclo en:\t "<<temp.data()[vertice]->getName()<<endl;
 
 	}
@@ -308,20 +321,19 @@ void NetworkElement ::validateIconnection(int numberNodes)
 	}
 }
 
-
 // Recorrer vector de elementos y revisar si hay elementos repetidos
 void NetworkElement :: isRepeaten(vector <NetworkElement>& vectorElement)
 {
-		
+
 	int vertice=0,repeat=0;
 	vector <NetworkElement*> temp;//usar la clase vector y push_back ,arreglo dinamico...
 	if((recorrido(this,vertice,temp))!=DETECT_CYCLE)
 	{
 		for(size_t i=0;i<vectorElement.size();i++)
 		{
-			// En la posicion "vertice" del vector "temp" esta el elemento detectado como posible 
+			// En la posicion "vertice" del vector "temp" esta el elemento detectado como posible
 			// candidato a estar repetido, ya que la funcion "recorrido" lo detecta como un ciclo.
-			
+
 		//	NetworkElement *aux1;
 		//	aux1=temp.data()[vertice];
 		//	aux2=
@@ -330,11 +342,28 @@ void NetworkElement :: isRepeaten(vector <NetworkElement>& vectorElement)
 		if(repeat>ONE){
 			cout<< "Elemento repetido:\t "<<temp.data()[vertice]->getName()<<endl;
 		}
-		
+
 	}
 
 
 }
+
+bool NetworkElement :: validateHierarchy(NetworkElement &element)
+{
+
+	if(type=="CM")
+	{	if(element.type=="CM" || element.type=="Amp" || element.type=="Node" || element.type=="Hub" ) return false; }
+
+	else if(type=="Amp" || type=="Node")
+	{	if(element.type=="Hub" || element.type=="Node") return false; }
+
+	else if(type=="Hub")
+	{	if(element.type=="Hub" || element.type=="Amp" || element.type=="CM") return false; }
+
+
+	return true;
+}
+
 
 /************************************** FUNCIONES FRIEND ********************************************/
 

@@ -1,6 +1,8 @@
 #ifndef COMMON_HPP
 #define COMMON_HPP
 using namespace std;
+
+//Revisar cuales de los estados ya no son utiles.
 typedef enum{
                 OK,
                 OK_INPUT,
@@ -25,11 +27,13 @@ typedef enum{
                 ERROR_NETNAME,
                 ERROR_ROUTE_NAME_INVALID,
                 ERROR_NO_ARGS,
-                ERROR_INVALID_INPUT_ROUTE,
-                ERROR_INVALID_OUTPUT_ROUTE,
                 ERROR_INVALID_ARGUMENT,
                 ERROR_STREAM_OUT,
-                ERROR_NULL_FILE
+                ERROR_NULL_FILE,
+                FAULT_POLLING,
+                FAULT_MANUAL,
+				FAULT_INFERENCE,
+				FAULT_INFERENCE_MANUAL
                 }status_t;
 
 #endif
