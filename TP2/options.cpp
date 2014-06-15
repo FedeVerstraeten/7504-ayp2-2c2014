@@ -1,7 +1,5 @@
-
 #include "options.hpp"
 using namespace std;
-//HOLA
 extern istream *iss;
 extern ostream *oss;
 extern fstream ifs;

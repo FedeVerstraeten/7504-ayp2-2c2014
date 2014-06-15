@@ -3,7 +3,7 @@
 #include <string>
 #include <sstream>
 #include <cstring>
-#include"common.hpp"
+#include "common.hpp"
 #include "dictionary.hpp"
 #include "process.hpp"
 #include "NetworkElementClass.hpp"
@@ -93,20 +93,20 @@ int main(int argc,char *argv[])
 
 					if(v[i].getName()==aux1)
 					{
-						i1=i; 
+						i1=i;
 						if(son==false){son=true;}
 						else {son=false;}
 					}
                     if(v[i].getName()==aux2)
 					{
-						i2=i; 	
+						i2=i;
 						if(father==false){father=true;}
 						else {father=false;}
                 	}
                 }
 
 
-	            if(son==false) 
+	            if(son==false)
 				{
 					cout << "Son node isn't found or multiple found"<<endl
 						 << aux <<" Error at line: " << line << endl;
@@ -115,13 +115,13 @@ int main(int argc,char *argv[])
 				{
 					cout << "Father node isn't found or multiple found"<<endl
 						 << aux <<" Error at line: " << line << endl;
-				}                
+				}
 
 
 
 				if(son==true && father==true)
 				{
-				
+
 				if(v[i2].validateHierarchy(v[i1])==true)
                     	v[i2].connectToElement(v[i1]);
 				else
@@ -139,14 +139,14 @@ int main(int argc,char *argv[])
 				v[i].showElements(ofs);
             for(size_t i=0; i< v.size(); i++)
 				v[i].showConnections(ofs);
-            
-			
-	//Encuentro el hub1---- 
-	size_t rootPosition=FindRoot(v);	
+
+
+	//Encuentro el hub1----
+	size_t rootPosition=FindRoot(v);
 
 	//Empieza las validaciones de ciclos e inconexiones
-	
-//	cout<<v.data()[rootPosition].getName()<<endl;		
+
+//	cout<<v.data()[rootPosition].getName()<<endl;
 	v.data()[rootPosition].validateIconnection(v.size());
 	v.data()[rootPosition].isRepeaten(v);
 	v.data()[rootPosition].validateCycle();
