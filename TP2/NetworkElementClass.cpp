@@ -14,6 +14,8 @@ NetworkElement :: NetworkElement()
 	sons=NULL;
 	numberSons=0;
 	status=OK;
+	threshold=5; // 5(cinco): Valor por defecto indicado en el enunciad del TP2
+
 	//cout<<"Constructor sin argumentos"<<endl;
 }
 
@@ -25,6 +27,8 @@ NetworkElement :: NetworkElement(const string n,const string t)
 	sons=NULL;
 	numberSons=0;
 	status=OK;
+	threshold=5; // 5(cinco): Valor por defecto indicado en el enunciad del TP2
+
 	//cout<<"Constructor con argumentos"<<endl;
 }
 
@@ -35,7 +39,8 @@ NetworkElement :: NetworkElement(const NetworkElement &element)
 	father_=element.father_;
 	numberSons=0;
 	sons=NULL;
-	status=OK;
+	status=element.status; // Revisar si se debe inicializar OK
+	threshold=element.threshold; // Revisar si se debe inicializar en 5
 
 	if(element.numberSons!=0)
 	{
@@ -61,6 +66,36 @@ NetworkElement :: ~NetworkElement()
 }
 
 /*************************************** SET & GET ********************************************/
+
+void NetworkElement :: setStatusOK()
+{
+    // La funcion unicamente cambia a estado OK lo errores del POLLING
+    // Los errores manuales solo pueden eliminar a traves del metodo clearFaultManual
+
+    if(father_->status==FAULT_MANUAL || father_->status==FAULT_INFERENCE_MANUAL)
+        status=FAULT_MANUAL;
+
+    else
+        status=OK; // Si habia una falla en un nivel superior, se le asigna el estado
+
+    father_->inferenceFault();
+}
+
+void NetworkElement :: setStatusFault()
+{
+    //if(status==OK || status==FAULT_MANUAL) //Analizar si es necesario
+    status=FAULT_POLLING;
+
+    father_->inferenceFault();
+
+}
+
+void NetworkElement :: setThreshold(size_t th)
+{
+    threshold=th;
+
+    this->inferenceFault();
+}
 
 const NetworkElement* NetworkElement :: getSons(const int subscript)const
 {
@@ -208,7 +243,7 @@ NetworkElement& NetworkElement :: connectToElement (NetworkElement &element)
 		else
 		{
 			// Buscar que devolver en caso de que no se pueda unir, todavía no se me ocurrió
-			cout<<"Imposible el elemento que se desea conectar ya tiene padre"<<endl;
+			cerr<<"Imposible el elemento que se desea conectar ya tiene padre"<<endl;
 		}
 	}
 	return *this;
@@ -220,7 +255,7 @@ NetworkElement& NetworkElement :: connectToElement (NetworkElement &element)
 //
 //	padre.validateHierarchy(hijo)
 
-void NetworkElement :: propagateFault()
+void NetworkElement :: propagateFaultManual()
 {
     if(status==OK)
         status=FAULT_MANUAL;
@@ -229,11 +264,11 @@ void NetworkElement :: propagateFault()
         status=FAULT_INFERENCE_MANUAL;
 
     for(size_t i=0;i<numberSons;i++)
-        sons[i]->propagateFault();
+        sons[i]->propagateFaultManual();
 
 }
 
-void NetworkElement :: clearFault()
+void NetworkElement :: clearFaultManual()
 {
     if(status==FAULT_MANUAL)
         status=OK;
@@ -242,8 +277,36 @@ void NetworkElement :: clearFault()
         status=FAULT_INFERENCE;
 
     for(size_t i=0;i<numberSons;i++)
-        sons[i]->clearFault();
+        sons[i]->clearFaultManual();
 
+}
+
+void NetworkElement :: inferenceFault()
+{
+    size_t counter=0;
+
+    for(size_t i=0 ; i < numberSons ; i++)
+    {
+        if(sons[i]->status==FAULT_POLLING)
+            counter++;
+    }
+
+    if(counter>=threshold)
+    {
+        if(status==OK)
+            status=FAULT_INFERENCE;
+
+        else if (status==FAULT_MANUAL)
+            status=FAULT_INFERENCE_MANUAL;
+    }
+
+    else
+    {
+        if(status==FAULT_INFERENCE)
+            status=OK;
+        else if (status==FAULT_INFERENCE_MANUAL)
+            status=FAULT_MANUAL;
+    }
 }
 
 void NetworkElement :: showContent(ostream& os)

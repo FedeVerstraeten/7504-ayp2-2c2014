@@ -33,6 +33,7 @@ class NetworkElement
 		NetworkElement **sons; // Será un punetro a un arreglo dinamico de punteros, lo declaro así ya que genera error declarar *sons[]
 		size_t numberSons;
 		status_t status;
+		size_t threshold;
 
 	public:
 
@@ -49,15 +50,10 @@ class NetworkElement
 
 		void setName (string n) {name=n;}
 		void setType (string t) {type=t;}
-		void setStatusOK()
-		{
-            if(father_->status!=FAULT_MANUAL || father_->status!=FAULT_INFERENCE_MANUAL)
-                status=OK;
-            else
-                status=FAULT_MANUAL;
-		}
-		void setStatusFault() {status=FAULT_POLLING;}
-		void setInferenceFault() {status=FAULT_INFERENCE;}
+		void setStatusOK();
+		void setStatusFault();
+		void setInferenceFault() {status=FAULT_INFERENCE;} //Usar para hacer pruebas
+		void setThreshold(size_t);
 
 		const string getName()const {return name;}
 		const string getType()const {return type;}
@@ -66,7 +62,7 @@ class NetworkElement
 		NetworkElement** getSons() const {return sons;} // Revisar no me deja el compilador retornar 'const NetworkElement**'
 		const NetworkElement* getSons(const int)const;
 		const status_t getStatus() const {return status;} // Retorna OK o algun tipo de falla
-
+        const size_t getThreshold() const {return threshold;}
 
 		// getSons(): Sin argumentos, retorna el puntero al arreglo de punteros a NetworkElement hijos
 		// getSons(int): Con argumentos, retorna el puntero de determinado hijo
@@ -93,8 +89,9 @@ class NetworkElement
 
 		// Funciones gestor de fallas
 
-		void propagateFault(); //Propaga fallas manuales en profundidad del arbol
-		void clearFault(); // Elimina las fallas manuales progadas
+		void propagateFaultManual(); //Propaga fallas manuales en profundidad del arbol
+		void clearFaultManual(); // Elimina las fallas manuales progadas
+        void inferenceFault();
 
         /************************** MÉTODOS  DE RECORRIDO DE ARBOL************************************/
 
