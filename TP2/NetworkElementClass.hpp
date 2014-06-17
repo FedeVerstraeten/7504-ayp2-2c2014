@@ -93,6 +93,7 @@ class NetworkElement
 		void clearFaultManual(); // Elimina las fallas manuales progadas
         void inferenceFault();
 
+
         /************************** MÉTODOS  DE RECORRIDO DE ARBOL************************************/
 
 

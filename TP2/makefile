@@ -1,15 +1,15 @@
 #compilacion y ejecucion de los archivos
 CC       =  g++
 CFLAGS   = -g -Wall  -pedantic 
-OBJS	 = main_TP2.o  printers.o process.o dictionary.o  NetworkElementClass.o cmdline.o options.o 
+OBJS	 = main.o  printers.o process.o dictionary.o  NetworkElementClass.o cmdline.o options.o 
 
 
 
 muestras.exe:$(OBJS)
-	$(CC)  $(OBJS) -o main_TP2.exe 
+	$(CC)  $(OBJS) -o main.exe 
 
-main_TP2.o:main_TP2.cpp dictionary.hpp printers.hpp process.hpp  common.hpp cmdline.h options.hpp NetworkElementClass.hpp
-	$(CC) main_TP2.cpp -c -o main_TP2.o $(CFLAGS)
+main.o:main.cpp dictionary.hpp printers.hpp process.hpp  common.hpp cmdline.h options.hpp NetworkElementClass.hpp
+	$(CC) main.cpp -c -o main.o $(CFLAGS)
   
 printers.o:printers.cpp printers.hpp common.hpp
 	$(CC) printers.cpp -c -o printers.o $(CFLAGS)
