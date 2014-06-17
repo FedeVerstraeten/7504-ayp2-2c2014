@@ -473,5 +473,3 @@ int comparator(NetworkElement *v,int &vertice,vector<NetworkElement*>&temp){
 
 	return NOT_EXIST;
 }
-
-

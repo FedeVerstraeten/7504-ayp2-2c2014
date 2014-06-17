@@ -5,7 +5,7 @@ extern string network_struct[];
 //donde nombre es el nombre a imprimir
 
 void printNetworkName(status_t status, string name_line, ostream& os)
-{
+{/*
     string aux, network_name;
 
     istringstream iss(name_line);
@@ -21,7 +21,7 @@ void printNetworkName(status_t status, string name_line, ostream& os)
     {
         os << "error: missing NetworkName" << "\n";
         status=ERROR_NETNAME;
-    }
+    }*/
 }
 
 void printElements(int number_of_elements[], ostream& os)
@@ -34,7 +34,7 @@ void printElements(int number_of_elements[], ostream& os)
 }
 
 void printErrorMessage(status_t error_type, ostream& os)
-{
+{/*
     switch(error_type){
         case OK:
             break;
@@ -79,6 +79,6 @@ void printErrorMessage(status_t error_type, ostream& os)
 
 
         default:break;
-    }
+    }*/
 }
 void printString(string s, ostream& os){    os << s << "\n"; }

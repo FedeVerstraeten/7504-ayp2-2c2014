@@ -1,5 +1,9 @@
 #ifndef COMMON_HPP
 #define COMMON_HPP
+
+#define KEY_NAME 0
+#define KEY_ELEMENT 1
+#define KEY_CONNECTION 2
 using namespace std;
 
 //Revisar cuales de los estados ya no son utiles.
