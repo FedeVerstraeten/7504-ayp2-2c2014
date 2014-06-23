@@ -2,12 +2,20 @@
 #include "printers.hpp"
 
 extern string network_element_type[];
-extern string line;
+extern string network_faults[];
+extern size_t line;
 /****************************************************************************************
  FindRoot:La funcion recibe el arreglo de objetos NetworkElement y retorna la posicion
  del ROOT
 
 *****************************************************************************************/
+int processFaults(istream&, string network_faults[],vector <NetworkElement>& v)
+{/*
+    for(size_t i=0; i< 4 ; i++);
+    {
+
+    }*/
+}
 bool getNetName(istream& iss, string &NetName)
 {
     string aux;
