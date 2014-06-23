@@ -2,23 +2,29 @@
 #include <fstream>
 #include <string>
 #include <sstream>
-#include <vector>
-
-#include "process.hpp"
-#include "common.hpp"
+#include <cstring>
+#include"common.hpp"
 #include "dictionary.hpp"
+#include "process.hpp"
 #include "NetworkElementClass.hpp"
 #include "cmdline.h"
 #include "options.hpp"
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
-istream *iss = 0;
-ostream *oss = 0;
-fstream ifs, ofs;
+istream *iss_net = 0;
+istream *iss_faults =0;
+ostream *oss_net = 0;
+ostream *oss_faults = 0;
+fstream ifs_net, ifs_faults, ofs_net, ofs_faults;
 extern option_t options[];
 extern string network_element_type[];
 
+string getNetName(string);
+bool NetworkElementType(string);
+size_t line=0;
 /**** MAIN ****/
 
 int main(int argc,char *argv[])
@@ -27,27 +33,31 @@ int main(int argc,char *argv[])
 	cmdline cmdl(options);
 	cmdl.parse(argc, argv);
 
-	string str, aux;
+	string str, str2, aux;
 	string NetName;
-    getline(*iss,str);
-    istringstream ifss(str);
+
+    getline(*iss_faults,str2);
+    istringstream stream_faults(str2);
+     *oss_faults<< "Hola "<< str2 << endl;
+
+    getline(*iss_net,str);
+    istringstream ifs_nets(str);
 
 //NetworkName
-    if(getNetName(ifss, NetName)==false){
+    if(getNetName(ifs_nets, NetName)==false){
         cerr << "error: missing NetworkName" << endl;
         return 1;
     }
-
 //Vector of NetworkElements
-    size_t line=1;
+    line=1;
     vector <NetworkElement> v;
     size_t i=0;
 
-    while( getline(*iss,str) )
+    while( getline(*iss_net,str) )
     {
         line++;
-        istringstream ifss(str);
-        ifss >> aux;
+        istringstream stream_net(str);
+        stream_net >> aux;
 
     //Wrong text
         if(aux!="NetworkElement" && aux!= "Connection"){
@@ -56,27 +66,30 @@ int main(int argc,char *argv[])
         }
     //Setting Up the vector
         if(aux=="NetworkElement"){
-            if(processVector( ifss, v, i))return 1;
+            if(processVector( stream_net, v, i))return 1;
         }
 
     //Setting Up the Connections
        if(aux=="Connection"){
-        if(processConnections(ifss, v))return 1;
+        if(processConnections(stream_net, v))return 1;
        }
     }
-    //Printing out the topology
-    ofs << "NetworkName "<<NetName << endl;
-    for(size_t i=0; i< v.size(); i++)
-        v[i].showElements(*oss);
-    for(size_t i=0; i< v.size(); i++)
-        v[i].showConnections(*oss);
+//ACA IMPRIME SEGUN EL ORDEN DEL ARREGLO ENTONCES SE DEBERIA IMPRIMIR SEGUN LA JERARQUIA ..!!!111
+            *oss_net << "NetworkName "<<NetName << endl;
+            for(size_t i=0; i< v.size(); i++)
+				v[i].showElements(*oss_net);
+            for(size_t i=0; i< v.size(); i++)
+				v[i].showConnections(*oss_net);
 
-	//Find hub1----
+
+	//Encuentro el hub1----
 	size_t rootPosition=FindRoot(v);
 
-	//Wrong connections or loops detected
+	//Empieza las validaciones de ciclos e inconexiones
+
+//	cout<<v.data()[rootPosition].getName()<<endl;
 	v.data()[rootPosition].validateIconnection(v.size());
 	v.data()[rootPosition].isRepeaten(v);
 	v.data()[rootPosition].validateCycle();
-    return 0;
+            return 0;
 }

@@ -2,7 +2,7 @@
 #define DICTIONARY_HPP_INCLUDED
 #include<string>
 #include"common.hpp"
-#define MAX_LINES_DEFAULT 100
+#define MAX_LINES_DEFAULT 100		
 
 
 
