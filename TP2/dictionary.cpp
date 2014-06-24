@@ -2,9 +2,6 @@
 #include"cmdline.h"
 #include"options.hpp"
 
-//Diccionarios: HAY QUE ACORDAR UNA NOMNECLATURA PARA STRINGS , VARIABLES y ARREGLOS.
-//Diccionarios: HAY QUE ACORDAR UNA NOMNECLATURA PARA STRINGS , VARIABLES y ARREGLOS.
-
 string network_struct[]   = {"NetworkName","NetworkElement","Connection"};
 string network_element_type[] = {"Hub","Node","Amp","CM"};
 #define MAX_NET_ELS 4

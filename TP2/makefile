@@ -14,11 +14,11 @@ main.o:main.cpp dictionary.hpp printers.hpp process.hpp  common.hpp cmdline.h op
 printers.o:printers.cpp printers.hpp common.hpp
 	$(CC) printers.cpp -c -o printers.o $(CFLAGS)
 
-process.o:process.cpp process.hpp common.hpp printers.hpp
-	$(CC) process.cpp -c -o process.o $(CFLAGS)
-
 dictionary.o:dictionary.cpp dictionary.hpp cmdline.h  options.hpp
 	$(CC) dictionary.cpp -c -o dictionary.o $(CFLAGS)
+
+process.o:process.cpp process.hpp dictionary.hpp common.hpp printers.hpp
+	$(CC) process.cpp -c -o process.o $(CFLAGS)
 
 NetworkElementClass.o:NetworkElementClass.cpp NetworkElementClass.hpp common.hpp 
 	$(CC) NetworkElementClass.cpp -c -o NetworkElementClass.o $(CFLAGS)
