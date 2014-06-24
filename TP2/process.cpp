@@ -1,5 +1,4 @@
 #include "process.hpp"
-#include "printers.hpp"
 
 extern string network_element_type[];
 extern string network_faults[];
@@ -9,13 +8,42 @@ extern size_t line;
  del ROOT
 
 *****************************************************************************************/
-int processFaults(istream&, string network_faults[],vector <NetworkElement>& v)
-{/*
-    for(size_t i=0; i< 4 ; i++);
-    {
+int processFaults(istream& stream_faults, vector <NetworkElement>& v)
+{
+    string aux;
+    size_t i;
+    bool key=false, NetEl=false;
 
-    }*/
+    stream_faults >> aux;
+    //KEYS DICTIONARY
+    for(i=0;i<4;i++){
+        if(aux==network_faults[i]){
+            key=true;
+            //...
+        }
+    }
+    if(key==false){//KEY NOT FOUND
+        cerr<<"error:unknown operation " << aux << "in processFaults"<<endl;
+        return -1;
+    }
+
+    stream_faults >> aux;
+    //Network_Element in <v>
+    for(size_t i=0; i<v.size();i++){
+            if(v[i].getName()==aux){
+                NetEl=true;
+                //...
+                return 1;
+            }
+    }
+    if(NetEl==false){//NetworkElement not found
+        cerr<<"error:NetworkElement " << aux << " not found in topology"<<endl;
+        return -1;
+    }
+    return 0;
 }
+
+
 bool getNetName(istream& iss, string &NetName)
 {
     string aux;

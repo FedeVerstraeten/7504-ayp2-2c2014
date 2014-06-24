@@ -21,6 +21,7 @@ ostream *oss_faults = 0;
 fstream ifs_net, ifs_faults, ofs_net, ofs_faults;
 extern option_t options[];
 extern string network_element_type[];
+extern string network_faults[];
 
 string getNetName(string);
 bool NetworkElementType(string);
@@ -36,10 +37,8 @@ int main(int argc,char *argv[])
 	string str, str2, aux;
 	string NetName;
 
-    getline(*iss_faults,str2);
-    istringstream stream_faults(str2);
-     *oss_faults<< "Hola "<< str2 << endl;
 
+/***************TOPOLOGY***************************/
     getline(*iss_net,str);
     istringstream ifs_nets(str);
 
@@ -81,15 +80,32 @@ int main(int argc,char *argv[])
             for(size_t i=0; i< v.size(); i++)
 				v[i].showConnections(*oss_net);
 
-
+/***************LOOPS***********************/
 	//Encuentro el hub1----
-	size_t rootPosition=FindRoot(v);
-
+	if(v.size()){
+	    size_t rootPosition=FindRoot(v);
 	//Empieza las validaciones de ciclos e inconexiones
 
 //	cout<<v.data()[rootPosition].getName()<<endl;
 	v.data()[rootPosition].validateIconnection(v.size());
 	v.data()[rootPosition].isRepeaten(v);
 	v.data()[rootPosition].validateCycle();
+	}
+/*****************************************************/
+
+/***************FAULTS**********************/
+
+    line=0;
+
+    while( getline(*iss_faults,str2) )
+    {
+        line++;
+        istringstream stream_faults(str2);
+        cout<<processFaults(stream_faults, v)<<endl;
+
+    }
+
+/******************************************/
+
             return 0;
 }
