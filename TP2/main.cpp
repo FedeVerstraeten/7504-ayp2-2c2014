@@ -96,16 +96,27 @@ int main(int argc,char *argv[])
 /***************FAULTS**********************/
 
     line=0;
+    int v_pos=0;
 
     while( getline(*iss_faults,str2) )
     {
+        // A medida que voy leyendo linea a linea por la entrada del
+        // archivo de fallas, voy procesando y luego imprimiendo (?
         line++;
         istringstream stream_faults(str2);
-        cout<<processFaults(stream_faults, v)<<endl;
+        v_pos=processFaults(stream_faults, v);
 
+        if(v_pos==-1)
+        {
+            cerr << "error at line: " << line << endl;
+            return 1; // ¡¡REVISAR ESTO!!
+        }
+
+        else
+            v[v_pos].showStatus(*oss_faults);
     }
 
 /******************************************/
 
-            return 0;
+    return 0;
 }

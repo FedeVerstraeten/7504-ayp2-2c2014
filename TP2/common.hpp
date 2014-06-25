@@ -7,8 +7,19 @@
 using namespace std;
 
 //Revisar cuales de los estados ya no son utiles.
-typedef enum{
+
+typedef enum {
                 OK,
+                FAULT_POLLING,
+                FAULT_MANUAL,
+				FAULT_INFERENCE,
+				FAULT_INFERENCE_MANUAL
+
+                }statusHFC_t;
+
+
+typedef enum {
+                OKK,
                 OK_INPUT,
                 OK_INPUT_CIN,
                 OK_INPUT_CIN_PROCESSING,
@@ -21,6 +32,7 @@ typedef enum{
                 OK_NETWORK_TYPE,
                 OK_CONNECTION,
                 OK_NETWORK_NAMES,
+                ERROR,
                 ERROR_NETWORK_TYPE_UNKNOWN,
                 ERROR_CONNECTION,
                 ERROR_PROCESS_LINE,
@@ -29,15 +41,11 @@ typedef enum{
                 ERROR_TEXT_LINE_INVALID,
                 ERROR_ARG,
                 ERROR_NETNAME,
-                ERROR_ROUTE_NAME_INVALID,
                 ERROR_NO_ARGS,
                 ERROR_INVALID_ARGUMENT,
                 ERROR_STREAM_OUT,
-                ERROR_NULL_FILE,
-                FAULT_POLLING,
-                FAULT_MANUAL,
-				FAULT_INFERENCE,
-				FAULT_INFERENCE_MANUAL
+                ERROR_NULL_FILE
+
                 }status_t;
 
 #endif

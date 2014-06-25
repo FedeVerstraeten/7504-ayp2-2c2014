@@ -95,7 +95,7 @@ opt_output(string const &arg)
 
 void opt_help(string const &arg)
 {
-	cout << "cmdline -f factor [-i file] [-o file]"
+	cout << "cmdline [-i stream_in] [-o stram_out] [--topology file_topology] [--print-topology stream_out]"
 	     << endl;
 	exit(0);
 }

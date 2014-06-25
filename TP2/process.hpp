@@ -16,5 +16,6 @@ int processConnections(istream& , vector <NetworkElement> &);
 bool NetworkElementType(string aux);
 bool getNetName(istream& iss, string &NetName);
 int processFaults(istream& , vector <NetworkElement>& );
+void insertFault(const string,NetworkElement*,const string);
 
 #endif // PROCESS_HPP_INCLUDED

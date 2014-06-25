@@ -8,40 +8,97 @@ extern size_t line;
  del ROOT
 
 *****************************************************************************************/
+
+// La función restorna la posición del elemento en el vector y -1 en el caso de encontrar un error
+// en la entrada.
+
 int processFaults(istream& stream_faults, vector <NetworkElement>& v)
 {
-    string aux;
-    size_t i;
+    string aux,doFault,Result;
+    size_t i, v_pos;
     bool key=false, NetEl=false;
+    NetworkElement* v_aux=NULL;
 
-    stream_faults >> aux;
+    stream_faults >> aux; // Lectura de: Query, Fault, Poll, Clear
+
     //KEYS DICTIONARY
-    for(i=0;i<4;i++){
-        if(aux==network_faults[i]){
+    for(i=0;i<4;i++)
+    {
+        if(aux==network_faults[i])
+        {
             key=true;
-            //...
+            doFault=network_faults[i];
         }
     }
-    if(key==false){//KEY NOT FOUND
+
+    if(key==false)
+    {//KEY NOT FOUND
         cerr<<"error:unknown operation " << aux << "in processFaults"<<endl;
         return -1;
     }
 
+    // Lectura del NetworkElement: CM,Amp,Hub,Node
     stream_faults >> aux;
+
     //Network_Element in <v>
-    for(size_t i=0; i<v.size();i++){
-            if(v[i].getName()==aux){
-                NetEl=true;
-                //...
-                return 1;
-            }
+    for(size_t i=0; i<v.size();i++)
+    {
+        if(v[i].getName()==aux)
+        {
+            NetEl=true;
+            v_aux=&v[i];
+            v_pos=i;
+          //  return 1;
+        }
     }
-    if(NetEl==false){//NetworkElement not found
+
+    if(NetEl==false)
+    {//NetworkElement not found
         cerr<<"error:NetworkElement " << aux << " not found in topology"<<endl;
         return -1;
     }
-    return 0;
+
+    if(doFault=="Poll")
+    {   // "Poll" tiene otro argumento mas.
+        // Si la entrada es esta, leo una vez
+        // mas de stream_faults.
+
+        stream_faults >> aux;
+
+        if(aux!="ok" && aux!="error")
+        {
+            cerr<<"error:invalid state of polling" << aux << "in processFaults"<<endl;
+            return -1;
+        }
+
+        else
+            Result=aux;
+    }
+
+    insertFault(doFault,v_aux,Result);
+
+    return v_pos;
 }
+
+void insertFault(const string doFault,NetworkElement* v_aux,const string Result)
+{
+    if (doFault=="Query"){/* No debe hacer nada, es solo para consultar el estado*/}
+
+    else if (doFault=="Fault") v_aux->propagateFaultManual();
+
+    else if (doFault=="Clear") v_aux->clearFaultManual();
+
+    else if (doFault=="Poll")
+    {
+        if(Result=="ok")
+            v_aux->setStatusOK();
+
+        else if(Result=="error")
+            v_aux->setStatusFault();
+
+    }
+}
+
 
 
 bool getNetName(istream& iss, string &NetName)

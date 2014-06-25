@@ -309,12 +309,15 @@ void NetworkElement :: inferenceFault()
     }
 }
 
+// Metodos de impresion
+//
+
 void NetworkElement :: showContent(ostream& os)
 {
-	os  //<<"***** Elemento de red *****"<<endl
+	os  <<"***** Elemento de red *****"<<endl
 		<<"NetworkElement "<<name
-		<<" "<<type<<endl;
-		//<<"Cantidad de hijos: "<<numberSons<<endl;
+		<<" "<<type<<endl
+		<<"Cantidad de hijos: "<<numberSons<<endl;
 
 	if(status==OK) os<<"Estado: OK"<<endl;
 
@@ -323,13 +326,13 @@ void NetworkElement :: showContent(ostream& os)
     else if(status==FAULT_MANUAL || status==FAULT_INFERENCE_MANUAL) os<<"Estado: Fault Manual"<<endl;
 
     else if(status==FAULT_INFERENCE)  os<<"Estado: Fault Inferred"<<endl;
-/*
+
 	if(numberSons!=0)
 	{
 		for(unsigned int i=0 ; i < numberSons; i++)
 		os<<"Connection " << sons[i]->name <<" "<<  name << endl;
 	}
-*/
+
 }
 
 void NetworkElement :: showElements(ostream& os)
@@ -345,6 +348,17 @@ void NetworkElement :: showConnections(ostream& os)
 		for(unsigned int i=0 ; i < numberSons; i++)
 		os<<"Connection " << sons[i]->name <<" "<<  name << endl;
 	}
+}
+
+void NetworkElement :: showStatus(ostream& os)
+{
+    if(status==OK) os <<"NetworkElement "<<name<<" status ok"<<endl;
+
+    else if(status==FAULT_POLLING || status==FAULT_MANUAL || status==FAULT_INFERENCE || status==FAULT_INFERENCE_MANUAL)
+    {
+        os <<"NetworkElement "<<name<<" status fault"<<endl;
+    }
+
 }
 
 //suponemos que la memoria es estatica hasta este punto del código

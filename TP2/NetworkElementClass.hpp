@@ -32,7 +32,7 @@ class NetworkElement
 		NetworkElement *father_;
 		NetworkElement **sons; // Será un punetro a un arreglo dinamico de punteros, lo declaro así ya que genera error declarar *sons[]
 		size_t numberSons;
-		status_t status;
+		statusHFC_t status;
 		size_t threshold;
 
 	public:
@@ -61,7 +61,7 @@ class NetworkElement
 		const size_t getNumberSons() const {return numberSons;}
 		NetworkElement** getSons() const {return sons;} // Revisar no me deja el compilador retornar 'const NetworkElement**'
 		const NetworkElement* getSons(const int)const;
-		const status_t getStatus() const {return status;} // Retorna OK o algun tipo de falla
+		const statusHFC_t getStatus() const {return status;} // Retorna OK o algun tipo de falla
         const size_t getThreshold() const {return threshold;}
 
 		// getSons(): Sin argumentos, retorna el puntero al arreglo de punteros a NetworkElement hijos
@@ -86,6 +86,8 @@ class NetworkElement
 		void showContent(ostream&);
 		void showElements(ostream&);
 		void showConnections(ostream&);
+		void showStatus(ostream&);
+
 
 		// Funciones gestor de fallas
 
