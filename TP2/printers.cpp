@@ -36,7 +36,7 @@ void printElements(int number_of_elements[], ostream& os)
 void printErrorMessage(status_t error_type, ostream& os)
 {/*
     switch(error_type){
-        case OK:
+        case OKK:
             break;
         case ERROR_NULL_POINTER:
             { os << "error " << error_type << ":ERROR_NULL_POINTER"<< "\n"; break; }
