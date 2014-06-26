@@ -133,7 +133,7 @@ int processVector(istream& iss, vector <NetworkElement> &v, size_t& i)
 int FindRoot(vector <NetworkElement> &v)
 {
 	int i;
-	for(i=0;v.data()[i].getName()!="Hub1";i++);
+	for(i=0;v.data()[i].getType()!="Hub";i++);
 	return i;
 }
 

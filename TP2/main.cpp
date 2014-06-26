@@ -19,6 +19,8 @@ istream *iss_faults =0;
 ostream *oss_net = 0;
 ostream *oss_faults = 0;
 fstream ifs_net, ifs_faults, ofs_net, ofs_faults;
+unsigned int configThreshold=0; //inicializo en cero
+
 extern option_t options[];
 extern string network_element_type[];
 extern string network_faults[];
@@ -82,14 +84,15 @@ int main(int argc,char *argv[])
 
 /***************LOOPS***********************/
 	//Encuentro el hub1----
-	if(v.size()){
+	if(v.size())
+    {
 	    size_t rootPosition=FindRoot(v);
 	//Empieza las validaciones de ciclos e inconexiones
 
 //	cout<<v.data()[rootPosition].getName()<<endl;
-	v.data()[rootPosition].validateIconnection(v.size());
-	v.data()[rootPosition].isRepeaten(v);
-	v.data()[rootPosition].validateCycle();
+        v.data()[rootPosition].validateIconnection(v.size());
+        v.data()[rootPosition].isRepeaten(v);
+        v.data()[rootPosition].validateCycle();
 	}
 /*****************************************************/
 

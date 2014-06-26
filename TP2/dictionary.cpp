@@ -15,7 +15,7 @@ option_t options[] = {
     {1, "top", "topology", "-", opt_topology, OPT_MANDATORY},
 	{1, "p", "print-topology", "-", opt_print_topology, OPT_DEFAULT},
 	{0, "h", "help", NULL, opt_help, OPT_DEFAULT},
-	//{1, "t", "threshold",NULL,opt_threshold,OPT_DEFAULT},
+	{1, "t", "threshold",NULL,opt_threshold,OPT_DEFAULT},
 	{0, },
 };
 
