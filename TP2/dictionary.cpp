@@ -12,10 +12,10 @@ string network_faults[] = {"Query","Poll","Fault","Clear"};
 option_t options[] = {
 	{1, "i", "input", "-", opt_input, OPT_DEFAULT},
 	{1, "o", "output", "-", opt_output, OPT_DEFAULT},
-    {1, "top", "topology", "-", opt_topology, OPT_MANDATORY},
-	{1, "p", "print-topology", "-", opt_print_topology, OPT_DEFAULT},
+    {1, NULL, "topology", "-", opt_topology, OPT_MANDATORY},
+	{1, NULL, "print-topology", "-", opt_print_topology, OPT_DEFAULT},
 	{0, "h", "help", NULL, opt_help, OPT_DEFAULT},
-	{1, "t", "threshold",NULL,opt_threshold,OPT_DEFAULT},
+	{1, "t", "threshold","-",opt_threshold,OPT_DEFAULT},
 	{0, },
 };
 

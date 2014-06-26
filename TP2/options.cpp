@@ -1,5 +1,5 @@
-
 #include "options.hpp"
+
 using namespace std;
 
 extern istream *iss_net, *iss_faults;

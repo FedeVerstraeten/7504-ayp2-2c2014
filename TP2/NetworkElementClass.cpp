@@ -363,7 +363,7 @@ void NetworkElement :: showStatus(ostream& os)
 
 //suponemos que la memoria es estatica hasta este punto del código
 
-void NetworkElement ::validateCycle()
+bool NetworkElement ::validateCycle()
 {
 
 	int vertice=0;
@@ -376,12 +376,16 @@ void NetworkElement ::validateCycle()
 
 		cout<< "Se en encontro un ciclo en:\t "<<temp.data()[vertice]->getName()<<endl;
 
+        return false;
 	}
 	else
-		cout<<"Arbol sin ciclos"<<endl;
+	{
+	    cout<<"Arbol sin ciclos"<<endl;
+	    return true;
+	}
 }
 
-void NetworkElement ::validateIconnection(int numberNodes)
+bool NetworkElement ::validateIconnection(int numberNodes)
 {
 
 	int vertice=0;
@@ -392,14 +396,20 @@ void NetworkElement ::validateIconnection(int numberNodes)
 		{
 			cout<< "Arbol inconexo."<<endl
 				<< "Cantidad de vertices registrados:\t"<<vertice<<endl;
+            return false;
 		}
 		else
-			cout<< "Arbol conexo"<<endl;
+		{
+		    cout<< "Arbol conexo"<<endl;
+		    return true;
+		}
+
 	}
+	return false;
 }
 
 // Recorrer vector de elementos y revisar si hay elementos repetidos
-void NetworkElement :: isRepeaten(vector <NetworkElement>& vectorElement)
+bool NetworkElement :: isRepeaten(vector <NetworkElement>& vectorElement)
 {
 
 	int vertice=0,repeat=0;
@@ -416,13 +426,15 @@ void NetworkElement :: isRepeaten(vector <NetworkElement>& vectorElement)
 		//	aux2=
 			if(*(temp.data()[vertice])==vectorElement.data()[i]) repeat++;
 		}
-		if(repeat>ONE){
+		if(repeat>ONE)
+		{
 			cout<< "Elemento repetido:\t "<<temp.data()[vertice]->getName()<<endl;
+			return false;
 		}
 
 	}
 
-
+    return true;
 }
 
 bool NetworkElement :: validateHierarchy(NetworkElement &element)
