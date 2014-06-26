@@ -52,7 +52,7 @@ class NetworkElement
 		void setType (string t) {type=t;}
 		void setStatusOK();
 		void setStatusFault();
-		void setInferenceFault() {status=FAULT_INFERENCE;} //Usar para hacer pruebas
+		//void setInferenceFault() {status=FAULT_INFERENCE;} //Usar para hacer pruebas
 		void setThreshold(size_t);
 
 		const string getName()const {return name;}
@@ -79,9 +79,6 @@ class NetworkElement
 		// Se asume que se conecta al ingresar: hijo --> padre
         NetworkElement& connectToElement(NetworkElement&);
 
-		// Funcion validacion de jerarquía de los elementos
-		bool validateHierarchy(NetworkElement&);
-
 		// Funciones de impresion
 		void showContent(ostream&);
 		void showElements(ostream&);
@@ -101,9 +98,12 @@ class NetworkElement
 
 		friend int recorrido(NetworkElement* ,int&,vector <NetworkElement*>&temp);
 		friend int comparator(NetworkElement* ,int&,vector <NetworkElement*>&temp);
-		void validateCycle();
-		void validateIconnection(int);
-		void isRepeaten(vector <NetworkElement>&);
+		bool validateCycle();
+		bool validateIconnection(int);
+		bool isRepeaten(vector <NetworkElement>&);
+		// Funcion validacion de jerarquía de los elementos
+		bool validateHierarchy(NetworkElement&);
+
 };
 
 

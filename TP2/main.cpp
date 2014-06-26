@@ -28,6 +28,7 @@ extern string network_faults[];
 string getNetName(string);
 bool NetworkElementType(string);
 size_t line=0;
+
 /**** MAIN ****/
 
 int main(int argc,char *argv[])
@@ -47,7 +48,7 @@ int main(int argc,char *argv[])
 //NetworkName
     if(getNetName(ifs_nets, NetName)==false){
         cerr << "error: missing NetworkName" << endl;
-        return 1;
+        return PROGRAM_SHUT;
     }
 //Vector of NetworkElements
     line=1;
@@ -63,39 +64,57 @@ int main(int argc,char *argv[])
     //Wrong text
         if(aux!="NetworkElement" && aux!= "Connection"){
             cerr << "error: unknown parameter "<< aux <<" at line: " << line << endl;
-            return 1;
+            return PROGRAM_SHUT;
         }
     //Setting Up the vector
         if(aux=="NetworkElement"){
-            if(processVector( stream_net, v, i))return 1;
+            if(processVector( stream_net, v, i))return PROGRAM_SHUT;
         }
 
     //Setting Up the Connections
        if(aux=="Connection"){
-        if(processConnections(stream_net, v))return 1;
+        if(processConnections(stream_net, v))return PROGRAM_SHUT;
        }
     }
 //ACA IMPRIME SEGUN EL ORDEN DEL ARREGLO ENTONCES SE DEBERIA IMPRIMIR SEGUN LA JERARQUIA ..!!!111
-            *oss_net << "NetworkName "<<NetName << endl;
-            for(size_t i=0; i< v.size(); i++)
-				v[i].showElements(*oss_net);
-            for(size_t i=0; i< v.size(); i++)
-				v[i].showConnections(*oss_net);
+        *oss_net << "NetworkName "<<NetName << endl;
+        for(size_t i=0; i< v.size(); i++)
+            v[i].showElements(*oss_net);
+        for(size_t i=0; i< v.size(); i++)
+            v[i].showConnections(*oss_net);
 
 /***************LOOPS***********************/
-	//Encuentro el hub1----
+	// Encuentro el Hub y realizo
+	// validaciones sobre el arbol construido
+
 	if(v.size())
     {
 	    size_t rootPosition=FindRoot(v);
+	    bool tree_ok=true;
 	//Empieza las validaciones de ciclos e inconexiones
 
-//	cout<<v.data()[rootPosition].getName()<<endl;
-        v.data()[rootPosition].validateIconnection(v.size());
-        v.data()[rootPosition].isRepeaten(v);
-        v.data()[rootPosition].validateCycle();
-	}
-/*****************************************************/
+    //	cout<<v.data()[rootPosition].getName()<<endl;
+        tree_ok=v.data()[rootPosition].validateIconnection(v.size());
+        tree_ok=v.data()[rootPosition].isRepeaten(v);
+        tree_ok=v.data()[rootPosition].validateCycle();
 
+        if(tree_ok==false) return PROGRAM_SHUT;
+	}
+/****************** SET THRESHOLD **************/
+// Si el programa llega hasta aqui, el arbol esta ok.
+// Paso a inicializar el umbral de inferencia de fallas.
+// Los elementos contruidos vienen por defecto en 5.
+    if(configThreshold)
+    {
+        // El programa ingresa unicamente si se ingreso
+        // un valor de umbral por linea de argumentos,
+        // sino se deja el valor por defecto que carga
+        // los constructores, que es 5 (cinco).
+        // confiThreshold esta inicializado en 0 (cero).
+
+        for(size_t i=0; i< v.size(); i++)
+            v[i].setThreshold(configThreshold);
+    }
 /***************FAULTS**********************/
 
     line=0;
@@ -109,10 +128,11 @@ int main(int argc,char *argv[])
         istringstream stream_faults(str2);
         v_pos=processFaults(stream_faults, v);
 
-        if(v_pos==-1)
+        if(v_pos==ERROR_PROCESS)
         {
             cerr << "error at line: " << line << endl;
-            return 1; // ¡¡REVISAR ESTO!!
+
+            return PROGRAM_SHUT; // ¡¡REVISAR ESTO!!
         }
 
         else
@@ -121,5 +141,5 @@ int main(int argc,char *argv[])
 
 /******************************************/
 
-    return 0;
+    return EXIT_SUCCESS;
 }
