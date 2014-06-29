@@ -25,7 +25,7 @@ cmdline::parse(int argc, char * const argv[])
 	 && (p)->long_name == 0 \
 	 && (p)->parse == 0)
 
-	// Primer pasada por la secuencia de opciones: marcamos 
+	// Primer pasada por la secuencia de opciones: marcamos
 	// todas las opciones, como no procesadas. Ver código de
 	// abajo.
 	//
@@ -68,7 +68,7 @@ cmdline::parse(int argc, char * const argv[])
 	}
 
 	// Segunda pasada: procesamos aquellas opciones que,
-	// (1) no hayan figurado explícitamente en la línea 
+	// (1) no hayan figurado explícitamente en la línea
 	// de comandos, y (2) tengan valor por defecto.
 	//
 	for (option_t *op = option_table; !END_OF_OPTIONS(op); ++op) {
@@ -94,10 +94,11 @@ int
 cmdline::do_long_opt(const char *opt, const char *arg)
 {
 	// Recorremos la tabla de opciones, y buscamos la
-	// entrada larga que se corresponda con la opción de 
+	// entrada larga que se corresponda con la opción de
 	// línea de comandos. De no encontrarse, indicamos el
 	// error.
 	//
+
 	for (option_t *op = option_table; op->long_name != 0; ++op) {
 		if (string(opt) == string(op->long_name)) {
 			// Marcamos esta opción como usada en
@@ -140,7 +141,7 @@ cmdline::do_long_opt(const char *opt, const char *arg)
 	     << endl;
 	exit(1);
 
-	// Algunos compiladores se quejan con funciones que 
+	// Algunos compiladores se quejan con funciones que
 	// lógicamente no pueden terminar, y que no devuelven
 	// un valor en esta última parte.
 	//
@@ -153,11 +154,12 @@ cmdline::do_short_opt(const char *opt, const char *arg)
 	option_t *op;
 
 	// Recorremos la tabla de opciones, y buscamos la
-	// entrada corta que se corresponda con la opción de 
+	// entrada corta que se corresponda con la opción de
 	// línea de comandos. De no encontrarse, indicamos el
 	// error.
 	//
-	for (op = option_table; op->short_name != 0; ++op) {
+    for (op = option_table; op->short_name != 0; ++op)
+	{
 		if (string(opt) == string(op->short_name)) {
 			// Marcamos esta opción como usada en
 			// forma explícita, para evitar tener
@@ -199,7 +201,7 @@ cmdline::do_short_opt(const char *opt, const char *arg)
 	     << endl;
 	exit(1);
 
-	// Algunos compiladores se quejan con funciones que 
+	// Algunos compiladores se quejan con funciones que
 	// lógicamente no pueden terminar, y que no devuelven
 	// un valor en esta última parte.
 	//

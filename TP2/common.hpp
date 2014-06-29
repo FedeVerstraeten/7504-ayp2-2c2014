@@ -7,6 +7,7 @@
 #define PROGRAM_SHUT 1
 #define EXIT_SUCCESS 0
 #define ERROR_PROCESS -1
+#define DEFAULT_THRESHOLD 5
 
 using namespace std;
 
