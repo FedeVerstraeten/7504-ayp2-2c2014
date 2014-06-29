@@ -33,7 +33,7 @@ int processFaults(istream& stream_faults, vector <NetworkElement>& v)
 
     if(key==false)
     {//KEY NOT FOUND
-        cerr<<"error:unknown operation " << aux << "in processFaults"<<endl;
+        cerr<<"error:unknown operation " << aux << " in processFaults"<<endl;
         return -1;
     }
 
@@ -67,7 +67,7 @@ int processFaults(istream& stream_faults, vector <NetworkElement>& v)
 
         if(aux!="ok" && aux!="error")
         {
-            cerr<<"error:invalid state of polling" << aux << "in processFaults"<<endl;
+            cerr<<"error:invalid state of polling "<< aux << " in processFaults"<<endl;
             return -1;
         }
 
