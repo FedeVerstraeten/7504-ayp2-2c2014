@@ -1,0 +1,8 @@
+Query CM4
+Query CM3
+Query CM2
+Query CM1
+Query Node1
+Query Node2
+Query Amp1
+Query Hub1
