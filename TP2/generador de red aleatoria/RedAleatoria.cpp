@@ -7,8 +7,12 @@
 #include <fstream>
 
 #define ELEMENTS_OF_RED 3//tipos elementos de la red
-#define MAX_ELEMENTS_OF_RED 1000  
+#define MAX_ELEMENTS_OF_RED 10000 
 #define ELEMENT_HUB 0
+#define ELEMENT_NODE 1
+#define ELEMENT_AMP 2
+#define ELEMENT_CM 3
+
 using namespace std;
 
 /*+++++++++++++++++++++++++++++++++++++++++++++++++++++Prototipos de funciones++++++++++++++++++++++++++++++++++++++++++++++++++++*/
@@ -34,7 +38,7 @@ int main (void)
 	vector <string>arrayToAmp;
 	vector <string>arrayToNode;
 	vector <string>arrayToCM;
-	size_t j=2,k=1,l=1,m=1;
+	size_t j=2,k=2,l=2,m=2;
 	vector<string>arrayElements;
 	vector<string>arrayConnections;
 
@@ -44,27 +48,38 @@ int main (void)
 
 //Impresion del Hub	
 	saveToNetworkElements(arrayElements,ELEMENT_HUB,j);
+//Creamos un elementos por defecto en caso de no haber elementos
+	arrayToNode.push_back("Node1");
+	arrayToAmp.push_back("Amp1");
+	arrayToCM.push_back("CM1");
+	
+	saveToNetworkElements(arrayElements,ELEMENT_NODE,j);
+	saveToNetworkElements(arrayElements,ELEMENT_AMP,j);
+	saveToNetworkElements(arrayElements,ELEMENT_CM,j);
+
+
+
 
 	//Creacion e Impresion de los NetworkElements
 	for (size_t i=0 ; i<MAX_ELEMENTS_OF_RED ; i++)
 	{
 		
-		int index =rand() % ELEMENTS_OF_RED; //guardo el valor aleatorio para generar el elemento de la red.
-	
-		if(elementsOfRed[index]==elementsOfRed[1]){
+		int index = 1+rand() % ELEMENTS_OF_RED; //guardo el valor aleatorio para generar el elemento de la red.
+//			cout<<index<<endl;//imprimo los valores asociados a los elementos de la red
+		if(index==ELEMENT_NODE){
 		
 			arrayToNode.push_back(elementsOfRed[index]+numberToString(k++));
 			saveToNetworkElements(arrayElements,index,k);
 						
 		}
-		else if(elementsOfRed[index]==elementsOfRed[2]){
+		else if(index==ELEMENT_AMP){
 			arrayToAmp.push_back(elementsOfRed[index]+numberToString(l++));
 			saveToNetworkElements(arrayElements,index,l);
 			
 
 
     		}
-		else if(elementsOfRed[index]==elementsOfRed[3]){
+		else if(index==ELEMENT_CM){
    
 			arrayToCM.push_back(elementsOfRed[index]+numberToString(m++));
 			saveToNetworkElements(arrayElements,index,m);
@@ -73,7 +88,6 @@ int main (void)
     		}
 
 	}
-
 
 	//Grabado de la nombre de la red
 	os<<"NetworkName MyNetwork"<<endl;
@@ -90,37 +104,44 @@ int main (void)
 	
 	}
 	//guardo las conexiones con nodes
-	vector<int>index_1(arrayToAmp.size());
-	vector<int>index_2(arrayToNode.size());
+	vector<int>index_1(arrayToNode.size());
+	vector<int>index_2(arrayToAmp.size());
 	//Planto semilla
 	srand(time(NULL));
-	randomindex(index_1,arrayToAmp.size());
-	randomindex(index_2,arrayToNode.size());
+	randomindex(index_1,arrayToNode.size());
+	randomindex(index_2,arrayToAmp.size());
 	
-
-	for(size_t i=0;i<arrayToAmp.size();i++){
+		 
+	for(size_t i=0,j=0;i<index_2.size();i++){
 	
-
+		if(index_1.size()<=i){//valido q el arreglo de Amp no sea mayor
+			j=0;
+		}	
 		string aux_1("Connection"),aux_2;
-	        aux_2=aux_1+ " "+arrayToAmp[index_1[i]]+" "+arrayToNode[index_2[i]];
-	        arrayConnections.push_back(aux_2);
+        aux_2=aux_1+ " "+arrayToAmp[index_2[i]]+" "+arrayToNode[index_1[j++]];
+        arrayConnections.push_back(aux_2);
+	
 
 	}
-		
 
 	//guardo las conexiones con Amps
-	vector<int>index_3(arrayToCM.size());
-	vector<int>index_4(arrayToAmp.size());
+	vector<int>index_3(arrayToAmp.size());
+	vector<int>index_4(arrayToCM.size());
 	//Planto semilla
 	srand(time(NULL));
-	randomindex(index_3,arrayToCM.size());
-	randomindex(index_4,arrayToAmp.size());
+	randomindex(index_3,arrayToAmp.size());
+	randomindex(index_4,arrayToCM.size());
+
 	//salvo las conexiones
-	for(size_t i=0;i<arrayToCM.size();i++){
+	for(size_t i=0,j=0;i<index_4.size();i++){
+	
+		if(index_3.size()<=i){//valido q el arreglo de CM no sea mayor
+			j=0;
+		}	
 	
 		string aux_1("Connection"),aux_2;
-        	aux_2=aux_1+ " "+arrayToCM[index_3[i]]+" "+arrayToAmp[index_4[i]];
-	        arrayConnections.push_back(aux_2);
+       	aux_2=aux_1+ " "+arrayToCM[index_4[i]]+" "+arrayToAmp[index_3[j++]];
+		arrayConnections.push_back(aux_2);
 	}
 		
 	//Imprimo aleatoriamente sobre el archivo
