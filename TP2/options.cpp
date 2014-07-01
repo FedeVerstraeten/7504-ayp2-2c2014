@@ -6,7 +6,7 @@ extern istream *iss_net, *iss_faults;
 extern ostream *oss_net, *oss_faults;
 extern fstream ifs_net, ifs_faults;
 extern fstream ofs_net, ofs_faults;
-extern int configThreshold;
+extern unsigned int configThreshold;
 //extern option_t options[];
 
 void opt_topology(string const &arg)
@@ -109,11 +109,8 @@ void opt_threshold(string const &arg)
 	// Intentamos extraer el umbral desde la línea de comandos.
 	// Para detectar argumentos que únicamente consistan de
 	// números naturales, vamos a verificar que EOF llegue justo
-	// después de la lectura exitosa del escalar, y verificamos que
-	// no posea desarrollo decimal.
-	// Verificamos que sea un numero natural.
+	// después de la lectura exitosa del escalar.
 	//
-
 	if (!(iss >> configThreshold) || !iss.eof() || configThreshold<1)
     {
 		cerr << "threshold must be positive: "
@@ -127,5 +124,4 @@ void opt_threshold(string const &arg)
 		     << endl;
 		exit(1);
 	}
-
 }

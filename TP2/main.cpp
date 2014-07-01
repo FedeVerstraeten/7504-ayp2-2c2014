@@ -19,7 +19,7 @@ istream *iss_faults =0;
 ostream *oss_net = 0;
 ostream *oss_faults = 0;
 fstream ifs_net, ifs_faults, ofs_net, ofs_faults;
-int configThreshold; // Variable global, contiene el valor umbral
+unsigned int configThreshold=0; //inicializo en cero
 
 extern option_t options[];
 extern string network_element_type[];
@@ -104,15 +104,14 @@ int main(int argc,char *argv[])
 // Si el programa llega hasta aqui, el arbol esta ok.
 // Paso a inicializar el umbral de inferencia de fallas.
 // Los elementos contruidos vienen por defecto en 5.
-
-    if(configThreshold!=DEFAULT_THRESHOLD) //VER si es necesario
+    if(configThreshold)
     {
         // El programa ingresa unicamente si se ingreso
         // un valor de umbral por linea de argumentos,
         // sino se deja el valor por defecto que carga
         // los constructores, que es 5 (cinco).
         // confiThreshold esta inicializado en 0 (cero).
-        cout<<"hola"<<endl;
+
         for(size_t i=0; i< v.size(); i++)
             v[i].setThreshold(configThreshold);
     }
