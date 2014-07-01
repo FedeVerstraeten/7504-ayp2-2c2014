@@ -1,0 +1,16 @@
+NetworkName MyNetwork
+NetworkElement CM1 CM
+NetworkElement CM3 CM
+NetworkElement Hub1 Hub
+NetworkElement Node2 Node
+NetworkElement Node1 Node
+NetworkElement CM4 CM
+NetworkElement CM2 CM
+NetworkElement Amp1 Amp
+Connection Node1 Hub1
+Connection Node2 Hub1
+Connection CM2 Node2
+Connection CM1 Node1
+Connection Amp1 Node1
+Connection CM4 Amp1
+Connection CM3 Amp1
