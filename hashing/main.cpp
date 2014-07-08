@@ -30,8 +30,9 @@ int main(void)
     /* Imprimo toda la tabla hash */
     t_hash.printTable();
 
-    elemX=t_hash.find("hola");
+    elemX=(t_hash.searchNode("hola"))->getElement();
     cout<<elemX.getName()<<endl;
+    cout<<t_hash.getNumElements()<<" "<<t_hash.getTableSize()<<endl;
 
     return 0;
 }
