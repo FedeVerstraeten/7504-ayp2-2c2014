@@ -25,7 +25,6 @@ class TableHash
             unsigned int hashFunction(string)const;
             // Encargada de transformar la clave. Para NetworkElement el parametro debe ser
             // tipo char* (o string)
-            NodeTable* searchNode(const string)const; //Retorna NULL si no encuentra el nodo del elemento
 
     public:
             TableHash();
@@ -37,10 +36,14 @@ class TableHash
 
             /* El parametro representa el tipo de dato de la CLAVE. En el caso de prueba es entero*/
 
-            TypeElement find(const string); //devuelve la direccion de memoria del elemento
+            NodeTable* searchNode(const string)const; //Retorna NULL si no encuentra el nodo del elemento
+            //TypeElement find(const string); //devuelve la direccion de memoria del elemento
             void remove(const string);
             void print(const TypeElement&);
             void printTable();
+
+            const size_t getTableSize() const { return tableSize; }
+            const size_t getNumElements() const { return numElements; }
 
 
             TableHash& operator = (const TableHash&);

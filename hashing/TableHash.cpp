@@ -27,35 +27,6 @@ unsigned int TableHash :: hashFunction(const string k)const
 
 }
 
-NodeTable* TableHash :: searchNode(const string clave)const
-{
-    NodeTable *p=NULL;
-    size_t position;
-
-    position=hashFunction(clave);
-
-
-    if(table[position]!=NULL)
-    {
-        p=table[position];
-
-        while((p->getNext()!=NULL) && (p->getElement()).getKey()!=clave)
-        {
-            // Avanza el puntero p por la lista mientras el elemento siguiente
-            // sea distinto de nulo y mientras no encuentro el elemento con la clave
-            p=p->getNext();
-        }
-        if((p->getElement()).getKey()!=clave)
-        {
-            // Evaluo si llegue al ultimo elemento de la lista, si posee la clave
-            p=NULL;
-        }
-
-    }
-
-    return p;
-}
-
 
 TableHash :: TableHash()
 {
@@ -107,19 +78,33 @@ void TableHash :: insert(const TypeElement &el)
         cerr<<"Elemento "<<el.getName()<<" repetido"<<endl;
 }
 
-TypeElement TableHash :: find(const string clave)
+NodeTable* TableHash :: searchNode(const string clave)const
 {
-    NodeTable *auxNode;
+    NodeTable *p=NULL;
+    size_t position;
 
-    auxNode=searchNode(clave);
+    position=hashFunction(clave);
 
-    if(auxNode==NULL)
+
+    if(table[position]!=NULL)
     {
-      cerr<<"Clave <"<<clave<<"> no encontrada en la tabla"<<endl;
-      //return NULL;
+        p=table[position];
+
+        while((p->getNext()!=NULL) && (p->getElement()).getKey()!=clave)
+        {
+            // Avanza el puntero p por la lista mientras el elemento siguiente
+            // sea distinto de nulo y mientras no encuentro el elemento con la clave
+            p=p->getNext();
+        }
+        if((p->getElement()).getKey()!=clave)
+        {
+            // Evaluo si llegue al ultimo elemento de la lista, si posee la clave
+            p=NULL;
+        }
+
     }
 
-    return auxNode->getElement();
+    return p;
 }
 
 void TableHash :: remove(const string clave)
@@ -204,3 +189,20 @@ TableHash& TableHash :: operator = (const TableHash& auxTable)
 
     return *this;
 }
+
+/*
+TypeElement TableHash :: find(const string clave)
+{
+    NodeTable *auxNode;
+
+    auxNode=searchNode(clave);
+
+    if(auxNode==NULL)
+    {
+      cerr<<"Clave <"<<clave<<"> no encontrada en la tabla"<<endl;
+      //return NULL;
+    }
+
+    return auxNode->getElement();
+}
+*/
