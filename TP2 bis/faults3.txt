@@ -1,0 +1,13 @@
+Poll CM4 error
+Poll CM3 error
+Query Amp1
+Fault Node1
+Poll CM3 ok
+Query CM3
+Query CM4
+Query CM1
+Query Amp1
+Clear Node1
+Query CM4
+Query CM3
+Query Amp1
