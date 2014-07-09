@@ -3,13 +3,14 @@
 #include <string>
 #include <sstream>
 #include <cstring>
+
 #include"common.hpp"
 #include "dictionary.hpp"
 #include "process.hpp"
 #include "NetworkElementClass.hpp"
 #include "cmdline.h"
 #include "options.hpp"
-#include <vector>
+//#include <vector>
 #include <algorithm>
 #include "TableHash.hpp"
 
@@ -29,6 +30,8 @@ extern string network_faults[];
 string getNetName(string);
 bool NetworkElementType(string);
 size_t line=0;
+NetworkElement *root=NULL;
+
 
 /**** MAIN ****/
 
@@ -51,10 +54,9 @@ int main(int argc,char *argv[])
         cerr << "error: missing NetworkName" << endl;
         return PROGRAM_SHUT;
     }
-//Vector of NetworkElements
+//Tabla Hash of NetworkElements
     line=1;
-    vector <NetworkElement> v;
-    size_t i=0;
+    TableHash t_hash(500);
 
     while( getline(*iss_net,str) )
     {
@@ -69,39 +71,38 @@ int main(int argc,char *argv[])
         }
     //Setting Up the vector
         if(aux=="NetworkElement"){
-            if(processVector( stream_net, v, i))return PROGRAM_SHUT;
+            if(processVector(stream_net, t_hash))return PROGRAM_SHUT;
         }
 
     //Setting Up the Connections
        if(aux=="Connection"){
-        if(processConnections(stream_net, v))return PROGRAM_SHUT;
+        if(processConnections(stream_net, t_hash))return PROGRAM_SHUT;
        }
     }
 //ACA IMPRIME SEGUN EL ORDEN DEL ARREGLO ENTONCES SE DEBERIA IMPRIMIR SEGUN LA JERARQUIA ..!!!111
         *oss_net << "NetworkName "<<NetName << endl;
-        for(size_t i=0; i< v.size(); i++)
-            v[i].showElements(*oss_net);
-        for(size_t i=0; i< v.size(); i++)
-            v[i].showConnections(*oss_net);
+        root->PrintElements();
+        root->Printconnection();
 
 /***************LOOPS***********************/
 	// Encuentro el Hub y realizo
 	// validaciones sobre el arbol construido
 
-	if(v.size())
+	if(t_hash.getTableSize())
     {
-	    size_t rootPosition=FindRoot(v);
 	    bool tree_ok=true;
 	//Empieza las validaciones de ciclos e inconexiones
 
-    //	cout<<v.data()[rootPosition].getName()<<endl;
-        tree_ok=v.data()[rootPosition].validateIconnection(v.size());
-        //tree_ok=v.data()[rootPosition].isRepeaten(v);
-        tree_ok=v.data()[rootPosition].validateCycle();
-
+        tree_ok=root->validateIconnection(t_hash.getTableSize());
         if(tree_ok==false) return PROGRAM_SHUT;
+
+        tree_ok=root->validateCycle();
+        if(tree_ok==false) return PROGRAM_SHUT;
+
+
 	}
-/****************** SET THRESHOLD **************/
+/*
+***************** SET THRESHOLD *************
 // Si el programa llega hasta aqui, el arbol esta ok.
 // Paso a inicializar el umbral de inferencia de fallas.
 // Los elementos contruidos vienen por defecto en 5.
@@ -116,10 +117,12 @@ int main(int argc,char *argv[])
         for(size_t i=0; i< v.size(); i++)
             v[i].setThreshold(configThreshold);
     }
+*/
+
 /***************FAULTS**********************/
 
     line=0;
-    int v_pos=0;
+    NetworkElement *NetElem=NULL;
 
     while( getline(*iss_faults,str2) )
     {
@@ -127,9 +130,9 @@ int main(int argc,char *argv[])
         // archivo de fallas, voy procesando y luego imprimiendo (?
         line++;
         istringstream stream_faults(str2);
-        v_pos=processFaults(stream_faults, v);
+        NetElem=processFaults(stream_faults, t_hash);
 
-        if(v_pos==ERROR_PROCESS)
+        if(NetElem==NULL)
         {
             cerr << "error at line: " << line << endl;
 
@@ -137,10 +140,11 @@ int main(int argc,char *argv[])
         }
 
         else
-            v[v_pos].showStatus(*oss_faults);
+            NetElem->showStatus(*oss_faults);
     }
 
 /***************hashing******************/
+/*
 TableHash t_hash(3);
 NetworkElement N1("CM1","CM");
 NetworkElement N2("CM2","CM");
@@ -149,7 +153,7 @@ NetworkElement N3("CM3","CM");
 t_hash.insert(N1);
 t_hash.insert(N2);
 t_hash.insert(N3);
-
+*/
 /******************************************/
 
     return EXIT_SUCCESS;

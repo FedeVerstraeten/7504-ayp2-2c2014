@@ -7,7 +7,7 @@
 
 int main(void)
 {
-    TableHash t_hash(3);
+    TableHash t_hash(2);
     TypeElement elemX;
     TypeElement elem1("1","uno"),elem2("2","dos"),elem3("3","tres"),elem123("123","ciento-veintitres");
     TypeElement elemB("B","Letra-B"), elemWord("hola","HOLA");
