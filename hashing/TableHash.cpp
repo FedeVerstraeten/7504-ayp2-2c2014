@@ -56,7 +56,20 @@ TableHash :: TableHash(const TableHash& auxTable)
 
 TableHash :: ~TableHash()
 {
- /* deberia impletementar la liberacion de los nodos de la lista*/
+    NodeTable *aux1,*aux2;
+
+        for(size_t i=0;i<tableSize;i++){
+
+            aux1=table[i];
+            while(aux1!=NULL){
+
+                aux2=aux1;
+                aux1=aux1->getNext();
+                delete aux2;
+
+            }
+        }
+    delete [] table;
 }
 
 void TableHash :: insert(const TypeElement &el)

@@ -56,7 +56,19 @@ TableHash :: TableHash(const TableHash& auxTable)
 
 TableHash :: ~TableHash()
 {
- /* deberia impletementar la liberacion de los nodos de la lista*/
+    NodeTable *aux1,*aux2;
+
+    for(size_t i=0;i<tableSize;i++)
+    {
+        aux1=table[i];
+        while(aux1!=NULL)
+        {
+            aux2=aux1;
+            aux1=aux1->getNext();
+            delete aux2;
+        }
+    }
+    delete [] table;
 }
 
 void TableHash :: insert(const NetworkElement &el)
@@ -64,6 +76,7 @@ void TableHash :: insert(const NetworkElement &el)
     int position;
     NodeTable *newNode,*p;
 
+    // El nombre del elemento sera la clave para la funcion hash
     position=hashFunction(el.getName());
     p=searchNode(el.getName());
 

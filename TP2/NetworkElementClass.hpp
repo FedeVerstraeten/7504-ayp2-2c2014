@@ -91,10 +91,10 @@ class NetworkElement
 		void propagateFaultManual(); //Propaga fallas manuales en profundidad del arbol
 		void clearFaultManual(); // Elimina las fallas manuales progadas
         void inferenceFault();
-
+        int Printconnection();
+        int PrintElements();
 
         /************************** MÉTODOS  DE RECORRIDO DE ARBOL************************************/
-
 
 		friend int recorrido(NetworkElement* ,int&,vector <NetworkElement*>&temp);
 		friend int comparator(NetworkElement* ,int&,vector <NetworkElement*>&temp);

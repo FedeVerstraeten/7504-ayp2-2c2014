@@ -84,7 +84,8 @@ class NetworkElement
 		void showElements(ostream&);
 		void showConnections(ostream&);
 		void showStatus(ostream&);
-
+        int Printconnection();
+        int PrintElements();
 
 		// Funciones gestor de fallas
 
@@ -100,7 +101,8 @@ class NetworkElement
 		friend int comparator(NetworkElement* ,int&,vector <NetworkElement*>&temp);
 		bool validateCycle();
 		bool validateIconnection(int);
-		bool isRepeaten(vector <NetworkElement>&);
+		//bool isRepeaten(vector <NetworkElement>&);
+
 		// Funcion validacion de jerarquía de los elementos
 		bool validateHierarchy(NetworkElement&);
 

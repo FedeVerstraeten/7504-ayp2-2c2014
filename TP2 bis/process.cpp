@@ -1,22 +1,25 @@
 #include "process.hpp"
-#include "TableHash.hpp"
+
 
 extern string network_element_type[];
 extern string network_faults[];
 extern size_t line;
+extern NetworkElement *root;
+extern unsigned int configThreshold;
 
 /*******************GESTOR DE FALLAS***********************/
-int processFaults(istream& stream_faults, vector <NetworkElement>& v)
+NetworkElement* processFaults(istream& stream_faults, TableHash &t)
 {
     string aux,doFault,Result;
-    size_t i, v_pos;
     bool key=false, NetEl=false;
     NetworkElement* v_aux=NULL;
+    NetworkElement auxElement;
+    NodeTable *auxNode=NULL;
 
     stream_faults >> aux; // Lectura de: Query, Fault, Poll, Clear
 
     //KEYS DICTIONARY
-    for(i=0;i<4;i++)
+    for(size_t i=0;i<4;i++)
     {
         if(aux==network_faults[i])
         {
@@ -28,28 +31,25 @@ int processFaults(istream& stream_faults, vector <NetworkElement>& v)
     if(key==false)
     {//KEY NOT FOUND
         cerr<<"error:unknown operation " << aux << " in processFaults"<<endl;
-        return -1;
+        return NULL;
     }
 
     // Lectura del NetworkElement: CM,Amp,Hub,Node
     stream_faults >> aux;
 
-    //Network_Element in <v>
-    for(size_t i=0; i<v.size();i++)
+    //Network_Element in table <t>
+    auxNode=t.searchNode(aux);
+    if(auxNode!=NULL)
     {
-        if(v[i].getName()==aux)
-        {
-            NetEl=true;
-            v_aux=&v[i];
-            v_pos=i;
-          //  return 1;
-        }
+        NetEl=true;
+        auxElement=auxNode->getElement();
+        v_aux=&auxElement;
     }
 
     if(NetEl==false)
     {//NetworkElement not found
         cerr<<"error:NetworkElement " << aux << " not found in topology"<<endl;
-        return -1;
+        return NULL;
     }
 
     if(doFault=="Poll")
@@ -62,7 +62,7 @@ int processFaults(istream& stream_faults, vector <NetworkElement>& v)
         if(aux!="ok" && aux!="error")
         {
             cerr<<"error:invalid state of polling "<< aux << " in processFaults"<<endl;
-            return -1;
+            return NULL;
         }
 
         else
@@ -71,7 +71,7 @@ int processFaults(istream& stream_faults, vector <NetworkElement>& v)
 
     insertFault(doFault,v_aux,Result);
 
-    return v_pos;
+    return v_aux;
 }
 
 void insertFault(const string doFault,NetworkElement* v_aux,const string Result)
@@ -95,74 +95,73 @@ void insertFault(const string doFault,NetworkElement* v_aux,const string Result)
 
 
 /********************TOPOLOGIA****************************/
-int processVector(istream& iss, vector <NetworkElement> &v, size_t& i)
+int processVector(istream& iss, TableHash &t)
 {
-    string aux;
-    v.push_back(NetworkElement());
-    iss >> aux;
-    v[i].setName(aux);
-    iss >> aux;
-    if(!NetworkElementType(aux)){
-            cerr << "error: unrecognized Networkelement " << aux << endl;
+    string name, type;
+
+    iss >> name;
+    iss >> type;
+
+    if(!NetworkElementType(type)){
+            cerr << "error: unrecognized Networkelement " << name << endl;
             return 1;
     }
-    v[i].setType(aux);
-    i++;
+
+    NetworkElement netEl(name, type);
+    netEl.setThreshold(configThreshold);
+    t.insert(netEl);
+
+    if(type == "Hub") root=&netEl;
+
     return 0;
 }
 
-int processConnections(istream& iss, vector <NetworkElement> &v)
+int processConnections(istream& iss, TableHash &t)
 {
-    string aux1, aux2;
-    size_t i1, i2;
-    bool son=false,father=false;
-    iss >> aux1;
-    iss >> aux2;
+    string aux1, aux2; // Guarda los nombres de elementos a conectar
 
-    for(size_t i=0; i<v.size();i++){
-        if(v[i].getName()==aux1){
-            i1=i;
-            if(son==false){son=true;}
-            else {son=false;}
-        }
-        if(v[i].getName()==aux2){
-            i2=i;
-            if(father==false){father=true;}
-            else {father=false;}
-        }
-    }
+    NodeTable *auxNode1=NULL,*auxNode2=NULL;
 
-    if(son==false){
-        cerr << "Son node isn't found or multiple found"<<endl
+    iss >> aux1; // Son
+    iss >> aux2; // Father
+
+    auxNode1=t.searchNode(aux1);
+    auxNode2=t.searchNode(aux2);
+
+    if(auxNode1==NULL)
+    {
+        cerr << "Son node isn't found"<<endl
              << aux1 <<" Error at line: " << line << endl;
-             return 1;
-    }
-    if(father==false){
-        cerr << "Father node isn't found or multiple found"<<endl
-             << aux2 <<" Error at line: " << line << endl;
-             return 1;
+        return 1;
     }
 
-    if(son==true && father==true){
-        if(v[i2].validateHierarchy(v[i1])==true)
-            v[i2].connectToElement(v[i1]);
-            return 0;
+    if(auxNode2==NULL)
+    {
+        cerr << "Father node isn't found or"<<endl
+             << aux2 <<" Error at line: " << line << endl;
+        return 1;
     }
-    else{
+
+
+    if(auxNode1!=NULL && auxNode2!=NULL)
+    {
+        if((auxNode2->getElement()).validateHierarchy(auxNode1->getElement())==true)
+            (auxNode2->getElement()).connectToElement(auxNode1->getElement());
+
+        return 0;
+    }
+
+    else
+    {
         cerr <<"Failure hierarchy. Unable to connect the elements"<<endl
-        << v[i2].getName() << "(father) with "<< v[i1].getName() << "(son)"<<endl
+        <<  (auxNode2->getElement()).getName() << "(father) with "
+        <<  (auxNode1->getElement()).getName() << "(son)"<<endl
         << " Error at line: " << line << endl;
         return 1;
     }
 
 }
 
-int FindRoot(vector <NetworkElement> &v)
-{
-	int i;
-	for(i=0;v.data()[i].getType()!="Hub";i++);
-	return i;
-}
 
 bool getNetName(istream& iss, string &NetName)
 {

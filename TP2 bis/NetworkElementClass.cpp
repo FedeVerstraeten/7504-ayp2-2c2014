@@ -255,6 +255,27 @@ NetworkElement& NetworkElement :: connectToElement (NetworkElement &element)
 //
 //	padre.validateHierarchy(hijo)
 
+int NetworkElement ::PrintElements(){//lo aplico al objeto directamente
+
+ 	showElements(*oss_net);
+    for(size_t i=0;i<numberSons;i++)
+    {
+        sons[i]->PrintElements();
+    }
+    return 0;
+}
+
+int NetworkElement ::Printconnection()
+{
+	showConnections(*oss_net);
+     for(size_t i=0;i<numberSons;i++)
+    {
+        sons[i]->Printconnection();
+    }
+    return 0;
+
+}
+
 void NetworkElement :: propagateFaultManual()
 {
     if(status==OK)
@@ -408,6 +429,7 @@ bool NetworkElement ::validateIconnection(int numberNodes)
 	return false;
 }
 
+/*
 // Recorrer vector de elementos y revisar si hay elementos repetidos
 bool NetworkElement :: isRepeaten(vector <NetworkElement>& vectorElement)
 {
@@ -436,6 +458,7 @@ bool NetworkElement :: isRepeaten(vector <NetworkElement>& vectorElement)
 
     return true;
 }
+*/
 
 bool NetworkElement :: validateHierarchy(NetworkElement &element)
 {

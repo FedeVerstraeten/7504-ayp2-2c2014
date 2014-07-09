@@ -7,15 +7,16 @@
 #include <vector>
 #include "NetworkElementClass.hpp"
 #include "dictionary.hpp"
+#include "TableHash.hpp"
+
 
 //Esta funcion encuentra el ROOT
 
-int FindRoot(vector <NetworkElement>&);
-int processVector(istream& , vector <NetworkElement> &, size_t& );
-int processConnections(istream& , vector <NetworkElement> &);
+int processVector(istream& , TableHash &);
+int processConnections(istream& , TableHash &);
 bool NetworkElementType(string aux);
 bool getNetName(istream& iss, string &NetName);
-int processFaults(istream& , vector <NetworkElement>& );
+NetworkElement* processFaults(istream&, TableHash&);
 void insertFault(const string,NetworkElement*,const string);
 
 #endif // PROCESS_HPP_INCLUDED

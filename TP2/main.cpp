@@ -29,6 +29,9 @@ string getNetName(string);
 bool NetworkElementType(string);
 size_t line=0;
 
+
+
+
 /**** MAIN ****/
 
 int main(int argc,char *argv[])
@@ -77,19 +80,22 @@ int main(int argc,char *argv[])
        }
     }
 //ACA IMPRIME SEGUN EL ORDEN DEL ARREGLO ENTONCES SE DEBERIA IMPRIMIR SEGUN LA JERARQUIA ..!!!111
-        *oss_net << "NetworkName "<<NetName << endl;
+
+
+
+        /*
         for(size_t i=0; i< v.size(); i++)
             v[i].showElements(*oss_net);
         for(size_t i=0; i< v.size(); i++)
             v[i].showConnections(*oss_net);
-
+        */
 /***************LOOPS***********************/
 	// Encuentro el Hub y realizo
 	// validaciones sobre el arbol construido
-
+    size_t rootPosition;
 	if(v.size())
     {
-	    size_t rootPosition=FindRoot(v);
+	    rootPosition=FindRoot(v);
 	    bool tree_ok=true;
 	//Empieza las validaciones de ciclos e inconexiones
 
@@ -100,6 +106,10 @@ int main(int argc,char *argv[])
 
         if(tree_ok==false) return PROGRAM_SHUT;
 	}
+
+	*oss_net << "NetworkName "<<NetName << endl;
+        v.data()[rootPosition].PrintElements();
+        v.data()[rootPosition].Printconnection();
 /****************** SET THRESHOLD **************/
 // Si el programa llega hasta aqui, el arbol esta ok.
 // Paso a inicializar el umbral de inferencia de fallas.
@@ -143,3 +153,4 @@ int main(int argc,char *argv[])
 
     return EXIT_SUCCESS;
 }
+

@@ -3,7 +3,7 @@
 #include "common.hpp"
 
 
-
+extern ostream *oss_net;
 /********************************** CONSTRUCTORES ***************************************/
 
 NetworkElement :: NetworkElement()
@@ -451,6 +451,28 @@ bool NetworkElement :: validateHierarchy(NetworkElement &element)
 
 
 	return true;
+}
+
+
+int NetworkElement ::PrintElements(){//lo aplico al objeto directamente
+
+ 	showElements(*oss_net);
+    for(size_t i=0;i<numberSons;i++)
+    {
+        sons[i]->PrintElements();
+    }
+    return 0;
+}
+
+int NetworkElement ::Printconnection()
+{
+	showConnections(*oss_net);
+     for(size_t i=0;i<numberSons;i++)
+    {
+        sons[i]->Printconnection();
+    }
+    return 0;
+
 }
 
 

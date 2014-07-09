@@ -28,7 +28,7 @@ class NodeTable
         void setElement(NetworkElement e){ element=e; }
         void setNext(NodeTable *sig){ next=sig; }
 
-        const NetworkElement getElement()const { return element;}
+        NetworkElement getElement()const { return element;}
         NodeTable* getNext()const {return next;}
 
 
