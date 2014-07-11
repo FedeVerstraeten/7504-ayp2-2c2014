@@ -249,11 +249,6 @@ NetworkElement& NetworkElement :: connectToElement (NetworkElement &element)
 	return *this;
 }
 
-//
-//	Funcion que valida la jerarquía, evita que se realicen conexiones prohibidas del tipo
-//	por ejemplo: CM1 --> CM2 o HUB1 --> CM2
-//
-//	padre.validateHierarchy(hijo)
 
 int NetworkElement ::PrintElements(){//lo aplico al objeto directamente
 
@@ -305,6 +300,7 @@ void NetworkElement :: clearFaultManual()
 void NetworkElement :: inferenceFault()
 {
     size_t counter=0;
+
 
     for(size_t i=0 ; i < numberSons ; i++)
     {
@@ -460,10 +456,15 @@ bool NetworkElement :: isRepeaten(vector <NetworkElement>& vectorElement)
 }
 */
 
+//
+//	Funcion que valida la jerarquía, evita que se realicen conexiones prohibidas del tipo
+//	por ejemplo: CM1 --> CM2 o HUB1 --> CM2
+//
+//	padre.validateHierarchy(hijo)
+
 bool NetworkElement :: validateHierarchy(NetworkElement &element)
 {
-
-	if(type=="CM")
+    if(type=="CM")
 	{	if(element.type=="CM" || element.type=="Amp" || element.type=="Node" || element.type=="Hub" ) return false; }
 
 	else if(type=="Amp" || type=="Node")

@@ -8,6 +8,7 @@
 #include "NetworkElementClass.hpp"
 #include "dictionary.hpp"
 #include "TableHash.hpp"
+#include "NodeTable.hpp"
 
 
 //Esta funcion encuentra el ROOT
@@ -17,6 +18,6 @@ int processConnections(istream& , TableHash &);
 bool NetworkElementType(string aux);
 bool getNetName(istream& iss, string &NetName);
 NetworkElement* processFaults(istream&, TableHash&);
-void insertFault(const string,NetworkElement*,const string);
+int insertFault(const string,NetworkElement*,const string);
 
 #endif // PROCESS_HPP_INCLUDED

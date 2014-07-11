@@ -4,10 +4,11 @@
 #define KEY_NAME 0
 #define KEY_ELEMENT 1
 #define KEY_CONNECTION 2
-#define PROGRAM_SHUT 1
+#define EXIT_PROGRAM 1
 #define EXIT_SUCCESS 0
 #define ERROR_PROCESS -1
 #define DEFAULT_THRESHOLD 5
+#define BUCKETS_DEFAULT 500000
 
 using namespace std;
 
