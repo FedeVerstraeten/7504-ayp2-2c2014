@@ -11,7 +11,7 @@
 #define ROOT 1
 #define ONE 1//valida que no se repitan mas de un NetworkElement
 
-
+extern ostream *oss_net;
 
 class errorsubindice
 {

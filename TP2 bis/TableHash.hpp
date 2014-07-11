@@ -32,13 +32,14 @@ class TableHash
             TableHash(const TableHash&);
             ~TableHash();
 
+
             void insert(const NetworkElement&); // iria el objeto NetworkElement como parametro
 
-            /* El parametro representa el tipo de dato de la CLAVE. En el caso de prueba es entero*/
-
+            /* El parametro representa el tipo de dato de la CLAVE*/
             NodeTable* searchNode(const string)const; //Retorna NULL si no encuentra el nodo del elemento
             //TypeElement find(const string); //devuelve la direccion de memoria del elemento
             void remove(const string);
+
             void print(const NetworkElement&);
             void printTable();
 

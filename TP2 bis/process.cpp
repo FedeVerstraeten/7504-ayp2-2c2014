@@ -4,7 +4,7 @@
 extern string network_element_type[];
 extern string network_faults[];
 extern size_t line;
-extern NetworkElement *root;
+extern string root_name;
 extern unsigned int configThreshold;
 
 /*******************GESTOR DE FALLAS***********************/
@@ -13,7 +13,7 @@ NetworkElement* processFaults(istream& stream_faults, TableHash &t)
     string aux,doFault,Result;
     bool key=false, NetEl=false;
     NetworkElement* v_aux=NULL;
-    NetworkElement auxElement;
+    //NetworkElement auxElement;
     NodeTable *auxNode=NULL;
 
     stream_faults >> aux; // Lectura de: Query, Fault, Poll, Clear
@@ -42,8 +42,7 @@ NetworkElement* processFaults(istream& stream_faults, TableHash &t)
     if(auxNode!=NULL)
     {
         NetEl=true;
-        auxElement=auxNode->getElement();
-        v_aux=&auxElement;
+        v_aux=&auxNode->getElement();
     }
 
     if(NetEl==false)
@@ -69,12 +68,12 @@ NetworkElement* processFaults(istream& stream_faults, TableHash &t)
             Result=aux;
     }
 
-    insertFault(doFault,v_aux,Result);
+    if(insertFault(doFault,v_aux,Result)) return NULL;
 
     return v_aux;
 }
 
-void insertFault(const string doFault,NetworkElement* v_aux,const string Result)
+int insertFault(const string doFault,NetworkElement* v_aux,const string Result)
 {
     if (doFault=="Query"){/* No debe hacer nada, es solo para consultar el estado*/}
 
@@ -82,7 +81,7 @@ void insertFault(const string doFault,NetworkElement* v_aux,const string Result)
 
     else if (doFault=="Clear") v_aux->clearFaultManual();
 
-    else if (doFault=="Poll")
+    else if (doFault=="Poll" && v_aux->getType()=="CM")
     {
         if(Result=="ok")
             v_aux->setStatusOK();
@@ -91,6 +90,10 @@ void insertFault(const string doFault,NetworkElement* v_aux,const string Result)
             v_aux->setStatusFault();
 
     }
+
+    else return 1;
+
+    return 0;
 }
 
 
@@ -102,16 +105,26 @@ int processVector(istream& iss, TableHash &t)
     iss >> name;
     iss >> type;
 
-    if(!NetworkElementType(type)){
+    if(!NetworkElementType(type))
+    {
             cerr << "error: unrecognized Networkelement " << name << endl;
             return 1;
     }
 
-    NetworkElement netEl(name, type);
-    netEl.setThreshold(configThreshold);
-    t.insert(netEl);
+    NetworkElement netEl(name, type); // Creo el objeto
+    t.insert(netEl); // Lo inserto en la tabla
+    ((t.searchNode(netEl.getName()))->getElement()).setThreshold(configThreshold); // Ingreso el umbral luego
 
-    if(type == "Hub") root=&netEl;
+    if(type == "Hub")
+    { // Si el objeto a crear es el Hub, guardo su nombre de forma global
+        if(root_name==" ") root_name=name;
+        else
+        {   // Validacion si se registra mas de un Hub
+            cerr << "error: Two or more Hub registered."<<endl;
+            return 1;
+        }
+    }
+
 
     return 0;
 }
@@ -119,8 +132,8 @@ int processVector(istream& iss, TableHash &t)
 int processConnections(istream& iss, TableHash &t)
 {
     string aux1, aux2; // Guarda los nombres de elementos a conectar
-
     NodeTable *auxNode1=NULL,*auxNode2=NULL;
+    NetworkElement auxEl1,auxEl2;
 
     iss >> aux1; // Son
     iss >> aux2; // Father
@@ -148,18 +161,17 @@ int processConnections(istream& iss, TableHash &t)
         if((auxNode2->getElement()).validateHierarchy(auxNode1->getElement())==true)
             (auxNode2->getElement()).connectToElement(auxNode1->getElement());
 
-        return 0;
-    }
 
-    else
-    {
-        cerr <<"Failure hierarchy. Unable to connect the elements"<<endl
-        <<  (auxNode2->getElement()).getName() << "(father) with "
-        <<  (auxNode1->getElement()).getName() << "(son)"<<endl
-        << " Error at line: " << line << endl;
-        return 1;
+        else
+        {
+            cerr <<"Failure hierarchy. Unable to connect the elements"<<endl
+            <<  (auxNode2->getElement()).getName() << "(father) with "
+            <<  (auxNode1->getElement()).getName() << "(son)"<<endl
+            << " Error at line: " << line << endl;
+            return 1;
+        }
     }
-
+    return 0;
 }
 
 
