@@ -15,7 +15,7 @@ NetworkElement :: NetworkElement()
 	numberSons=0;
 	status=OK;
 	threshold=5; // 5(cinco): Valor por defecto indicado en el enunciad del TP2
-
+    checked=false;
 	//cout<<"Constructor sin argumentos"<<endl;
 }
 
@@ -28,7 +28,7 @@ NetworkElement :: NetworkElement(const string n,const string t)
 	numberSons=0;
 	status=OK;
 	threshold=5; // 5(cinco): Valor por defecto indicado en el enunciad del TP2
-
+    checked=false;
 	//cout<<"Constructor con argumentos"<<endl;
 }
 
@@ -41,6 +41,7 @@ NetworkElement :: NetworkElement(const NetworkElement &element)
 	sons=NULL;
 	status=element.status; // Revisar si se debe inicializar OK
 	threshold=element.threshold; // Revisar si se debe inicializar en 5
+    checked=element.checked;
 
 	if(element.numberSons!=0)
 	{
@@ -385,14 +386,15 @@ bool NetworkElement ::validateCycle()
 
 	int vertice=0;
 	vector <NetworkElement*> temp;//usar la clase vector y push_back ,arreglo dinamico...
-	if((recorrido(this,vertice,temp))==DETECT_CYCLE)
+	//if((recorrido(this,vertice,temp))==DETECT_CYCLE)
+	if((recorrido2(this,vertice))==DETECT_CYCLE)
 	{
 		// asignarle elemento desde donde quieres recorrer
 	    // vertice contiene la cantidad de nodos que
     	// que pudieron ser recorridos.
 
-		cout<< "Se en encontro un ciclo en:\t "<<temp.data()[vertice]->getName()<<endl;
-
+		//cout<< "Se en encontro un ciclo en:\t "<<temp.data()[vertice]->getName()<<endl;
+        cout<< "Se en encontro un ciclo en:\t "<<endl;
         return false;
 	}
 	else
@@ -407,7 +409,8 @@ bool NetworkElement ::validateIconnection(int numberNodes)
 
 	int vertice=0;
 	vector <NetworkElement*> temp;//usar la clase vector y push_back ,arreglo dinamico...
-	if((recorrido(this,vertice,temp))!=DETECT_CYCLE)
+	//if((recorrido(this,vertice,temp))!=DETECT_CYCLE)
+	if((recorrido2(this,vertice))!=DETECT_CYCLE)
 	{
 		if(vertice + ROOT < numberNodes)
 		{
@@ -504,6 +507,27 @@ int recorrido(NetworkElement *v,int &vertice,vector <NetworkElement*> &temp){
 			if((recorrido(v->sons[i],vertice,temp))==DETECT_CYCLE){return DETECT_CYCLE;}
         }
 		return BACK_TREE;
+}
+int recorrido2(NetworkElement *v,int &vertice){
+
+	if(comparator2(v)==EXIST){return DETECT_CYCLE;}
+	//cout<<"Nombres guardados: "<<v->getName()<<endl;
+    if(v->numberSons==0){ return BACK_TREE;}
+	else
+        for(size_t i=0;i<v->numberSons;i++)
+		{
+			vertice++;
+			if((recorrido2(v->sons[i],vertice))==DETECT_CYCLE){return DETECT_CYCLE;}
+        }
+		return BACK_TREE;
+}
+
+int comparator2(NetworkElement *v){
+
+    if(v->checked)
+        return EXIST;
+
+	return NOT_EXIST;
 }
 
 //Esta función verifica si el elemeto está repetido, entonces se deriva en un ciclo

@@ -34,6 +34,7 @@ class NetworkElement
 		size_t numberSons;
 		statusHFC_t status;
 		size_t threshold;
+        bool    checked;
 
 	public:
 
@@ -54,7 +55,7 @@ class NetworkElement
 		void setStatusFault();
 		//void setInferenceFault() {status=FAULT_INFERENCE;} //Usar para hacer pruebas
 		void setThreshold(size_t);
-
+        void setChecked(){checked=true;}
 		const string getName()const {return name;}
 		const string getType()const {return type;}
 		const NetworkElement* getFather()const {return father_;}
@@ -99,6 +100,8 @@ class NetworkElement
 
 		friend int recorrido(NetworkElement* ,int&,vector <NetworkElement*>&temp);
 		friend int comparator(NetworkElement* ,int&,vector <NetworkElement*>&temp);
+        friend int recorrido2(NetworkElement* ,int&);
+		friend int comparator2(NetworkElement*);
 		bool validateCycle();
 		bool validateIconnection(int);
 		//bool isRepeaten(vector <NetworkElement>&);
