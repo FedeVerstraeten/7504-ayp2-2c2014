@@ -8,7 +8,7 @@
 #define EXIT_SUCCESS 0
 #define ERROR_PROCESS -1
 #define DEFAULT_THRESHOLD 5
-#define BUCKETS_DEFAULT 500000
+#define BUCKETS_DEFAULT 1000003
 
 using namespace std;
 
@@ -25,7 +25,7 @@ typedef enum {
 
 
 typedef enum {
-                OKK,
+                OK_FILE,
                 OK_INPUT,
                 OK_INPUT_CIN,
                 OK_INPUT_CIN_PROCESSING,

@@ -12,6 +12,7 @@
 #include "options.hpp"
 #include "TableHash.hpp"
 #include "NodeTable.hpp"
+#include "file_load.hpp"
 
 using namespace std;
 
@@ -46,25 +47,30 @@ int main(int argc,char *argv[])
 	NodeTable *nodeRoot=NULL;
     NetworkElement rootElement;
 
-
-/***************TOPOLOGY***************************/
     getline(*iss_net,str);
     istringstream ifs_nets(str);
-
-//NetworkName
+    //NetworkName
     if(getNetName(ifs_nets, NetName)==false)
     {
         cerr << "error: missing NetworkName" << endl;
         return EXIT_PROGRAM;
     }
-//Tabla Hash of NetworkElements
+    //fstream file_in();
+	string **lines;
+	size_t number_lines;
+    loadFileMemory(ifs_net,&lines,number_lines);
+    //cout<<"red en memoria"<<endl;
+
+/***************TOPOLOGY***************************/
+    //Tabla Hash of NetworkElements
     line=1;
     TableHash t_hash(BUCKETS_DEFAULT);
 
-    while( getline(*iss_net,str) )
+    //while( getline(*iss_net,str) )
+    for(size_t i=0;i<number_lines;i++)
     {
         line++;
-        istringstream stream_net(str);
+        istringstream stream_net((*lines[i]));
         stream_net >> aux;
 
     //Wrong text
@@ -84,7 +90,7 @@ int main(int argc,char *argv[])
     }
 
    // Busco la raiz (root) en la tabla, en este caso el hub
-
+    //cout<<"busco la raiz"<<endl;
     nodeRoot=t_hash.searchNode(root_name);
 
     if(nodeRoot!=NULL) rootElement=nodeRoot->getElement();
@@ -117,14 +123,14 @@ int main(int argc,char *argv[])
 // Si el arbol esta ok, imprimo por el flujo de salida los elementos
 // y las conexiones recorriendo en profundid el arbol construido en
 // memoria desde la raiz (root).
-    cout<<"ahora imprimiendo"<<endl;
+    //cout<<"ahora imprimiendo"<<endl;
     *oss_net << "NetworkName "<<NetName << endl;
     rootElement.PrintElements();
     rootElement.Printconnection();
 
 
 /***************FAULTS**********************/
-    cout<<"iniciado gestor de fallas"<<endl;
+    cout<<"Gestor de fallas"<<endl;
     line=0;
     NetworkElement *NetElem=NULL;
 

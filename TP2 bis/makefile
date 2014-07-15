@@ -1,14 +1,14 @@
 #compilacion y ejecucion de los archivos
 CC       =  g++
 CFLAGS   = -g -Wall  -pedantic 
-OBJS	 = main.o  printers.o process.o dictionary.o  NetworkElementClass.o cmdline.o options.o TableHash.o
+OBJS	 = main.o  printers.o process.o dictionary.o  NetworkElementClass.o cmdline.o options.o TableHash.o file_load.o
 
 
 
 muestras.exe:$(OBJS)
 	$(CC)  $(OBJS) -o main.exe 
 
-main.o:main.cpp dictionary.hpp printers.hpp process.hpp  common.hpp cmdline.h options.hpp NetworkElementClass.hpp TableHash.hpp NodeTable.hpp
+main.o:main.cpp dictionary.hpp printers.hpp process.hpp  common.hpp cmdline.h options.hpp NetworkElementClass.hpp TableHash.hpp NodeTable.hpp file_load.hpp
 	$(CC) main.cpp -c -o main.o $(CFLAGS)
   
 printers.o:printers.cpp printers.hpp common.hpp
@@ -32,7 +32,8 @@ options.o: options.cpp options.hpp
 TableHash.o:TableHash.hpp TableHash.cpp common.hpp NodeTable.hpp TypeElement.hpp NetworkElementClass.hpp
 	$(CC) TableHash.cpp -c -o TableHash.o $(CFLAGS)
 
-
+file_load.o:file_load.cpp file_load.hpp common.hpp 
+	$(CC) file_load.cpp -c -o file_load.o $(CFLAGS)
 
 clean:
 	rm *.o	
