@@ -21,7 +21,7 @@ unsigned int TableHash :: hashFunction(const string k)const
 
     for( ; *word ; word++ )
     {
-        h=31*h+(*word);
+        h=131*h+(*word);
     }
     return (h%tableSize);
 

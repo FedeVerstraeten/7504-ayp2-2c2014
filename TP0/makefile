@@ -25,6 +25,8 @@ arguments.o:arguments.cpp arguments.hpp common.hpp
 	
 dictionary.o:dictionary.cpp dictionary.hpp common.hpp
 
+file_load.o:file_load.cpp file_load.hpp common.hpp 
+	$(CC) file_load.cpp -c -o file_load.o $(CFLAGS)
 
 clean:
 	rm *.o	

@@ -57,7 +57,7 @@ NetworkElement :: NetworkElement(const NetworkElement &element)
 			// verificar si esta es la notación correcta o sons[i]=element[i].sons;
 		}
 	}
-	//  cout<<"Constructor por copia"<<endl;
+	// cout<<"Constructor por copia"<<endl;
 }
 
 NetworkElement :: ~NetworkElement()

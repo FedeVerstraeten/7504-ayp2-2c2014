@@ -133,7 +133,7 @@ int processConnections(istream& iss, TableHash &t)
 {
     string aux1, aux2; // Guarda los nombres de elementos a conectar
     NodeTable *auxNode1=NULL,*auxNode2=NULL;
-    NetworkElement auxEl1,auxEl2;
+//    NetworkElement auxEl1,auxEl2;
 
     iss >> aux1; // Son
     iss >> aux2; // Father
