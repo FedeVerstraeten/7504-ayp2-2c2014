@@ -1,0 +1,26 @@
+#ifndef OPTIONS_HPP_INCLUDED
+#define OPTIONS_HPP_INCLUDED
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <cstdlib>
+#include <sstream>
+
+using namespace std;
+
+void opt_input(string const &);
+void opt_output(string const &);
+void opt_help(string const &);
+void opt_factor(string const &arg);
+
+extern struct option_t;
+
+option_t options[] = {
+	{1, "i", "input", "-", opt_input, OPT_DEFAULT},
+	{1, "o", "output", "-", opt_output, OPT_DEFAULT},
+	{1, "f", "factor", NULL, opt_factor, OPT_MANDATORY},
+	{0, "h", "help", NULL, opt_help, OPT_DEFAULT},
+	{0, },
+};
+
+#endif // OPTIONS_HPP_INCLUDED
