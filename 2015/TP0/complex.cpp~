@@ -1,6 +1,7 @@
-#include <iostream>
 #include <stdio.h>
-#include "complex.h"
+#include <iostream>
+
+using namespace std;
 
 complejo ::complejo () : x(0.0) , y(0.0) {}
 
@@ -13,25 +14,26 @@ const complejo & complejo :: operator + () const
 
 const complejo complejo:: operator -()
 {
-complejo s;
-s.x= -x ; s.y =-y ;
-return s;
+	complejo s;
+	s.x= -x ; s.y =-y ;
+	return s;
 }
 
 const complejo &complejo :: operator ++ ()
 { x++ ; y++; return *this;}
 
 const complejo complejo::operator ++ (int)
-{complejo anterior (x,y);
-x++ ; y++ ;
-return anterior;
+{	complejo anterior (x,y);
+	x++ ; y++ ;
+	return anterior;
 }
 
 complejo &complejo ::operator= (const complejo & b)
-{x = b.x;
-y= b.y;
-return *this;
+{	x = b.x;
+	y= b.y;
+	return *this;
 }
+
 
 const complejo operator + (const complejo &l, const complejo &r)
 {return complejo (l.x+r.x , l.y+r.y);}
