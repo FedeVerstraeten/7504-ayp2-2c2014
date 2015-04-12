@@ -33,6 +33,7 @@ y= b.y;
 return *this;
 }
 
+
 const complejo operator + (const complejo &l, const complejo &r)
 {return complejo (l.x+r.x , l.y+r.y);}
 
@@ -42,3 +43,37 @@ const complejo operator+ (const complejo &l , float f)
 const complejo operator+ (float f , const complejo &l)
 {return complejo (f+l.x , l.y);}
 
+int main(void)
+{
+complejo a, b(2,3) , c(b);
+cout<<"resultado: a vale"<<endl;
+a.emitir();
+cout<<"resultado: b vale"<<endl;
+b.emitir();
+cout<<"resultado: c vale"<<endl;
+c.emitir();
+cout<<"a=b+c"<<endl;
+a=b+c;
+cout<<"resultado: a vale"<<endl;
+a.emitir();
+cout<<"b=-a"<<endl;
+b=-a;
+cout<<"resultado: b vale"<<endl;
+b.emitir();
+cout<<"resultado: a vale "<<endl;
+a.emitir();
+cout<<"a++"<<endl;
+a++;
+cout<<"resultado"<<endl;
+a.emitir();
+
+cout<<"suma el real 3 y el complejo b"<<endl;
+a=3+b;
+a.emitir();
+
+cout<<"suma el complejo b y el real 5"<<endl;
+a=b+5;
+a.emitir();
+
+return 1;
+}

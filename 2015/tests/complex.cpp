@@ -33,6 +33,7 @@ y= b.y;
 return *this;
 }
 
+
 const complejo operator + (const complejo &l, const complejo &r)
 {return complejo (l.x+r.x , l.y+r.y);}
 
@@ -42,3 +43,12 @@ const complejo operator+ (const complejo &l , float f)
 const complejo operator+ (float f , const complejo &l)
 {return complejo (f+l.x , l.y);}
 
+int main(void)
+{
+
+cout << "La clase complex compiló bien mirá:" << endl;
+complejo z1(1,1);
+z1.emitir();
+
+return 1;
+}

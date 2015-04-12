@@ -43,9 +43,6 @@ main(int argc, char * const argv[])
 	string str;
 	getline(*iss,str);
 	ofs << str << endl;
-	complejo z1(1,1);
-	cout << "La clase complejo compiló bien mirá:"<<endl;
-	z1.emitir();
-	return 1;
+
 
 }
