@@ -1,0 +1,48 @@
+- Crear buffer1 de tamanio 11
+- Crear buffer2 de tamanio 4
+
+(--Obtener primer promedio, x_prev--)
+- Mientras el buffer1 no esté lleno (11 elementos):
+	- Leer complejo de la entrada
+	- Agregar complejo al buffer1
+- x_prev := Promediar elementos del buffer1
+- Vaciar buffer1
+
+- Mientras haya datos en la entrada:
+	(--Promediar 11 elementos--)
+	- Mientras el buffer1 no esté lleno (11 elementos):
+		- Leer complejo a la entrada
+		- Agregar complejo al buffer1
+	- x := Promediar elementos del buffer1
+	- Vaciar buffer1
+
+	(--Obtener la derivada de la fase--)
+	- aux := x * conjugar(x_prev)
+	- aux := fase(aux)
+
+	(--Promediar 4 elementos--)
+	- Si el buffer2 no está lleno (4 elementos):
+		- Agregar aux al buffer2
+		- Continuar con el ciclo
+	- resultado := Promediar elementos del buffer2
+	- Vaciar buffer2
+
+	(--LLevar al rango requerido--)
+	- resultado := (resultado + pi)*255/2pi 
+	- Escribir resultado en la salida
+
+	(--Avanzar una muestra--)
+	- x_prev := x
+
+
+El buffer se podría implementar con un arreglo de tamaño fijo como estructura de datos
+Sus métodos deben ser:
+	Crear
+	Destruir
+	Agregar elemento
+	Vaciar
+	Promediar elementos
+	Recorrer
+Sus atributos:
+	arreglo
+	tamaño
