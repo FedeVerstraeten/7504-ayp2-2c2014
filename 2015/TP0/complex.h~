@@ -36,7 +36,12 @@ class complejo
 	friend const complejo operator+ (const complejo & , float);
 
 	friend const complejo operator+ (float , const complejo &);
+	
+	friend const complejo operator[] (const complejo & , const complejo &);
 
+	friend const complejo operator[] (const complejo & , float);
+
+	friend const complejo operator[] (float , const complejo &);
 
 	void emitir(){cout<<"("<<x<<","<<y<<")"<<endl;}
 };

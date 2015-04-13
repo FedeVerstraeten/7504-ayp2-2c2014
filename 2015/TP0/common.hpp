@@ -10,6 +10,8 @@
 #define DEFAULT_THRESHOLD 5
 #define BUCKETS_DEFAULT 1000003
 
+#define SIZE_OF_BUFFER_INPUT	11
+
 using namespace std;
 
 //Revisar cuales de los estados ya no son utiles.
