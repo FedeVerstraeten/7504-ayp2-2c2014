@@ -1,0 +1,37 @@
+CC      = g++
+CCFLAGS  = -g -Wall -pedantic
+LDFLAGS  =
+OBJS = fm_radio.o Complex.o
+PROGRAM_NAME = fm_radio
+
+all: fm_radio
+#	@/bin/true
+
+fm_radio: $(OBJS)
+	$(CC) $(LDFLAGS) $(OBJS) -o $(PROGRAM_NAME)
+
+fm_radio.o: fm_radio.cc Complex.h
+	$(CC) $(CCFLAGS) -c fm_radio.cc
+
+Complex.o: Complex.cc Complex.h
+	$(CC) $(CCFLAGS) -c Complex.cc
+
+#test: test1
+#	@set -e; for t in test?; do              \
+#	  echo testing: $$t.;                    \
+#	  ./$$t <$$t.in >$$t.t;                  \
+#	  diff -b $$t.ref $$t.t >/dev/null 2>&1; \
+#	done
+#	@echo test ok.
+
+#test-valgrind: test1
+#	@set -e; for t in test?; do                                  \
+#	  echo testing: $$t.;                                        \
+#	  valgrind --tool=memcheck ./$$t <$$t.in >$$t.t 2>/dev/null; \
+#	  diff -b $$t.ref $$t.t >/dev/null 2>&1;                     \
+#	done
+#	@echo test ok.
+
+clean:
+	rm *.o
+#	rm -f *.o *.t core test?
