@@ -87,6 +87,12 @@ Complex::abs2() const
 	return real_ * real_ + imag_ * imag_;
 }
 
+double
+Complex::phase() const
+{
+  return atan2(imag_, real_);
+}
+
 Complex const &
 Complex::conjugate()
 {

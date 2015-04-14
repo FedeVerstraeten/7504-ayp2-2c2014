@@ -20,6 +20,7 @@ class Complex
     double imag() const;
     double abs() const;
     double abs2() const;
+    double phase() const;
     Complex const &conjugate();
     Complex const conjugated() const;
     bool iszero() const;
