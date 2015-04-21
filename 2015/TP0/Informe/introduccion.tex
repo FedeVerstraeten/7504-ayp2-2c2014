@@ -1,0 +1,52 @@
+\section{Introducción}
+
+
+\subsection{Radio definida por software (SDR)}
+
+El concepto de Radio Definida por Software se le atribuye a Joseph Mitola, 1990. Se refiere a un dispositivo que permite reducir al mínimo el hardware necesario para la recepción de señales de radio. Dicho equipo captura la señal analógica (ya sea mediante un cable o una antena), la digitaliza (mediante un conversor A/D) para luego realizar por software toda la etapa de procesamiento de señal requerido en la decodificación. Esto ha logrado que la recepción de cierto rango de telecomunicaciones sea mucho más accesible en términos económicos y prácticos (ya que el mismo dispositivo físico se puede utilizar para distintos fines con solo re-programar el software). Un ejemplo de este dispositivo se puede ver a continuación:
+
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.75\textwidth]{SDR.jpg}
+\par\end{centering}
+
+\caption{Sintonizador de radio digital.}
+
+
+\end{figure}
+
+
+
+\subsection{Transmisión de TV por cable}
+
+En telecomunicaciones, la televisión analógica se transmite mediante
+el método de la Multiplexión por División en Frecuencia (FDM). Esta
+técnica consiste en transmitir varias señales simultáneamente modulando
+cada una con una portadora diferente, en el rango de VHF/UHF, de forma
+tal que los anchos de banda de cada señal no se superpongan significativamente.
+El canal destinado para la transmisión de una emisora tiene un ancho
+de banda de aproximadamente 6 Mhz, donde los 5.45 Mhz más bajos corresponden
+al espectro de la señal de video y los últimos 0.55Mhz (aproximadamente)
+se reservan para el espectro de la señal de audio. Este modelo de
+comunicación se puede ver representado en el siguiente gráfico:
+
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.75\textwidth]{TV_Spectrum.png}
+\par\end{centering}
+
+\caption{Señal de TV transmitida.}
+\end{figure}
+
+
+
+\subsection{Aplicación del Trabajo Práctico}
+
+Sabiendo que el audio de la televisión está modulado en frecuencia
+(FM), si se toma la porción del canal adecuada es posible demodular
+dicha señal y escuchar algún canal de televisión.
+
+En este caso particular, el SDR se utilizó para capturar un ancho
+de banda de 2.4Mhz y centrado en 181.238 Mhz. A través del aplicativo
+desarrollado se pudo escuchar efectivamente el programa emitido.
+
