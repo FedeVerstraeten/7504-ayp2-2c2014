@@ -1,0 +1,208 @@
+#include <iostream>
+#include <cmath>
+
+#include "complex.h"
+
+using namespace std;
+
+
+
+complex::complex() : real_(0), imag_(0)
+{
+}
+
+complex::complex(double r) : real_(r), imag_(0)
+{
+}
+
+complex::complex(double r, double i) : real_(r), imag_(i)
+{
+}
+
+complex::complex(complex const &c) : real_(c.real_), imag_(c.imag_)
+{
+}
+
+complex const &
+complex::operator=(complex const &c)
+{
+	real_ = c.real_;
+	imag_ = c.imag_;
+	return *this;
+}
+
+complex const &
+complex::operator*=(complex const &c)
+{
+	double re = real_ * c.real_
+	         - imag_ * c.imag_;
+	double im = real_ * c.imag_
+	         + imag_ * c.real_;
+	real_ = re, imag_ = im;
+	return *this;
+}
+
+complex const &
+complex::operator+=(complex const &c)
+{
+	double re = real_ + c.real_;
+	double im = imag_ + c.imag_;
+	real_ = re, imag_ = im;
+	return *this;
+}
+
+complex const &
+complex::operator-=(complex const &c)
+{
+	double re = real_ - c.real_;
+	double im = imag_ - c.imag_;
+	real_ = re, imag_ = im;
+	return *this;
+}
+
+complex::~complex()
+{
+}
+
+double
+complex::real() const
+{
+	return real_;
+}
+
+double complex::imag() const
+{
+	return imag_;
+}
+
+double
+complex::abs() const
+{
+	return std::sqrt(real_ * real_ + imag_ * imag_);
+}
+
+double
+complex::abs2() const
+{
+	return real_ * real_ + imag_ * imag_;
+}
+
+double
+complex::phase() const
+{
+  return atan2(imag_, real_);
+}
+
+complex const &
+complex::conjugate()
+{
+	imag_*= -1;
+	return *this;
+}
+
+complex const
+complex::conjugated() const
+{
+	return complex(real_, -imag_);
+}
+
+bool
+complex::iszero() const
+{
+#define ZERO(x) ((x) == +0.0 && (x) == -0.0)
+	return ZERO(real_) && ZERO(imag_) ? true : false;
+}
+
+complex const
+operator+(complex const &x, complex const &y)
+{
+	complex z(x.real_ + y.real_, x.imag_ + y.imag_);
+	return z;
+}
+
+complex const
+operator-(complex const &x, complex const &y)
+{
+	complex r(x.real_ - y.real_, x.imag_ - y.imag_);
+	return r;
+}
+
+complex const
+operator*(complex const &x, complex const &y)
+{
+	complex r(x.real_ * y.real_ - x.imag_ * y.imag_,
+	          x.real_ * y.imag_ + x.imag_ * y.real_);
+	return r;
+}
+
+complex const
+operator/(complex const &x, complex const &y)
+{
+	return x * y.conjugated() / y.abs2();
+}
+
+complex const
+operator/(complex const &c, double f)
+{
+	return complex(c.real_ / f, c.imag_ / f);
+}
+
+bool
+operator==(complex const &c, double f)
+{
+	bool b = (c.imag_ != 0 || c.real_ != f) ? false : true;
+	return b;
+}
+
+bool
+operator==(complex const &x, complex const &y)
+{
+	bool b = (x.real_ != y.real_ || x.imag_ != y.imag_) ? false : true;
+	return b;
+}
+
+ostream &
+operator<<(ostream &os, const complex &c)
+{
+	return os << "(" 
+	          << c.real_
+	          << ", " 
+	          << c.imag_
+	          << ")";
+}
+
+istream &
+operator>>(istream &is, complex &c)
+{
+	int good = false;
+	int bad  = false;
+	double re = 0;
+	double im = 0;
+	char ch = 0;
+
+	if (is >> ch
+	    && ch == '(') {
+		if (is >> re
+		    && is >> ch
+		    && ch == ','
+		    && is >> im
+		    && is >> ch
+		    && ch == ')')
+			good = true;
+		else
+			bad = true;
+	} else if (is.good()) {
+		is.putback(ch);
+		if (is >> re)
+			good = true;
+		else
+			bad = true;
+	}
+
+	if (good)
+		c.real_ = re, c.imag_ = im;
+	if (bad)
+		is.clear(ios::badbit);
+
+	return is;
+}

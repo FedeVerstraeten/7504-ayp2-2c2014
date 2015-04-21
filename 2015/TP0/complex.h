@@ -1,49 +1,44 @@
-#ifndef COMPLEX_H_INCLUDED
-#define COMPLEX_H_INCLUDED
+#ifndef _complex_H_INCLUDED_
+#define _complex_H_INCLUDED_
 
-#include <stdio.h>
 #include <iostream>
 
-using namespace std;
-
-class complejo
+class complex 
 {
-	private:
+  public:
+    complex();
+    complex(double);
+    complex(double, double);
+    complex(const complex &);
+    complex const &operator=(complex const &);
+    complex const &operator*=(complex const &);
+    complex const &operator+=(complex const &);
+    complex const &operator-=(complex const &);
+    ~complex();
 
-		double x,y;
+    double real() const;
+    double imag() const;
+    double abs() const;
+    double abs2() const;
+    double phase() const;
+    complex const &conjugate();
+    complex const conjugated() const;
+    bool iszero() const;
 
-	public:
+    friend complex const operator+(complex const &, complex const &);
+    friend complex const operator-(complex const &, complex const &);
+    friend complex const operator*(complex const &, complex const &);
+    friend complex const operator/(complex const &, complex const &);
+    friend complex const operator/(complex const &, double);
 
-		complejo();
+    friend bool operator==(complex const &, double);
+    friend bool operator==(complex const &, complex const &);
 
-		complejo(double , double );
-
-		complejo(const complejo &);
-
-		const complejo& operator+ () const;
-
-		const complejo operator-();
-
-		const complejo& operator++();
-
-		const complejo operator++ (int);
-
-		complejo& operator = (const complejo &);
-
-
-	friend const complejo operator+ (const complejo & , const complejo &);
-
-	friend const complejo operator+ (const complejo & , float);
-
-	friend const complejo operator+ (float , const complejo &);
-	
-//	friend const complejo operator[] (const complejo & , const complejo &);
-
-//	friend const complejo operator[] (const complejo & , float);
-
-//	friend const complejo operator[] (float , const complejo &);
-
-	void emitir(){cout<<"("<<x<<","<<y<<")"<<endl;}
+    friend std::ostream &operator<<(std::ostream &, const complex &);
+    friend std::istream &operator>>(std::istream &, complex &);
+  
+  private:
+    double real_, imag_;
 };
 
-#endif // COMPLEX_H_INCLUDED
+#endif // _complex_H_INCLUDED_

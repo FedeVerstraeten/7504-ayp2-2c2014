@@ -17,8 +17,8 @@ cmdline.o: cmdline.cc cmdline.h
 options.o: options.cpp options.hpp
 	$(CC)  options.cpp -c -o options.o $(CFLAGS)
 
-complex.o: complex.cpp complex.h
-	$(CC)  complex.cpp -c -o complex.o $(CFLAGS)
+complex.o: complex.cc complex.h
+	$(CC)  complex.cc -c -o complex.o $(CFLAGS)
 
 clean:
 	rm *.o
