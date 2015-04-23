@@ -86,10 +86,13 @@ main(int argc, char * const argv[])
 		phase_out = buffer_out/DECIMATOR_OUT;
 		buffer_out = 0;
 		j = 0;
-		complex_out=(phase_ou + PI) * 255 / (2 * PI) 
+		complex_out=(phase_out + PI) * 255 / (2 * PI); 
 		*oss << complex_out << endl;
 	}
 
+	Complex z3(3,4);
+	cout << "z3 = " << z3 << endl;
+	cout << "z3.abs()= " << z3.abs() << endl;
 	return 0;
 }
 
