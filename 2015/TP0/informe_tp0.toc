@@ -4,18 +4,20 @@
 \contentsline {subsection}{\numberline {1.2}Transmisi\IeC {\'o}n de TV por cable}{2}
 \contentsline {subsection}{\numberline {1.3}Aplicaci\IeC {\'o}n del Trabajo Pr\IeC {\'a}ctico}{2}
 \contentsline {section}{\numberline {2}Desarrollo}{3}
-\contentsline {subsection}{\numberline {2.1}Est\IeC {\'a}ndar de estilo}{4}
-\contentsline {section}{\numberline {3}Compilaci\IeC {\'o}n}{4}
-\contentsline {subsection}{\numberline {3.1}Opciones del programa}{5}
-\contentsline {section}{\numberline {4}Ejecuci\IeC {\'o}n}{5}
-\contentsline {subsection}{\numberline {4.1}Casos de prueba}{6}
-\contentsline {subsection}{\numberline {4.2}Caso 1}{6}
-\contentsline {subsection}{\numberline {4.3}Caso 2}{6}
-\contentsline {subsection}{\numberline {4.4}Caso 3}{6}
-\contentsline {subsection}{\numberline {4.5}Caso 4}{7}
-\contentsline {subsection}{\numberline {4.6}Caso 5}{7}
-\contentsline {section}{\numberline {5}C\IeC {\'o}digos}{7}
-\contentsline {subsection}{\numberline {5.1}Estructura de archivos}{7}
-\contentsline {subsection}{\numberline {5.2}Clase Complex}{12}
-\contentsline {subsection}{\numberline {5.3}Clase cmdline}{20}
-\contentsline {section}{\numberline {6}Enunciado}{30}
+\contentsline {subsection}{\numberline {2.1}Pseudoc\IeC {\'o}digo}{3}
+\contentsline {subsection}{\numberline {2.2}Implementaci\IeC {\'o}n}{4}
+\contentsline {subsection}{\numberline {2.3}Est\IeC {\'a}ndar de estilo}{4}
+\contentsline {section}{\numberline {3}Compilaci\IeC {\'o}n}{5}
+\contentsline {subsection}{\numberline {3.1}Opciones del programa}{6}
+\contentsline {section}{\numberline {4}Ejecuci\IeC {\'o}n}{6}
+\contentsline {subsection}{\numberline {4.1}Casos de prueba}{7}
+\contentsline {subsection}{\numberline {4.2}Caso 1}{7}
+\contentsline {subsection}{\numberline {4.3}Caso 2}{7}
+\contentsline {subsection}{\numberline {4.4}Caso 3}{7}
+\contentsline {subsection}{\numberline {4.5}Caso 4}{8}
+\contentsline {subsection}{\numberline {4.6}Caso 5}{8}
+\contentsline {section}{\numberline {5}C\IeC {\'o}digos}{8}
+\contentsline {subsection}{\numberline {5.1}Estructura de archivos}{8}
+\contentsline {subsection}{\numberline {5.2}Clase Complex}{13}
+\contentsline {subsection}{\numberline {5.3}Clase cmdline}{21}
+\contentsline {section}{\numberline {6}Enunciado}{31}

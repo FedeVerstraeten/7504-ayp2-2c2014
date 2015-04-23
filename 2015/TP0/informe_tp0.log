@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.2.27)  23 APR 2015 16:27
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.2.27)  23 APR 2015 17:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -595,97 +595,101 @@ File: Imagenes/TV_Spectrum.png Graphic file (type png)
 Package pdftex.def Info: Imagenes/TV_Spectrum.png used on input line 62.
 (pdftex.def)             Requested size: 172.5pt x 120.36589pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 81--82
+Underfull \hbox (badness 10000) in paragraph at lines 82--83
 
  []
 
 [2 <./Imagenes/SDR.jpg>]
-LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 85.
+LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 83.
 
  (/usr/share/texmf/tex/latex/lm/ot1lmtt.fd
 File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-Underfull \hbox (badness 10000) in paragraph at lines 103--104
+) [3 <./Imagenes/TV_Spectrum.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 123--124
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 108--109
+Underfull \hbox (badness 10000) in paragraph at lines 145--146
 
  []
 
-[3 <./Imagenes/TV_Spectrum.png>]
-LaTeX Font Info:    Try loading font information for OMS+lmr on input line 110.
+
+Underfull \hbox (badness 10000) in paragraph at lines 150--151
+
+ []
+
+[4]
+LaTeX Font Info:    Try loading font information for OMS+lmr on input line 152.
 
  (/usr/share/texmf/tex/latex/lm/omslmr.fd
 File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 110.
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 152.
 
-Overfull \hbox (52.74895pt too wide) in paragraph at lines 117--117
+Overfull \hbox (52.74895pt too wide) in paragraph at lines 159--159
  []\OT1/lmtt/m/n/10 https://google-styleguide.googlecode.com/svn/trunk/cppguide
 .html#Naming[] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 125--126
+Underfull \hbox (badness 10000) in paragraph at lines 167--168
 
  []
 
-[4]
-Underfull \hbox (badness 10000) in paragraph at lines 161--163
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 203--205
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 172--173
+Underfull \hbox (badness 10000) in paragraph at lines 214--215
 
  []
 
-[5] <Imagenes/Caso1.png, id=32, 670.505pt x 206.7725pt>
+<Imagenes/Caso1.png, id=32, 670.505pt x 206.7725pt>
 File: Imagenes/Caso1.png Graphic file (type png)
-
-<use Imagenes/Caso1.png>
-Package pdftex.def Info: Imagenes/Caso1.png used on input line 176.
+ <use Imagenes/Caso1.png>
+Package pdftex.def Info: Imagenes/Caso1.png used on input line 218.
 (pdftex.def)             Requested size: 268.19725pt x 82.70752pt.
 
-<Imagenes/Caso2.png, id=33, 665.48625pt x 177.66376pt>
+[6] <Imagenes/Caso2.png, id=36, 665.48625pt x 177.66376pt>
 File: Imagenes/Caso2.png Graphic file (type png)
 
 <use Imagenes/Caso2.png>
-Package pdftex.def Info: Imagenes/Caso2.png used on input line 180.
+Package pdftex.def Info: Imagenes/Caso2.png used on input line 222.
 (pdftex.def)             Requested size: 266.18977pt x 71.06424pt.
- <Imagenes/Caso3.png, id=34, 681.54625pt x 355.3275pt>
+ <Imagenes/Caso3.png, id=37, 681.54625pt x 355.3275pt>
 File: Imagenes/Caso3.png Graphic file (type png)
 
 <use Imagenes/Caso3.png>
-Package pdftex.def Info: Imagenes/Caso3.png used on input line 184.
+Package pdftex.def Info: Imagenes/Caso3.png used on input line 226.
 (pdftex.def)             Requested size: 272.61366pt x 142.12846pt.
- <Imagenes/Caso4.png, id=35, 683.55376pt x 497.86pt>
+ <Imagenes/Caso4.png, id=38, 683.55376pt x 497.86pt>
 File: Imagenes/Caso4.png Graphic file (type png)
 
 <use Imagenes/Caso4.png>
-Package pdftex.def Info: Imagenes/Caso4.png used on input line 188.
+Package pdftex.def Info: Imagenes/Caso4.png used on input line 230.
 (pdftex.def)             Requested size: 273.41666pt x 199.14047pt.
- [6 <./Imagenes/Caso1.png> <./Imagenes/Caso2.png> <./Imagenes/Caso3.png>] <Imag
-enes/Caso5.png, id=39, 685.56125pt x 138.5175pt>
+ [7 <./Imagenes/Caso1.png> <./Imagenes/Caso2.png> <./Imagenes/Caso3.png>] <Imag
+enes/Caso5.png, id=43, 685.56125pt x 138.5175pt>
 File: Imagenes/Caso5.png Graphic file (type png)
 
 <use Imagenes/Caso5.png>
-Package pdftex.def Info: Imagenes/Caso5.png used on input line 192.
+Package pdftex.def Info: Imagenes/Caso5.png used on input line 234.
 (pdftex.def)             Requested size: 274.21964pt x 55.406pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 195--196
+Underfull \hbox (badness 10000) in paragraph at lines 237--238
 
  []
 
-<Imagenes/Jerarquia_de_archivos.png, id=40, 1273.75874pt x 665.48625pt>
+<Imagenes/Jerarquia_de_archivos.png, id=44, 1273.75874pt x 665.48625pt>
 File: Imagenes/Jerarquia_de_archivos.png Graphic file (type png)
 
 <use Imagenes/Jerarquia_de_archivos.png>
 Package pdftex.def Info: Imagenes/Jerarquia_de_archivos.png used on input line 
-198.
+240.
 (pdftex.def)             Requested size: 318.4389pt x 166.37115pt.
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
@@ -696,7 +700,7 @@ File: lstlang1.sty 2013/08/26 1.5b listings language file
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2013/08/26 1.5b (Carsten Heinz)
-) [7 <./Imagenes/Caso4.png> <./Imagenes/Caso5.png> <./Imagenes/Jerarquia_de_arc
+) [8 <./Imagenes/Caso4.png> <./Imagenes/Caso5.png> <./Imagenes/Jerarquia_de_arc
 hivos.png>]
 (./Code/main.cc
 Overfull \hbox (113.00446pt too wide) in paragraph at lines 1--2
@@ -714,7 +718,7 @@ File: omllmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `OML/lmr/m/n' in size <10> not available
 (Font)              Font shape `OML/lmm/m/it' tried instead on input line 12.
- [8] [9]) (./Code/main.h
+ [9] [10]) (./Code/main.h
 Overfull \hbox (113.00446pt too wide) in paragraph at lines 1--2
 [][][][] 
  []
@@ -729,7 +733,7 @@ Overfull \hbox (113.00446pt too wide) in paragraph at lines 1--2
 [][][][] 
  []
 
-[10]
+[11]
 Overfull \hbox (113.00446pt too wide) in paragraph at lines 12--15
 [][][][] 
  []
@@ -744,9 +748,9 @@ Overfull \hbox (113.00446pt too wide) in paragraph at lines 12--14
 [][][][] 
  []
 
-[11]) (./Code/complex.h [12] [13]) (./Code/complex.cc [14] [15] [16] [17]
-[18] [19]) (./Code/cmdline.h [20]) (./Code/cmdline.cc [21] [22] [23] [24]
-[25]) (./Code/arguments.h
+[12]) (./Code/complex.h [13] [14]) (./Code/complex.cc [15] [16] [17] [18]
+[19] [20]) (./Code/cmdline.h [21]) (./Code/cmdline.cc [22] [23] [24] [25]
+[26]) (./Code/arguments.h
 Overfull \hbox (113.00446pt too wide) in paragraph at lines 1--2
 [][][][] 
  []
@@ -761,12 +765,12 @@ Overfull \hbox (113.00446pt too wide) in paragraph at lines 1--2
 [][][][] 
  []
 
-[26]
+[27]
 Overfull \hbox (113.00446pt too wide) in paragraph at lines 10--12
 [][][][] 
  []
 
-[27] [28]) [29] [30] (./informe_tp0.aux) ) 
+[28] [29]) [30] [31] (./informe_tp0.aux) ) 
 Here is how much of TeX's memory you used:
  6583 strings out of 494985
  91793 string characters out of 6180356
@@ -786,10 +790,10 @@ e/texmf/fonts/type1/public/lm/lmr5.pfb></usr/share/texmf/fonts/type1/public/lm/
 lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fon
 ts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb>
 </usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
-Output written on informe_tp0.pdf (30 pages, 771224 bytes).
+Output written on informe_tp0.pdf (31 pages, 772952 bytes).
 PDF statistics:
- 164 PDF objects out of 1000 (max. 8388607)
- 108 compressed objects within 2 object streams
+ 168 PDF objects out of 1000 (max. 8388607)
+ 111 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  41 words of extra memory for PDF output out of 10000 (max. 10000000)
 

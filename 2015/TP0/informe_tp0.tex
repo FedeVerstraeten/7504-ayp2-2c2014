@@ -78,6 +78,47 @@ desarrollado se pudo escuchar efectivamente el programa emitido.
 
 
 \section{Desarrollo}
+\subsection{Pseudocódigo}
+Las siguientes notas sirvieron como borrador del pseudocódigo para alinear ideas y codificar las funciones principales.\\
+\begin{verbatim}
+- i := 0
+- j := 0
+- buffer1 := 0
+- buffer2 := 0
+
+( -- Condiciones Iniciales Nulas -- )
+- x_prev := 0
+
+- Mientras haya complejos en la entrada
+	( -- Promediar 11 elementos -- )
+	- buffer1 := buffer1 + complejo a la entrada
+	- Si i < 10
+		- i := i + 1
+		- Continuar con el ciclo
+	- x := buffer1 / 11
+	- buffer1 := 0
+	- i := 0
+
+	( -- Obtener la derivada de la fase -- )
+	- aux := x * conjugar(x_prev)
+	- aux := fase(aux)
+
+	( -- Avanzar una muestra -- )
+	- x_prev := x
+
+	( -- Promediar 4 elementos -- )
+	- buffer2 := buffer2 + aux
+	- Si j < 3
+		- j := j + 1
+		- Continuar con el ciclo
+	- resultado := buffer2 / 4
+	- buffer2 := 0
+	- j := 0
+	
+	( -- Imprimir en el formato especificado -- )
+	- resultado := (resultado + pi)*255/2pi 
+
+\end{verbatim}
 \subsection{Implementación}
 Para implementar el proceso propuesto en la especificación del presente trabajo, se descubrió que la cascada de los bloques "Promediador móvil de N elementos" seguido de "Decimador de N elementos", es totalmente equivalente a un único bloque en el cual se tomen N elementos y cuya salida sea el promedio de dichos N elementos. A continuación se toman los siguientes N elementos y la nueva salida es el promedio de estos últimos N elementos, y así sucesivamente.\\
 
