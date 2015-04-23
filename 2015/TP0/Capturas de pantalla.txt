@@ -1,0 +1,1 @@
+Agregué capturas de pantalla de los tests 1 a 4 y de aplay en ./Imagenes
