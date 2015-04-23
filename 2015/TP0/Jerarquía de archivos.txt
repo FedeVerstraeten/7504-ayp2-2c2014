@@ -1,0 +1,2 @@
+A continuación se muestra un esquema con la jerarquía de archivos de código de la aplicación, a modo de comprender la relación entre los distintos módulos.
+- imagen
