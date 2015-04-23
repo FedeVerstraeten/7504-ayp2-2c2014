@@ -1,48 +1,108 @@
-// Prueba de la clase cmdline: dado un factor entero pasado por la
-// l韓ea de comando, leemos una secuencia de n鷐eros que ingresan
-// por la entrada est醤dar, los multiplicamos por ese factor, y
-// luego mostramos el resultado por std::cout.
-//
-// $Id: main.cc,v 1.5 2012/09/15 12:23:57 lesanti Exp $
+// ------------------------------------------------------------------------- //
+// Facultad de Ingenier铆a de la Universidad de Buenos Aires
+// Algoritmos y Programaci贸n II
+// 1掳 Cuatrimestre de 2015
+// Trabajo Pr谩ctico 0: Programaci贸n en C++
+// Demodulaci贸n de se帽al FM
+// 
+// main.cc
+// Archivo principal donde se ejecuta el main.
+// ------------------------------------------------------------------------- //
 
 #include <iostream>
 #include <fstream>
-#include <string>
 #include <sstream>
+#include <cstdlib>
 #include <cstring>
 
-#include "common.hpp"
-#include "cmdline.h"
-#include "options.hpp"
+#include "main.h"
 #include "complex.h"
-
+#include "cmdline.h"
+#include "arguments.h"
+#include "utilities.h"
+#include "types.h"
 
 using namespace std;
 
 
-istream *iss =0;
-ostream *oss = 0;
-fstream ifs, ofs;
-int factor;
-
-static option_t options[] = {
-	{1, "i", "input", "-", opt_input, OPT_DEFAULT},
-	{1, "o", "output", "-", opt_output, OPT_DEFAULT},
-	{1, "f", "factor", NULL, opt_factor, OPT_SEEN},
-	{0, "h", "help", NULL, opt_help, OPT_DEFAULT},
-	{0, },
+// Colecci贸n de funciones para imprimir en formatos distintos
+void (*print_phase[])(double) = {
+        
+  print_phase_text,
+  print_phase_U8
+        
 };
+
+// Opciones de argumentos de invocaci贸n
+static option_t options[] = {
+  {1, "i", "input", "-", opt_input, OPT_SEEN},
+  {1, "o", "output", "-", opt_output, OPT_SEEN},
+  {1, "f", "format", "txt", opt_format, OPT_SEEN},
+  {0, },
+};
+
+extern istream *iss;
+extern format_option_t format_option;
 
 int
 main(int argc, char * const argv[])
 {
+  size_t i = 0;
+  size_t j = 0;
+  Complex buffer1 = 0;
+  double buffer2 = 0;
+  Complex x, x_prev;
+  Complex aux;
+  double output_phase;
 
-	cout << "hola" <<endl;
-	cmdline cmdl(options);
-	cmdl.parse(argc, argv);
-	string str;
-	getline(*iss,str);
-	ofs << str << endl;
+  // Parsear argumentos de invocaci贸n
+  cmdline cmdl(options);
+  cmdl.parse(argc, argv);
 
+  // Inicializar el complejo con el fomato especificado
+  Complex input_complex(format_option);
+  // cout<<int(input_complex.format_option())<<endl;
 
-}
+  // ( -- Condiciones Iniciales Nulas -- )
+  x_prev = 0;
+
+  // Mientras haya complejos en la entrada
+  while (*iss >> input_complex)
+  {
+  
+    // ( -- Promediar 11 elementos -- )
+    buffer1 += input_complex;
+    if (i < DECIMATOR1_SIZE-1)
+    {
+      i++;
+      continue;
+    }
+    x = buffer1/DECIMATOR1_SIZE;
+    buffer1 = 0;
+    i = 0;
+
+    // ( -- Obtener la derivada de la fase -- )
+    aux = x * x_prev.conjugated();
+    output_phase = aux.phase();
+
+    // ( -- Avanzar una muestra -- )
+    x_prev = x;
+
+    // ( -- Promediar 4 elementos -- )
+    buffer2 += output_phase;
+    if (j < DECIMATOR2_SIZE-1)
+    {
+      j++;
+      continue;
+    }
+    output_phase = buffer2/DECIMATOR2_SIZE;
+    buffer2 = 0;
+    j = 0;
+  
+    // ( -- Imprimir en el formato especificado -- )
+    (print_phase[format_option])(output_phase);
+  
+  }
+
+  return 0;
+} // main
