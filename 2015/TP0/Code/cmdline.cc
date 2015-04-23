@@ -53,9 +53,9 @@ cmdline::parse(int argc, char * const argv[])
   // llamamos a la funcion de parseo correspondiente.
   //
   for (int i = 1; i < argc; ++i) {
-    // Todos los parámetros de este programa deben
+    // Todos los parametros de este programa deben
     // pasarse en forma de opciones. Encontrar un
-    // parámetro no-opcion es un error.
+    // parametro no-opcion es un error.
     //
     if (argv[i][0] != '-') {
       cerr << "Invalid non-option argument: "
@@ -74,7 +74,7 @@ cmdline::parse(int argc, char * const argv[])
       break;
 
     // Finalmente, vemos si se trata o no de una
-    // opcion larga; y llamamos al método que se
+    // opcion larga; y llamamos al metodo que se
     // encarga de cada caso.
     //
     if (argv[i][1] == '-')
@@ -158,7 +158,7 @@ cmdline::do_long_opt(const char *opt, const char *arg)
 
   // Algunos compiladores se quejan con funciones que 
   // logicamente no pueden terminar, y que no devuelven
-  // un valor en esta última parte.
+  // un valor en esta ultima parte.
   //
   return -1;
 }
@@ -217,7 +217,7 @@ cmdline::do_short_opt(const char *opt, const char *arg)
 
   // Algunos compiladores se quejan con funciones que 
   // logicamente no pueden terminar, y que no devuelven
-  // un valor en esta última parte.
+  // un valor en esta ultima parte.
   //
   return -1;
 }
