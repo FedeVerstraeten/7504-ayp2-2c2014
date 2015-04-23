@@ -2,8 +2,12 @@
 \contentsline {section}{\numberline {1}Enunciado}{1}
 \contentsline {section}{\numberline {2}Introducci\IeC {\'o}n}{1}
 \contentsline {subsection}{\numberline {2.1}Radio definida por software (SDR)}{1}
-\contentsline {subsection}{\numberline {2.2}Transmisi\IeC {\'o}n de TV por cable}{1}
+\contentsline {subsection}{\numberline {2.2}Transmisi\IeC {\'o}n de TV por cable}{2}
 \contentsline {subsection}{\numberline {2.3}Aplicaci\IeC {\'o}n del Trabajo Pr\IeC {\'a}ctico}{2}
-\contentsline {section}{\numberline {3}Introducci\IeC {\'o}n}{2}
-\contentsline {section}{\numberline {4}Desarrollo}{2}
-\contentsline {section}{\numberline {5}C\IeC {\'o}digos}{2}
+\contentsline {section}{\numberline {3}Est\IeC {\'a}ndar de estilo}{3}
+\contentsline {section}{\numberline {4}Estructura de archivos}{3}
+\contentsline {section}{\numberline {5}Opciones de ejecuci\IeC {\'o}n}{3}
+\contentsline {section}{\numberline {6}Compilaci\IeC {\'o}n}{3}
+\contentsline {section}{\numberline {7}Casos de prueba}{3}
+\contentsline {section}{\numberline {8}Desarrollo}{3}
+\contentsline {section}{\numberline {9}C\IeC {\'o}digos}{3}
