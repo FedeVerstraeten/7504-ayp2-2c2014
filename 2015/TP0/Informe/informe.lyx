@@ -1,0 +1,374 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\begin_modules
+customHeadersFooters
+endnotes
+foottoend
+\end_modules
+\maintain_unincluded_children false
+\language spanish
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\notefontcolor #424242
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\topmargin 3cm
+\rightmargin 2cm
+\bottommargin 3cm
+\secnumdepth 2
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+TP0: Programación en C++
+\end_layout
+
+\begin_layout Date
+Primer Cuatrimestre de 2015
+\end_layout
+
+\begin_layout Author
+Bourbon, Rodrigo
+\begin_inset Newline newline
+\end_inset
+
+Carreño Romano, Carlos Germán
+\begin_inset Newline newline
+\end_inset
+
+Sampayo, Sebastián
+\end_layout
+
+\begin_layout Address
+\align center
+Algoritmos y Programación II
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename Imagenes/logo_fiuba_HD.jpg
+	width 50page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Left Header
+Algoritmos y Programación II - TP0 - FIUBA
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "80page%"
+height "0.1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Enunciado
+\end_layout
+
+\begin_layout Section
+Introducción
+\end_layout
+
+\begin_layout Subsection
+Radio definida por software (SDR)
+\end_layout
+
+\begin_layout Standard
+El concepto de Radio Definida por Software se le atribuye a Joseph Mitola,
+ 1990.
+ Se refiere a un dispositivo que permite reducir al mínimo el hardware necesario
+ para la recepción de señales de radio.
+ Dicho equipo captura la señal analógica (ya sea mediante un cable o una
+ antena), la digitaliza (mediante un conversor A/D) para luego realizar
+ por software toda la etapa de procesamiento de señal requerido en la decodifica
+ción.
+ Esto ha logrado que la recepción de cierto rango de telecomunicaciones
+ sea mucho más accesible en términos económicos y prácticos (ya que el mismo
+ dispositivo físico se puede utilizar para distintos fines con solo re-programar
+ el software).
+ Un ejemplo de este dispositivo se puede ver a continuación:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/sebastian/Dropbox/11vo Cuatrimestre (1-2015)/Algoritmos y Programacion II/TPs/TP0/Informe/Imagenes/SDR.jpg
+	width 75text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Sintonizador de radio digital.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Transmisión de TV por cable
+\end_layout
+
+\begin_layout Standard
+En telecomunicaciones, la televisión analógica se transmite mediante el
+ método de la Multiplexión por División en Frecuencia (FDM).
+ Esta técnica consiste en transmitir varias señales simultáneamente modulando
+ cada una con una portadora diferente, en el rango de VHF/UHF, de forma
+ tal que los anchos de banda de cada señal no se superpongan significativamente.
+ El canal destinado para la transmisión de una emisora tiene un ancho de
+ banda de aproximadamente 6 Mhz, donde los 5.45 Mhz más bajos corresponden
+ al espectro de la señal de video y los últimos 0.55Mhz (aproximadamente)
+ se reservan para el espectro de la señal de audio.
+ Este modelo de comunicación se puede ver representado en el siguiente gráfico:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/sebastian/Dropbox/11vo Cuatrimestre (1-2015)/Algoritmos y Programacion II/TPs/TP0/Informe/Imagenes/TV_Spectrum.png
+	width 75text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Señal de TV transmitida.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Aplicación del Trabajo Práctico
+\end_layout
+
+\begin_layout Standard
+Sabiendo que el audio de la televisión está modulado en frecuencia (FM),
+ si se toma la porción del canal adecuada es posible demodular dicha señal
+ y escuchar algún canal de televisión.
+\end_layout
+
+\begin_layout Standard
+En este caso particular, el SDR se utilizó para capturar un ancho de banda
+ de 2.4Mhz y centrado en 181.238 Mhz.
+ A través del aplicativo desarrollado se pudo escuchar efectivamente el
+ programa emitido.
+\end_layout
+
+\begin_layout Section
+Desarrollo
+\end_layout
+
+\begin_layout Subsection
+Standard de estilo
+\end_layout
+
+\begin_layout Standard
+Hablar de cuales fueron considerados y cual se terminó eligiendo y por qué
+\end_layout
+
+\begin_layout Standard
+El primer punto a resolver antes de comenzar a escribir código debe ser
+ definir el standard de estilo a utilizar.
+ Este 
+\end_layout
+
+\begin_layout Subsection
+Estructura de archivos
+\end_layout
+
+\begin_layout Subsection
+Implementación del algoritmo
+\end_layout
+
+\begin_layout Standard
+Hablar de q no se siguió al pie de la letra el algoritmo, sino que los bloques
+ Promediador+Decimador se unieron en un único bloque equivalente
+\end_layout
+
+\begin_layout Subsection
+Opciones del programa
+\end_layout
+
+\begin_layout Standard
+Opcion input y como se usa
+\end_layout
+
+\begin_layout Standard
+Opcion output y como se usa
+\end_layout
+
+\begin_layout Standard
+Opcion format y como se usa
+\end_layout
+
+\begin_layout Subsubsection
+Formatos posibles
+\end_layout
+
+\begin_layout Standard
+como fue implementado el problema de imprimir y eso.
+\end_layout
+
+\begin_layout Subsection
+Compilación
+\end_layout
+
+\begin_layout Standard
+Como se compila
+\end_layout
+
+\begin_layout Subsection
+Casos de prueba
+\end_layout
+
+\begin_layout Standard
+los q aparecen en la especificación del tp, mostrar capturas de pantalla
+ de la consola ejecutando todo
+\end_layout
+
+\begin_layout Standard
+Agregar casos de prueba en formato binario
+\end_layout
+
+\begin_layout Section
+Código
+\end_layout
+
+\end_body
+\end_document
