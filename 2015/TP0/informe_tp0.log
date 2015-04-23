@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.2.27)  23 APR 2015 12:55
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.2.27)  23 APR 2015 13:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -599,8 +599,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 85--86
 
  []
 
+[2 <./Imagenes/SDR.jpg>]
 LaTeX Font Info:    Try loading font information for OMS+lmr on input line 87.
-(/usr/share/texmf/tex/latex/lm/omslmr.fd
+ (/usr/share/texmf/tex/latex/lm/omslmr.fd
 File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <10> not available
@@ -619,40 +620,49 @@ Overfull \hbox (113.00446pt too wide) in paragraph at lines 1--2
 [][][][] 
  []
 
+[3 <./Imagenes/TV_Spectrum.png>]
+Overfull \hbox (113.00446pt too wide) in paragraph at lines 10--12
+[][][][] 
+ []
+
+LaTeX Font Info:    Try loading font information for OML+lmr on input line 12.
+(/usr/share/texmf/tex/latex/lm/omllmr.fd
+File: omllmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Font shape `OML/lmr/m/n' in size <10> not available
+(Font)              Font shape `OML/lmm/m/it' tried instead on input line 12.
+ [4] [5]) (./Code/complex.cc [6]
+[7] [8] [9] [10] [11]) (./Code/arguments.cc
+Overfull \hbox (113.00446pt too wide) in paragraph at lines 1--2
+[][][][] 
+ []
+
 
 Overfull \hbox (113.00446pt too wide) in paragraph at lines 10--12
 [][][][] 
  []
 
-[2]
-LaTeX Font Info:    Try loading font information for OML+lmr on input line 12.
- (/usr/share/texmf/tex/latex/lm/omllmr.fd
-File: omllmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-LaTeX Font Info:    Font shape `OML/lmr/m/n' in size <10> not available
-(Font)              Font shape `OML/lmm/m/it' tried instead on input line 12.
- [3]) [4] [5 <./Imagenes/SDR.jpg> <./Imagenes/TV_Spectrum.png>] (./informe_tp0.
-aux) ) 
+[12] [13]) [14] (./informe_tp0.aux) ) 
 Here is how much of TeX's memory you used:
- 6208 strings out of 494985
- 86793 string characters out of 6180356
- 240593 words of memory out of 5000000
- 9293 multiletter control sequences out of 15000+600000
+ 6405 strings out of 494985
+ 88957 string characters out of 6180356
+ 254762 words of memory out of 5000000
+ 9484 multiletter control sequences out of 15000+600000
  42680 words of font info for 50 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 38i,7n,58p,770b,1667s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/font
-s/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}</u
-sr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/p
-ublic/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/sh
-are/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/
-lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texm
-f/fonts/type1/public/lm/lmr5.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10
-.pfb>
-Output written on informe_tp0.pdf (5 pages, 290883 bytes).
+ 38i,7n,58p,770b,1669s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-ma
+thit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts
+/enc/dvips/lm/lm-mathsy.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type
+1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/
+share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/publi
+c/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmr5.pfb></usr/share/tex
+mf/fonts/type1/public/lm/lmsy10.pfb>
+Output written on informe_tp0.pdf (14 pages, 317010 bytes).
 PDF statistics:
- 59 PDF objects out of 1000 (max. 8388607)
- 40 compressed objects within 1 object stream
+ 89 PDF objects out of 1000 (max. 8388607)
+ 61 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

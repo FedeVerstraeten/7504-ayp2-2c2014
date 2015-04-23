@@ -35,7 +35,7 @@ Trabajo Práctico 0}
 
 El concepto de Radio Definida por Software se le atribuye a Joseph Mitola, 1990. Se refiere a un dispositivo que permite reducir al mínimo el hardware necesario para la recepción de señales de radio. Dicho equipo captura la señal analógica (ya sea mediante un cable o una antena), la digitaliza (mediante un conversor A/D) para luego realizar por software toda la etapa de procesamiento de señal requerido en la decodificación. Esto ha logrado que la recepción de cierto rango de telecomunicaciones sea mucho más accesible en términos económicos y prácticos (ya que el mismo dispositivo físico se puede utilizar para distintos fines con solo re-programar el software). Un ejemplo de este dispositivo se puede ver a continuación:
 
-\begin{figure}[H]
+\begin{figure}
 \begin{centering}
 \includegraphics[width=0.5\textwidth]{Imagenes/SDR.jpg}
 \par\end{centering}
@@ -60,7 +60,7 @@ al espectro de la señal de video y los últimos 0.55Mhz (aproximadamente)
 se reservan para el espectro de la señal de audio. Este modelo de
 comunicación se puede ver representado en el siguiente gráfico:
 
-\begin{figure}[H]
+\begin{figure}
 \begin{centering}
 \includegraphics[width=0.75\textwidth]{Imagenes/TV_Spectrum.png}
 \par\end{centering}
@@ -81,7 +81,7 @@ de banda de 2.4Mhz y centrado en 181.238 Mhz. A través del aplicativo
 desarrollado se pudo escuchar efectivamente el programa emitido.
 
 
-\section{Introducción}
+\section{Estándar de estilo}
 Adoptamos la convención de code styling de Google para C++, salvando las siguientes excepciones:\\
 \begin{itemize}
 \item streams: utilizamos flujos de entrada y salida
@@ -89,10 +89,15 @@ Adoptamos la convención de code styling de Google para C++, salvando las siguie
 \item 
 
 \end{itemize}
+\section{Estructura de archivos}
+\section{Opciones de ejecución}
+\section{Compilación}
+\section{Casos de prueba}
+
 \section{Desarrollo}
 \section{Códigos}
-\section*{main.cc}
-Los códigos no deben tener \textbf{\underline{texto acentuado}}.
+\subsection*{main.cc}
+
 \lstset{language=C++,%
     basicstyle=\color{red},
     breaklines=true,%
@@ -110,5 +115,9 @@ Los códigos no deben tener \textbf{\underline{texto acentuado}}.
     emph=[2]{word1,word2}, emphstyle=[2]{style},    
 }
 \lstinputlisting{Code/main.cc}
+\subsection*{complex.cc}
+\lstinputlisting{Code/complex.cc}
+\subsection*{arguments.cc}
+\lstinputlisting{Code/arguments.cc}
 
 \end{document}
