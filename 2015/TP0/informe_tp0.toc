@@ -7,7 +7,7 @@
 \contentsline {subsection}{\numberline {2.1}Est\IeC {\'a}ndar de estilo}{4}
 \contentsline {section}{\numberline {3}Compilaci\IeC {\'o}n}{4}
 \contentsline {subsection}{\numberline {3.1}Opciones del programa}{5}
-\contentsline {section}{\numberline {4}Ejecuci\IeC {\'o}n}{5}
+\contentsline {section}{\numberline {4}Ejecuci\IeC {\'o}n}{6}
 \contentsline {subsection}{\numberline {4.1}Casos de prueba}{6}
 \contentsline {subsection}{\numberline {4.2}Caso 1}{6}
 \contentsline {subsection}{\numberline {4.3}Caso 2}{6}
@@ -15,6 +15,7 @@
 \contentsline {subsection}{\numberline {4.5}Caso 4}{7}
 \contentsline {subsection}{\numberline {4.6}Caso 5}{7}
 \contentsline {section}{\numberline {5}C\IeC {\'o}digos}{7}
-\contentsline {section}{\numberline {6}Clase Complex}{9}
+\contentsline {subsection}{\numberline {5.1}Estructura de archivos}{7}
+\contentsline {section}{\numberline {6}Clase Complex}{10}
 \contentsline {subsection}{\numberline {6.1}Clase cmdline}{20}
 \contentsline {section}{\numberline {7}Enunciado}{27}
