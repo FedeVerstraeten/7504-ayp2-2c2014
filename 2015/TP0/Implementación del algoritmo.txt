@@ -1,0 +1,24 @@
+Implementación del algoritmo
+Para implementar el proceso propuesto en la especificación del presente trabajo, se descubrió que la cascada de los bloques "Promediador móvil de N elementos" seguido de "Decimador de N elementos", es totalmente equivalente a un único bloque en el cual se tomen N elementos y cuya salida sea el promedio de dichos N elementos. A continuación se toman los siguientes N elementos y la nueva salida es el promedio de estos últimos N elementos, y así sucesivamente.
+ Consecuentemente, se optó por implementar este último algoritmo a fin de simplificar el código del trabajo. En concreto se utilizaron sentencias básicas de control de flujo ('while', 'if', 'continue'). Esto se puede ver en el siguiente extracto del 'main':
+
+******** Esto se puede pegar de alguna forma que se visualice como código? ********
+(...)
+  // Mientras haya complejos en la entrada
+  while (*iss >> input_complex)
+  {
+    // ( -- Promediar 11 elementos -- )
+    buffer1 += input_complex;
+    if (i < DECIMATOR1_SIZE-1)
+    {
+      i++;
+      continue;
+    }
+    x = buffer1/DECIMATOR1_SIZE;
+    buffer1 = 0;
+    i = 0;
+(...)
+  }
+***************************************************************************
+
+La idea es ir acumulando en un 'buffer' la suma de los complejos a la entrada ('input_complex'), hasta que hayan pasado 11 elementos (parametrizado por 'DECIMATOR1_SIZE'). En dicho momento la condición del 'if' no se cumple y entonces se divide al valor del 'buffer' por 11 para obtener la salida del bloque. Luego se vacía el buffer y se reinicializa la cuenta.
