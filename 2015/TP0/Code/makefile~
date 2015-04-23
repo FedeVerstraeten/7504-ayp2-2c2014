@@ -1,9 +1,9 @@
 # ------------------------------------------------------------------------- #
-# Facultad de Ingenieria de la Universidad de Buenos Aires
-# Algoritmos y Programacion II
-# 1er Cuatrimestre de 2015
-# Trabajo Practico 0: Programacion en C++
-# Demodulacion de senal FM
+# Facultad de Ingeniería de la Universidad de Buenos Aires
+# Algoritmos y Programación II
+# 1° Cuatrimestre de 2015
+# Trabajo Práctico 0: Programación en C++
+# Demodulación de señal FM
 # 
 # makefile
 # ------------------------------------------------------------------------- #
@@ -15,7 +15,7 @@ OBJS = main.o complex.o cmdline.o arguments.o utilities.o
 PROGRAM_NAME = tp0
 
 all: tp0
-# Esto esta comentado porq no tengo claro para que sirve, alguien sabe?
+# Esto está comentado porq no tengo claro para que sirve, alguien sabe?
 #	@/bin/true
 
 tp0: $(OBJS)
