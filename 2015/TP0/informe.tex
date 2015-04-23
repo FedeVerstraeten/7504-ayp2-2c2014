@@ -1,0 +1,183 @@
+%% LyX 2.0.6 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[spanish]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage[a4paper]{geometry}
+\geometry{verbose,tmargin=3cm,bmargin=3cm,lmargin=2cm,rmargin=2cm}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{1}
+\usepackage{float}
+\usepackage{endnotes}
+\usepackage{graphicx}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+ \let\footnote=\endnote
+\newcommand{\lyxaddress}[1]{
+\par {\raggedright #1
+\vspace{1.4em}
+\noindent\par}
+}
+
+\makeatother
+
+\usepackage{babel}
+\addto\shorthandsspanish{\spanishdeactivate{~<>}}
+
+\begin{document}
+
+\title{TP0: Programación en C++}
+
+
+\date{Primer Cuatrimestre de 2015}
+
+
+\author{Bourbon, Rodrigo\\
+Carreño Romano, Carlos Germán\\
+Sampayo, Sebastián}
+
+\maketitle
+
+\lyxaddress{\begin{center}
+Algoritmos y Programación II
+\par\end{center}}
+
+\begin{center}
+\includegraphics[width=0.5\paperwidth]{Imagenes/logo_fiuba_HD}
+\par\end{center}
+
+
+\lhead{Algoritmos y Programación II - TP0 - FIUBA}
+
+\rule[0.5ex]{0.8\paperwidth}{0.1pt}
+
+\newpage{}
+
+\vfill{}
+
+
+\tableofcontents{}
+
+\vfill{}
+
+
+\newpage{}
+
+
+\section{Enunciado}
+
+
+\section{Introducción}
+
+
+\subsection{Radio definida por software (SDR)}
+
+El concepto de Radio Definida por Software se le atribuye a Joseph
+Mitola, 1990. Se refiere a un dispositivo que permite reducir al mínimo
+el hardware necesario para la recepción de señales de radio. Dicho
+equipo captura la señal analógica (ya sea mediante un cable o una
+antena), la digitaliza (mediante un conversor A/D) para luego realizar
+por software toda la etapa de procesamiento de señal requerido en
+la decodificación. Esto ha logrado que la recepción de cierto rango
+de telecomunicaciones sea mucho más accesible en términos económicos
+y prácticos (ya que el mismo dispositivo físico se puede utilizar
+para distintos fines con solo re-programar el software). Un ejemplo
+de este dispositivo se puede ver a continuación:
+
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.75\textwidth]{\string"/home/sebastian/Dropbox/11vo Cuatrimestre (1-2015)/Algoritmos y Programacion II/TPs/TP0/Informe/Imagenes/SDR\string".jpg}
+\par\end{centering}
+
+\caption{Sintonizador de radio digital.}
+\end{figure}
+
+
+
+\subsection{Transmisión de TV por cable}
+
+En telecomunicaciones, la televisión analógica se transmite mediante
+el método de la Multiplexión por División en Frecuencia (FDM). Esta
+técnica consiste en transmitir varias señales simultáneamente modulando
+cada una con una portadora diferente, en el rango de VHF/UHF, de forma
+tal que los anchos de banda de cada señal no se superpongan significativamente.
+El canal destinado para la transmisión de una emisora tiene un ancho
+de banda de aproximadamente 6 Mhz, donde los 5.45 Mhz más bajos corresponden
+al espectro de la señal de video y los últimos 0.55Mhz (aproximadamente)
+se reservan para el espectro de la señal de audio. Este modelo de
+comunicación se puede ver representado en el siguiente gráfico:
+
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.75\textwidth]{\string"/home/sebastian/Dropbox/11vo Cuatrimestre (1-2015)/Algoritmos y Programacion II/TPs/TP0/Informe/Imagenes/TV_Spectrum\string".png}
+\par\end{centering}
+
+\caption{Señal de TV transmitida.}
+\end{figure}
+
+
+
+\subsection{Aplicación del Trabajo Práctico}
+
+Sabiendo que el audio de la televisión está modulado en frecuencia
+(FM), si se toma la porción del canal adecuada es posible demodular
+dicha señal y escuchar algún canal de televisión.
+
+En este caso particular, el SDR se utilizó para capturar un ancho
+de banda de 2.4Mhz y centrado en 181.238 Mhz. A través del aplicativo
+desarrollado se pudo escuchar efectivamente el programa emitido.
+
+
+\section{Desarrollo}
+
+
+\subsection{Standard de estilo}
+
+Hablar de cuales fueron considerados y cual se terminó eligiendo y
+por qué
+
+El primer punto a resolver antes de comenzar a escribir código debe
+ser definir el standard de estilo a utilizar. Este 
+
+
+\subsection{Estructura de archivos}
+
+
+\subsection{Implementación del algoritmo}
+
+Hablar de q no se siguió al pie de la letra el algoritmo, sino que
+los bloques Promediador+Decimador se unieron en un único bloque equivalente
+
+
+\subsection{Opciones del programa}
+
+Opcion input y como se usa
+
+Opcion output y como se usa
+
+Opcion format y como se usa
+
+
+\subsubsection{Formatos posibles}
+
+como fue implementado el problema de imprimir y eso.
+
+
+\subsection{Compilación}
+
+Como se compila
+
+
+\subsection{Casos de prueba}
+
+los q aparecen en la especificación del tp, mostrar capturas de pantalla
+de la consola ejecutando todo
+
+Agregar casos de prueba en formato binario
+
+
+\section{Código}
+\end{document}
