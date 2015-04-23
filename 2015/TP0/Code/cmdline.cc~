@@ -1,4 +1,4 @@
-// cmdline - procesamiento de opciones en la línea de comando.
+// cmdline - procesamiento de opciones en la linea de comando.
 //
 // $Date: 2012/09/14 13:08:33 $
 //
@@ -26,9 +26,9 @@ cmdline::cmdline(option_t *table) : option_table(table)
   Siendo "option_table" un atributo de la clase cmdline
   y table un puntero a objeto o struct de "option_t".
   
-  Se estaría contruyendo una instancia de la clase cmdline
+  Se estaria contruyendo una instancia de la clase cmdline
   cargandole los datos que se hayan en table (la table con
-  las opciones, ver el código en main.cc)
+  las opciones, ver el codigo en main.cc)
 
   */
 }
@@ -42,20 +42,20 @@ cmdline::parse(int argc, char * const argv[])
    && (p)->parse == 0)
 
   // Primer pasada por la secuencia de opciones: marcamos 
-  // todas las opciones, como no procesadas. Ver código de
+  // todas las opciones, como no procesadas. Ver codigo de
   // abajo.
   //
   for (option_t *op = option_table; !END_OF_OPTIONS(op); ++op)
     op->flags &= ~OPT_SEEN;
 
   // Recorremos el arreglo argv. En cada paso, vemos
-  // si se trata de una opción corta, o larga. Luego,
-  // llamamos a la función de parseo correspondiente.
+  // si se trata de una opcion corta, o larga. Luego,
+  // llamamos a la funcion de parseo correspondiente.
   //
   for (int i = 1; i < argc; ++i) {
     // Todos los parámetros de este programa deben
     // pasarse en forma de opciones. Encontrar un
-    // parámetro no-opción es un error.
+    // parámetro no-opcion es un error.
     //
     if (argv[i][0] != '-') {
       cerr << "Invalid non-option argument: "
@@ -66,7 +66,7 @@ cmdline::parse(int argc, char * const argv[])
 
     // Usamos "--" para marcar el fin de las
     // opciones; todo los argumentos que puedan
-    // estar a continuación no son interpretados
+    // estar a continuacion no son interpretados
     // como opciones.
     //
     if (argv[i][1] == '-'
@@ -74,7 +74,7 @@ cmdline::parse(int argc, char * const argv[])
       break;
 
     // Finalmente, vemos si se trata o no de una
-    // opción larga; y llamamos al método que se
+    // opcion larga; y llamamos al método que se
     // encarga de cada caso.
     //
     if (argv[i][1] == '-')
@@ -84,7 +84,7 @@ cmdline::parse(int argc, char * const argv[])
   }
 
   // Segunda pasada: procesamos aquellas opciones que,
-  // (1) no hayan figurado explícitamente en la línea 
+  // (1) no hayan figurado explicitamente en la linea 
   // de comandos, y (2) tengan valor por defecto.
   //
   for (option_t *op = option_table; !END_OF_OPTIONS(op); ++op) {
@@ -110,21 +110,21 @@ int
 cmdline::do_long_opt(const char *opt, const char *arg)
 {
   // Recorremos la tabla de opciones, y buscamos la
-  // entrada larga que se corresponda con la opción de 
-  // línea de comandos. De no encontrarse, indicamos el
+  // entrada larga que se corresponda con la opcion de 
+  // linea de comandos. De no encontrarse, indicamos el
   // error.
   //
   for (option_t *op = option_table; op->long_name != 0; ++op) {
     if (string(opt) == string(op->long_name)) {
-      // Marcamos esta opción como usada en
-      // forma explícita, para evitar tener
+      // Marcamos esta opcion como usada en
+      // forma explicita, para evitar tener
       // que inicializarla con el valor por
       // defecto.
       //
       op->flags |= OPT_SEEN;
 
       if (op->has_arg) {
-        // Como se trada de una opción
+        // Como se trada de una opcion
         // con argumento, verificamos que
         // el mismo haya sido provisto.
         //
@@ -138,7 +138,7 @@ cmdline::do_long_opt(const char *opt, const char *arg)
         op->parse(string(arg));
         return 1;
       } else {
-        // Opción sin argumento.
+        // Opcion sin argumento.
         //
         op->parse(string(""));
         return 0;
@@ -146,8 +146,8 @@ cmdline::do_long_opt(const char *opt, const char *arg)
     }
   }
 
-  // Error: opción no reconocida. Imprimimos un mensaje
-  // de error, y finalizamos la ejecución del programa.
+  // Error: opcion no reconocida. Imprimimos un mensaje
+  // de error, y finalizamos la ejecucion del programa.
   //
   cerr << "Unknown option: "
        << "--"
@@ -157,7 +157,7 @@ cmdline::do_long_opt(const char *opt, const char *arg)
   exit(1);
 
   // Algunos compiladores se quejan con funciones que 
-  // lógicamente no pueden terminar, y que no devuelven
+  // logicamente no pueden terminar, y que no devuelven
   // un valor en esta última parte.
   //
   return -1;
@@ -169,21 +169,21 @@ cmdline::do_short_opt(const char *opt, const char *arg)
   option_t *op;
 
   // Recorremos la tabla de opciones, y buscamos la
-  // entrada corta que se corresponda con la opción de 
-  // línea de comandos. De no encontrarse, indicamos el
+  // entrada corta que se corresponda con la opcion de 
+  // linea de comandos. De no encontrarse, indicamos el
   // error.
   //
   for (op = option_table; op->short_name != 0; ++op) {
     if (string(opt) == string(op->short_name)) {
-      // Marcamos esta opción como usada en
-      // forma explícita, para evitar tener
+      // Marcamos esta opcion como usada en
+      // forma explicita, para evitar tener
       // que inicializarla con el valor por
       // defecto.
       //
       op->flags |= OPT_SEEN;
 
       if (op->has_arg) {
-        // Como se trata de una opción
+        // Como se trata de una opcion
         // con argumento, verificamos que
         // el mismo haya sido provisto.
         //
@@ -197,7 +197,7 @@ cmdline::do_short_opt(const char *opt, const char *arg)
         op->parse(string(arg));
         return 1;
       } else {
-        // Opción sin argumento.
+        // Opcion sin argumento.
         //
         op->parse(string(""));
         return 0;
@@ -205,8 +205,8 @@ cmdline::do_short_opt(const char *opt, const char *arg)
     }
   }
 
-  // Error: opción no reconocida. Imprimimos un mensaje
-  // de error, y finalizamos la ejecución del programa.
+  // Error: opcion no reconocida. Imprimimos un mensaje
+  // de error, y finalizamos la ejecucion del programa.
   //
   cerr << "Unknown option: "
        << "-"
@@ -216,7 +216,7 @@ cmdline::do_short_opt(const char *opt, const char *arg)
   exit(1);
 
   // Algunos compiladores se quejan con funciones que 
-  // lógicamente no pueden terminar, y que no devuelven
+  // logicamente no pueden terminar, y que no devuelven
   // un valor en esta última parte.
   //
   return -1;

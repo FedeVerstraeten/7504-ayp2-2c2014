@@ -13,7 +13,7 @@ struct option_t {
   const char *short_name;
   const char *long_name;
   const char *def_value;
-  void (*parse)(std::string const &); // Puntero a funcion de opciones
+  void (*parse)(std::string const &); // Puntero a función de opciones
   int flags;
 };
 
@@ -25,7 +25,7 @@ class cmdline
 
   private:
     // Este atributo apunta a la tabla que describe todas
-    // las opciones a procesar. Por el momento, solo puede
+    // las opciones a procesar. Por el momento, sólo puede
     // ser modificado mediante contructor, y debe finalizar
     // con un elemento nulo.
     //
@@ -33,8 +33,8 @@ class cmdline
 
     // El constructor por defecto cmdline::cmdline(), es
     // privado, para evitar construir "parsers" (analizador 
-    // sintactico, recibe una palabra y lo interpreta en 
-    // una accion dependiendo su significado para el programa) 
+    // sintáctico, recibe una palabra y lo interpreta en 
+    // una acción dependiendo su significado para el programa) 
     // sin opciones. Es decir, objetos de esta clase sin opciones.
     //
 
