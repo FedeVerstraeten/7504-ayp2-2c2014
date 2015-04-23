@@ -1,13 +1,13 @@
 // ------------------------------------------------------------------------- //
-// Facultad de Ingenieria de la Universidad de Buenos Aires
-// Algoritmos y Programacion II
-// 1er Cuatrimestre de 2015
-// Trabajo Practico 0: Programacion en C++
-// Demodulacion de senal FM
+// Facultad de Ingeniería de la Universidad de Buenos Aires
+// Algoritmos y Programación II
+// 1° Cuatrimestre de 2015
+// Trabajo Práctico 0: Programación en C++
+// Demodulación de señal FM
 // 
 // arguments.h
-// Funciones a llamar para cada opcion posible de la aplicacion
-// Nombres de los argumentos de la opcion "--format"
+// Funciones a llamar para cada opción posible de la aplicación
+// Nombres de los argumentos de la opción "--format"
 // ------------------------------------------------------------------------- //
 
 #ifndef _ARGUMENTS_H_INCLUDED_

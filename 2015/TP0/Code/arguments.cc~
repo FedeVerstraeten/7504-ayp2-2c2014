@@ -40,7 +40,7 @@ void
 opt_input(string const &arg)
 {
   // Si el nombre del archivos es "-", usaremos la entrada
-  // estandar. De lo contrario, abrimos un archivo en modo
+  // estándar. De lo contrario, abrimos un archivo en modo
   // de lectura.
   //
   if (arg == "-") {
@@ -68,7 +68,7 @@ void
 opt_output(string const &arg)
 {
   // Si el nombre del archivos es "-", usaremos la salida
-  // estandar. De lo contrario, abrimos un archivo en modo
+  // estándar. De lo contrario, abrimos un archivo en modo
   // de escritura.
   //
   if (arg == "-") {
@@ -100,7 +100,7 @@ opt_format(string const &arg)
       break;
     }
   }
-  // Si recorrio todo el diccionario, el argumento no esta implementado
+  // Si recorrio todo el diccionario, el argumento no está implementado
   if (i == FORMAT_OPTIONS) {
     cerr << "Unknown format" << endl;
     exit(1);
