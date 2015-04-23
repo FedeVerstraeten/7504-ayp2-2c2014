@@ -41,6 +41,6 @@ class cmdline
     cmdline();
     int do_long_opt(const char *, const char *);
     int do_short_opt(const char *, const char *);
-}; // class cmdline
+};
 
 #endif

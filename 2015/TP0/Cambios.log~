@@ -1,0 +1,18 @@
+23/04
+Cambios:
+  - Opciones input y output las cambié de MANDATORY a SEEN para q se pueda ejecutar sin esos argumentos, ya que toma por defecto cin y cout.
+  - Agrego comentarios en cada paso del proceso
+  - Agrego otros comentarios pertinentes
+  - Unificación de estilo: Declaración de Funciones:
+      Valor de retorno \Line Feed
+      Nombre (Argumentos)
+  - Agrego salida de error del programa cuando el argumento de la opción --format no es correcto
+  - Unifiación de estilo: Identación 2 espacios.
+
+Falta:
+  - Caso de prueba con archivos binario
+  - Informe
+  - Alguien sabe para que sirve lo que está comentado en el makefile?: "@/bin/true"
+
+Opcional:
+  - Estaría bueno agregar (en el makefile o aparte) algún script que compruebe los tests automáticamente.
