@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.2.27)  23 APR 2015 16:13
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.2.27)  23 APR 2015 16:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -594,30 +594,28 @@ File: Imagenes/TV_Spectrum.png Graphic file (type png)
 <use Imagenes/TV_Spectrum.png>
 Package pdftex.def Info: Imagenes/TV_Spectrum.png used on input line 62.
 (pdftex.def)             Requested size: 172.5pt x 120.36589pt.
-
+ [2 <./Imagenes/SDR.jpg>]
 Underfull \hbox (badness 10000) in paragraph at lines 81--82
 
  []
 
-[2 <./Imagenes/SDR.jpg>]
 LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 85.
 
- (/usr/share/texmf/tex/latex/lm/ot1lmtt.fd
+(/usr/share/texmf/tex/latex/lm/ot1lmtt.fd
 File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 Underfull \hbox (badness 10000) in paragraph at lines 103--104
 
  []
 
-
+[3 <./Imagenes/TV_Spectrum.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 108--109
 
  []
 
-[3 <./Imagenes/TV_Spectrum.png>]
 LaTeX Font Info:    Try loading font information for OMS+lmr on input line 110.
 
- (/usr/share/texmf/tex/latex/lm/omslmr.fd
+(/usr/share/texmf/tex/latex/lm/omslmr.fd
 File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <10> not available
@@ -676,6 +674,18 @@ File: Imagenes/Caso5.png Graphic file (type png)
 Package pdftex.def Info: Imagenes/Caso5.png used on input line 192.
 (pdftex.def)             Requested size: 274.21964pt x 55.406pt.
 
+Underfull \hbox (badness 10000) in paragraph at lines 195--196
+
+ []
+
+<Imagenes/Jerarquia_de_archivos.png, id=40, 1273.75874pt x 665.48625pt>
+File: Imagenes/Jerarquia_de_archivos.png Graphic file (type png)
+
+<use Imagenes/Jerarquia_de_archivos.png>
+Package pdftex.def Info: Imagenes/Jerarquia_de_archivos.png used on input line 
+198.
+(pdftex.def)             Requested size: 318.4389pt x 166.37115pt.
+
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2013/08/26 1.5b listings language file
 )
@@ -684,7 +694,9 @@ File: lstlang1.sty 2013/08/26 1.5b listings language file
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2013/08/26 1.5b (Carsten Heinz)
-) (./Code/main.cc
+) [7 <./Imagenes/Caso4.png> <./Imagenes/Caso5.png> <./Imagenes/Jerarquia_de_arc
+hivos.png>]
+(./Code/main.cc
 Overfull \hbox (113.00446pt too wide) in paragraph at lines 1--2
 [][][][] 
  []
@@ -700,9 +712,8 @@ File: omllmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `OML/lmr/m/n' in size <10> not available
 (Font)              Font shape `OML/lmm/m/it' tried instead on input line 12.
- [7 <./Imagenes/Caso4.png> <./Imagenes/Caso5.png>] [8]) (./Code/complex.h [9] [
-10]) (./Code/complex.cc [11] [12]
-[13] [14] [15] [16]) (./Code/arguments.cc
+ [8] [9]) (./Code/complex.h [10])
+(./Code/complex.cc [11] [12] [13] [14] [15] [16] [17]) (./Code/arguments.cc
 Overfull \hbox (113.00446pt too wide) in paragraph at lines 1--2
 [][][][] 
  []
@@ -712,31 +723,31 @@ Overfull \hbox (113.00446pt too wide) in paragraph at lines 10--12
 [][][][] 
  []
 
-[17] [18] [19]) (./Code/cmdline.h [20]) (./Code/cmdline.cc [21] [22] [23]
-[24]) [25] [26] [27] (./informe_tp0.aux) ) 
+[18] [19]) (./Code/cmdline.h [20]) (./Code/cmdline.cc [21] [22] [23] [24]
+[25]) [26] [27] (./informe_tp0.aux) ) 
 Here is how much of TeX's memory you used:
- 6557 strings out of 494985
- 91230 string characters out of 6180356
- 275537 words of memory out of 5000000
- 9619 multiletter control sequences out of 15000+600000
+ 6562 strings out of 494985
+ 91410 string characters out of 6180356
+ 274922 words of memory out of 5000000
+ 9623 multiletter control sequences out of 15000+600000
  42991 words of font info for 51 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  38i,8n,58p,864b,1669s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/
-lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/
-fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rmtt.e
-nc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/t
-ype1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></
-usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/p
-ublic/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/shar
-e/texmf/fonts/type1/public/lm/lmr5.pfb></usr/share/texmf/fonts/type1/public/lm/
-lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fon
-ts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb>
-</usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
-Output written on informe_tp0.pdf (27 pages, 696111 bytes).
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-ma
+thit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts
+/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rmtt.enc}</
+usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/
+public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/s
+hare/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public
+/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/tex
+mf/fonts/type1/public/lm/lmr5.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.
+pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/ty
+pe1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr
+/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
+Output written on informe_tp0.pdf (27 pages, 764343 bytes).
 PDF statistics:
- 153 PDF objects out of 1000 (max. 8388607)
+ 155 PDF objects out of 1000 (max. 8388607)
  102 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 36 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
 
