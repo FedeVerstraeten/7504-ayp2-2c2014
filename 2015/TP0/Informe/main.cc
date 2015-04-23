@@ -1,9 +1,9 @@
 // ------------------------------------------------------------------------- //
-// Facultad de Ingeniería de la Universidad de Buenos Aires
-// Algoritmos y Programación II
-// 1° Cuatrimestre de 2015
-// Trabajo Práctico 0: Programación en C++
-// Demodulación de señal FM
+// Facultad de Ingenieria de la Universidad de Buenos Aires
+// Algoritmos y Programacion II
+// 1er Cuatrimestre de 2015
+// Trabajo Practico 0: Programacion en C++
+// Demodulacion de senal FM
 // 
 // main.cc
 // Archivo principal donde se ejecuta el main.
@@ -25,7 +25,7 @@
 using namespace std;
 
 
-// Colección de funciones para imprimir en formatos distintos
+// Coleccion de funciones para imprimir en formatos distintos
 void (*print_phase[])(double) = {
         
   print_phase_text,
@@ -33,7 +33,7 @@ void (*print_phase[])(double) = {
         
 };
 
-// Opciones de argumentos de invocación
+// Opciones de argumentos de invocacion
 static option_t options[] = {
   {1, "i", "input", "-", opt_input, OPT_SEEN},
   {1, "o", "output", "-", opt_output, OPT_SEEN},
@@ -55,7 +55,7 @@ main(int argc, char * const argv[])
   Complex aux;
   double output_phase;
 
-  // Parsear argumentos de invocación
+  // Parsear argumentos de invocacion
   cmdline cmdl(options);
   cmdl.parse(argc, argv);
 
