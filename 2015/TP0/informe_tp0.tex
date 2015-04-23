@@ -78,6 +78,7 @@ desarrollado se pudo escuchar efectivamente el programa emitido.
 
 
 \section{Desarrollo}
+\subsection{Implementación}
 Para implementar el proceso propuesto en la especificación del presente trabajo, se descubrió que la cascada de los bloques "Promediador móvil de N elementos" seguido de "Decimador de N elementos", es totalmente equivalente a un único bloque en el cual se tomen N elementos y cuya salida sea el promedio de dichos N elementos. A continuación se toman los siguientes N elementos y la nueva salida es el promedio de estos últimos N elementos, y así sucesivamente.\\
 
  Consecuentemente, se optó por implementar este último algoritmo a fin de simplificar el código del trabajo. En concreto se utilizaron sentencias básicas de control de flujo (\'while\', \'if\', \'continue\'). Esto se puede ver en el siguiente extracto del \'main\':
@@ -197,7 +198,6 @@ A continuación se adjuntan los códigos fuente de todos los archivos utilizados
 \begin{center}
 \includegraphics[scale=0.25]{Imagenes/Jerarquia_de_archivos.png} 
 \end{center}
-\subsection*{main.cc}
 
 \lstset{language=C++,%
     basicstyle=\color{red},
@@ -215,19 +215,28 @@ A continuación se adjuntan los códigos fuente de todos los archivos utilizados
     emph=[1]{for,end,break},emphstyle=[1]\color{blue}, %some words to emphasise
     emph=[2]{word1,word2}, emphstyle=[2]{style},    
 }
+\subsection*{main}
 \lstinputlisting{Code/main.cc}
-\section{Clase Complex}
+\subsubsection*{main.h}
+\lstinputlisting{Code/main.h}
+\subsubsection*{utilities.h}
+\lstinputlisting{Code/utilities.h}
+\lstinputlisting{Code/utilities.cc}
+\subsection{Clase Complex}
 \subsubsection*{complex.h}
 \lstinputlisting{Code/complex.h}
 \subsubsection*{complex.cc}
 \lstinputlisting{Code/complex.cc}
-\subsection*{arguments.cc}
-\lstinputlisting{Code/arguments.cc}
+
 \subsection{Clase cmdline}
 \subsubsection*{cmdline.h}
 \lstinputlisting{Code/cmdline.h}
 \subsubsection*{cmdline.cc}
 \lstinputlisting{Code/cmdline.cc}
+\subsubsection*{arguments.h}
+\lstinputlisting{Code/arguments.h}
+\subsubsection*{arguments.cc}
+\lstinputlisting{Code/arguments.cc}
 
 \newpage
 \section{Enunciado}
