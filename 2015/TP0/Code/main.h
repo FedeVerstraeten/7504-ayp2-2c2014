@@ -6,8 +6,8 @@
 // Demodulacion de senal FM
 // 
 // main.h
-// Parámetros principales de la aplicación
-//  - Tamaño de los decimadores
+// Parametros principales de la aplicacion
+//  - Tamano de los decimadores
 // ------------------------------------------------------------------------- //
 
 #ifndef _MAIN_H_INCLUDED
