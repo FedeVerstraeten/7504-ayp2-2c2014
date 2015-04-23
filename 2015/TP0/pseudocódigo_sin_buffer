@@ -3,11 +3,11 @@
 - buffer1 := 0
 - buffer2 := 0
 
-( Condiciones Iniciales Nulas )
+( -- Condiciones Iniciales Nulas -- )
 - x_prev := 0
 
 - Mientras haya complejos en la entrada
-	(Promediar 11 elementos)
+	( -- Promediar 11 elementos -- )
 	- buffer1 := buffer1 + complejo a la entrada
 	- Si i < 10
 		- i := i + 1
@@ -16,14 +16,14 @@
 	- buffer1 := 0
 	- i := 0
 
-	(Obtener la derivada de la fase)
+	( -- Obtener la derivada de la fase -- )
 	- aux := x * conjugar(x_prev)
 	- aux := fase(aux)
 
-	(Avanzar una muestra)
+	( -- Avanzar una muestra -- )
 	- x_prev := x
 
-	(Promediar 4 elementos)
+	( -- Promediar 4 elementos -- )
 	- buffer2 := buffer2 + aux
 	- Si j < 3
 		- j := j + 1
@@ -32,6 +32,6 @@
 	- buffer2 := 0
 	- j := 0
 	
-	(LLevar al rango requerido)
+	( -- Imprimir en el formato especificado -- )
 	- resultado := (resultado + pi)*255/2pi 
 
