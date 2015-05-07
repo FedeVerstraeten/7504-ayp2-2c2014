@@ -4,7 +4,7 @@
 #include <iostream>
 
 typedef enum{
-	
+
     METHOD_OPTION_DFT = 0,
     METHOD_OPTION_IDFT = 1,
     METHOD_OPTION_FFT = 2,
