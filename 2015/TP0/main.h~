@@ -1,7 +1,0 @@
-#ifndef _MAIN_H_INCLUDED
-#define _MAIN_H_INCLUDED
-
-#define DECIMATOR1_SIZE 11
-#define DECIMATOR2_SIZE 4
-
-#endif
