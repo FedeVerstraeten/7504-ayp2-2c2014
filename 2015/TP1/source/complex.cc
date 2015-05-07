@@ -161,7 +161,7 @@ operator==(Complex const &x, Complex const &y)
 	return b;
 }
 
-/*ostream &
+ostream &
 operator<<(ostream &os, const Complex &c)
 {
 	return os << "(" 
@@ -203,35 +203,6 @@ operator>>(istream &is, Complex &c)
 		c.real_ = re, c.imag_ = im;
 	if (bad)
 		is.clear(ios::badbit);
-
-	return is;
-}*/
-
-ostream &
-operator<<(ostream &os, const Complex &c)
-{
-	return os << (char)c.real_
-	          << (char)c.imag_;
-}
-
-istream &
-operator>>(istream &is, Complex &c)
-{
-	int good = false;
-	int bad  = false;
-	unsigned char re = 0;
-	unsigned char im = 0;
-
-	if (is >> re && is >> im)
-	  good = true;
-	else
-      bad = true;
-
-	if (good)
-	  c.real_ = re - 128;
-	  c.imag_ = im - 128;
-	if (bad)
-	  is.clear(ios::badbit);
 
 	return is;
 }

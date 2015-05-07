@@ -1,0 +1,9 @@
+Borré los archivos con posibles conflictos de nombres entre windows y linux:
+complex.cc
+complex.cpp
+complex.h
+complex.o
+Complex.cc
+Complex.h
+Makefile
+Makefile.fm_radio
