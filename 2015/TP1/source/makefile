@@ -1,7 +1,7 @@
 CC      = g++
 CCFLAGS  = -g -Wall -pedantic
 LDFLAGS  =
-OBJS = main.o complex.o cmdline.o arguments.o dft_methods.o
+OBJS = main.o complex.o cmdline.o arguments.o dft_methods.o utilities.o
 PROGRAM_NAME = tp1
 
 all: tp1
@@ -22,11 +22,11 @@ cmdline.o: cmdline.cc cmdline.h
 arguments.o: arguments.cc arguments.h cmdline.h types.h
 	$(CC) $(CCFLAGS) -c arguments.cc
 	
-dft_methods.o: dft_methods.cc dft_methods.h complex.h vector.h
+dft_methods.o: dft_methods.cc dft_methods.h complex.h vector.h utilities.h
 	$(CC) $(CCFLAGS) -c dft_methods.cc
 
-#utilities.o: utilities.cc utilities.h
-#	$(CC) $(CCFLAGS) -c utilities.cc
+utilities.o: utilities.cc utilities.h complex.h
+	$(CC) $(CCFLAGS) -c utilities.cc
 
 clean:
 	rm *.o
