@@ -8,20 +8,15 @@
 #include "cmdline.h"
 #include "arguments.h"
 #include "complex.h"
-// Esto se puede cambiar por:
-// dft_methods.h
-// porque en definitiva lo que calculamos en todos los casos es la DFT
-// (incluso en el caso de la fft, es un algorítmo para calcular la DFT)
 #include "calculation_methods_for_fourier_transform.h"
 #include "types.h"
 
 using namespace std;
 
 
-// en vez de "calculate_method", puede ser "transformate" directamente
+
 vector<Complex> (*calculate_method[])(vector<Complex> const &) = {
 	
-    // o bien calculate_dft más directo
     calculate_method_dft,
 	//calculate_method_idft,
 	//calculate_method_fft,

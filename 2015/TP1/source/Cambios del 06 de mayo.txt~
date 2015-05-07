@@ -1,0 +1,58 @@
+-Cambios de nombres:
+
+calculation_methods_for_fourier_transform.h
+puede ser:
+dft_methods
+---
+calculate_method
+puede ser mejor:
+transformate
+---
+calculate_method_dft
+puede ser directamente:
+calculate_dft
+calculate_fft
+---
+
+------------------------------------------------------------------------
+-Al final lo de "calculate_W" me parece bien así como está.
+
+-función pow_W
+Esto podría ser una función "pow" que esté dentro de la clase complejo
+es decir, un método const de la clase complejo (osea q calcule la potencia
+pero q no modifique el objeto, como el método "conjugated()").
+
+
+- O bien en vez de hacer calculate_W y luego elevar a la n*k potencia,
+más fácil si hacemos una función "calculate_W(k, n, N)" que haga el coseno 
+y el seno correspondientes en cada iteración... intuitivamente me suena q
+elevar a la potencia va a ser mucho más costoso computacionalmente.
+Quedaría dentro del for:
+W = calculate_W(N, k, n);
+aux += in[n] * W;
+
+o bien directamente, sacando la función "calculate_W":
+Complex W(cos(k*n*(2*PI)/N),
+         -sin(k*n*(2*PI)/N));
+aux += in[n] * W;
+
+Acá lo malo sería q en cada iteración se crea un complejo nuevo...
+Igual crear un complejo creo q sería O(1), mientras q la potencia con el divide 
+y vencerás es O(log(n*k)).
+con lo cual yo diría que es mejor esta nueva opción de O(1).
+-----------------------------------------------------------------------
+
+Vector: Contenedor de secuencias
+Métodos:
+  Crear (defecto, copia, tamaño)
+  Destruir
+  Alta al final
+  Baja al final
+  []
+  [] const
+  Obtener tamaño
+  operador = (asignación)
+  
+Atrubutos:
+  tamaño
+  puntero a dato genérico
