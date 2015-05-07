@@ -24,6 +24,10 @@ arguments.o: arguments.cc arguments.h cmdline.h types.h
 	
 dft_methods.o: dft_methods.cc dft_methods.h complex.h vector.h
 	$(CC) $(CCFLAGS) -c dft_methods.cc
+	
+# Implementación con plantillas:
+#vector.o: vector.cc vector.h
+#	$(CC) $(CCFLAGS) -c vector.cc
 
 #utilities.o: utilities.cc utilities.h
 #	$(CC) $(CCFLAGS) -c utilities.cc

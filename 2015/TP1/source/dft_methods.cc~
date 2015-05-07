@@ -2,7 +2,7 @@
 #include <vector>
 #include <cmath>
 
-#include "calculation_methods_for_fourier_transform.h"
+#include "dft_methods.h"
 #include "complex.h"
 
 using namespace std;
@@ -10,7 +10,7 @@ using namespace std;
 
 
 vector<Complex>
-calculate_method_dft(vector<Complex> const &in)
+calculate_dft(vector<Complex> const &in)
 {
   vector<Complex> out;
   Complex W;

@@ -1,18 +1,18 @@
 #include <iostream>
-#include <vector>
 #include <cmath>
 
-#include "calculation_methods_for_fourier_transform.h"
+#include "dft_methods.h"
 #include "complex.h"
+#include "vector.h"
 
 using namespace std;
 
 
 
-vector<Complex>
-calculate_method_dft(vector<Complex> const &in)
+Vector<Complex>
+calculate_dft(Vector<Complex> const &in)
 {
-  vector<Complex> out;
+  Vector<Complex> out;
   Complex W;
   Complex aux;
   size_t N;
