@@ -6,7 +6,7 @@ dft_methods
 ---
 calculate_method
 puede ser mejor:
-transform
+transformate
 ---
 calculate_method_dft
 puede ser directamente:
