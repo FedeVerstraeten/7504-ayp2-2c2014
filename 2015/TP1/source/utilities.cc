@@ -1,46 +1,56 @@
-// ------------------------------------------------------------------------- //
-// Facultad de Ingenieria de la Universidad de Buenos Aires
-// Algoritmos y Programacion II
-// 1er Cuatrimestre de 2015
-// Trabajo Practico 0: Programacion en C++
-// Demodulacion de senal FM
-// 
-// utilities.cc
-// Funciones utilitarias para el proposito de la aplicacion
-//  - Imprimir en formato texto
-//  - Imprimir en formato binario U8
-// ------------------------------------------------------------------------- //
-
 #include <iostream>
 #include <fstream>
 #include <sstream>
 
 #include "utilities.h"
+#include "complex.h"
 
 using namespace std;
 
 
 
-extern ostream *oss;
-
-// Imprime en el rango [-1, 1] en formato texto (ASCII)
-void
-print_phase_text(double output_phase)
+Complex
+pow_complex(Complex const &z, size_t p)
 {
   
-  *oss << output_phase/PI << endl;
+  if(!p) return 1;
   
-  return;
+  if(p == 1){
+	
+	return z;
+	
+  }
+  else{
+	  
+	Complex aux = pow_complex(z, p/2);
+	if(!(p%2))
+      return aux * aux;
+    else
+      return aux * aux * z;
   
+  }
+
 }
 
-// Imprime en el rango [0, 255] en formato U8 (binario)
-void
-print_phase_U8(double output_phase)
+size_t
+my_pow(size_t const &n, size_t p)
 {
   
-  *oss << (unsigned char)((output_phase + PI) * 255 / (2 * PI));
+  if(!p) return 1;
   
-  return;
+  if(p == 1){
+	
+	return n;
+	
+  }
+  else{
+	  
+	size_t aux = my_pow(n, p/2);
+	if(!(p%2))
+      return aux * aux;
+    else
+      return aux * aux * n;
   
+  }
+
 }
