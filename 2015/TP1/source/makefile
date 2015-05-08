@@ -10,7 +10,7 @@ all: tp1
 tp1: $(OBJS)
 	$(CC) $(LDFLAGS) $(OBJS) -o $(PROGRAM_NAME)
 
-main.o: main.cc main.h cmdline.h arguments.h dft_methods.h complex.h types.h vector.h
+main.o: main.cc cmdline.h arguments.h complex.h vector.h dft_methods.h utilities.h types.h
 	$(CC) $(CCFLAGS) -c main.cc
 
 complex.o: complex.cc complex.h
@@ -25,7 +25,7 @@ arguments.o: arguments.cc arguments.h cmdline.h types.h
 dft_methods.o: dft_methods.cc dft_methods.h complex.h vector.h utilities.h
 	$(CC) $(CCFLAGS) -c dft_methods.cc
 
-utilities.o: utilities.cc utilities.h complex.h
+utilities.o: utilities.cc utilities.h complex.h vector.h
 	$(CC) $(CCFLAGS) -c utilities.cc
 
 clean:

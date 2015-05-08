@@ -2,7 +2,6 @@
 #include <cstdlib>
 #include <sstream>
 
-#include "main.h"
 #include "cmdline.h"
 #include "arguments.h"
 #include "complex.h"
@@ -10,6 +9,7 @@
 // En definitiva lo que calculamos en todos los casos es la DFT
 // (incluso en el caso de la fft, es un algorítmo para calcular la DFT)
 #include "dft_methods.h"
+#include "utilities.h"
 #include "types.h"
 
 using namespace std;
@@ -42,6 +42,10 @@ int main(int argc, char *argv[])
   {	  
     input.push_back(input_complex); 
   }
+  
+  // Si el tamaño de la entrada no es potencia de 2 se completa con ceros
+  //hasta llevarla a la potencia de 2 más cercana
+  set_up_input(input);
 
   output = (transform[method_option])(input);
   
