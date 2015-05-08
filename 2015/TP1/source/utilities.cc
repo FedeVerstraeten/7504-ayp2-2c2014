@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <cmath>
 
 #include "utilities.h"
 #include "complex.h"
@@ -8,6 +9,28 @@
 using namespace std;
 
 
+
+void
+set_up_input(Vector<Complex> &input){
+	
+  size_t n = input.size();
+  
+  if (log2(n) - (int)log2(n)){
+	  
+    size_t l = (int)log2(n) + 1;
+	size_t last = my_pow(2,l) - input.size();
+	
+	for(size_t i=0;i<last;i++){
+	  
+      input.push_back(0);
+	  
+	}
+	  
+  }
+  
+  return;
+	
+}
 
 Complex
 pow_complex(Complex const &z, size_t p)

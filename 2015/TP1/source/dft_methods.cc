@@ -79,27 +79,9 @@ Vector<Complex>
 calculate_fft(Vector<Complex> const &x)
 {
   
-  Vector<Complex> aux_x = x;
   size_t N;
-  size_t l;
-  N = aux_x.size();
-
-  // Si el tamaño de la entrada no es potencia de 2 se completa con ceros
-  //hasta llevarla a la potencia de 2 más cercana
-  if (log2(N) - (int)log2(N)){
-	  
-    l = (int)log2(N) + 1;
-	size_t last = my_pow(2,l) - aux_x.size();
-	
-	for(size_t i=0;i<last;i++){
-	  
-      aux_x.push_back(0);
-	  
-	}
-	
-	N = aux_x.size();
-	  
-  }
+  
+  N = x.size();
 
   Vector<Complex> X(N);
   
@@ -112,8 +94,8 @@ calculate_fft(Vector<Complex> const &x)
     Vector<Complex> Q(N/2);
     for (size_t i=0; i<N/2; i++)
     {
-      p[i] = aux_x[2*i];
-      q[i] = aux_x[2*i+1];
+      p[i] = x[2*i];
+      q[i] = x[2*i+1];
     }
  
     P = calculate_fft(p);
@@ -131,7 +113,7 @@ calculate_fft(Vector<Complex> const &x)
   }
   else
   {
-    X = aux_x;
+    X = x;
   }
   
   return X;
