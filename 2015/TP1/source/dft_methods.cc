@@ -124,5 +124,44 @@ calculate_fft(Vector<Complex> const &x)
 Vector<Complex>
 calculate_ifft(Vector<Complex> const &X)
 {
-  return X;
+  
+  size_t N;
+  
+  N = X.size();
+
+  Vector<Complex> x(N);
+  
+  if (N > 1)
+  {
+    // Suponemos que la entrada es par y potencia de 2
+    Vector<Complex> p(N/2);
+    Vector<Complex> q(N/2);
+    Vector<Complex> P(N/2);
+    Vector<Complex> Q(N/2);
+    for (size_t i=0; i<N/2; i++)
+    {
+      p[i] = X[2*i];
+      q[i] = X[2*i+1];
+    }
+ 
+    P = calculate_fft(p);
+    Q = calculate_fft(q);
+    
+    for (size_t k=0; k<N; k++)
+    {
+      Complex W(cos(k*(2*PI)/N),
+               -sin(k*(2*PI)/N));
+      // Para que se repitan los elementos cíclicamente, se utiliza la función módulo
+      size_t k2 = k % (N/2);
+
+      x[k] = (1.0/N) * ((P[k2] + (1/W)*Q[k2]));
+    } 
+  }
+  else
+  {
+    x = X;
+  }
+  
+  return x;
+  
 }
