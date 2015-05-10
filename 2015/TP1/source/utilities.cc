@@ -1,3 +1,14 @@
+// ------------------------------------------------------------------------- //
+// Facultad de Ingeniería de la Universidad de Buenos Aires
+// Algoritmos y Programación II
+// 1° Cuatrimestre de 2015
+// Trabajo Práctico 1: Recursividad
+// Cálculo de DFT
+// 
+// utilities.cc
+// Funciones utilitarias para el propósito de la aplicación
+// ------------------------------------------------------------------------- //
+
 #include <iostream>
 #include <fstream>
 #include <sstream>

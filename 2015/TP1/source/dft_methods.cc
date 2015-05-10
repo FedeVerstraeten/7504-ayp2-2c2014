@@ -1,3 +1,14 @@
+// ------------------------------------------------------------------------- //
+// Facultad de Ingeniería de la Universidad de Buenos Aires
+// Algoritmos y Programación II
+// 1° Cuatrimestre de 2015
+// Trabajo Práctico 1: Recursividad
+// Cálculo de DFT
+// 
+// dft_methods.cc
+// Implementación de los distintos métodos de la transformada.
+// ------------------------------------------------------------------------- //
+
 #include <iostream>
 #include <cmath>
 
@@ -78,9 +89,7 @@ calculate_idft(Vector<Complex> const &X)
 Vector<Complex>
 calculate_fft(Vector<Complex> const &x)
 {
-  
   size_t N;
-  
   N = x.size();
 
   Vector<Complex> X(N);
@@ -124,9 +133,7 @@ calculate_fft(Vector<Complex> const &x)
 Vector<Complex>
 calculate_ifft(Vector<Complex> const &X)
 {
-  
   size_t N;
-  
   N = X.size();
 
   Vector<Complex> x(N);

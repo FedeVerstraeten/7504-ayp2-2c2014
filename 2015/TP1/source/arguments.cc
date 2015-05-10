@@ -1,3 +1,14 @@
+// ------------------------------------------------------------------------- //
+// Facultad de Ingeniería de la Universidad de Buenos Aires
+// Algoritmos y Programación II
+// 1er Cuatrimestre de 2015
+// Trabajo Práctico 1: Recursividad
+// Cálculo de DFT
+// 
+// arguments.cc
+// Funciones a llamar para cada opción posible de la aplicación
+// ------------------------------------------------------------------------- //
+
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -11,7 +22,7 @@
 using namespace std;
 
 
-
+// Opciones de argumentos de invocacion
 option_t options[] = {
 	{1, "i", "input", "-", opt_input, OPT_SEEN},
 	{1, "o", "output", "-", opt_output, OPT_SEEN},
@@ -19,6 +30,7 @@ option_t options[] = {
 	{0, },
 };
 
+// Nombres de los argumentos de la opcion "--method"
 string description_method_option[] = {
 	
     METHOD_DFT,
@@ -54,7 +66,7 @@ opt_input(string const &arg)
 	// Verificamos que el stream este OK.
 	//
 	if (!iss->good()) {
-		cerr << "cannot open "
+		cerr << "Cannot open "
 		     << arg
 		     << "."
 		     << endl;
@@ -79,7 +91,7 @@ opt_output(string const &arg)
 	// Verificamos que el stream este OK.
 	//
 	if (!oss->good()) {
-		cerr << "cannot open "
+		cerr << "Cannot open "
 		     << arg
 		     << "."
 		     << endl;
@@ -90,19 +102,17 @@ opt_output(string const &arg)
 void
 opt_method(string const &arg)
 {
-	
-  for(size_t i=0;i<METHOD_OPTIONS;i++){
-	  
-    if(arg == description_method_option[i]){
-		
-	  method_option=(method_option_t)i;
-	  
-	  break;
-	
-	}
-	  
+  size_t i;
+  // Recorremos diccionario de argumentos hasta encontrar uno que coincida
+  for(i=0; i < METHOD_OPTIONS; i++) {
+    if(arg == description_method_option[i]) {
+      method_option = (method_option_t)i; // Casteo
+      break;	
+    }  
   }
-  
-  return;
-	
+  // Si recorrio todo el diccionario, el argumento no esta implementado
+  if (i == METHOD_OPTIONS) {
+    cerr << "Unknown format" << endl;
+    exit(1);
+  }
 }

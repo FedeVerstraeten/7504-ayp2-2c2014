@@ -1,3 +1,14 @@
+// ------------------------------------------------------------------------- //
+// Facultad de Ingeniería de la Universidad de Buenos Aires
+// Algoritmos y Programación II
+// 1er Cuatrimestre de 2015
+// Trabajo Práctico 1: Recursividad
+// Cálculo de DFT
+// 
+// main.cc
+// Archivo principal donde se ejecuta el main.
+// ------------------------------------------------------------------------- //
+
 #include <iostream>
 #include <cstdlib>
 #include <sstream>
@@ -15,7 +26,7 @@
 using namespace std;
 
 
-
+// Coleccion de funciones para transformar con los distintos métodos
 Vector<Complex> (*transform[])(Vector<Complex> const &) = {
 
     calculate_dft,
@@ -50,7 +61,7 @@ int main(int argc, char *argv[])
   output = (transform[method_option])(input);
   
   for(int i=0; i<output.size(); i++)
-  {	  
+  {
     cout << output[i] << endl; 
   }
   
