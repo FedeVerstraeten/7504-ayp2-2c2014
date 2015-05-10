@@ -39,6 +39,6 @@ class Complex
   
   private:
     double real_, imag_;
-};
+}; // class Complex
 
 #endif // _COMPLEX_H_INCLUDED_

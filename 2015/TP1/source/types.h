@@ -1,3 +1,15 @@
+// ------------------------------------------------------------------------- //
+// Facultad de Ingeniería de la Universidad de Buenos Aires
+// Algoritmos y Programación II
+// 1° Cuatrimestre de 2015
+// Trabajo Práctico 1: Recursividad
+// Cálculo de DFT
+// 
+// types.h
+// Tipos definidos para el proposito de la aplicacion
+//  - Opciones posibles de métodos de transformada.
+// ------------------------------------------------------------------------- //
+
 #ifndef _TYPES_H_INCLUDED_
 #define _TYPES_H_INCLUDED_
 
