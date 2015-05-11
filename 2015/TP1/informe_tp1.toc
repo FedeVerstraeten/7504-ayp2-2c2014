@@ -1,13 +1,14 @@
 \select@language {spanish}
 \contentsline {section}{\numberline {1}Objetivos}{1}{section.1}
 \contentsline {section}{\numberline {2}Introducci\IeC {\'o}n}{1}{section.2}
-\contentsline {section}{\numberline {3}Desarrollo}{1}{section.3}
-\contentsline {subsection}{\numberline {3.1}Standard de estilo}{1}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Dise\IeC {\~n}o del programa}{1}{subsection.3.2}
-\contentsline {subsection}{\numberline {3.3}Opciones del programa}{1}{subsection.3.3}
-\contentsline {subsection}{\numberline {3.4}M\IeC {\'e}todos de la Transformada}{1}{subsection.3.4}
-\contentsline {subsection}{\numberline {3.5}Estructura de archivos}{1}{subsection.3.5}
-\contentsline {subsection}{\numberline {3.6}Compilaci\IeC {\'o}n}{1}{subsection.3.6}
-\contentsline {subsection}{\numberline {3.7}Casos de prueba}{1}{subsection.3.7}
-\contentsline {section}{\numberline {4}C\IeC {\'o}digo}{1}{section.4}
-\contentsline {section}{\numberline {5}Enunciado}{1}{section.5}
+\contentsline {section}{\numberline {3}Standard de estilo}{1}{section.3}
+\contentsline {section}{\numberline {4}Dise\IeC {\~n}o del programa}{1}{section.4}
+\contentsline {section}{\numberline {5}Opciones del programa}{1}{section.5}
+\contentsline {section}{\numberline {6}M\IeC {\'e}todos de la Transformada}{1}{section.6}
+\contentsline {subsection}{\numberline {6.1}FFT}{1}{subsection.6.1}
+\contentsline {subsubsection}{\numberline {6.1.1}Complejidad Temporal}{1}{subsubsection.6.1.1}
+\contentsline {section}{\numberline {7}Estructura de archivos}{2}{section.7}
+\contentsline {section}{\numberline {8}Compilaci\IeC {\'o}n}{2}{section.8}
+\contentsline {section}{\numberline {9}Casos de prueba}{2}{section.9}
+\contentsline {section}{\numberline {10}C\IeC {\'o}digo}{2}{section.10}
+\contentsline {section}{\numberline {11}Enunciado}{2}{section.11}

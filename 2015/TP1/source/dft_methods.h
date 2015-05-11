@@ -17,7 +17,7 @@
 #include "complex.h"
 #include "vector.h"
 
-#define PI 3.141592653589793238460
+#define PI 3.14159265358979323846264338327950
 
 Vector<Complex> calculate_dft(Vector<Complex> const &);
 Vector<Complex> calculate_idft(Vector<Complex> const &);
