@@ -1,0 +1,13 @@
+\select@language {spanish}
+\contentsline {section}{\numberline {1}Objetivos}{1}{section.1}
+\contentsline {section}{\numberline {2}Introducci\IeC {\'o}n}{1}{section.2}
+\contentsline {section}{\numberline {3}Desarrollo}{1}{section.3}
+\contentsline {subsection}{\numberline {3.1}Standard de estilo}{1}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Dise\IeC {\~n}o del programa}{1}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Opciones del programa}{1}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}M\IeC {\'e}todos de la Transformada}{1}{subsection.3.4}
+\contentsline {subsection}{\numberline {3.5}Estructura de archivos}{1}{subsection.3.5}
+\contentsline {subsection}{\numberline {3.6}Compilaci\IeC {\'o}n}{1}{subsection.3.6}
+\contentsline {subsection}{\numberline {3.7}Casos de prueba}{1}{subsection.3.7}
+\contentsline {section}{\numberline {4}C\IeC {\'o}digo}{1}{section.4}
+\contentsline {section}{\numberline {5}Enunciado}{1}{section.5}
