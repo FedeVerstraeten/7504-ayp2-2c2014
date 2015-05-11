@@ -57,8 +57,3 @@ Todo el tiempo se cambia el tamaño del arreglo de a uno,
 => Muchos allocs.
 Otra posible implementación:
 Lista.
-
-No hace falta lista, implementandolo con el vector se puede mejorar el uso de memoria
-creando de entrada un vector grande, y en caso de necesitar espacio crear uno nuevo más grande
-y así sucecivamente, pero no hacer siempre push_back
-  => tradeof: se gana tiempo, se pierde un poco de espacio en memoria
