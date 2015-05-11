@@ -115,40 +115,96 @@
 \section{Introducción}
   Explicar un poco que es la FT, la DFT y la FFT.
 
-\section{Desarrollo}
+\section{Standard de estilo}
+  Adoptamos la convención de estilo de código de Google para C++, salvando las siguientes excepciones:
+  \begin{itemize}
+    \item Streams: utilizamos flujos de entrada y salida
+    \item Sobrecarga de operadores
+  \end{itemize}
+  \url{https://google-styleguide.googlecode.com/svn/trunk/cppguide.html#Naming}
 
-  \subsection{Standard de estilo}
-    Adoptamos la convención de estilo de código de Google para C++, salvando las siguientes excepciones:
-    \begin{itemize}
-      \item Streams: utilizamos flujos de entrada y salida
-      \item Sobrecarga de operadores
-    \end{itemize}
-    \url{https://google-styleguide.googlecode.com/svn/trunk/cppguide.html#Naming}
+\section{Diseño del programa}
+  Explicar a grandes rasgos como funciona el programa, diagrama en bloques.
+  -> Leer de la entrada a vector, rellenar con ceros, transformar, imprimir vector.
 
-  \subsection{Diseño del programa}
-    Explicar a grandes rasgos como funciona el programa, diagrama en bloques.
-    -> Leer de la entrada a vector, rellenar con ceros, transformar, imprimir vector.
+\section{Opciones del programa}
+  El programa se ejecuta en línea de comandos, y las opciones que admite (sin importar el orden de aparición) son las siguientes:
+  \begin{itemize}
+    \item[] \textit{nombre largo} (\textit{nombre corto}): \textit{descripción}
+    \item \texttt{--input} (\texttt{-i}): 
+    \item \texttt{--output} (\texttt{-o}):
+    \item \texttt{--method} (\texttt{-m}):
+  \end{itemize}
 
-  \subsection{Opciones del programa}
-    El programa se ejecuta en línea de comandos, y las opciones que admite (sin importar el orden de aparición) son las siguientes:
-    \begin{itemize}
-      \item[] \textit{nombre largo} (\textit{nombre corto}): \textit{descripción}
-      \item \texttt{--input} (\texttt{-i}): 
-      \item \texttt{--output} (\texttt{-o}):
-      \item \texttt{--method} (\texttt{-m}):
-    \end{itemize}
+\section{Métodos de la Transformada}
+  como fue implementado dft y fft, funciones genéricas, máscaras, complejidad temporal, espacial, etc.
+  \subsection{FFT}
+    \subsubsection{Complejidad Temporal}
+      Para estudiar el costo temporal de esta implementación ---$T(N)$--- se analizó
+    cada línea de código de la función \textit{calculate\_fft\_generic()}.\par
+    Al principio, todas las sentencias son de orden constante hasta que
+    aparece el primer ciclo:
+      %copiar una vez tengamos la versión final
+    \begin{lstlisting}
+    \end{lstlisting}
+      Las únicas expresiones que ofrecen cierta duda de que su coste sea 
+    constante son las últimas ---constructores de N/2 elementos. Sin embargo,
+    al ver la implementación de dicho constructor no quedan dudas, ya que solo
+    consiste en una comparación, una asignación, y una llamada a \textit{new}:
+      % copiar código función Vector(int)
+    \begin{lstlisting}
+    \end{lstlisting}
+      Luego se tiene un ciclo de N/2 iteraciones cuyas operaciones en cada caso
+    son de orden constante, con lo cual el orden de este ciclo es $\mathcal{O}(N/2)$.
+      %copiar una vez tengamos la versión final
+    \begin{lstlisting}
+    \end{lstlisting}
+      A continuación encontramos las llamadas recursivas. Dado que el tamaño
+     de la entrada se reduce a la mitad, tenemos 2 llamadas de coste $T(N/2)$.
+      %copiar una vez tengamos la versión final
+    \begin{lstlisting}
+    \end{lstlisting}
+      Finalmente, se tiene un ciclo de N iteraciones cuyas operaciones en cada 
+    caso son de orden constante, produciendo un coste de $\mathcal{O}(N)$.
+      %copiar una vez tengamos la versión final
+    \begin{lstlisting}
+    \end{lstlisting}
+      De esta forma, agrupando estos resultados parciales, se puede escribir la
+     ecuación de recurrencia para este algoritmo:
+    \begin{align*}
+      T(N) &= \mathcal{O}(1) + \mathcal{O}(N/2) + 2T(N/2) + \mathcal{O}(N) \\
+      T(N) &= 1 + N + 2T(N/2) \\
+    \end{align*}
+    \begin{equation*}
+      \boxed{T(N) = 2T(N/2) + N}
+    \end{equation*}
+      Como se puede ver, es posible aplicar el teorema maestro, definiendo:
+    \begin{align*}
+      a &= 2 \geq 1 \\
+      b &= 2 > 1\\
+   f(N) &= N
+    \end{align*}
+      Utilizando el segundo caso del teorema:
+    $$ \exists\,k \geq 0 \quad / \quad N \;\epsilon\; \Theta (N^{\log_b (a)} \log^k (N)) $$
+    $$ \Rightarrow T(N)\;\epsilon\;\Theta (N^{\log_b (a)} \log^{k+1} (N)) $$
+      Es fácil ver que con $k=0$ dicha condición se cumple, por lo tanto
+    el resultado final es:
+    $$ \boxed{T(N)\;\epsilon\;\Theta (N \log N)} $$
+      Este resultado es coherente, ya que el algoritmo utiliza la técnica de 
+    "divide y vencerás" y la recurrencia es análoga al caso del conocido 
+    \textit{MergeSort}.
 
-  \subsection{Métodos de la Transformada}
-    como fue implementado dft y fft, funciones genéricas, máscaras, complejidad temporal, espacial, etc.
 
-  \subsection{Estructura de archivos}
 
-  \subsection{Compilación}
-  Como se compila
 
-  \subsection{Casos de prueba}
-  los q aparecen en la especificación del tp, mostrar capturas de pantalla
-  de la consola ejecutando todo
+\section{Estructura de archivos}
+
+\section{Compilación}
+Como se compila
+
+\section{Casos de prueba}
+los q aparecen en la especificación del tp, mostrar capturas de pantalla
+de la consola ejecutando todo
 
 \section{Código}
 
