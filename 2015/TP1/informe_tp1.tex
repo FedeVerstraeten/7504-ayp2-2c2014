@@ -132,8 +132,22 @@
   \begin{itemize}
     \item[] \textit{nombre largo} (\textit{nombre corto}): \textit{descripción}
     \item \texttt{--input} (\texttt{-i}): 
-    \item \texttt{--output} (\texttt{-o}):
-    \item \texttt{--method} (\texttt{-m}):
+    
+    En esta opción se indica un argumento que debe ser la ruta de un archivo del cual queramos leer o bien la opción por defecto ”-” que utiliza el flujo de entrada estándar.
+    \item \texttt{--output} (\texttt{-o}): 
+    
+    En esta opción se indica un argumento que debe ser la ruta de un archivo en el cual queramos imprimir o bien la opción por defecto ”-” que utiliza el flujo de salida estándar.
+    \item \texttt{--method} (\texttt{-m}): 
+    
+    En esta opción se indica la acción que se debe realizar sobre los datos de la entrada, estos pueden ser:
+    \begin{itemize}
+    \item[•]Transformada discreta de Fourier (\texttt{-dft}).
+    \item[•]Transformada discreta inversa de Fourier (\texttt{-idft}).
+    \item[•]Transformada rápida de Fourier (\texttt{-fft}).
+    \item[•]Transformada rápida inversa de Fourier (\texttt{-ifft}).
+    
+    \end{itemize}
+    Por defecto el programa se ejecuta con la transformada rápida de fourier.
   \end{itemize}
 
 \section{Métodos de la Transformada}
@@ -193,7 +207,121 @@
       Este resultado es coherente, ya que el algoritmo utiliza la técnica de 
     "divide y vencerás" y la recurrencia es análoga al caso del conocido 
     \textit{MergeSort}.
+    
+    \subsection{DFT}
+    \subsubsection{Complejidad Temporal}
+      Para estudiar el costo temporal de esta implementación ---$T(N)$--- se analizó
+    cada línea de código de la función \textit{calculate\_dft\_generic()}.\par
+    Al principio, todas las sentencias son de orden constante hasta que
+    aparecen el primer ciclo de N iteraciones. Dentro de este hay otro cilco de N 
+	iteraciones y 2 sentencias de orden constante, mientras que en el ciclo anidado 
+	hay una llamada a una funcion recursiva (\textit{pow\_Complex}):
+	\begin{lstlisting}
+	  
+	static Vector<Complex>
+calculate_dft_generic(Vector<Complex> const &x, bool inverse)
+{
+  Complex aux;
+  size_t N;
+  
+  N = x.size();
+  
+  // Por defecto se calcula la DFT con estos parámetros:
+  double factor = 1;
+  int W_phase_sign = -1;
 
+  // En caso de tener que calcular la inversa,
+  // modifico el factor de escala y el signo de la fase de W.
+  if (inverse)
+  {
+    factor = 1.0/N;
+    W_phase_sign = 1;
+  }
+  
+  Vector<Complex> X(N);
+  
+  Complex W(cos((2*PI)/N),
+            W_phase_sign*sin((2*PI)/N));
+  
+  for(size_t k=0;k<N;k++)
+  {
+	  for(size_t n=0;n<N;n++)
+    {
+	    aux += x[n] * pow_complex(W, n*k);
+	  }
+	  X[k] = factor * aux; 
+	  aux = 0;
+  }
+  return X;
+}
+	  
+    \end{lstlisting}
+	Analizamos el coste temporal ---$T(p)$--- de la función (\textit{pow\_Complex}):
+	\begin{lstlisting}
+		Complex
+		pow_complex(Complex const &z, size_t p)
+		{
+  
+			if(!p) return 1;
+  
+			if(p == 1){
+	
+				return z;
+	
+			}
+			else{
+	  
+				Complex aux = pow_complex(z, p/2);
+				if(!(p%2))
+					return aux * aux;
+				else
+					return aux * aux * z;
+  
+			}
+
+		}
+    \end{lstlisting}
+	  Se observa que todas las operaciones son de orden constante $\mathcal{O}(1)$ 
+	  y a continuación se tiene una llamada recursiva. Dado que el tamaño del problema se reduce 
+	  a la mitad, tenemos 1 llamada de coste $T(p/2)$
+	  Agrupando estos resultados, se puede escribir la
+      ecuación de recurrencia para este algoritmo:
+    \begin{align*}
+      T(p) &= \mathcal{O}(1) + T(p/2)\\
+	\end{align*}
+      \begin{equation*}
+        \boxed{T(p) = T(p/2) + 1}
+      \end{equation*}
+    
+    Como se puede ver, es posible aplicar el teorema maestro, definiendo:
+    \begin{align*}
+      a &= 1 \geq 1 \\
+      b &= 2 > 1\\
+   f(p) &= 1 
+    \end{align*}
+      Utilizando el segundo caso del teorema:
+    $$ \exists\,k \geq 0 \quad / \quad f(p) \;\epsilon\; \Theta (p^{\log_b (a)} \log^k (p)) $$
+    $$ \Rightarrow T(p)\;\epsilon\;\Theta (p^{\log_b (a)} \log^{k+1} (p)) $$
+      Es fácil ver que con $k=0$ dicha condición se cumple, por lo tanto
+    el resultado final es:
+    $$ \boxed{T(N)\;\epsilon\;\Theta (\log p)} $$\\
+	Una vez sabido el coste temporal de este algoritmo podemos calcular el de la función
+	principal. Como se había planteado anteriormente, consta de 2 ciclos anidados de N iteraciones.
+	El coste del segundo ciclo está dado por:
+	\begin{align*}
+      T(N) &= (\mathcal{O}(1) + {\Theta}(\log N)) * N
+	\end{align*}
+	  $$ \Rightarrow T(N)\;\epsilon\;\Theta (N\log N) $$
+	Entonces el coste total del primer ciclo es:
+	\begin{align*}
+      T(N) &= (\mathcal{O}(1) + {\Theta}(N\log N)) * N
+	\end{align*}
+	$$ \Rightarrow T(N)\;\epsilon\;\Theta (N^2\log N) $$
+	Juntando todos los resultados parciales tenemos que el coste total del algoritmo es:
+	\begin{align*}
+      T(N) &= \mathcal{O}(1) + {\Theta}(N^2\log N)
+	\end{align*}
+	$$ \Rightarrow T(N)\;\epsilon\;\Theta (N^2\log N) $$
 
 
 

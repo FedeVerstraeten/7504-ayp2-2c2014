@@ -5,10 +5,12 @@
 \contentsline {section}{\numberline {4}Dise\IeC {\~n}o del programa}{1}{section.4}
 \contentsline {section}{\numberline {5}Opciones del programa}{1}{section.5}
 \contentsline {section}{\numberline {6}M\IeC {\'e}todos de la Transformada}{1}{section.6}
-\contentsline {subsection}{\numberline {6.1}FFT}{1}{subsection.6.1}
-\contentsline {subsubsection}{\numberline {6.1.1}Complejidad Temporal}{1}{subsubsection.6.1.1}
-\contentsline {section}{\numberline {7}Estructura de archivos}{2}{section.7}
-\contentsline {section}{\numberline {8}Compilaci\IeC {\'o}n}{2}{section.8}
-\contentsline {section}{\numberline {9}Casos de prueba}{2}{section.9}
-\contentsline {section}{\numberline {10}C\IeC {\'o}digo}{2}{section.10}
-\contentsline {section}{\numberline {11}Enunciado}{2}{section.11}
+\contentsline {subsection}{\numberline {6.1}FFT}{2}{subsection.6.1}
+\contentsline {subsubsection}{\numberline {6.1.1}Complejidad Temporal}{2}{subsubsection.6.1.1}
+\contentsline {subsection}{\numberline {6.2}DFT}{2}{subsection.6.2}
+\contentsline {subsubsection}{\numberline {6.2.1}Complejidad Temporal}{2}{subsubsection.6.2.1}
+\contentsline {section}{\numberline {7}Estructura de archivos}{4}{section.7}
+\contentsline {section}{\numberline {8}Compilaci\IeC {\'o}n}{4}{section.8}
+\contentsline {section}{\numberline {9}Casos de prueba}{4}{section.9}
+\contentsline {section}{\numberline {10}C\IeC {\'o}digo}{5}{section.10}
+\contentsline {section}{\numberline {11}Enunciado}{5}{section.11}
