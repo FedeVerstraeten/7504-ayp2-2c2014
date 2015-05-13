@@ -1,15 +1,15 @@
-\BOOKMARK [1][-]{section.1}{Objetivos}{}
-\BOOKMARK [1][-]{section.2}{Introducci\363n}{}
-\BOOKMARK [1][-]{section.3}{Standard de estilo}{}
-\BOOKMARK [1][-]{section.4}{Dise\361o del programa}{}
-\BOOKMARK [1][-]{section.5}{Opciones del programa}{}
-\BOOKMARK [1][-]{section.6}{M\351todos de la Transformada}{}
-\BOOKMARK [2][-]{subsection.6.1}{FFT}{section.6}
-\BOOKMARK [3][-]{subsubsection.6.1.1}{Complejidad Temporal}{subsection.6.1}
-\BOOKMARK [2][-]{subsection.6.2}{DFT}{section.6}
-\BOOKMARK [3][-]{subsubsection.6.2.1}{Complejidad Temporal}{subsection.6.2}
-\BOOKMARK [1][-]{section.7}{Estructura de archivos}{}
-\BOOKMARK [1][-]{section.8}{Compilaci\363n}{}
-\BOOKMARK [1][-]{section.9}{Casos de prueba}{}
-\BOOKMARK [1][-]{section.10}{C\363digo}{}
-\BOOKMARK [1][-]{section.11}{Enunciado}{}
+\BOOKMARK [1][-]{section.1}{Objetivos}{}% 1
+\BOOKMARK [1][-]{section.2}{Introducci\363n}{}% 2
+\BOOKMARK [1][-]{section.3}{Standard de estilo}{}% 3
+\BOOKMARK [1][-]{section.4}{Dise\361o del programa}{}% 4
+\BOOKMARK [1][-]{section.5}{Opciones del programa}{}% 5
+\BOOKMARK [1][-]{section.6}{M\351todos de la Transformada}{}% 6
+\BOOKMARK [2][-]{subsection.6.1}{FFT}{section.6}% 7
+\BOOKMARK [3][-]{subsubsection.6.1.1}{Complejidad Temporal}{subsection.6.1}% 8
+\BOOKMARK [2][-]{subsection.6.2}{DFT}{section.6}% 9
+\BOOKMARK [3][-]{subsubsection.6.2.1}{Complejidad Temporal}{subsection.6.2}% 10
+\BOOKMARK [1][-]{section.7}{Estructura de archivos}{}% 11
+\BOOKMARK [1][-]{section.8}{Compilaci\363n}{}% 12
+\BOOKMARK [1][-]{section.9}{Casos de prueba}{}% 13
+\BOOKMARK [1][-]{section.10}{C\363digo}{}% 14
+\BOOKMARK [1][-]{section.11}{Enunciado}{}% 15
