@@ -159,30 +159,34 @@
     Al principio, todas las sentencias son de orden constante hasta que
     aparece el primer ciclo:
       %copiar una vez tengamos la versión final
-    \begin{lstlisting}
-    \end{lstlisting}
+    \lstinputlisting{calculate_fft_1.cc}
+%    \begin{lstlisting}
+%    \end{lstlisting}
       Las únicas expresiones que ofrecen cierta duda de que su coste sea 
     constante son las últimas ---constructores de N/2 elementos. Sin embargo,
     al ver la implementación de dicho constructor no quedan dudas, ya que solo
     consiste en una comparación, una asignación, y una llamada a \textit{new}:
       % copiar código función Vector(int)
-    \begin{lstlisting}
-    \end{lstlisting}
-      Luego se tiene un ciclo de N/2 iteraciones cuyas operaciones en cada caso
-    son de orden constante, con lo cual el orden de este ciclo es $\mathcal{O}(N/2)$.
+    \lstinputlisting{Vector_int_ctor.cc}
+%    \begin{lstlisting}
+%    \end{lstlisting}
+      Continuando con la función \textit{calculate\_fft\_generic()} :
+    \lstinputlisting{calculate_fft_2.cc}
+      Se tiene un ciclo de N/2 iteraciones cuyas operaciones en cada caso
+    son de orden constante, con lo cual el orden de este ciclo es $\mathcal{O}(N/2)$. \par
       %copiar una vez tengamos la versión final
-    \begin{lstlisting}
-    \end{lstlisting}
+%    \begin{lstlisting}
+%    \end{lstlisting}
       A continuación encontramos las llamadas recursivas. Dado que el tamaño
-     de la entrada se reduce a la mitad, tenemos 2 llamadas de coste $T(N/2)$.
+     de la entrada se reduce a la mitad, tenemos 2 llamadas de coste $T(N/2)$. \par
       %copiar una vez tengamos la versión final
-    \begin{lstlisting}
-    \end{lstlisting}
+%    \begin{lstlisting}
+%    \end{lstlisting}
       Finalmente, se tiene un ciclo de N iteraciones cuyas operaciones en cada 
     caso son de orden constante, produciendo un coste de $\mathcal{O}(N)$.
       %copiar una vez tengamos la versión final
-    \begin{lstlisting}
-    \end{lstlisting}
+%    \begin{lstlisting}
+%    \end{lstlisting}
       De esta forma, agrupando estos resultados parciales, se puede escribir la
      ecuación de recurrencia para este algoritmo:
     \begin{align*}
@@ -213,84 +217,22 @@
       Para estudiar el costo temporal de esta implementación ---$T(N)$--- se analizó
     cada línea de código de la función \textit{calculate\_dft\_generic()}.\par
     Al principio, todas las sentencias son de orden constante hasta que
-    aparecen el primer ciclo de N iteraciones. Dentro de este hay otro cilco de N 
-	iteraciones y 2 sentencias de orden constante, mientras que en el ciclo anidado 
-	hay una llamada a una funcion recursiva (\textit{pow\_Complex}):
-	\begin{lstlisting}
-	  
-	static Vector<Complex>
-calculate_dft_generic(Vector<Complex> const &x, bool inverse)
-{
-  Complex aux;
-  size_t N;
-  
-  N = x.size();
-  
-  // Por defecto se calcula la DFT con estos parámetros:
-  double factor = 1;
-  int W_phase_sign = -1;
-
-  // En caso de tener que calcular la inversa,
-  // modifico el factor de escala y el signo de la fase de W.
-  if (inverse)
-  {
-    factor = 1.0/N;
-    W_phase_sign = 1;
-  }
-  
-  Vector<Complex> X(N);
-  
-  Complex W(cos((2*PI)/N),
-            W_phase_sign*sin((2*PI)/N));
-  
-  for(size_t k=0;k<N;k++)
-  {
-	  for(size_t n=0;n<N;n++)
-    {
-	    aux += x[n] * pow_complex(W, n*k);
-	  }
-	  X[k] = factor * aux; 
-	  aux = 0;
-  }
-  return X;
-}
-	  
-    \end{lstlisting}
-	Analizamos el coste temporal ---$T(p)$--- de la función (\textit{pow\_Complex}):
-	\begin{lstlisting}
-		Complex
-		pow_complex(Complex const &z, size_t p)
-		{
-  
-			if(!p) return 1;
-  
-			if(p == 1){
-	
-				return z;
-	
-			}
-			else{
-	  
-				Complex aux = pow_complex(z, p/2);
-				if(!(p%2))
-					return aux * aux;
-				else
-					return aux * aux * z;
-  
-			}
-
-		}
-    \end{lstlisting}
-	  Se observa que todas las operaciones son de orden constante $\mathcal{O}(1)$ 
-	  y a continuación se tiene una llamada recursiva. Dado que el tamaño del problema se reduce 
-	  a la mitad, tenemos 1 llamada de coste $T(p/2)$
-	  Agrupando estos resultados, se puede escribir la
+    aparece el primer ciclo de N iteraciones. Dentro de este hay otro cilco de N 
+  iteraciones y 2 sentencias de orden constante, mientras que en el ciclo anidado 
+  hay una llamada a una funcion recursiva (\textit{pow\_Complex}):
+  \lstinputlisting{calculate_dft.cc}
+  Analizamos el coste temporal ---$T_p(p)$--- de la función (\textit{pow\_Complex}):
+  \lstinputlisting{pow_complex.cc}
+    Se observa que todas las operaciones son de orden constante $\mathcal{O}(1)$ 
+    y a continuación se tiene una llamada recursiva. Dado que el tamaño del problema se reduce 
+    a la mitad, tenemos 1 llamada de coste $T_p(p/2)$
+    Agrupando estos resultados, se puede escribir la
       ecuación de recurrencia para este algoritmo:
     \begin{align*}
-      T(p) &= \mathcal{O}(1) + T(p/2)\\
-	\end{align*}
+      T_p(p) &= \mathcal{O}(1) + T_p(p/2)\\
+  \end{align*}
       \begin{equation*}
-        \boxed{T(p) = T(p/2) + 1}
+        \boxed{T_p(p) = T_p(p/2) + 1}
       \end{equation*}
     
     Como se puede ver, es posible aplicar el teorema maestro, definiendo:
@@ -301,27 +243,32 @@ calculate_dft_generic(Vector<Complex> const &x, bool inverse)
     \end{align*}
       Utilizando el segundo caso del teorema:
     $$ \exists\,k \geq 0 \quad / \quad f(p) \;\epsilon\; \Theta (p^{\log_b (a)} \log^k (p)) $$
-    $$ \Rightarrow T(p)\;\epsilon\;\Theta (p^{\log_b (a)} \log^{k+1} (p)) $$
+    $$ \Rightarrow T_p(p)\;\epsilon\;\Theta (p^{\log_b (a)} \log^{k+1} (p)) $$
       Es fácil ver que con $k=0$ dicha condición se cumple, por lo tanto
     el resultado final es:
-    $$ \boxed{T(N)\;\epsilon\;\Theta (\log p)} $$\\
-	Una vez sabido el coste temporal de este algoritmo podemos calcular el de la función
-	principal. Como se había planteado anteriormente, consta de 2 ciclos anidados de N iteraciones.
-	El coste del segundo ciclo está dado por:
-	\begin{align*}
+    $$ T_p(p)\;\epsilon\;\Theta (\log p) $$\\
+  Una vez sabido el coste temporal de este algoritmo podemos calcular el de la función
+  principal. Como se había planteado anteriormente, consta de 2 ciclos anidados de N iteraciones.
+  El coste del segundo ciclo está dado por:
+  \begin{align*}
       T(N) &= (\mathcal{O}(1) + {\Theta}(\log N)) * N
-	\end{align*}
-	  $$ \Rightarrow T(N)\;\epsilon\;\Theta (N\log N) $$
-	Entonces el coste total del primer ciclo es:
-	\begin{align*}
+  \end{align*}
+    $$ \Rightarrow T(N)\;\epsilon\;\Theta (N\log N) $$
+  Entonces el coste total del primer ciclo es:
+  \begin{align*}
       T(N) &= (\mathcal{O}(1) + {\Theta}(N\log N)) * N
-	\end{align*}
-	$$ \Rightarrow T(N)\;\epsilon\;\Theta (N^2\log N) $$
-	Juntando todos los resultados parciales tenemos que el coste total del algoritmo es:
-	\begin{align*}
+  \end{align*}
+  $$ \Rightarrow T(N)\;\epsilon\;\Theta (N^2\log N) $$
+  Juntando todos los resultados parciales tenemos que el coste total del algoritmo es:
+  \begin{align*}
       T(N) &= \mathcal{O}(1) + {\Theta}(N^2\log N)
-	\end{align*}
-	$$ \Rightarrow T(N)\;\epsilon\;\Theta (N^2\log N) $$
+  \end{align*}
+  $$ \Rightarrow \boxed{ T(N)\;\epsilon\;\Theta (N^2\log N) } $$
+    En conclusión se puede ver que si la función \textit{pow\_Complex()} fuera reemplazada por
+  una expresión de orden constante (como por ejemplo la creación del número complejo W
+  directamente en cada iteración, como se hizo en la implementación de la FFT), entonces se 
+  perdería la componente logarítmica de la complejidad, quedando el resultado final:
+  $$ \boxed{ T(N)\;\epsilon\;\Theta (N^2) } $$
 
 
 
