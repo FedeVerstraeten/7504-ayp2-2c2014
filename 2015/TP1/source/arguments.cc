@@ -36,8 +36,9 @@ string description_method_option[] = {
     METHOD_DFT,
     METHOD_IDFT,
     METHOD_FFT,
-    METHOD_IFFT
-	
+    METHOD_IFFT,
+    METHOD_FFT_ITER,
+    METHOD_IFFT_ITER	
 };
 
 istream *iss;

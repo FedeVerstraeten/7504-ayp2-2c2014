@@ -15,11 +15,13 @@
 
 #include <iostream>
 
-#define METHOD_OPTIONS 4
+#define METHOD_OPTIONS 6
 #define METHOD_DFT "dft"
 #define METHOD_IDFT "idft"
 #define METHOD_FFT "fft"
 #define METHOD_IFFT "ifft"
+#define METHOD_FFT_ITER "fft-iter"
+#define METHOD_IFFT_ITER "ifft-iter"
 
 void opt_input(std::string const &);
 void opt_output(std::string const &);

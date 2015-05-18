@@ -20,7 +20,9 @@ typedef enum{
     METHOD_OPTION_DFT = 0,
     METHOD_OPTION_IDFT = 1,
     METHOD_OPTION_FFT = 2,
-    METHOD_OPTION_IFFT = 3
+    METHOD_OPTION_IFFT = 3,
+    METHOD_OPTION_FFT_ITER = 4,
+    METHOD_OPTION_IFFT_ITER = 5
 	
 } method_option_t;
 

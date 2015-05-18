@@ -24,4 +24,7 @@ Vector<Complex> calculate_idft(Vector<Complex> const &);
 Vector<Complex> calculate_fft(Vector<Complex> const &);
 Vector<Complex> calculate_ifft(Vector<Complex> const &);
 
+Vector<Complex> calculate_fft_iter(Vector<Complex> const &);
+Vector<Complex> calculate_ifft_iter(Vector<Complex> const &);
+
 #endif
