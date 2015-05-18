@@ -32,14 +32,13 @@ Vector<Complex> (*transform[])(Vector<Complex> const &) = {
     calculate_dft,
 	  calculate_idft,
     calculate_fft,
-	  calculate_ifft,
-    calculate_fft_iter,
-	  calculate_ifft_iter
+	  calculate_ifft
 
 };
 
 extern option_t options[];
 extern istream *iss;
+extern ostream *oss;
 extern method_option_t method_option;
 
 int main(int argc, char *argv[])
@@ -64,7 +63,7 @@ int main(int argc, char *argv[])
   
   for(int i=0; i<output.size(); i++)
   {
-    cout << output[i] << endl; 
+    *oss << output[i] << endl; 
   }
   
   /*for(vector<Complex> it = output.begin() ; it != output.end() ; it++){

@@ -9,8 +9,12 @@
 \contentsline {subsubsection}{\numberline {6.1.1}Complejidad Temporal}{2}{subsubsection.6.1.1}
 \contentsline {subsection}{\numberline {6.2}DFT}{4}{subsection.6.2}
 \contentsline {subsubsection}{\numberline {6.2.1}Complejidad Temporal}{4}{subsubsection.6.2.1}
-\contentsline {section}{\numberline {7}Estructura de archivos}{5}{section.7}
-\contentsline {section}{\numberline {8}Compilaci\IeC {\'o}n}{5}{section.8}
+\contentsline {section}{\numberline {7}Estructura de archivos}{6}{section.7}
+\contentsline {section}{\numberline {8}Compilaci\IeC {\'o}n}{6}{section.8}
 \contentsline {section}{\numberline {9}Casos de prueba}{6}{section.9}
-\contentsline {section}{\numberline {10}C\IeC {\'o}digo}{6}{section.10}
-\contentsline {section}{\numberline {11}Enunciado}{6}{section.11}
+\contentsline {subsection}{\numberline {9.1}Caso 1}{7}{subsection.9.1}
+\contentsline {subsection}{\numberline {9.2}Caso 2}{8}{subsection.9.2}
+\contentsline {subsection}{\numberline {9.3}Caso 3}{8}{subsection.9.3}
+\contentsline {subsection}{\numberline {9.4}Caso 4}{8}{subsection.9.4}
+\contentsline {section}{\numberline {10}C\IeC {\'o}digo}{8}{section.10}
+\contentsline {section}{\numberline {11}Enunciado}{8}{section.11}
