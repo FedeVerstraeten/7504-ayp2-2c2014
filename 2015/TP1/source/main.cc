@@ -33,7 +33,9 @@ Vector<Complex> (*transform[])(Vector<Complex> const &) = {
 	  calculate_idft,
     calculate_fft,
 	  calculate_ifft
-
+    calculate_fft_iter,
+      calculate_ifft_iter
+	 
 };
 
 extern option_t options[];
