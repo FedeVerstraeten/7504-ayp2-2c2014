@@ -124,8 +124,16 @@
   \url{https://google-styleguide.googlecode.com/svn/trunk/cppguide.html#Naming}
 
 \section{Diseño del programa}
-  Explicar a grandes rasgos como funciona el programa, diagrama en bloques.
-  -> Leer de la entrada a vector, rellenar con ceros, transformar, imprimir vector.
+    Para resolver el problema, se optó por un diseño \textit{top-down}, es decir,
+  planteando el algoritmo de alto nivel con un diagrama en bloques. Luego se implementó
+  cada bloque por separado para que cumpla con las necesidades de entrada y salida.
+  Una vez hecho esto, los bloques se interconectan en el programa principal (\textit{main}).
+  \begin{figure}[H]
+  \begin{centering}
+  \includegraphics[width=0.75\textwidth]{Imagenes/disenio_del_programa.png}
+  \par\end{centering}
+  \caption{Diagrama en bloques del programa principal.}
+  \end{figure}
 
 \section{Opciones del programa}
   El programa se ejecuta en línea de comandos, y las opciones que admite (sin importar el orden de aparición) son las siguientes:
@@ -302,6 +310,42 @@ Se realizó un \textit{script} para la ejecución de todos los casos de prueba.
     \end{center}
 
 \section{Código}
+  \subsection{Programa principal}
+    \subsubsection{main.cc}
+      \lstinputlisting{../source/main.cc}
+  \subsection{Parseo de opciones del programa}
+    \subsubsection{types.h}
+      \lstinputlisting{../source/types.h}
+    \subsubsection{cmdline.h}
+      \lstinputlisting{../source/cmdline.h}
+    \subsubsection{cmdline.cc}
+      \lstinputlisting{../source/cmdline.cc}
+    \subsubsection{arguments.h}
+      \lstinputlisting{../source/arguments.h}
+    \subsubsection{arguments.cc}
+      \lstinputlisting{../source/arguments.cc}
+  \subsection{Clase Vector}
+    \subsubsection{vector.h}
+      \lstinputlisting{../source/vector.h}
+    \subsubsection{vector.cc}
+      \lstinputlisting{../source/vector.cc}
+  \subsection{Clase Complejo}
+    \subsubsection{complex.h}
+      \lstinputlisting{../source/complex.h}
+    \subsubsection{complex.cc}
+      \lstinputlisting{../source/complex.cc}
+  \subsection{Funciones utilitarias}
+    \subsubsection{utilities.h}
+      \lstinputlisting{../source/utilities.h}
+    \subsubsection{utilities.cc}
+      \lstinputlisting{../source/utilities.cc}
+  \subsection{Métodos para Transformar}
+    \subsubsection{dft\_methods.h}
+      \lstinputlisting{../source/dft_methods.h}
+    \subsubsection{dft\_methods.cc}
+      \lstinputlisting{../source/dft_methods.cc}
+
+
 
 % Plantilla de figura:
 %  \begin{figure}[H]

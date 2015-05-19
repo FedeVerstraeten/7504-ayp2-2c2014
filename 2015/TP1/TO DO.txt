@@ -1,0 +1,16 @@
+Falta en el informe:
+-Sección 2.Introducción
+-Sección 6.Métodos de la transformada
+.    como fue implementado dft y fft, funciones gen ́ericas, m ́ascaras, complejidad temporal, espacial, etc.
+-Sección 8.Compilación: como se compila
+
+Si se implementa la función iterativa de la FFT:
+  - Sección 5.Opciones del programa
+.       agregar la opción de la fft_iter
+  -Sección 6.Métodos de la transformada
+.       agregar analisis de complejidad de dicha función
+  - Sección 9.Casos de prueba
+.       agregar nuevos casos de prueba
+
+Si no se implementa la función iterativa d ela FFT:
+  - Volver a las versiones anteriores de los códigos (debe haber alguna opción para hacerlo fácil con mercurial).
