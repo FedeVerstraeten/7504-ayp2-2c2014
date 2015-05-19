@@ -1,19 +1,39 @@
-\BOOKMARK [1][-]{section.1}{Objetivos}{}
-\BOOKMARK [1][-]{section.2}{Introducci\363n}{}
-\BOOKMARK [1][-]{section.3}{Standard de estilo}{}
-\BOOKMARK [1][-]{section.4}{Dise\361o del programa}{}
-\BOOKMARK [1][-]{section.5}{Opciones del programa}{}
-\BOOKMARK [1][-]{section.6}{M\351todos de la Transformada}{}
-\BOOKMARK [2][-]{subsection.6.1}{FFT}{section.6}
-\BOOKMARK [3][-]{subsubsection.6.1.1}{Complejidad Temporal}{subsection.6.1}
-\BOOKMARK [2][-]{subsection.6.2}{DFT}{section.6}
-\BOOKMARK [3][-]{subsubsection.6.2.1}{Complejidad Temporal}{subsection.6.2}
-\BOOKMARK [1][-]{section.7}{Estructura de archivos}{}
-\BOOKMARK [1][-]{section.8}{Compilaci\363n}{}
-\BOOKMARK [1][-]{section.9}{Casos de prueba}{}
-\BOOKMARK [2][-]{subsection.9.1}{Caso 1}{section.9}
-\BOOKMARK [2][-]{subsection.9.2}{Caso 2}{section.9}
-\BOOKMARK [2][-]{subsection.9.3}{Caso 3}{section.9}
-\BOOKMARK [2][-]{subsection.9.4}{Caso 4}{section.9}
-\BOOKMARK [1][-]{section.10}{C\363digo}{}
-\BOOKMARK [1][-]{section.11}{Enunciado}{}
+\BOOKMARK [1][-]{section.1}{Objetivos}{}% 1
+\BOOKMARK [1][-]{section.2}{Introducci\363n}{}% 2
+\BOOKMARK [1][-]{section.3}{Standard de estilo}{}% 3
+\BOOKMARK [1][-]{section.4}{Dise\361o del programa}{}% 4
+\BOOKMARK [1][-]{section.5}{Opciones del programa}{}% 5
+\BOOKMARK [1][-]{section.6}{M\351todos de la Transformada}{}% 6
+\BOOKMARK [2][-]{subsection.6.1}{FFT}{section.6}% 7
+\BOOKMARK [3][-]{subsubsection.6.1.1}{Complejidad Temporal}{subsection.6.1}% 8
+\BOOKMARK [2][-]{subsection.6.2}{DFT}{section.6}% 9
+\BOOKMARK [3][-]{subsubsection.6.2.1}{Complejidad Temporal}{subsection.6.2}% 10
+\BOOKMARK [1][-]{section.7}{Estructura de archivos}{}% 11
+\BOOKMARK [1][-]{section.8}{Compilaci\363n}{}% 12
+\BOOKMARK [1][-]{section.9}{Casos de prueba}{}% 13
+\BOOKMARK [2][-]{subsection.9.1}{Caso 1}{section.9}% 14
+\BOOKMARK [2][-]{subsection.9.2}{Caso 2}{section.9}% 15
+\BOOKMARK [2][-]{subsection.9.3}{Caso 3}{section.9}% 16
+\BOOKMARK [2][-]{subsection.9.4}{Caso 4}{section.9}% 17
+\BOOKMARK [1][-]{section.10}{C\363digo}{}% 18
+\BOOKMARK [2][-]{subsection.10.1}{Programa principal}{section.10}% 19
+\BOOKMARK [3][-]{subsubsection.10.1.1}{main.cc}{subsection.10.1}% 20
+\BOOKMARK [2][-]{subsection.10.2}{Parseo de opciones del programa}{section.10}% 21
+\BOOKMARK [3][-]{subsubsection.10.2.1}{types.h}{subsection.10.2}% 22
+\BOOKMARK [3][-]{subsubsection.10.2.2}{cmdline.h}{subsection.10.2}% 23
+\BOOKMARK [3][-]{subsubsection.10.2.3}{cmdline.cc}{subsection.10.2}% 24
+\BOOKMARK [3][-]{subsubsection.10.2.4}{arguments.h}{subsection.10.2}% 25
+\BOOKMARK [3][-]{subsubsection.10.2.5}{arguments.cc}{subsection.10.2}% 26
+\BOOKMARK [2][-]{subsection.10.3}{Clase Vector}{section.10}% 27
+\BOOKMARK [3][-]{subsubsection.10.3.1}{vector.h}{subsection.10.3}% 28
+\BOOKMARK [3][-]{subsubsection.10.3.2}{vector.cc}{subsection.10.3}% 29
+\BOOKMARK [2][-]{subsection.10.4}{Clase Complejo}{section.10}% 30
+\BOOKMARK [3][-]{subsubsection.10.4.1}{complex.h}{subsection.10.4}% 31
+\BOOKMARK [3][-]{subsubsection.10.4.2}{complex.cc}{subsection.10.4}% 32
+\BOOKMARK [2][-]{subsection.10.5}{Funciones utilitarias}{section.10}% 33
+\BOOKMARK [3][-]{subsubsection.10.5.1}{utilities.h}{subsection.10.5}% 34
+\BOOKMARK [3][-]{subsubsection.10.5.2}{utilities.cc}{subsection.10.5}% 35
+\BOOKMARK [2][-]{subsection.10.6}{M\351todos para Transformar}{section.10}% 36
+\BOOKMARK [3][-]{subsubsection.10.6.1}{dft\137methods.h}{subsection.10.6}% 37
+\BOOKMARK [3][-]{subsubsection.10.6.2}{dft\137methods.cc}{subsection.10.6}% 38
+\BOOKMARK [1][-]{section.11}{Enunciado}{}% 39
