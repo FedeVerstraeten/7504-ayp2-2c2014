@@ -1,4 +1,4 @@
-\select@language {spanish}
+\select@language {english}
 \contentsline {section}{\numberline {1}Objetivos}{1}{section.1}
 \contentsline {section}{\numberline {2}Introducci\IeC {\'o}n}{1}{section.2}
 \contentsline {subsection}{\numberline {2.1}Transformada de Fourier}{1}{subsection.2.1}
@@ -6,39 +6,39 @@
 \contentsline {subsubsection}{\numberline {2.1.2}Transformada r\IeC {\'a}pida de Fourier}{1}{subsubsection.2.1.2}
 \contentsline {subsection}{\numberline {2.2}Relleno con ceros (\textit {zero padding})}{1}{subsection.2.2}
 \contentsline {section}{\numberline {3}Standard de estilo}{1}{section.3}
-\contentsline {section}{\numberline {4}Dise\IeC {\~n}o del programa}{1}{section.4}
+\contentsline {section}{\numberline {4}Dise\IeC {\~n}o del programa}{2}{section.4}
 \contentsline {section}{\numberline {5}Opciones del programa}{2}{section.5}
 \contentsline {section}{\numberline {6}M\IeC {\'e}todos de la Transformada}{2}{section.6}
-\contentsline {subsection}{\numberline {6.1}FFT}{2}{subsection.6.1}
-\contentsline {subsubsection}{\numberline {6.1.1}Complejidad Temporal}{2}{subsubsection.6.1.1}
-\contentsline {subsection}{\numberline {6.2}DFT}{4}{subsection.6.2}
-\contentsline {subsubsection}{\numberline {6.2.1}Complejidad Temporal}{4}{subsubsection.6.2.1}
-\contentsline {section}{\numberline {7}Estructura de archivos}{6}{section.7}
+\contentsline {subsection}{\numberline {6.1}FFT}{3}{subsection.6.1}
+\contentsline {subsubsection}{\numberline {6.1.1}Complejidad Temporal}{3}{subsubsection.6.1.1}
+\contentsline {subsection}{\numberline {6.2}DFT}{5}{subsection.6.2}
+\contentsline {subsubsection}{\numberline {6.2.1}Complejidad Temporal}{5}{subsubsection.6.2.1}
+\contentsline {section}{\numberline {7}Estructura de archivos}{7}{section.7}
 \contentsline {section}{\numberline {8}Compilaci\IeC {\'o}n}{7}{section.8}
-\contentsline {section}{\numberline {9}Casos de prueba}{7}{section.9}
-\contentsline {subsection}{\numberline {9.1}Caso 1}{8}{subsection.9.1}
-\contentsline {subsection}{\numberline {9.2}Caso 2}{9}{subsection.9.2}
-\contentsline {subsection}{\numberline {9.3}Caso 3}{9}{subsection.9.3}
-\contentsline {subsection}{\numberline {9.4}Caso 4}{9}{subsection.9.4}
-\contentsline {section}{\numberline {10}C\IeC {\'o}digo}{10}{section.10}
-\contentsline {subsection}{\numberline {10.1}Programa principal}{10}{subsection.10.1}
-\contentsline {subsubsection}{\numberline {10.1.1}main.cc}{10}{subsubsection.10.1.1}
-\contentsline {subsection}{\numberline {10.2}Parseo de opciones del programa}{11}{subsection.10.2}
-\contentsline {subsubsection}{\numberline {10.2.1}types.h}{11}{subsubsection.10.2.1}
-\contentsline {subsubsection}{\numberline {10.2.2}cmdline.h}{12}{subsubsection.10.2.2}
-\contentsline {subsubsection}{\numberline {10.2.3}cmdline.cc}{12}{subsubsection.10.2.3}
-\contentsline {subsubsection}{\numberline {10.2.4}arguments.h}{16}{subsubsection.10.2.4}
-\contentsline {subsubsection}{\numberline {10.2.5}arguments.cc}{17}{subsubsection.10.2.5}
-\contentsline {subsection}{\numberline {10.3}Clase Vector}{19}{subsection.10.3}
-\contentsline {subsubsection}{\numberline {10.3.1}vector.h}{19}{subsubsection.10.3.1}
-\contentsline {subsubsection}{\numberline {10.3.2}vector.cc}{20}{subsubsection.10.3.2}
-\contentsline {subsection}{\numberline {10.4}Clase Complejo}{23}{subsection.10.4}
-\contentsline {subsubsection}{\numberline {10.4.1}complex.h}{23}{subsubsection.10.4.1}
-\contentsline {subsubsection}{\numberline {10.4.2}complex.cc}{24}{subsubsection.10.4.2}
-\contentsline {subsection}{\numberline {10.5}Funciones utilitarias}{28}{subsection.10.5}
-\contentsline {subsubsection}{\numberline {10.5.1}utilities.h}{28}{subsubsection.10.5.1}
-\contentsline {subsubsection}{\numberline {10.5.2}utilities.cc}{28}{subsubsection.10.5.2}
-\contentsline {subsection}{\numberline {10.6}M\IeC {\'e}todos para Transformar}{29}{subsection.10.6}
-\contentsline {subsubsection}{\numberline {10.6.1}dft\_methods.h}{29}{subsubsection.10.6.1}
-\contentsline {subsubsection}{\numberline {10.6.2}dft\_methods.cc}{30}{subsubsection.10.6.2}
-\contentsline {section}{\numberline {11}Enunciado}{34}{section.11}
+\contentsline {section}{\numberline {9}Casos de prueba}{8}{section.9}
+\contentsline {subsection}{\numberline {9.1}Caso 1}{9}{subsection.9.1}
+\contentsline {subsection}{\numberline {9.2}Caso 2}{10}{subsection.9.2}
+\contentsline {subsection}{\numberline {9.3}Caso 3}{10}{subsection.9.3}
+\contentsline {subsection}{\numberline {9.4}Caso 4}{10}{subsection.9.4}
+\contentsline {section}{\numberline {10}C\IeC {\'o}digo}{11}{section.10}
+\contentsline {subsection}{\numberline {10.1}Programa principal}{11}{subsection.10.1}
+\contentsline {subsubsection}{\numberline {10.1.1}main.cc}{11}{subsubsection.10.1.1}
+\contentsline {subsection}{\numberline {10.2}Parseo de opciones del programa}{12}{subsection.10.2}
+\contentsline {subsubsection}{\numberline {10.2.1}types.h}{12}{subsubsection.10.2.1}
+\contentsline {subsubsection}{\numberline {10.2.2}cmdline.h}{13}{subsubsection.10.2.2}
+\contentsline {subsubsection}{\numberline {10.2.3}cmdline.cc}{13}{subsubsection.10.2.3}
+\contentsline {subsubsection}{\numberline {10.2.4}arguments.h}{17}{subsubsection.10.2.4}
+\contentsline {subsubsection}{\numberline {10.2.5}arguments.cc}{18}{subsubsection.10.2.5}
+\contentsline {subsection}{\numberline {10.3}Clase Vector}{20}{subsection.10.3}
+\contentsline {subsubsection}{\numberline {10.3.1}vector.h}{20}{subsubsection.10.3.1}
+\contentsline {subsubsection}{\numberline {10.3.2}vector.cc}{21}{subsubsection.10.3.2}
+\contentsline {subsection}{\numberline {10.4}Clase Complejo}{24}{subsection.10.4}
+\contentsline {subsubsection}{\numberline {10.4.1}complex.h}{24}{subsubsection.10.4.1}
+\contentsline {subsubsection}{\numberline {10.4.2}complex.cc}{25}{subsubsection.10.4.2}
+\contentsline {subsection}{\numberline {10.5}Funciones utilitarias}{29}{subsection.10.5}
+\contentsline {subsubsection}{\numberline {10.5.1}utilities.h}{29}{subsubsection.10.5.1}
+\contentsline {subsubsection}{\numberline {10.5.2}utilities.cc}{29}{subsubsection.10.5.2}
+\contentsline {subsection}{\numberline {10.6}M\IeC {\'e}todos para Transformar}{30}{subsection.10.6}
+\contentsline {subsubsection}{\numberline {10.6.1}dft\_methods.h}{30}{subsubsection.10.6.1}
+\contentsline {subsubsection}{\numberline {10.6.2}dft\_methods.cc}{31}{subsubsection.10.6.2}
+\contentsline {section}{\numberline {11}Enunciado}{35}{section.11}
