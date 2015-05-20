@@ -113,7 +113,30 @@
   Ejercitar técnicas de diseño, análisis, e implementación de algoritmos recursivos.
 
 \section{Introducción}
-  Explicar un poco que es la FT, la DFT y la FFT.
+  \subsection{Transformada de Fourier}
+    La transformada de Fourier es una operación matemática que transforma una señal de dominio
+    de tiempo a dominio de frecuencia y viceversa. Tiene muchas aplicaciones en la ingeniería,
+    especialmente para la caracterización frecuencial de señales y sistemas lineales.
+    Es decir, la transformada de Fourier se utiliza para conocer las características
+    frecuenciales de las señales y el comportamiento de los sistemas lineales ante estas
+    señales.
+    \subsubsection{Transformada discreta de Fourier}
+      Una \textit{DFT} (Transformada de Fourier Discreta - por sus siglas en inglés) es el nombre
+      dado a la transformada de Fourier cuando se aplica a una señal digital (discreta) en vez de una
+      analógica (continua).
+	  
+    \subsubsection{Transformada rápida de Fourier}
+      Una \textit{FFT} (Transformada Rápida de Fourier - por sus siglas en inglés) es una versión más rápida
+      de la \textit{DFT} que puede ser aplicada cuando el número de mustras de la señal es una potencia de dos.
+	  Un cálculo de \textit{FFT} toma aproximadamente $N \log (N)$ operaciones, mientras que \textit{DFT}
+      toma aproximadamente $N^2$ operaciones, así es que la \textit{FFT} es significativamente más rápida.
+
+  \subsection{Relleno con ceros (\textit{zero padding})}
+    Esto significa que se agregarán ceros al final de la secuencia de valores ingresados. En
+    el presente trabajo se decidió completar con ceros las muestas leídas en la entrada del programa
+    hasta llevarlas a la potencia de dos más cercana. Esta adición no afecta el espectro de frecuencia
+    de la señal y es recomendable ya que se acelera el cálculo de \textit{FFT}. El relleno de ceros también incrementa
+    la resolución de la frecuencia de una \textit{FFT}.
 
 \section{Standard de estilo}
   Adoptamos la convención de estilo de código de Google para C++, salvando las siguientes excepciones:
