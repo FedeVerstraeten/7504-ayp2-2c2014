@@ -33,9 +33,7 @@ Vector<Complex> (*transform[])(Vector<Complex> const &) = {
 	  calculate_idft,
     calculate_fft,
 	  calculate_ifft
-    calculate_fft_iter,
-    calculate_ifft_iter
-	 
+
 };
 
 extern option_t options[];
@@ -48,31 +46,32 @@ int main(int argc, char *argv[])
   Complex input_complex;
   Vector<Complex> input;
   Vector<Complex> output;
-
-  // Parsear argumentos de invocacion
+  
   cmdline cmdl(options);
   cmdl.parse(argc, argv);
   
-  // Mientras haya complejos en la entrada
-  // Cargar vector de entrada
   while(*iss >> input_complex)
-  {
+  {	  
     input.push_back(input_complex); 
   }
   
   // Si el tamaño de la entrada no es potencia de 2 se completa con ceros
-  //hasta llevarla a la potencia de 2 más cercana (Zero-Padding)
+  //hasta llevarla a la potencia de 2 más cercana
   set_up_input(input);
 
-  // Transformar
   output = (transform[method_option])(input);
   
-  // Imprimir por la salida especificada por el usuario
   for(int i=0; i<output.size(); i++)
   {
     *oss << output[i] << endl; 
   }
+  
+  /*for(vector<Complex> it = output.begin() ; it != output.end() ; it++){
+	  
+    cout << *it << endl;	  
 
+  }*/
+  
 
   return EXIT_SUCCESS;
   
