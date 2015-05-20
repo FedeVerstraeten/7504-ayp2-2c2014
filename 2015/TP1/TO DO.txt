@@ -1,8 +1,6 @@
 Falta en el informe:
--Sección 2.Introducción
 -Sección 6.Métodos de la transformada
 .    como fue implementado dft y fft, funciones gen ́ericas, m ́ascaras, complejidad temporal, espacial, etc.
--Sección 8.Compilación: como se compila
 
 Si se implementa la función iterativa de la FFT:
   - Sección 5.Opciones del programa
