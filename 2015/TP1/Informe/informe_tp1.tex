@@ -19,7 +19,7 @@
 % ---- Packages ----
 \usepackage{amsmath} % Advanced math typesetting
 \usepackage[utf8]{inputenc} % Unicode support (Umlauts etc.)
-\usepackage[spanish]{babel} % Change hyphenation rules
+\usepackage[english]{babel} % Change hyphenation rules
 \usepackage{hyperref} % Add a link to your document
 \usepackage{graphicx} % Add pictures to your document
 \usepackage{float} % For 'H' figure position option. Stricter than 'h!'
@@ -113,6 +113,8 @@
   Ejercitar técnicas de diseño, análisis, e implementación de algoritmos recursivos.
 
 \section{Introducción}
+La transformada discreta de Fourier (DFT) es de gran importancia en el análisis, diseño e implementación de algoritmos de procesamiento de señales de tiempo discreto y sistemas. Las propiedades básicas de la transformada se pueden estudiar en cualquiera de los textos de referencia \footnote{REFERENCIA}. Igual de importante es el hecho que existen algoritmos eficientes para el cómputo explícito de la DFT.  DFT es idéntico a samplear la transformada de Fourier a frecuencias equiespaciadas. Como consecuencia, el cómputo de la DFT de N puntos corresponde al cómputo de N muestras de la transformada de Fourier en N frecuencias equiespaciadas $\omega_k=2\pi k/N$, esto es, en N puntos sobre el círculo unitario en el plano z. Existen distintos algoritmos y particularmente los que se estudian en este trabajo son los referidos a una clase particular de algoritmos para el cómputo de la DFT de N puntos. Conjuntamente, estos algoritmos son conocidos como algoritmos fast Fourier Transform (FFT).
+
   \subsection{Transformada de Fourier}
     La transformada de Fourier es una operación matemática que transforma una señal de dominio
     de tiempo a dominio de frecuencia y viceversa. Tiene muchas aplicaciones en la ingeniería,
@@ -151,9 +153,9 @@
   planteando el algoritmo de alto nivel con un diagrama en bloques. Luego se implementó
   cada bloque por separado para que cumpla con las necesidades de entrada y salida.
   Una vez hecho esto, los bloques se interconectan en el programa principal (\textit{main}).
-  \begin{figure}[H]
+  \begin{figure}
   \begin{centering}
-  \includegraphics[width=0.75\textwidth]{Imagenes/disenio_del_programa.png}
+  \includegraphics[scale=0.25]{Imagenes/disenio_del_programa.png}
   \par\end{centering}
   \caption{Diagrama en bloques del programa principal.}
   \end{figure}
@@ -182,7 +184,32 @@
   \end{itemize}
 
 \section{Métodos de la Transformada}
-  como fue implementado dft y fft, funciones genéricas, máscaras, complejidad temporal, espacial, etc.
+Por definición, las transformadas son:\\
+\begin{equation}
+X(k)=\sum\limits_{n=0}^{N-1} x(n)W_N^{nk}; k=0,...,N-1; W_N^{nk} = e^{-j\frac{2\pi}{N}}
+\end{equation}
+\begin{equation}
+x(n)=\frac{1}{N}\sum\limits_{n=0}^{N-1} x(n)W_N^{-nk}; k=0,...,N-1; W_N^{nk} = e^{-j\frac{2\pi}{N}}
+\end{equation}
+Como se puede observar, las dos fórmulas tienen la misma forma y difieren en un término $1/N$ y un signo menos en la exponencial, por lo tanto se optó por implementar un código que resuelva la transformación, y mediante un flag, se opte por aplicar la transformada o la transformada inversa, con el objetivo de evitar la duplicación de código.\\
+
+Los métodos desarrollados se detallan en los archivos 
+dft\_ methods.cc y dft\_methods.h. Se implementaron cuatro funciones que reciben como argumentos de entrada un vector de tipo Complex. Los prototipos son los siguientes:\\
+\begin{verbatim}
+Vector<Complex> calculate_dft(Vector<Complex> const &);
+Vector<Complex> calculate_idft(Vector<Complex> const &);
+Vector<Complex> calculate_fft(Vector<Complex> const &);
+Vector<Complex> calculate_ifft(Vector<Complex> const &);
+\end{verbatim}
+Estas funciones, tal como se mencionó, tienen el mismo comportamiento de a pares y son llamadas por las siguientes funciones genéricas que utilizan el flag bool inverse para definir el signo y el factor de división:\\
+\begin{verbatim}
+calculate_fft_generic(Vector<Complex>, bool)
+calculate_ifft_generic(Vector<Complex>, bool)
+\end{verbatim}
+luego se invocan los respectivos métodos según sea fft o dft elegido por línea de comandos.\\
+
+
+como fue implementado dft y fft, funciones genéricas, máscaras, complejidad temporal, espacial, etc.
   \subsection{FFT}
     \subsubsection{Complejidad Temporal}
       Para estudiar el costo temporal de esta implementación ---$T(N)$--- se analizó
