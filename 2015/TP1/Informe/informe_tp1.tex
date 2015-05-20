@@ -311,12 +311,19 @@
 \end{center}
 
 \section{Compilación}
-Como se compila
+    Para construir la aplicación, se utilizó el compilador \textit{g++}, 
+  de la Free Software Foundation \footnote{www.fsf.org}, con las opciones
+  \texttt{-Wall} y \texttt{-pedantic}, que activan cualquier tipo de advertencia
+  además de los errores de compilación y se restringen a ISO C++. \par
+    El proceso de compilación se realiza con el comando \texttt{make} que 
+  ejecuta el archivo "makefile", el cual se muestra a continuación:
+  \lstinputlisting[language=make]{../source/makefile}
 
 \section{Casos de prueba}
 
-Se realizó un \textit{script} para la ejecución de todos los casos de prueba.
-\lstinputlisting{test_especificacion.sh} \par
+  Se realizó un \textit{script} para la ejecución de todos los casos de prueba.
+  \lstinputlisting[language=bash]{test_especificacion.sh} \par
+    A continuación, se muestra el resultado de la ejecución de dicho \textit{script}.
   \subsection{Caso 1}
     \begin{center}
       \includegraphics[width=0.8\paperwidth]{Imagenes/caso_1}
