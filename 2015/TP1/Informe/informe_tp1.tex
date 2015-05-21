@@ -113,7 +113,7 @@
   Ejercitar técnicas de diseño, análisis, e implementación de algoritmos recursivos.
 
 \section{Introducción}
-La transformada discreta de Fourier (DFT) es de gran importancia en el análisis, diseño e implementación de algoritmos de procesamiento de señales de tiempo discreto y sistemas. Las propiedades básicas de la transformada se pueden estudiar en cualquiera de los textos de referencia \footnote{REFERENCIA}. Igual de importante es el hecho que existen algoritmos eficientes para el cómputo explícito de la DFT.  DFT es idéntico a samplear la transformada de Fourier a frecuencias equiespaciadas. Como consecuencia, el cómputo de la DFT de N puntos corresponde al cómputo de N muestras de la transformada de Fourier en N frecuencias equiespaciadas $\omega_k=2\pi k/N$, esto es, en N puntos sobre el círculo unitario en el plano z. Existen distintos algoritmos y particularmente los que se estudian en este trabajo son los referidos a una clase particular de algoritmos para el cómputo de la DFT de N puntos. Conjuntamente, estos algoritmos son conocidos como algoritmos fast Fourier Transform (FFT).
+La transformada discreta de Fourier (DFT) es de gran importancia en el análisis, diseño e implementación de algoritmos de procesamiento de señales de tiempo discreto y sistemas. Las propiedades básicas de la transformada se pueden estudiar en cualquiera de los textos de referencia en Señales y Sistemas. Igual de importante es el hecho que existen algoritmos eficientes para el cómputo explícito de la DFT.  DFT es idéntico a samplear la transformada de Fourier a frecuencias equiespaciadas. Como consecuencia, el cómputo de la DFT de N puntos corresponde al cómputo de N muestras de la transformada de Fourier en N frecuencias equiespaciadas $\omega_k=2\pi k/N$, esto es, en N puntos sobre el círculo unitario en el plano z. Existen distintos algoritmos y particularmente los que se estudian en este trabajo son los referidos a una clase particular de algoritmos para el cómputo de la DFT de N puntos. Conjuntamente, estos algoritmos son conocidos como algoritmos fast Fourier Transform (FFT).
 
   \subsection{Transformada de Fourier}
     La transformada de Fourier es una operación matemática que transforma una señal de dominio
@@ -269,9 +269,76 @@ como fue implementado dft y fft, funciones genéricas, máscaras, complejidad te
       Este resultado es coherente, ya que el algoritmo utiliza la técnica de 
     "divide y vencerás" y la recurrencia es análoga al caso del conocido 
     \textit{MergeSort}.
-    \subsubsection{Complejidad Espacial}
-     
-     
+\subsubsection{Complejidad Espacial}
+  Para analizar la complejidad espacial, se debe observar qué cantidad de bloques de memoria se requieren en cada instrucción.  
+En el comienzo de la invocación a las funciones \textit{fft}  , se pasa como argumento un vector x de tamaño N y se crea otro para la salida X también de tamaño N. 
+\begin{verbatim}
+static Vector<Complex>
+calculate_fft_generic(Vector<Complex> const &x, bool inverse)
+{
+  size_t N;
+  N = x.size();
+
+  Vector<Complex> X(N);
+\end{verbatim}  
+Luego se analiza el fragmento de código que corresponde a la resolución del algoritmo. Se hace una división del problema en dos subproblemas de tamaño N/2, y para hacer esto se crean 4 vectores de tamaño N/2 (p,q,P y Q), que van a llevar los datos pares e impares del vector de entrada x:\\
+
+\begin{verbatim}
+
+  if (N > 1)
+  {
+    // Divido el problema en 2:
+    // Suponemos que la entrada es par y potencia de 2
+    Vector<Complex> p(N/2);
+    Vector<Complex> q(N/2);
+    Vector<Complex> P(N/2);
+    Vector<Complex> Q(N/2);
+    for (size_t i=0; i<N/2; i++)
+    {
+      p[i] = x[2*i];
+      q[i] = x[2*i+1];
+    }
+\end{verbatim}
+Seguido de esto, se implementa la recurrencia para p y q, con dos llamadas a \textit{fft} de tamaño N/2:
+
+\begin{verbatim}
+ 
+    P = calculate_fft(p);
+    Q = calculate_fft(q);
+\end{verbatim}   
+
+y por último la combinación de los subproblemas requiere únicamente de la creación de una variable de tipo complex en cada iteración del ciclo de tamaño N:
+
+ \begin{verbatim}
+ 
+    // Combino las soluciones:
+    for (size_t k=0; k<N; k++)
+    {
+      Complex W(cos(k*(2*PI)/N),
+               W_phase_sign*sin(k*(2*PI)/N));
+      // Para que se repitan los elementos cíclicamente, se utiliza la función módulo
+      size_t k2 = k % (N/2);
+
+      X[k] = factor * (P[k2] + W*Q[k2]);
+    } 
+  }
+
+\end{verbatim}
+
+
+En el punto de la recursión en P y Q hace falta detenerse y deducir que esta recursividad se va a detener en el momento que N=1, y el tamaño total en memoria va a estar dado por todos los bloques requeridos en cada operación. Esto es:
+\begin{itemize}
+\item en cada llamada recursiva de tamaño N se crean 2 vectores de tamaño N y 4 vectores de tamaño N/2;
+\item 2 de los subvectores de tamaño N/2 invocan a fft nuevamente, resultando en la creación de otros 2 vectores de tamaño N/2 y otros 4 de tamaño (N/2)/2
+\item en total habrá i llamadas recursivas, de modo tal que $N/2^i=1$, o bien, $i=log_2N$
+\item como por cada recursión hay un total de bloques de memoria requeridos igual a: \[memoria=2\cdot\frac{N}{2}+4\cdot \frac{N/2}{2} = 4N\]
+para un total de $i=log_2N$ veces resulta:\\
+\[memoria=i\cdot 4N = log_2N\cdot 4N=4Nlog_2N\]
+por lo tanto, se deduce que el orden de la complejidad espacial es de orden  $$ \boxed{\Theta(N\cdot logN)}$$
+\end{itemize}
+  
+  
+
     \subsection{DFT}
     \subsubsection{Complejidad Temporal}
       Para estudiar el costo temporal de esta implementación ---$T(N)$--- se analizó
@@ -331,7 +398,36 @@ como fue implementado dft y fft, funciones genéricas, máscaras, complejidad te
   $$ \boxed{ T(N)\;\epsilon\;\Theta (N^2) } $$
 
 \subsubsection{Complejidad Espacial}
-El análisis de la complejidad espacial para el cálculo de la DFT se reduce al análisis de la cantidad de espacio en memoria que se requiere en el algoritmo. El costo principal en memoria está dado en la definición del vector de entrada $x[n]$ y el de salida $X[k]$, siendo estos bloques de tamaño N según la entrada. El resto del algoritmo define algunas variables auxiliares de tipo complex y de tipo entero, pero que no tienen peso respecto de los vectores de números complejos mencionados. Por lo tanto la complejidad 
+ El costo principal en memoria está dado en la definición del vector de entrada $x[n]$ y el de salida $X[k]$, siendo estos bloques de tamaño N:\\
+\begin{verbatim}
+static Vector<Complex>
+calculate_dft_generic(Vector<Complex> const &x, bool inverse)
+{
+  Complex aux;
+  size_t N;
+  
+  N = x.size();
+  
+  Vector<Complex> X(N);
+ 
+ \end{verbatim}
+ El resto del algoritmo define algunas variables auxiliares de tipo complex y de tipo entero, pero que no tienen peso considerable respecto de los vectores mencionados.
+ \begin{verbatim}
+ 
+  Complex W(cos((2*PI)/N),
+            W_phase_sign*sin((2*PI)/N));
+  
+  for(size_t k=0;k<N;k++) {
+    for(size_t n=0;n<N;n++) {
+      aux += x[n] * pow_complex(W, n*k);
+    }
+    X[k] = factor * aux; 
+    aux = 0;
+  }
+  return X;
+}
+\end{verbatim}
+luego resulta que los ciclos for solo realizan operaciones sobre los bloques de memoria ya creados, y se retorna el vector de Salida X. Por lo tanto, se deduce que el orden de la complejidad espacial es de orden  $$ \boxed{\Theta(N)}$$
 
 \section{Estructura de archivos}
 
@@ -362,8 +458,7 @@ El análisis de la complejidad espacial para el cálculo de la DFT se reduce al 
     \begin{center}
       \includegraphics[width=0.8\paperwidth]{Imagenes/caso_2}
     \end{center}
-  \subsection{Caso 3}
-    
+
   \subsection{Caso 4}
     \begin{center}
       \includegraphics[width=0.8\paperwidth]{Imagenes/caso_4}
@@ -373,38 +468,42 @@ El análisis de la complejidad espacial para el cálculo de la DFT se reduce al 
   \subsection{Programa principal}
     \subsubsection{main.cc}
       \lstinputlisting{../source/main.cc}
-  \subsection{Parseo de opciones del programa}
-    \subsubsection{types.h}
-      \lstinputlisting{../source/types.h}
-    \subsubsection{cmdline.h}
-      \lstinputlisting{../source/cmdline.h}
-    \subsubsection{cmdline.cc}
-      \lstinputlisting{../source/cmdline.cc}
-    \subsubsection{arguments.h}
-      \lstinputlisting{../source/arguments.h}
-    \subsubsection{arguments.cc}
-      \lstinputlisting{../source/arguments.cc}
-  \subsection{Clase Vector}
-    \subsubsection{vector.h}
-      \lstinputlisting{../source/vector.h}
-    \subsubsection{vector.cc}
-      \lstinputlisting{../source/vector.cc}
-  \subsection{Clase Complejo}
-    \subsubsection{complex.h}
-      \lstinputlisting{../source/complex.h}
-    \subsubsection{complex.cc}
-      \lstinputlisting{../source/complex.cc}
-  \subsection{Funciones utilitarias}
-    \subsubsection{utilities.h}
-      \lstinputlisting{../source/utilities.h}
-    \subsubsection{utilities.cc}
-      \lstinputlisting{../source/utilities.cc}
+  
   \subsection{Métodos para Transformar}
     \subsubsection{dft\_methods.h}
       \lstinputlisting{../source/dft_methods.h}
     \subsubsection{dft\_methods.cc}
       \lstinputlisting{../source/dft_methods.cc}
 
+  \subsection{Funciones utilitarias}
+    \subsubsection{utilities.h}
+      \lstinputlisting{../source/utilities.h}
+    \subsubsection{utilities.cc}
+      \lstinputlisting{../source/utilities.cc}
+      
+  \subsection{Clase Vector}
+    \subsubsection{vector.h}
+      \lstinputlisting{../source/vector.h}
+    \subsubsection{vector.cc}
+      \lstinputlisting{../source/vector.cc}
+      
+  \subsection{Clase Complejo}
+    \subsubsection{complex.h}
+      \lstinputlisting{../source/complex.h}
+    \subsubsection{complex.cc}
+      \lstinputlisting{../source/complex.cc}
+            
+  \subsection{Clase cmdline}
+    \subsubsection{types.h}
+      \lstinputlisting{../source/types.h}
+    \subsubsection{arguments.h}
+      \lstinputlisting{../source/arguments.h}
+    \subsubsection{arguments.cc}
+      \lstinputlisting{../source/arguments.cc}
+    \subsubsection{cmdline.h}
+      \lstinputlisting{../source/cmdline.h}
+    \subsubsection{cmdline.cc}
+      \lstinputlisting{../source/cmdline.cc}
 
 
 % Plantilla de figura:

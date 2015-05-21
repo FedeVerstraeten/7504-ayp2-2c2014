@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.2.27)  20 MAY 2015 19:58
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.2.27)  21 MAY 2015 15:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -639,7 +639,7 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-<Imagenes/logo_fiuba_HD.jpg, id=176, 387.00584pt x 129.3633pt>
+<Imagenes/logo_fiuba_HD.jpg, id=180, 387.00584pt x 129.3633pt>
 File: Imagenes/logo_fiuba_HD.jpg Graphic file (type jpg)
 
 <use Imagenes/logo_fiuba_HD.jpg>
@@ -666,7 +666,7 @@ File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 146.
 
-<Imagenes/disenio_del_programa.png, id=239, 1177.39874pt x 397.485pt>
+<Imagenes/disenio_del_programa.png, id=243, 1177.39874pt x 397.485pt>
 File: Imagenes/disenio_del_programa.png Graphic file (type png)
 
 <use Imagenes/disenio_del_programa.png>
@@ -730,18 +730,31 @@ File: latin1.def 2008/03/30 v1.1d Input encoding file
 (/usr/share/texlive/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2008/03/30 v1.1d Input encoding file
 ) [4]
-(/usr/share/texlive/texmf-dist/tex/latex/base/latin1.def
-File: latin1.def 2008/03/30 v1.1d Input encoding file
-) [5]
+Underfull \hbox (badness 10000) in paragraph at lines 284--285
+
+ []
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 334--336
+
+ []
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2008/03/30 v1.1d Input encoding file
 ) [6]
-<Imagenes/jerarquia_de_archivos.png, id=407, 668.4975pt x 228.25275pt>
+(/usr/share/texlive/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2008/03/30 v1.1d Input encoding file
+) [7]
+Underfull \hbox (badness 10000) in paragraph at lines 401--402
+
+ []
+
+[8] <Imagenes/jerarquia_de_archivos.png, id=417, 668.4975pt x 228.25275pt>
 File: Imagenes/jerarquia_de_archivos.png Graphic file (type png)
 
 <use Imagenes/jerarquia_de_archivos.png>
 Package pdftex.def Info: Imagenes/jerarquia_de_archivos.png used on input line 
-336.
+435.
 (pdftex.def)             Requested size: 478.00812pt x 163.21689pt.
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
@@ -755,7 +768,7 @@ File: lstmisc.sty 2013/08/26 1.5b (Carsten Heinz)
 )
 (/usr/share/texlive/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2008/03/30 v1.1d Input encoding file
-) [7 <./Imagenes/jerarquia_de_archivos.png>]
+) [9 <./Imagenes/jerarquia_de_archivos.png>]
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2013/08/26 1.5b listings language file
 )
@@ -764,89 +777,88 @@ File: lstlang1.sty 2013/08/26 1.5b listings language file
 )
 (/usr/share/texlive/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2008/03/30 v1.1d Input encoding file
-) [8]
-<Imagenes/caso_1.PNG, id=476, 432.4155pt x 198.7425pt>
+) [10]
+<Imagenes/caso_1.PNG, id=490, 432.4155pt x 198.7425pt>
 File: Imagenes/caso_1.PNG Graphic file (type png)
 
 <use Imagenes/caso_1.PNG>
-Package pdftex.def Info: Imagenes/caso_1.PNG used on input line 356.
+Package pdftex.def Info: Imagenes/caso_1.PNG used on input line 455.
 (pdftex.def)             Requested size: 478.00812pt x 219.70003pt.
 
-<Imagenes/caso_2.PNG, id=477, 434.22224pt x 325.81725pt>
+<Imagenes/caso_2.PNG, id=491, 434.22224pt x 325.81725pt>
 File: Imagenes/caso_2.PNG Graphic file (type png)
 
 <use Imagenes/caso_2.PNG>
-Package pdftex.def Info: Imagenes/caso_2.PNG used on input line 360.
+Package pdftex.def Info: Imagenes/caso_2.PNG used on input line 459.
 (pdftex.def)             Requested size: 478.00812pt x 358.6735pt.
- [9 <./Imagenes/caso_1.PNG>]
-<Imagenes/caso_4.PNG, id=498, 433.62pt x 154.176pt>
+ [11 <./Imagenes/caso_1.PNG>]
+<Imagenes/caso_4.PNG, id=510, 433.62pt x 154.176pt>
 File: Imagenes/caso_4.PNG Graphic file (type png)
  <use Imagenes/caso_4.PNG>
-Package pdftex.def Info: Imagenes/caso_4.PNG used on input line 366.
+Package pdftex.def Info: Imagenes/caso_4.PNG used on input line 464.
 (pdftex.def)             Requested size: 478.00812pt x 169.96814pt.
 
-[10 <./Imagenes/caso_2.PNG> <./Imagenes/caso_4.PNG>]
 (/usr/share/texlive/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2008/03/30 v1.1d Input encoding file
-) [11]
-(/usr/share/texlive/texmf-dist/tex/latex/base/latin1.def
-File: latin1.def 2008/03/30 v1.1d Input encoding file
-) [12]
+) [12 <./Imagenes/caso_2.PNG> <./Imagenes/caso_4.PNG>] [13]
 (/usr/share/texlive/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2008/03/30 v1.1d Input encoding file
 )
 (/usr/share/texlive/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2008/03/30 v1.1d Input encoding file
-) [13] [14] [15]
-[16] (/usr/share/texlive/texmf-dist/tex/latex/base/latin1.def
+) [14] [15] [16]
+(/usr/share/texlive/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2008/03/30 v1.1d Input encoding file
 ) [17]
 (/usr/share/texlive/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2008/03/30 v1.1d Input encoding file
-) [18] [19]
+) [18]
 (/usr/share/texlive/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2008/03/30 v1.1d Input encoding file
-) [20]
+) [19]
 (/usr/share/texlive/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2008/03/30 v1.1d Input encoding file
-) [21] [22] [23]
+) [20] [21] [22]
 (/usr/share/texlive/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2008/03/30 v1.1d Input encoding file
-) [24]
+) [23]
 (/usr/share/texlive/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2008/03/30 v1.1d Input encoding file
-) [25] [26] [27]
-[28] (/usr/share/texlive/texmf-dist/tex/latex/base/latin1.def
+) [24] [25] [26]
+[27] (/usr/share/texlive/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2008/03/30 v1.1d Input encoding file
 )
 (/usr/share/texlive/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2008/03/30 v1.1d Input encoding file
-) [29]
+) [28]
 (/usr/share/texlive/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2008/03/30 v1.1d Input encoding file
-) [30]
+) [29] [30]
 (/usr/share/texlive/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2008/03/30 v1.1d Input encoding file
-) [31] [32] [33]
-[34]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 420.
- [35]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 420.
+) [31]
+(/usr/share/texlive/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2008/03/30 v1.1d Input encoding file
+) [32] [33] [34]
+[35]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 522.
+ [36]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 522.
  (./informe_tp1.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 420.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 420.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 522.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 522.
 Package rerunfilecheck Info: File `informe_tp1.out' has not changed.
-(rerunfilecheck)             Checksum: 8D713B49E96CB3343FB3B959C4CBA7BA;2855.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 420.
+(rerunfilecheck)             Checksum: 8BA63E2C62D4B93181FFC11FE6CA3D22;2941.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 522.
  ) 
 Here is how much of TeX's memory you used:
- 11472 strings out of 494985
- 164517 string characters out of 6180356
- 436021 words of memory out of 5000000
- 12860 multiletter control sequences out of 15000+600000
+ 11383 strings out of 494985
+ 162944 string characters out of 6180356
+ 439258 words of memory out of 5000000
+ 12852 multiletter control sequences out of 15000+600000
  10249 words of font info for 37 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 38i,13n,58p,1043b,2323s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,13n,58p,1036b,2323s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/te
@@ -865,10 +877,10 @@ texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/ty
 pe1/public/amsfonts/cm/cmtt10.pfb>
-Output written on informe_tp1.pdf (37 pages, 625706 bytes).
+Output written on informe_tp1.pdf (38 pages, 626292 bytes).
 PDF statistics:
- 2373 PDF objects out of 2487 (max. 8388607)
- 2282 compressed objects within 23 object streams
- 1632 named destinations out of 1728 (max. 500000)
- 375 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2282 PDF objects out of 2487 (max. 8388607)
+ 2191 compressed objects within 22 object streams
+ 1551 named destinations out of 1728 (max. 500000)
+ 383 words of extra memory for PDF output out of 10000 (max. 10000000)
 

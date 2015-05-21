@@ -15,7 +15,7 @@
 
 #include <iostream>
 
-#define METHOD_OPTIONS 6
+#define METHOD_OPTIONS 4
 #define METHOD_DFT "dft"
 #define METHOD_IDFT "idft"
 #define METHOD_FFT "fft"

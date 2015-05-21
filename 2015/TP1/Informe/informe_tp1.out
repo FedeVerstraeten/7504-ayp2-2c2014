@@ -10,34 +10,35 @@
 \BOOKMARK [1][-]{section.6}{M\351todos de la Transformada}{}% 10
 \BOOKMARK [2][-]{subsection.6.1}{FFT}{section.6}% 11
 \BOOKMARK [3][-]{subsubsection.6.1.1}{Complejidad Temporal}{subsection.6.1}% 12
-\BOOKMARK [2][-]{subsection.6.2}{DFT}{section.6}% 13
-\BOOKMARK [3][-]{subsubsection.6.2.1}{Complejidad Temporal}{subsection.6.2}% 14
-\BOOKMARK [1][-]{section.7}{Estructura de archivos}{}% 15
-\BOOKMARK [1][-]{section.8}{Compilaci\363n}{}% 16
-\BOOKMARK [1][-]{section.9}{Casos de prueba}{}% 17
-\BOOKMARK [2][-]{subsection.9.1}{Caso 1}{section.9}% 18
-\BOOKMARK [2][-]{subsection.9.2}{Caso 2}{section.9}% 19
-\BOOKMARK [2][-]{subsection.9.3}{Caso 3}{section.9}% 20
-\BOOKMARK [2][-]{subsection.9.4}{Caso 4}{section.9}% 21
-\BOOKMARK [1][-]{section.10}{C\363digo}{}% 22
-\BOOKMARK [2][-]{subsection.10.1}{Programa principal}{section.10}% 23
-\BOOKMARK [3][-]{subsubsection.10.1.1}{main.cc}{subsection.10.1}% 24
-\BOOKMARK [2][-]{subsection.10.2}{Parseo de opciones del programa}{section.10}% 25
-\BOOKMARK [3][-]{subsubsection.10.2.1}{types.h}{subsection.10.2}% 26
-\BOOKMARK [3][-]{subsubsection.10.2.2}{cmdline.h}{subsection.10.2}% 27
-\BOOKMARK [3][-]{subsubsection.10.2.3}{cmdline.cc}{subsection.10.2}% 28
-\BOOKMARK [3][-]{subsubsection.10.2.4}{arguments.h}{subsection.10.2}% 29
-\BOOKMARK [3][-]{subsubsection.10.2.5}{arguments.cc}{subsection.10.2}% 30
-\BOOKMARK [2][-]{subsection.10.3}{Clase Vector}{section.10}% 31
-\BOOKMARK [3][-]{subsubsection.10.3.1}{vector.h}{subsection.10.3}% 32
-\BOOKMARK [3][-]{subsubsection.10.3.2}{vector.cc}{subsection.10.3}% 33
-\BOOKMARK [2][-]{subsection.10.4}{Clase Complejo}{section.10}% 34
-\BOOKMARK [3][-]{subsubsection.10.4.1}{complex.h}{subsection.10.4}% 35
-\BOOKMARK [3][-]{subsubsection.10.4.2}{complex.cc}{subsection.10.4}% 36
-\BOOKMARK [2][-]{subsection.10.5}{Funciones utilitarias}{section.10}% 37
-\BOOKMARK [3][-]{subsubsection.10.5.1}{utilities.h}{subsection.10.5}% 38
-\BOOKMARK [3][-]{subsubsection.10.5.2}{utilities.cc}{subsection.10.5}% 39
-\BOOKMARK [2][-]{subsection.10.6}{M\351todos para Transformar}{section.10}% 40
-\BOOKMARK [3][-]{subsubsection.10.6.1}{dft\137methods.h}{subsection.10.6}% 41
-\BOOKMARK [3][-]{subsubsection.10.6.2}{dft\137methods.cc}{subsection.10.6}% 42
-\BOOKMARK [1][-]{section.11}{Enunciado}{}% 43
+\BOOKMARK [3][-]{subsubsection.6.1.2}{Complejidad Espacial}{subsection.6.1}% 13
+\BOOKMARK [2][-]{subsection.6.2}{DFT}{section.6}% 14
+\BOOKMARK [3][-]{subsubsection.6.2.1}{Complejidad Temporal}{subsection.6.2}% 15
+\BOOKMARK [3][-]{subsubsection.6.2.2}{Complejidad Espacial}{subsection.6.2}% 16
+\BOOKMARK [1][-]{section.7}{Estructura de archivos}{}% 17
+\BOOKMARK [1][-]{section.8}{Compilaci\363n}{}% 18
+\BOOKMARK [1][-]{section.9}{Casos de prueba}{}% 19
+\BOOKMARK [2][-]{subsection.9.1}{Caso 1}{section.9}% 20
+\BOOKMARK [2][-]{subsection.9.2}{Caso 2}{section.9}% 21
+\BOOKMARK [2][-]{subsection.9.3}{Caso 4}{section.9}% 22
+\BOOKMARK [1][-]{section.10}{C\363digo}{}% 23
+\BOOKMARK [2][-]{subsection.10.1}{Programa principal}{section.10}% 24
+\BOOKMARK [3][-]{subsubsection.10.1.1}{main.cc}{subsection.10.1}% 25
+\BOOKMARK [2][-]{subsection.10.2}{M\351todos para Transformar}{section.10}% 26
+\BOOKMARK [3][-]{subsubsection.10.2.1}{dft\137methods.h}{subsection.10.2}% 27
+\BOOKMARK [3][-]{subsubsection.10.2.2}{dft\137methods.cc}{subsection.10.2}% 28
+\BOOKMARK [2][-]{subsection.10.3}{Funciones utilitarias}{section.10}% 29
+\BOOKMARK [3][-]{subsubsection.10.3.1}{utilities.h}{subsection.10.3}% 30
+\BOOKMARK [3][-]{subsubsection.10.3.2}{utilities.cc}{subsection.10.3}% 31
+\BOOKMARK [2][-]{subsection.10.4}{Clase Vector}{section.10}% 32
+\BOOKMARK [3][-]{subsubsection.10.4.1}{vector.h}{subsection.10.4}% 33
+\BOOKMARK [3][-]{subsubsection.10.4.2}{vector.cc}{subsection.10.4}% 34
+\BOOKMARK [2][-]{subsection.10.5}{Clase Complejo}{section.10}% 35
+\BOOKMARK [3][-]{subsubsection.10.5.1}{complex.h}{subsection.10.5}% 36
+\BOOKMARK [3][-]{subsubsection.10.5.2}{complex.cc}{subsection.10.5}% 37
+\BOOKMARK [2][-]{subsection.10.6}{Clase cmdline}{section.10}% 38
+\BOOKMARK [3][-]{subsubsection.10.6.1}{types.h}{subsection.10.6}% 39
+\BOOKMARK [3][-]{subsubsection.10.6.2}{arguments.h}{subsection.10.6}% 40
+\BOOKMARK [3][-]{subsubsection.10.6.3}{arguments.cc}{subsection.10.6}% 41
+\BOOKMARK [3][-]{subsubsection.10.6.4}{cmdline.h}{subsection.10.6}% 42
+\BOOKMARK [3][-]{subsubsection.10.6.5}{cmdline.cc}{subsection.10.6}% 43
+\BOOKMARK [1][-]{section.11}{Enunciado}{}% 44
