@@ -269,7 +269,9 @@ como fue implementado dft y fft, funciones genéricas, máscaras, complejidad te
       Este resultado es coherente, ya que el algoritmo utiliza la técnica de 
     "divide y vencerás" y la recurrencia es análoga al caso del conocido 
     \textit{MergeSort}.
-    
+    \subsubsection{Complejidad Espacial}
+     
+     
     \subsection{DFT}
     \subsubsection{Complejidad Temporal}
       Para estudiar el costo temporal de esta implementación ---$T(N)$--- se analizó
@@ -328,7 +330,8 @@ como fue implementado dft y fft, funciones genéricas, máscaras, complejidad te
   perdería la componente logarítmica de la complejidad, quedando el resultado final:
   $$ \boxed{ T(N)\;\epsilon\;\Theta (N^2) } $$
 
-
+\subsubsection{Complejidad Espacial}
+El análisis de la complejidad espacial para el cálculo de la DFT se reduce al análisis de la cantidad de espacio en memoria que se requiere en el algoritmo. El costo principal en memoria está dado en la definición del vector de entrada $x[n]$ y el de salida $X[k]$, siendo estos bloques de tamaño N según la entrada. El resto del algoritmo define algunas variables auxiliares de tipo complex y de tipo entero, pero que no tienen peso respecto de los vectores de números complejos mencionados. Por lo tanto la complejidad 
 
 \section{Estructura de archivos}
 
