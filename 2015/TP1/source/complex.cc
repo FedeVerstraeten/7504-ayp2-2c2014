@@ -201,8 +201,10 @@ operator>>(istream &is, Complex &c)
 
   if (good)
     c.real_ = re, c.imag_ = im;
-  if (bad)
+  if (bad){
     is.clear(ios::badbit);
+    cout << "Wrong input." << endl;
+  }
 
   return is;
 }
